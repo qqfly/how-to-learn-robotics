@@ -18,8 +18,7 @@
 ## 先修知识 
 
 
-John Craig <sup>[[1]](#[1])</sup>
-
+John Craig <sup>[1]</sup>
 
 ## 勇者斗恶龙
 
@@ -27,4 +26,4 @@ John Craig <sup>[[1]](#[1])</sup>
 
 
 ## 参考文献
-##### [1]: John J. Craig. Introduction to Robotics: Mechanics and Control[M]. 1986.  <!-- omit in toc -->
+[1] John J. Craig. Introduction to Robotics: Mechanics and Control[M]. 1986.
