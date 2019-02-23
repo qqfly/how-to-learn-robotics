@@ -151,9 +151,9 @@
 
 3）计算变换矩阵：
 
-$^{i-1}_i{T}=Rot_{x_{i-1}}(\alpha_{i-1}) \cdot Trans_{x_{i-1}}(a_i) \cdot Rot_{z_i}(\theta_i) \cdot Trans_{z_i}(d_i)$
+${^{i-1}_i}T=Rot_{x_{i-1}}(\alpha_{i-1}) \cdot Trans_{x_{i-1}}(a_i) \cdot Rot_{z_i}(\theta_i) \cdot Trans_{z_i}(d_i)$
 
-$^{i-1}_i{T}=\begin{bmatrix} cos(\theta_i) & -sin(\theta_i) & 0 & a_{i-1} \\ sin(\theta_i)cos(\alpha_{i-1}) & cos(\theta_i)cos(\alpha_{i-1}) & -sin(\alpha_{i-1}) & -d_i sin(\alpha_{i-1}) \\ sin(\theta_i)sin(\alpha_{i-1}) & cos(\theta_i)sin(\alpha_{i-1}) & cos(\alpha_{i-1}) & d_i cos(\alpha_{i-1}) \\ 0 & 0 & 0 & 1 \end{bmatrix}$
+${^{i-1}_i}T=\begin{bmatrix} cos(\theta_i) & -sin(\theta_i) & 0 & a_{i-1} \\ sin(\theta_i)cos(\alpha_{i-1}) & cos(\theta_i)cos(\alpha_{i-1}) & -sin(\alpha_{i-1}) & -d_i sin(\alpha_{i-1}) \\ sin(\theta_i)sin(\alpha_{i-1}) & cos(\theta_i)sin(\alpha_{i-1}) & cos(\alpha_{i-1}) & d_i cos(\alpha_{i-1}) \\ 0 & 0 & 0 & 1 \end{bmatrix}$
 
 4）正解：
 
