@@ -18,9 +18,7 @@
 
 从我这几年的学习经历上看，我是能理解这一现象的。博士刚入学的时候，我接下了师兄的 SmartPal 机器人。靠着师兄的「祖传代码」，也曾狐假虎威地在外宾面前做过一些演示：
 
-<center>
-    <img src="./Pics/SmartPalAndMe.jpg" alt="SmartPalAndMe" width="350"/>
-</center>
+<div style="text-align:center"> <img src="./Pics/SmartPalAndMe.jpg" alt="SmartPalAndMe" width="350"/> </div>
 
 但是，当我后来真正开始看这些「祖传代码」的时候，我发现实际发给机器人的只有几个关节**位置**点而已。
 
@@ -42,9 +40,7 @@
 
 当然，先修知识会随着研究深度的变换而不同，尤其是数学，数学就像是写轮眼，看同一个石碑，不同层次的「写轮眼」所看到的内容也完全不同。
 
-<center>
-    <img src="./Pics/Sharingan.jpg" alt="Sharingan" width="550"/>
-</center>
+<div style="text-align:center"> <img src="./Pics/Sharingan.jpg" alt="Sharingan" width="550"/> </div>
 
 但是，由于机器人学涉及面广，不同方向所需要的基础知识也完全不同，如果一开始就陷入「先修知识」的泥潭中，可能就得不偿失了。
 
@@ -63,6 +59,7 @@
 ## 入门
 
 
+
 John Craig <sup>[1]</sup>
 
 ## 勇者斗恶龙
@@ -70,7 +67,7 @@ John Craig <sup>[1]</sup>
 🐀🐂🐅🐇🐉🐍🐎🐏🐒🐓🐕🐖
 
 
-$S = 2\cdot pi \cdot r^2$
+$S = 2\cdot \pi \cdot r^2$
 
 ## 参考文献
 [1] John J. Craig. Introduction to Robotics: Mechanics and Control[M]. 1986.
