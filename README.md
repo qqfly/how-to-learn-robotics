@@ -11,15 +11,17 @@
   - [3.4 动力学](#34-动力学)
   - [3.5 控制](#35-控制)
 - [四. 实践](#四-实践)
-  - [4.1 比赛](#41-比赛)
+  - [4.1 动手](#41-动手)
   - [4.2 Penn's Robotics Specialization](#42-penns-robotics-specialization)
   - [4.3 ROS](#43-ros)
 - [五. 进阶](#五-进阶)
   - [5.1 数学](#51-数学)
   - [5.2 Modern Robotics](#52-modern-robotics)
   - [5.3 控制](#53-控制)
-  - [5.4 规划](#54-规划)
-- [勇者斗恶龙](#勇者斗恶龙)
+  - [5.4 运动规划](#54-运动规划)
+  - [5.5 机器学习](#55-机器学习)
+  - [5.6 强化学习](#56-强化学习)
+- [六. 勇者斗恶龙](#六-勇者斗恶龙)
 - [参考文献](#参考文献)
 
 
@@ -316,13 +318,15 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 
 **Get your hands dirty!**
 
-### 4.1 比赛
+### 4.1 动手
 
 如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、飞思卡尔智能车大赛、电子设计大赛等；也可以加入学校的一些科技组织，例如清华的天空工厂。主要是熟悉各种电子电路、培养动手能力。
 
 但是，以我的观察，很多科技比赛大牛，在理论学习上往往比较弱。这主要是因为科技比赛强调的是系统能力，决定比赛结果的往往是一些小 tricks，而非理论知识；而且，比赛容易让人产生一种虚假的充实感，每天都很忙碌，但是可能只是在重复低级工作。这两个原因很容易让人陷入 local minima，无法在理论方面更进一步。
 
 所以，我有个不成熟的小建议。参加比赛和学生科技活动的话，有过两次完整的经历就够了。之后应该迅速将重点转向理论学习。
+
+如果身边有可以玩的机器人硬件，也可以尝试玩一玩，或者在 RobotStudio 里玩 ABB 的机器人。
 
 ### 4.2 Penn's Robotics Specialization
 
@@ -416,12 +420,69 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
   <img width="500" src="./Pics/CollisionDetection.gif"/>
 </p>
 
-### 5.4 规划
+### 5.4 运动规划
+
+现在，你能让机器人按照你的要求运动了。但是，你感觉机器人还是太难用了，必须人工指定经过的路径点，否则机器人可能就会与环境发生碰撞。你想，有没有可能让机器人自己找到这些路径点。
+
+于是，你来到了运动规划的领域。
+
+当然，一个很自然的想法是，有没有可能直接构建一个目标函数，用优化的方法计算出需要的轨迹。但是，世界有时候并没有那么可爱。运动规划问题常常是一个非凸问题，无法直接求解。所以，对于机械臂，可以有各种 Sampling-based 算法；当然，也有人将其近似成多个凸问题进行优化求解，在比较简单的场景下效果还算不错。
+
+运动规划的大致介绍可以看我以前写过的文章：[《运动规划 | 简介篇》](https://mp.weixin.qq.com/s/_fE760XxFlvrkzYEpslYvA)。
+
+<p align="center">
+  <img width="500" src="./Pics/PlanningBooks.jpg"/>
+</p>
+
+当然，更详细的介绍最好看教材，如《Principles of Robot Motion》<sup>[4]</sup>和0《Planning Algorithms》<sup>[5]</sup>都是不错的教材。
+
+另外，这部分一定要配合着编程来做。[The Open Motion Planning Library](http://ompl.kavrakilab.org/) 是个不错的参考，相信你在学 ROS 的时候也或多或少了解过一些。
+
+相信只要你理解得足够深入，便会理解前面李群李代数的作用。
+
+### 5.5 机器学习
+
+前面很多工作都是在做建模+辨识的工作。实际上还有一大类工作是基于数据的，也即，给一个通用模型，用数据进行学习拟合。也就是大家常说的机器学习了。
+
+对于此，我个人的学习路径如下：
+
+- Coursera上吴恩达的[《机器学习》](https://www.coursera.org/learn/machine-learning)，了解基本的机器学习内容。
+
+- Geoffrey Hinton 的[《Neural Networks for Machine Learning》](https://www.youtube.com/playlist?list=PLoRl3Ht4JOcdU872GhiYWf6jwrk_SNhz9)，之前是在 Coursera 上看的，现在似乎只能在 Youtube 上找到了。这门课基本可以把几种经典的神经网络过一遍。
+
+- 各种开源平台。有了前面的基础，也在 Matlab 中实现过几种经典机器学习算法，你就可以去尝试一些深度学习开源平台了，如 [TensorFlow](https://www.tensorflow.org/)。做机器学习的人太多了，所以资料也非常多，在网上非常容易自学。
+
+当然，我们要知道，我们学机器学习，并不是为了转到 DL 方向上，而是用它来为机器人研究提供工具的：
+
+- 智能控制：相信学习过智能控制的小伙伴，应该还记得小脑模型之类的网络在控制中的应用；
+
+- 建模：对于一些不好建模的地方，有时候不妨试试机器学习的方法，例如，用神经网络拟合摩擦力；
+
+- 视觉：机器人经成需要跟视觉结合在一起，而 DL 在视觉领域发展迅速，有时候借用这一工具，可以非常快地搭建实验原型；
+
+- 强化学习：这个下章介绍。
+
+### 5.6 强化学习
+
+如果研究过强化学习，肯定会被其极简的理论所折服：所有的理论衍生自一个 Bellman equation。而且，强化学习非常符合人的直觉。因此，很多人认为强化学习是机器人的未来方向。
+
+对此，我不做过多评论。我只大概介绍如何入门强化学习。
+
+首先，就是看书。Sutton 的《Introduction to reinforcement learning》<sup>[6]</sup>可以说是必读圣经了。
+
+阅读 Sutton 的书，你可以一步步了解如何从最初的 Bellman 方程推导出 Dynamic Programming、Monte Carlo、TD Learning 等方法。
+
+你知道了强化学习就是要通过不断尝试来学习得到一个从 State 到 Action 的查找表。
+
+于是，你就想，有没有可能简化这个查找表，于是，你知道了有 Function Approximation。如果这个近似函数是神经网络，那么就是现在很多的 Deep Reinforcement Learing 了。
+
+当然，这些不重要。重要的是理解 Markov Decision Processes。你会发现，它不仅可以用来解决运动规划问题（DP ≈ Dijkstra、Monte Carlo ≈ RRT），还可以用来解决任务规划问题。
+
+## 六. 勇者斗恶龙
+
+自此，你已经知道了如何让一个机器人动起来，掌握了深入研究机器人某一领域的知识。然后，你就像一个刚刚斩杀一个史莱姆的用者一般
 
 
-
-
-## 勇者斗恶龙
 
 🐀🐂🐅🐇🐉🐍🐎🐏🐒🐓🐕🐖
 
@@ -434,7 +495,13 @@ $S = 2\cdot \pi \cdot r^2$
 
 [2] Siciliano, Bruno, and Oussama Khatib, eds. Springer handbook of robotics. Springer, 2016.
 
-[2] Khalil, Wisama, and Etienne Dombre. Modeling, identification and control of robots. Butterworth-Heinemann, 2004.
+[3] Khalil, Wisama, and Etienne Dombre. Modeling, identification and control of robots. Butterworth-Heinemann, 2004.
+
+[4] Choset, Howie M., et al. Principles of robot motion: theory, algorithms, and implementation. MIT press, 2005.
+
+[5] LaValle, Steven M. Planning algorithms. Cambridge university press, 2006.
+
+[6] Sutton, Richard S., and Andrew G. Barto. Introduction to reinforcement learning. Vol. 135. Cambridge: MIT press, 1998.
 
 
 「」
