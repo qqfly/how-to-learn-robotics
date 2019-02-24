@@ -358,13 +358,13 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 
 对于学习 ROS，网上可能有不少教程了。但是，我感觉，对于很多机电、自动化方向的学生并不适合直接开始看 ROS。因为他们缺乏基本的 Linux、C++ 知识。所以，我推荐按照如下步骤进行学习：
 
-- **Linux**：如果完全没有 Linux 开发经验，我建议可以先按照 Ubuntu 系统，然后看 [UNIX Tutorial for Beginners](http://www.ee.surrey.ac.uk/Teaching/Unix/) ，熟悉基本的 Linux 使用方法。
+- **Linux**：如果完全没有 Linux 开发经验，我建议可以先安装 Ubuntu 系统，然后看 [UNIX Tutorial for Beginners](http://www.ee.surrey.ac.uk/Teaching/Unix/) ，熟悉基本的 Linux 使用方法。
 
-- **Github**：ROS 的大多数项目都是托管在 [Github](https://github.com/) 上的。所以，非常有必要学会使用 Github，学会用 git 管理自己的代码。而且也可以为开源项目做些修改。例如可以像我这样只是[删除多余的分号](https://github.com/stack-of-tasks/pinocchio/pull/672)。
+- **Github**：ROS 的大多数项目都是托管在 [Github](https://github.com/) 上的。所以，非常有必要学会使用 Github，学会用 git 管理自己的代码。而且也可以为开源项目做些修改。例如可以像我一样只是[删除多余的分号](https://github.com/stack-of-tasks/pinocchio/pull/672)。
 
 - **C++ 基础**：如果你没有系统学习过 C++，建议先把这部分补齐，因为 ROS 的主要代码都是 C++ 实现的。这里，我推荐学堂在线上清华大学郑莉老师的课程[《C++语言程序设计基础》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+00740043X_2015_T2+sp/about)和[《C++语言程序设计进阶》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+00740043_2x_2015_T2+sp/about)。当然，学习 C++ 的时候就可以在 Ubuntu 下进行，安装一个 [Visual Studio Code](https://code.visualstudio.com/) 是个不错的选择。
 
-- **数据结构**：其实，上面的基础已经足够你学习 ROS 了，但是，为了未来的学习，可以在适当时候学习一些数据结构的知识。数据结构的话，我推荐清华邓俊辉老师 [《数据结构(上)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184+sp/about)与[《数据结构(下)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184_2X+sp/about)。
+- **数据结构**：其实，上面的基础已经足够你学习 ROS 了，但是，为了未来的学习，可以在适当时候学习一些数据结构的知识。数据结构的话，我推荐学堂在线上清华邓俊辉老师 [《数据结构(上)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184+sp/about)与[《数据结构(下)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184_2X+sp/about)。
 
 现在，你就可以大胆地去看 ROS 了。作为开源项目，我认为最好的教程就是官网的教程 [ROS Tutorials](https://wiki.ros.org/ROS/Tutorials)。
 
@@ -400,21 +400,21 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 
 李群李代数对于很多工科学生可能一时无法接受。这里，我推荐从 Modern Robotics 开始，这是一本面向本科生的教材，非常浅显。
 
-你可以在[这里](http://hades.mech.northwestern.edu/index.php/Modern_Robotics)找到它的所有信息，Coursera 上也有对应的课程：[《Modern Robotics》](https://www.coursera.org/specializations/modernrobotics)。
+你可以在[网上](http://hades.mech.northwestern.edu/index.php/Modern_Robotics)找到它的所有信息，Coursera 上也有对应的课程：[《Modern Robotics》](https://www.coursera.org/specializations/modernrobotics)。
 
-上完这门课，你掌握旋量（Screw）这一全新的建模方式，同时，你会发现机器人运动学、动力学建模变得如此简单、干净。
+上完这门课，你能掌握旋量（Screw）这一全新的建模方式，同时，你会发现机器人运动学、动力学建模变得如此简单、干净。
 
-这时候，你已经触碰到了李群李代数。之后就可以去看一些针对工科生的李群李代数教材，如[《Notes on Differential Geometry and Lie Groups, I & II》](http://www.cis.upenn.edu/~jean/gbooks/manif.html)
+这时候，你已经触碰到了一点点李群李代数。之后就可以去看一些针对工科生的李群李代数教材，如[《Notes on Differential Geometry and Lie Groups, I & II》](http://www.cis.upenn.edu/~jean/gbooks/manif.html)
 
 ### 5.3 控制
 
 这时候，你可能已经尝试搭建过一些机器人平台，了解了一些基本的控制理论。但是，你发现实际的机器人并不理想，动力学模型可能非常不精确。于是，你需要做机器人的**参数辨识**。于是，你可以去看 Khalil 的教材《Modeling, identification and control of robots》<sup>[3]</sup>。其中，你需要了解各种滤波算法（计算加速度）、各种数值优化算法。而且，如果需要对机器人的运动学参数进行标定，你会发现李群李代数可以非常方便地定义各种相关的雅可比。
 
-现在，你有了一个相对精确的动力学模型，但是你发现，在给机器人控制器做轨迹规划的时候，需要给出速度、加速度约束。你感觉这其中有什么不对。是的，机器人系统中实际上并不存在上面速度、加速度约束，我们所有的操作都是针对电机力矩的。也就是说，我们只有力矩约束。
+现在，你有了一个相对精确的动力学模型，但是你发现，在给机器人控制器做轨迹规划的时候，需要给出速度、加速度约束。你感觉这其中有什么不对。是的，机器人系统中实际上并不存在什么速度、加速度约束，我们所有的操作都是针对电机力矩的。也就是说，我们只有力矩约束。
 
 那么，问题来了：在力矩约束下，如何让机器人实现最快的运动。于是你就入了**最优控制**的坑。在这里，各种数值优化方法将非常有用。
 
-现在你能把单独的一个机器人控制好了，但你发现，机器人一定跟环境发生接触，只用机器人模型就不够了。你需要对环境进行建模，但是，环境是无法精确建模的。于是，你开始学各种**力控**、**阻抗控制**之类的内容。相应地、你就可以实现一些所谓协作机器人的功能了:[《听说现在协作机器人很火，所以我也做了1/7个》](https://mp.weixin.qq.com/s/hkZjZItqyfwG6k0cwRm9kA)
+现在你能把单独的一个机器人控制好了，但你发现，机器人一旦跟环境发生接触，只用机器人模型就不够了。你需要对环境进行建模。但是，环境是无法精确建模的。于是，你开始学各种**力控**、**阻抗控制**之类的内容。相应地、你就可以实现一些所谓协作机器人的功能了:[《听说现在协作机器人很火，所以我也做了1/7个》](https://mp.weixin.qq.com/s/hkZjZItqyfwG6k0cwRm9kA)
 
 <p align="center">
   <img width="500" src="./Pics/CollisionDetection.gif"/>
@@ -440,7 +440,7 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 
 只要你理解得足够深入，便会理解前面李群李代数的作用。例如：
 
-（1）运动规划是在 Configuration Space 里进行的，而大多数常见机构的 Configuration Space 都是一个 Lie Group：多关节机器人的关节空间（Torus(n)），无人机（SE(3)），机器人末端操作物体的相关约束（SE(3)）。于是，我们只要定义各种 Lie Group 的基本性质，就可以同统一的规划算法来进行规划了。具体可以看 Ompl 里 State space 的使用。
+（1）运动规划是在 Configuration Space 里进行的，而大多数常见机构的 Configuration Space 都是一个 Lie Group：多关节机器人的关节空间（Torus(n)），无人机（SE(3)），机器人末端操作物体的相关约束（SE(3)）。于是，我们只要定义各种 Lie Group 的基本性质，就可以用统一的规划算法来进行规划了。具体可以看 Ompl 里 State space 的使用。
 
 （2）当我们的规划涉及到一些约束，如让机器人末端保持水平（拿着一杯水）。一种方法是用传统的方法。如 OpenRave 里的一个实现：[ConstraintPlanning](http://openrave.org/docs/0.8.2/openravepy/examples.constraintplanning/)， 在关节空间随机采样一个点，然后投影到最近的任务空间上，之后用 Jacobian 迭代的方式将随机点连接到 RRT 树上。
 
@@ -488,7 +488,7 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 
 你知道了强化学习就是要通过不断尝试来学习得到一个从 State 到 Action 的查找表。
 
-于是，你就想，有没有可能简化这个查找表，于是，你知道了有 Function Approximation。如果这个近似函数是神经网络，那么就是现在很多的 Deep Reinforcement Learing 了。
+于是，你就想，有没有可能简化这个查找表，于是，你知道了有 Function Approximation。如果这个近似函数是神经网络，那么就是现在很火的 Deep Reinforcement Learing 了。
 
 当然，这些不重要。重要的是理解 Markov Decision Processes。你会发现，它不仅可以用来解决运动规划问题（DP ≈ Dijkstra、Monte Carlo ≈ RRT），还可以用来解决任务规划问题。
 
@@ -504,7 +504,7 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
   <img width="500" src="./Pics/TheBrave.jpg"/>
 </p>
 
-自此，你已经知道了如何让一个机器人动起来，并且深入掌握了研究机器人某一领域的知识。然后，你就像一个刚刚斩杀一个史莱姆的勇者一般，举着宝剑，时刻准备着将宝剑刺入恶龙的胸口。
+自此，你已经知道了如何让一个机器人动起来，并且深入掌握了研究机器人某一领域的知识。然后，你就像一个刚刚斩杀一只史莱姆的勇者一般，举着宝剑，时刻准备着将宝剑刺入恶龙的胸口。
 
 但是，这时候有人跑过来，往你头上浇了一盆水：
 
@@ -520,19 +520,19 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
   <img width="500" src="./Pics/Teaching.gif"/>
 </p>
 
-当你看到绝大多数机器人还是通过上面这样的方式，一点点示教出来的，你就会有强烈的感觉：「这就是恶龙！」
+当你看到绝大多数机器人还是通过上面这样的方式，一点点示教出来的，你会有强烈的感觉：「这就是恶龙！」
 
 <p align="center">
   <img width="500" src="./Pics/TeachingDevice.jpg"/>
 </p>
 
-当你看到世界上那么多机器人公司，有着各自形形色色的编程语言、示教器的时候，你就会有强烈的感觉：「这就是恶龙！」
+当你看到世界上那么多机器人公司，有着各自形形色色、互不兼容的编程语言、示教器的时候，你会有强烈的感觉：「这就是恶龙！」
 
 <p align="center">
   <img width="500" src="./Pics/ChineseFactory.jpg"/>
 </p>
 
-当你看到还有非常多与你我同龄的人在工厂里做着重复、枯燥的工作的时候，你就会有强烈的感觉：「这就是恶龙！」
+当你看到还有非常多与你我同龄的人在工厂里做着重复、枯燥的工作的时候，你会有强烈的感觉：「这就是恶龙！」
 
 是的，在机器人领域，还有非常多恶龙。于是，你拿起剑，又兴冲冲地上路了。
 
