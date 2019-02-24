@@ -10,6 +10,15 @@
   - [3.3 雅可比矩阵](#33-雅可比矩阵)
   - [3.4 动力学](#34-动力学)
   - [3.5 控制](#35-控制)
+- [四. 实践](#四-实践)
+  - [4.1 比赛](#41-比赛)
+  - [4.2 Penn's Robotics Specialization](#42-penns-robotics-specialization)
+  - [4.3 ROS](#43-ros)
+- [五. 进阶](#五-进阶)
+  - [5.1 数学](#51-数学)
+  - [5.2 Modern Robotics](#52-modern-robotics)
+  - [5.3 控制](#53-控制)
+  - [5.4 规划](#54-规划)
 - [勇者斗恶龙](#勇者斗恶龙)
 - [参考文献](#参考文献)
 
@@ -17,6 +26,8 @@
 ## 零. 前前言
 
 本文中含有不少公式，为了方便编辑，采用的是 Latex 格式书写。但是，Github Markdown 不支持 Latex，为了方便阅读，建议采用 Chrome 浏览器，并安装插件 [TeX All the Things](https://chrome.google.com/webstore/detail/tex-all-the-things/cbimabofgmfdkicghcadidpemeenbffn)。安装后，即可将网页上的 Latex 公式转换成大多数人能看懂的形式。
+
+部分复杂的公式会用 [在线LaTeX公式编辑器](https://www.codecogs.com/latex/eqneditor.php) 转换成图片插入。
 
 本教材写作时间很短，所以肯定有疏漏。因此放在这里作为一个开源项目，大家可以随时修改并提交 Pull Request；有问题也可以提 issue。
 
@@ -70,23 +81,25 @@
 
 3. **线性代数**：所有的空间变换、机器人相关计算都依赖于线性代数，甚至需要有一些基本的"线性空间"思维。对于线性代数，我首推 Prof. Gilbert Strang 的《Linear Algebra》，在 [Youtube](https://www.youtube.com/watch?v=hNDFwVVKVk0&list=PL221E2BBF13BECF6C) 和[网易公开课](http://open.163.com/special/opencourse/daishu.html)上可以找到视频。这门课一开始就引导大家从空间的角度看待问题，而不像国内高校，只要强调如何计算。而且，网易公开课上有中文字幕，对于初学者也还算友好。
 
-4. **微积分**：机器人里，所有涉及到导数、积分、优化的地方，都会有微积分的影子。所以，这门数学课也是一开始就绕不开的。我没有太好的视频推荐，不妨也看看 Gilbert Strange 的[微积分重点](http://open.163.com/special/opencourse/weijifen.html)？
+4. **微积分**：机器人里，所有涉及到导数、积分、优化的地方，都会有微积分的影子。所以，这门数学课也是一开始就绕不开的。我没有太好的视频推荐，不妨也看看 Gilbert Strange 的[《微积分重点》](http://open.163.com/special/opencourse/weijifen.html)？
 
-5. **理论力学**：机器人学就是每天与力打交道。但是一般机器人教材里都不会仔细推导空间变换、虚功原理、拉格朗日等力学理论，而且这些东西又相对抽象，很多初学者的自学过程就是被截杀在动力学章节的。当然，这部分我也没有太好的推荐资料，学堂在线上有清华高云峰老师的[理论力学](https://www.xuetangx.com/courses/TsinghuaX/20330334X/_/about)公开课，也可以参考一下。（但至少我当年上他的课总是犯困）。
+5. **理论力学**：机器人学就是每天与力打交道。但是一般机器人教材里都不会仔细推导空间变换、虚功原理、拉格朗日等力学理论，而且这些东西又相对抽象，很多初学者的自学过程就是被截杀在动力学章节的。当然，这部分我也没有太好的推荐资料，学堂在线上有清华高云峰老师的[《理论力学》](https://www.xuetangx.com/courses/TsinghuaX/20330334X/_/about)公开课，也可以参考一下。（但至少我当年上他的课总是犯困）。
    
 6. **Matlab or Python**：这两个是非常容易上手，且非常方便数据可视化的编程语言。大家在学习机器人学的过程中，能非常容易地通过这类脚本语言实现一些算法，从而用于验证自己的推导结果。当然，这两部分只要掌握基本的矩阵操作和可视化操作就可以了。其他更高级的用法可以之后再学习。Coursera 上很容易找到这两门语言的入门课程 [Matlab](https://www.coursera.org/learn/matlab)、[Python](https://www.coursera.org/specializations/python)。
+
+7. **控制理论**：机器人学是离不开控制的，但是机器人学教材一般不会过多介绍这块。当然，目前大多数工业机器人都还是使用比较简单的算法，但是，作为研究者，有必要了解一些基本的控制理论，例如 PID、状态方程、可观性、可控性、李雅普诺夫、最优控制、一点点非线性控制与一点点智能控制等。这块我基本是在学校上课，没有太好的公开课推荐，可以先试试学堂在线上的课程。
 
 <p align="center">
   <img width="500" src="./Pics/IngenieriaElectrica.jpg"/>
 </p>
 
-7. **数字电路与模拟电路**：机器人是一门实践科学，只有当你把你推导的公式写成代码、并最终让实际机器人按照你的想法动起来的时候，才说明你掌握了相关知识。数电模电的知识可以让你对逻辑电路有个基本了解，不至于后面连为什么电机前面要加一个驱动器都不知道；同时，在身边没有实际机器人的情况下，自己搭个小电路做一些控制实验也是非常方便的。这块知识可以随便找本教材看看，例如我当时上的是唐庆玉老师的教材。
+8. **数字电路与模拟电路**：机器人是一门实践科学，只有当你把你推导的公式写成代码、并最终让实际机器人按照你的想法动起来的时候，才说明你掌握了相关知识。数电模电的知识可以让你对逻辑电路有个基本了解，不至于后面连为什么电机前面要加一个驱动器都不知道；同时，在身边没有实际机器人的情况下，自己搭个小电路做一些控制实验也是非常方便的。这块知识可以随便找本教材看看，例如我当时上的是唐庆玉老师的教材。
 
-8. **一点点单片机**：要想制作简单的实验用控制电路，只有数电模电知识是不够的，还要能将这些知识转换成实际的电路，并且能将运行代码，那么就需要会单片机。对于单片机，可以网上随便买一些带伺服电机控制教程的最小系统板，学学 Arduino 或 STM32，当然，如果能参加个 RoboMaster 或者飞思卡尔智能车大赛什么的是最好了，可以对嵌入式的各个模块有个基本了解。
+9. **一点点单片机**：要想制作简单的实验用控制电路，只有数电模电知识是不够的，还要能将这些知识转换成实际的电路，并且能将运行代码，那么就需要会单片机。对于单片机，可以网上随便买一些带伺服电机控制教程的最小系统板，学学 Arduino 或 STM32，当然，如果能参加个 RoboMaster 或者飞思卡尔智能车大赛什么的是最好了，可以对嵌入式的各个模块有个基本了解。
 
-9. **Linux 和 C 语言**：现在有了电路部分，我们需要将公式代码变成电路指令，这就涉及嵌入式的编程了。这块建议学一点 C 语言。嵌入式对 C 的要求其实并不高，随便学点语法就够了，例如[C语言入门](https://akaedu.github.io/book/pt01.html)。但是，如果未来想做一些更加上层的工作，最好一开始就把 C 学好。学编程，Linux 是个不错的选择，所以，这时候，可以尝试按照个 Linux 系统，在上面学习 C 语言。
+10. **Linux 和 C 语言**：现在有了电路部分，我们需要将公式代码变成电路指令，这就涉及嵌入式的编程了。这块建议学一点 C 语言。嵌入式对 C 的要求其实并不高，随便学点语法就够了，例如[《C语言入门》](https://akaedu.github.io/book/pt01.html)。但是，如果未来想做一些更加上层的工作，最好一开始就把 C 学好。学编程，Linux 是个不错的选择，所以，这时候，可以尝试按照个 Linux 系统，在上面学习 C 语言。
 
-10. **基本的3D设计**：在制作实验平台的时候，经常会遇到需要加工设计小零件的情况，这时候掌握一个3D设计软件可以大大提高开发速度，例如 SolidWorks 就是个不错的选择。配合上 3D 打印机之类的工具就可以实验快速原型设计了。（即使没有 3D 打印机，在网上也可以很容易找到 3D 打印服务，把你设计的 3D 文件发过去就可以了）。
+11.  **基本的3D设计**：在制作实验平台的时候，经常会遇到需要加工设计小零件的情况，这时候掌握一个3D设计软件可以大大提高开发速度，例如 SolidWorks 就是个不错的选择。配合上 3D 打印机之类的工具就可以实验快速原型设计了。（即使没有 3D 打印机，在网上也可以很容易找到 3D 打印服务，把你设计的 3D 文件发过去就可以了）。
 
 上面这些知识，基本是一个自动化专业或者机电专业大三学生应该达到的水平。如果对上述几部分有了基本了解，就可以开始看机器人学的知识了。
 
@@ -166,10 +179,6 @@
 3）计算变换矩阵：
 
 $${^i_{i-1}}T = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)$$
-
-<p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\large&space;{^i_{i-1}}T=Rot(x_{i-1},\alpha_{i-1})\cdot{Trans(x_{i-1},a_i)}\cdot{Rot(z_i,\theta_i)}\cdot{Trans(z_i,d_i)}" title="\large {^i_{i-1}}T=Rot(x_{i-1},\alpha_{i-1})\cdot{Trans(x_{i-1},a_i)}\cdot{Rot(z_i,\theta_i)}\cdot{Trans(z_i,d_i)}" />
-</p>
 
 <p align="center">
 <img width="600" src="https://latex.codecogs.com/gif.latex?\inline&space;\LARGE&space;{^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}" title="DHMatrix"/>
@@ -301,6 +310,116 @@ $F = m \cdot a$
 
 Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有不少内容已经比较旧了。
 
+## 四. 实践
+
+看完 Craig 的书后，你应该对工业机器人的原理有了一个大概的概念，但是，你缺乏实际动手经验，不清楚如何将书上的东西应用到实际机器人上。机器人毕竟是一个实践性的学科，一直停留在理论，不仅无用、而且无趣。
+
+**Get your hands dirty!**
+
+### 4.1 比赛
+
+如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、飞思卡尔智能车大赛、电子设计大赛等；也可以加入学校的一些科技组织，例如清华的天空工厂。主要是熟悉各种电子电路、培养动手能力。
+
+但是，以我的观察，很多科技比赛大牛，在理论学习上往往比较弱。这主要是因为科技比赛强调的是系统能力，决定比赛结果的往往是一些小 tricks，而非理论知识；而且，比赛容易让人产生一种虚假的充实感，每天都很忙碌，但是可能只是在重复低级工作。这两个原因很容易让人陷入 local minima，无法在理论方面更进一步。
+
+所以，我有个不成熟的小建议。参加比赛和学生科技活动的话，有过两次完整的经历就够了。之后应该迅速将重点转向理论学习。
+
+### 4.2 Penn's Robotics Specialization
+
+首先，不妨抽出几个月时间，看看 Coursera 上宾夕法尼亚大学的 [Robotics](https://www.coursera.org/specializations/robotics) 专项课程。这个专项课程与机械臂或者工业机器人关系不大，但是由于机器人很多方面是相通的，所以非常建议看一看。
+
+- Aerial Robotics：这门课主要是介绍四旋翼无人机的控制问题，其中的轨迹规划、姿态描述、控制等对机械臂的学习非常有帮助。而且，这门课的作业质量也非常高，提供了基于 Matlab 的数值仿真模块，可以让初学者直观地看到自己代码的控制效果。
+
+- Computational Motion Planning：这么课的水平感觉不如前一个，但是通过这门课可以大概知道机器人里有 Motion Planning 这个方向，同时大作业也包括了手写 A*、PRM、Potential Fileds 等基本的 Motion Planning 算法，同时大概了解一下 Collision Checking 的基本方法。
+
+- Mobility：这部分主要是介绍祖师机器人的控制问题。通过这门课，一方面可以大致了解足式机器人控制的发展脉络，这样看起 Boston Dynamics 的视频也不会那么一脸懵逼了。同时，更重要的是，掌握机器人建模与控制的关系：一个简化的模型，也可能对控制起非常大帮助。
+
+- Perception：这门课质量非常不错，基本是介绍相机模型、多视几何之类的内容。这方面内容可以对大家未来从事 SLAM、3D 视觉、标定等方面的研究非常有帮助。学完之后，大家就可以做出类似[《AR原理演示》](https://mp.weixin.qq.com/s?__biz=MzA5MDE2MjQ0OQ==&mid=2652786307&idx=1&sn=e71bbca67c7fa69081e863b62b9fd5b4#rd)文章中的效果了：
+
+<p align="center">
+  <img width="400" src="./Pics/AR.gif"/>
+</p>
+
+- Estimation and Learning：这门课从高斯分布开始，介绍了 Kalman Filter、Particle Filter 等在机器人状态估计中非常有用的工具。而且，这门课的大作业会让你从零开始编写 2D 地图重建的程序，你可以知道如何利用激光传感器信息获得下面这样的 2D 地图。
+
+<p align="center">
+  <img width="500" src="./Pics/Mapping.jpg"/>
+</p>
+
+### 4.3 ROS
+
+到现在为止，你对机器人的基础知识有了一个比较完整的脉络，而且，也用 Matlab 实现了一些有趣的算法。但是，你发现，机器人是一个非常大的系统，作为初学者，不太可能从头开始一步步搭建机器人所需的各个算法模块。这时候，你就应该开始拥抱伟大的开源世界了。
+
+很多人可能知道，有一个叫做机器人操作系统的开源项目 [(Robot Operating System, ROS)](https://wiki.ros.org/)。
+
+对于学习 ROS，网上可能有不少教程了。但是，我感觉，对于很多机电、自动化方向的学生并不适合直接开始看 ROS。因为他们缺乏基本的 Linux、C++ 知识。所以，我推荐按照如下步骤进行学习：
+
+- **Linux**：如果完全没有 Linux 开发经验，我建议可以先按照 Ubuntu 系统，然后看 [UNIX Tutorial for Beginners](http://www.ee.surrey.ac.uk/Teaching/Unix/) ，熟悉基本的 Linux 使用方法。
+
+- **Github**：ROS 的大多数项目都是托管在 [Github](https://github.com/) 上的。所以，非常有必要学会使用 Github，学会用 git 管理自己的代码。而且也可以为开源项目做些修改。例如可以像我这样只是[删除多余的分号](https://github.com/stack-of-tasks/pinocchio/pull/672)。
+
+- **C++ 基础**：如果你没有系统学习过 C++，建议先把这部分补齐，因为 ROS 的主要代码都是 C++ 实现的。这里，我推荐学堂在线上清华大学郑莉老师的课程[《C++语言程序设计基础》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+00740043X_2015_T2+sp/about)和[《C++语言程序设计进阶》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+00740043_2x_2015_T2+sp/about)。当然，学习 C++ 的时候就可以在 Ubuntu 下进行，安装一个 [Visual Studio Code](https://code.visualstudio.com/) 是个不错的选择。
+
+- **数据结构**：其实，上面的基础已经足够你学习 ROS 了，但是，为了未来的学习，可以在适当时候学习一些数据结构的知识。数据结构的话，我推荐清华邓俊辉老师 [《数据结构(上)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184+sp/about)与[《数据结构(下)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184_2X+sp/about)。
+
+现在，你就可以大胆地去看 ROS 了。作为开源项目，我认为最好的教程就是官网的教程 [ROS Tutorials](https://wiki.ros.org/ROS/Tutorials)。
+
+首先，通过 Beginner Level 和 Intermediate Level 了解 ROS 基本的通讯机制、学会使用 catkin、roslaunch、Rviz 等基本工具。
+
+之后，就可以根据各自的研究兴趣去看不同模块了。
+
+如果有条件，能够配合一些 ROS 支持比较好的平台进行研究的话，可以大大提高学习速度。例如 TurtleBot、Baxter、Universal Robot 之类的。（这就看每个人条件了。）
+
+理论上，在 ROS 环境下，你可以从事绝大多少与实时控制无关的研究，如 SLAM、Navigation、Motion Planning 等。如果你从事的是更加底层的工作，（如控制器设计），目前 ROS 还无法胜任。（如果不清楚为什么，回顾一下实时操作系统、机器人控制方面的知识）。
+
+## 五. 进阶
+
+至此，你已经是一个不错的机器人工程师了。但是，如果你想从事研发工作，就需要学习更多专业知识。当然，这部分就跟大家的研究方向关系比较密切了，我没法一一细说。只大概介绍一些。
+
+另外，非常建议入手一本《Springer Handbook of Robotics》<sup>[2]</sup>。接触一个新的领域时，在 Handbook 里找到相应的章节，通过它了解基本的大纲，并利用提供的参考文献快速补齐知识。
+
+### 5.1 数学
+
+这时候，你的数学基础基本不允许你更进一步了。所以，你需要补充数学知识。
+
+- **数值计算方法**：很多时候，我们都是通过计算机来实现算法功能的，所以，你必须了解基本的数值计算方法，如数值微分、数值积分等。我没有太好的公开课资源可以推荐。
+
+- **凸优化**：这个世界很多问题都不存在解析解，我们得用优化方法来计算。所以，你必须了解如何建立优化模型，并知道如何用代码进行求解。这里，我推荐 Stanford 的公开课[《Convex Optimization》](https://lagunita.stanford.edu/courses/Engineering/CVX101/Winter2014/about)
+
+- **李群李代数**：优化方法经常要使用梯度信息，但是，你发现很多时候你不知道怎么定义梯度。李群李代数是一个非常经典的数学工具，可以非常方便描述 SO(3)、SE(3) 空间中的对象。到这里，你之前对于四元数、角速度之类的疑问将一扫而空。这部分的学习资料，我会在后面补充。
+
+### 5.2 Modern Robotics
+
+<p align="center">
+  <img width="500" src="./Pics/ModernRobotics.jpg"/>
+</p>
+
+李群李代数对于很多工科学生可能一时无法接受。这里，我推荐从 Modern Robotics 开始，这是一本面向本科生的教材，非常浅显。
+
+你可以在[这里](http://hades.mech.northwestern.edu/index.php/Modern_Robotics)找到它的所有信息，Coursera 上也有对应的课程：[《Modern Robotics》](https://www.coursera.org/specializations/modernrobotics)。
+
+上完这门课，你掌握旋量（Screw）这一全新的建模方式，同时，你会发现机器人运动学、动力学建模变得如此简单、干净。
+
+这时候，你已经触碰到了李群李代数。之后就可以去看一些针对工科生的李群李代数教材，如[《Notes on Differential Geometry and Lie Groups, I & II》](http://www.cis.upenn.edu/~jean/gbooks/manif.html)
+
+### 5.3 控制
+
+这时候，你可能已经尝试搭建过一些机器人平台，了解了一些基本的控制理论。但是，你发现实际的机器人并不理想，动力学模型可能非常不精确。于是，你需要做机器人的**参数辨识**。于是，你可以去看 Khalil 的教材《Modeling, identification and control of robots》<sup>[3]</sup>。其中，你需要了解各种滤波算法（计算加速度）、各种数值优化算法。
+
+现在，你有了一个相对精确的动力学模型，但是你发现，在给机器人控制器做轨迹规划的时候，需要给出速度、加速度约束。你感觉这其中有什么不对。是的，机器人系统中实际上并不存在上面速度、加速度约束，我们所有的操作都是针对电机力矩的。也就是说，我们只有力矩约束。
+
+那么，问题来了：在力矩约束下，如何让机器人实现最快的运动。于是你就入了**最优控制**的坑。在这里，各种数值优化方法将非常有用。
+
+现在你能把单独的一个机器人控制好了，但你发现，机器人一定跟环境发生接触，只用机器人模型就不够了。你需要对环境进行建模，但是，环境是无法精确建模的。于是，你开始学各种**力控**、**阻抗控制**之类的内容。相应地、你就可以实现一些所谓协作机器人的功能了:[《听说现在协作机器人很火，所以我也做了1/7个》](https://mp.weixin.qq.com/s/hkZjZItqyfwG6k0cwRm9kA)
+
+<p align="center">
+  <img width="500" src="./Pics/CollisionDetection.gif"/>
+</p>
+
+### 5.4 规划
+
+
+
 
 ## 勇者斗恶龙
 
@@ -310,8 +429,12 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 $S = 2\cdot \pi \cdot r^2$
 
 ## 参考文献
+
 [1] John J. Craig. Introduction to Robotics: Mechanics and Control[M]. 1986.
 
+[2] Siciliano, Bruno, and Oussama Khatib, eds. Springer handbook of robotics. Springer, 2016.
+
+[2] Khalil, Wisama, and Etienne Dombre. Modeling, identification and control of robots. Butterworth-Heinemann, 2004.
 
 
 「」
