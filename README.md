@@ -167,18 +167,12 @@
 
 $${^i_{i-1}}T = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)$$
 
-<!-- $${_{i-1}^{i}}T = \begin{bmatrix} cos(\theta_i) & -sin(\theta_i) & 0 & a_{i-1} \\ sin(\theta_i)cos(\alpha_{i-1}) & cos(\theta_i)cos(\alpha_{i-1}) & -sin(\alpha_{i-1}) & -d_i sin(\alpha_{i-1}) \\ sin(\theta_i)sin(\alpha_{i-1}) & cos(\theta_i)sin(\alpha_{i-1}) & cos(\alpha_{i-1}) & d_i cos(\alpha_{i-1}) \\ 0 & 0 & 0 & 1 \end{bmatrix}$$ -->
-
 <p align="center">
-  <img width="600" src="./Pics/Equations/DHMatrix.gif"/>
+<img src="https://latex.codecogs.com/gif.latex?\large&space;{^i_{i-1}}T=Rot(x_{i-1},\alpha_{i-1})\cdot{Trans(x_{i-1},a_i)}\cdot{Rot(z_i,\theta_i)}\cdot{Trans(z_i,d_i)}" title="\large {^i_{i-1}}T=Rot(x_{i-1},\alpha_{i-1})\cdot{Trans(x_{i-1},a_i)}\cdot{Rot(z_i,\theta_i)}\cdot{Trans(z_i,d_i)}" />
 </p>
 
 <p align="center">
-<a href="DHMatrix" target="_blank"><img width="600" src="https://latex.codecogs.com/gif.latex?\bg_white&space;\huge&space;{^i_{i-1}}T&space;=&space;\begin{bmatrix}&space;cos(\theta_i)&space;&&space;-sin(\theta_i)&space;&&space;0&space;&&space;a_{i-1}&space;\\&space;sin(\theta_i)cos(\alpha_{i-1})&space;&&space;cos(\theta_i)cos(\alpha_{i-1})&space;&&space;-sin(\alpha_{i-1})&space;&&space;-d_i&space;sin(\alpha_{i-1})&space;\\&space;sin(\theta_i)sin(\alpha_{i-1})&space;&&space;cos(\theta_i)sin(\alpha_{i-1})&space;&&space;cos(\alpha_{i-1})&space;&&space;d_i&space;cos(\alpha_{i-1})&space;\\&space;0&space;&&space;0&space;&&space;0&space;&&space;1&space;\end{bmatrix}" title="\huge {^i_{i-1}}T = \begin{bmatrix} cos(\theta_i) & -sin(\theta_i) & 0 & a_{i-1} \\ sin(\theta_i)cos(\alpha_{i-1}) & cos(\theta_i)cos(\alpha_{i-1}) & -sin(\alpha_{i-1}) & -d_i sin(\alpha_{i-1}) \\ sin(\theta_i)sin(\alpha_{i-1}) & cos(\theta_i)sin(\alpha_{i-1}) & cos(\alpha_{i-1}) & d_i cos(\alpha_{i-1}) \\ 0 & 0 & 0 & 1 \end{bmatrix}" /></a>
-</p>
-
-<p align="center">
-<a href="DHMatrix" target="_blank"><img width="600" src="https://latex.codecogs.com/gif.latex?\huge&space;{^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}" title="\huge {^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}" /></a>
+<img width="600" src="https://latex.codecogs.com/gif.latex?\inline&space;\LARGE&space;{^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}" title="DHMatrix"/>
 </p>
 
 4）正解：
