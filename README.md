@@ -434,21 +434,19 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
   <img width="500" src="./Pics/PlanningBooks.jpg"/>
 </p>
 
-当然，更详细的介绍最好看教材，如《Principles of Robot Motion》<sup>[4]</sup>和0《Planning Algorithms》<sup>[5]</sup>都是不错的教材。
+当然，更详细的介绍最好看教材，如《Principles of Robot Motion》<sup>[4]</sup> 和《Planning Algorithms》<sup>[5]</sup> 都是不错的教材。
 
 另外，这部分一定要配合着编程来做。[The Open Motion Planning Library](http://ompl.kavrakilab.org/) 是个不错的参考，相信你在学 ROS 的时候也或多或少了解过一些。
 
-相信只要你理解得足够深入，便会理解前面李群李代数的作用。例如：
+只要你理解得足够深入，便会理解前面李群李代数的作用。例如：
 
 （1）运动规划是在 Configuration Space 里进行的，而大多数常见机构的 Configuration Space 都是一个 Lie Group：多关节机器人的关节空间（Torus(n)），无人机（SE(3)），机器人末端操作物体的相关约束（SE(3)）。于是，我们只要定义各种 Lie Group 的基本性质，就可以同统一的规划算法来进行规划了。具体可以看 Ompl 里 State space 的使用。
 
-（2）当我们的规划涉及到一些约束，如让机器人末端保持水平（拿着一杯水）。一种方法是用传统的方法。如 OpenRave 里的一个实现：[ConstraintPlanning](http://openrave.org/docs/0.8.2/openravepy/examples.constraintplanning/)
+（2）当我们的规划涉及到一些约束，如让机器人末端保持水平（拿着一杯水）。一种方法是用传统的方法。如 OpenRave 里的一个实现：[ConstraintPlanning](http://openrave.org/docs/0.8.2/openravepy/examples.constraintplanning/)， 在关节空间随机采样一个点，然后投影到最近的任务空间上，之后用 Jacobian 迭代的方式将随机点连接到 RRT 树上。
 
 <p align="center">
   <img width="300" src="./Pics/TaskConstrainedRRT.jpg"/>
 </p>
-
-在关节空间随机采样一个点，然后投影到最近的任务空间上，之后用 Jacobian 迭代的方式将随机点连接到 RRT 树上。
 
 但是，我们可以从另一个角度看问题。机器人的末端姿态就是一个 SE(3) 李群。保持末端水平，可以认为是一个 R3 空间与 SO(2) 空间的半直积，这也是一个李群。于是，我们可以直接在李群内或者 Tangent Space 上跑一个 RRT，例如 Tangent Bundle RRT<sup>[6]</sup> 与 AtlasRRT<sup>[7]</sup>
 
