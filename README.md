@@ -165,13 +165,15 @@
 
 3）计算变换矩阵：
 
-$_{i-1}^{i}\textrm{T} = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)$
+$$_{i-1}^{i}\textrm{T} = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)$$
 
-$_{i-1}^{i}\textrm{T} = \begin{bmatrix} cos(\theta_i) & -sin(\theta_i) & 0 & a_{i-1} \\ sin(\theta_i)cos(\alpha_{i-1}) & cos(\theta_i)cos(\alpha_{i-1}) & -sin(\alpha_{i-1}) & -d_i sin(\alpha_{i-1}) \\ sin(\theta_i)sin(\alpha_{i-1}) & cos(\theta_i)sin(\alpha_{i-1}) & cos(\alpha_{i-1}) & d_i cos(\alpha_{i-1}) \\ 0 & 0 & 0 & 1 \end{bmatrix}$
+$$_{i-1}^{i}\textrm{T}=Rot(x_{i-1},\alpha_{i-1})\cdot{Trans(x_{i-1},a_i)}\cdot{Rot(z_i, \theta_i)}\cdot{Trans(z_i, d_i)}$$
+
+$$_{i-1}^{i}\textrm{T} = \begin{bmatrix} cos(\theta_i) & -sin(\theta_i) & 0 & a_{i-1} \\ sin(\theta_i)cos(\alpha_{i-1}) & cos(\theta_i)cos(\alpha_{i-1}) & -sin(\alpha_{i-1}) & -d_i sin(\alpha_{i-1}) \\ sin(\theta_i)sin(\alpha_{i-1}) & cos(\theta_i)sin(\alpha_{i-1}) & cos(\alpha_{i-1}) & d_i cos(\alpha_{i-1}) \\ 0 & 0 & 0 & 1 \end{bmatrix}$$
 
 4）正解：
 
-${^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T$
+$${^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T$$
 
 5）逆解：
 
