@@ -21,9 +21,9 @@
   - [5.4 运动规划](#54-运动规划)
   - [5.5 机器学习](#55-机器学习)
   - [5.6 强化学习](#56-强化学习)
+  - [5.7 最新论文](#57-最新论文)
 - [六. 勇者斗恶龙](#六-勇者斗恶龙)
-- [参考文献](#参考文献)
-
+- [七. 参考文献](#七-参考文献)
 
 ## 零. 前前言
 
@@ -408,7 +408,7 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 
 ### 5.3 控制
 
-这时候，你可能已经尝试搭建过一些机器人平台，了解了一些基本的控制理论。但是，你发现实际的机器人并不理想，动力学模型可能非常不精确。于是，你需要做机器人的**参数辨识**。于是，你可以去看 Khalil 的教材《Modeling, identification and control of robots》<sup>[3]</sup>。其中，你需要了解各种滤波算法（计算加速度）、各种数值优化算法。
+这时候，你可能已经尝试搭建过一些机器人平台，了解了一些基本的控制理论。但是，你发现实际的机器人并不理想，动力学模型可能非常不精确。于是，你需要做机器人的**参数辨识**。于是，你可以去看 Khalil 的教材《Modeling, identification and control of robots》<sup>[3]</sup>。其中，你需要了解各种滤波算法（计算加速度）、各种数值优化算法。而且，如果需要对机器人的运动学参数进行标定，你会发现李群李代数可以非常方便地定义各种相关的雅可比。
 
 现在，你有了一个相对精确的动力学模型，但是你发现，在给机器人控制器做轨迹规划的时候，需要给出速度、加速度约束。你感觉这其中有什么不对。是的，机器人系统中实际上并不存在上面速度、加速度约束，我们所有的操作都是针对电机力矩的。也就是说，我们只有力矩约束。
 
@@ -438,7 +438,23 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 
 另外，这部分一定要配合着编程来做。[The Open Motion Planning Library](http://ompl.kavrakilab.org/) 是个不错的参考，相信你在学 ROS 的时候也或多或少了解过一些。
 
-相信只要你理解得足够深入，便会理解前面李群李代数的作用。
+相信只要你理解得足够深入，便会理解前面李群李代数的作用。例如：
+
+（1）运动规划是在 Configuration Space 里进行的，而大多数常见机构的 Configuration Space 都是一个 Lie Group：多关节机器人的关节空间（Torus(n)），无人机（SE(3)），机器人末端操作物体的相关约束（SE(3)）。于是，我们只要定义各种 Lie Group 的基本性质，就可以同统一的规划算法来进行规划了。具体可以看 Ompl 里 State space 的使用。
+
+（2）当我们的规划涉及到一些约束，如让机器人末端保持水平（拿着一杯水）。一种方法是用传统的方法。如 OpenRave 里的一个实现：[ConstraintPlanning](http://openrave.org/docs/0.8.2/openravepy/examples.constraintplanning/)
+
+<p align="center">
+  <img width="300" src="./Pics/TaskConstrainedRRT.jpg"/>
+</p>
+
+在关节空间随机采样一个点，然后投影到最近的任务空间上，之后用 Jacobian 迭代的方式将随机点连接到 RRT 树上。
+
+但是，我们可以从另一个角度看问题。机器人的末端姿态就是一个 SE(3) 李群。保持末端水平，可以认为是一个 R3 空间与 SO(2) 空间的半直积，这也是一个李群。于是，我们可以直接在李群内或者 Tangent Space 上跑一个 RRT，例如 Tangent Bundle RRT<sup>[6]</sup> 与 AtlasRRT<sup>[7]</sup>
+
+<p align="center">
+  <img width="500" src="./Pics/AtlasRRT.jpg"/>
+</p>
 
 ### 5.5 机器学习
 
@@ -468,7 +484,7 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 
 对此，我不做过多评论。我只大概介绍如何入门强化学习。
 
-首先，就是看书。Sutton 的《Introduction to reinforcement learning》<sup>[6]</sup>可以说是必读圣经了。
+首先，就是看书。Sutton 的《Introduction to reinforcement learning》<sup>[8]</sup>可以说是必读圣经了。
 
 阅读 Sutton 的书，你可以一步步了解如何从最初的 Bellman 方程推导出 Dynamic Programming、Monte Carlo、TD Learning 等方法。
 
@@ -478,18 +494,63 @@ Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有�
 
 当然，这些不重要。重要的是理解 Markov Decision Processes。你会发现，它不仅可以用来解决运动规划问题（DP ≈ Dijkstra、Monte Carlo ≈ RRT），还可以用来解决任务规划问题。
 
+### 5.7 最新论文
+
+至此，你已经能够阅读绝大多数最新的论文了。所以，你应该关注类似 RSS、ICRA、IROS 等相关会议，了解机器人领域的最新进展；通过 IJRR、TRO 等期刊学习最新的理论。
+
+当然，你也可以通过 Google Scholar 订阅相应的关键词，它会不定期将最新的论文推送到你的邮箱。
+
 ## 六. 勇者斗恶龙
 
-自此，你已经知道了如何让一个机器人动起来，掌握了深入研究机器人某一领域的知识。然后，你就像一个刚刚斩杀一个史莱姆的用者一般
+<p align="center">
+  <img width="500" src="./Pics/TheBrave.jpg"/>
+</p>
 
+自此，你已经知道了如何让一个机器人动起来，并且深入掌握了研究机器人某一领域的知识。然后，你就像一个刚刚斩杀一个史莱姆的勇者一般，举着宝剑，时刻准备着将宝剑刺入恶龙的胸口。
 
+但是，这时候有人跑过来，往你头上浇了一盆水：
 
-🐀🐂🐅🐇🐉🐍🐎🐏🐒🐓🐕🐖
+现在随便一个公司，花点钱请人画个机器人图纸，找工厂加工出来，买些电机、减速器之类的零部件，套上一个通用控制器就可以跑了。哪需要什么动力学、最优控制、运动规划呀！
 
+就连四大家，机器人建模用 DH 就够了，最多做点运动学标定、动力学辨识，更多精力放在了应用集成上。哪需要什么李群李代数、凸优化、强化学习呀！
 
-$S = 2\cdot \pi \cdot r^2$
+**「这世上哪儿有什么恶龙啊！」**
 
-## 参考文献
+然而，我想说的是，就机器人这块，只要工农业这类体力劳动没有实现完全的自动化，恶龙就存在：
+
+<p align="center">
+  <img width="500" src="./Pics/Teaching.gif"/>
+</p>
+
+当你看到绝大多数机器人还是通过上面这样的方式，一点点示教出来的，你就会有强烈的感觉：「这就是恶龙！」
+
+<p align="center">
+  <img width="500" src="./Pics/TeachingDevice.jpg"/>
+</p>
+
+当你看到世界上那么多机器人公司，有着各自形形色色的编程语言、示教器的时候，你就会有强烈的感觉：「这就是恶龙！」
+
+<p align="center">
+  <img width="500" src="./Pics/ChineseFactory.jpg"/>
+</p>
+
+当你看到还有非常多与你我同龄的人在工厂里做着重复、枯燥的工作的时候，你就会有强烈的感觉：「这就是恶龙！」
+
+是的，在机器人领域，还有非常多恶龙。于是，你拿起剑，又兴冲冲地上路了。
+
+忽然，你发现，你之前学的都是如何杀死一个「**真空中的球形龙**」，你不知道应该如何杀死一个真正的龙。
+
+所以，你应该继续学习。去找更多的真是史莱姆练手，将之前学到的剑法应用在实际战场上。
+
+后来，你又遇到了新问题，你之前的宝剑并不具有「工业级强度」：ROS 经成崩、Oroscos的没有处理 [Eigen Alignment](http://eigen.tuxfamily.org/dox/group__TopicStructHavingEigenMembers.html)、没有好用的 3D 传感器、工业机器人不开放底层接口等等。
+
+于是，你意识到，你需要重新打造自己真正的宝剑。
+
+但是，这不是你一个人可以做到的，你需要一个团队，有人采煤、有人炼钢、有人锻造、有人磨刀……
+
+这时候，不妨来 [RVBUST](http://rvbust.com/) 看看。
+
+## 七. 参考文献
 
 [1] John J. Craig. Introduction to Robotics: Mechanics and Control[M]. 1986.
 
@@ -501,7 +562,8 @@ $S = 2\cdot \pi \cdot r^2$
 
 [5] LaValle, Steven M. Planning algorithms. Cambridge university press, 2006.
 
-[6] Sutton, Richard S., and Andrew G. Barto. Introduction to reinforcement learning. Vol. 135. Cambridge: MIT press, 1998.
+[6] Kim, Beobkyoon, et al. "Tangent bundle RRT: A randomized algorithm for constrained motion planning." Robotica 34.1 (2016): 202-225.
 
+[7] Jaillet, Léonard, and Josep M. Porta. "Path planning with loop closure constraints using an atlas-based RRT." Robotics Research. Springer, Cham, 2017. 345-362.
 
-「」
+[8] Sutton, Richard S., and Andrew G. Barto. Introduction to reinforcement learning. Vol. 135. Cambridge: MIT press, 1998.
