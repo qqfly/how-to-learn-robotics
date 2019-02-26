@@ -2,5 +2,9 @@
     "gitbook": "0.0.1",
     "structure": {
         "summary": "SUMMARY.md"
+    },
+    "introduction": {
+        "path": "README.md",
+        "title": "关于"
     }
 }

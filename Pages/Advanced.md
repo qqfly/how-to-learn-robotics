@@ -15,7 +15,7 @@
 ### 5.2 Modern Robotics
 
 <p align="center">
-  <img width="500" src="./Pics/ModernRobotics.jpg"/>
+  <img width="500" src="../Pics/ModernRobotics.jpg"/>
 </p>
 
 李群李代数对于很多工科学生可能一时无法接受。这里，我推荐从 Modern Robotics 开始，这是一本面向本科生的教材，非常浅显。
@@ -37,7 +37,7 @@
 现在你能把单独的一个机器人控制好了，但你发现，机器人一旦跟环境发生接触，只用机器人模型就不够了。你需要对环境进行建模。但是，环境是无法精确建模的。于是，你开始学各种**力控**、**阻抗控制**之类的内容。相应地、你就可以实现一些所谓协作机器人的功能了:[《听说现在协作机器人很火，所以我也做了1/7个》](https://mp.weixin.qq.com/s/hkZjZItqyfwG6k0cwRm9kA)
 
 <p align="center">
-  <img width="500" src="./Pics/CollisionDetection.gif"/>
+  <img width="500" src="../Pics/CollisionDetection.gif"/>
 </p>
 
 ### 5.4 运动规划
@@ -51,7 +51,7 @@
 运动规划的大致介绍可以看我以前写过的文章：[《运动规划 | 简介篇》](https://mp.weixin.qq.com/s/_fE760XxFlvrkzYEpslYvA)。
 
 <p align="center">
-  <img width="500" src="./Pics/PlanningBooks.jpg"/>
+  <img width="500" src="../Pics/PlanningBooks.jpg"/>
 </p>
 
 当然，更详细的介绍最好看教材，如《Principles of Robot Motion》<sup>[4]</sup> 和《Planning Algorithms》<sup>[5]</sup> 都是不错的教材。
@@ -65,13 +65,13 @@
 （2）当我们的规划涉及到一些约束，如让机器人末端保持水平（拿着一杯水）。一种方法是用传统的方法。如 OpenRave 里的一个实现：[ConstraintPlanning](http://openrave.org/docs/0.8.2/openravepy/examples.constraintplanning/)， 在关节空间随机采样一个点，然后投影到最近的任务空间上，之后用 Jacobian 迭代的方式将随机点连接到 RRT 树上。
 
 <p align="center">
-  <img width="300" src="./Pics/TaskConstrainedRRT.jpg"/>
+  <img width="300" src="../Pics/TaskConstrainedRRT.jpg"/>
 </p>
 
 但是，我们可以从另一个角度看问题。机器人的末端姿态就是一个 SE(3) 李群。保持末端水平，可以认为是一个 R3 空间与 SO(2) 空间的半直积，这也是一个李群。于是，我们可以直接在李群内或者 Tangent Space 上跑一个 RRT，例如 Tangent Bundle RRT<sup>[6]</sup> 与 AtlasRRT<sup>[7]</sup>
 
 <p align="center">
-  <img width="500" src="./Pics/AtlasRRT.jpg"/>
+  <img width="500" src="../Pics/AtlasRRT.jpg"/>
 </p>
 
 ### 5.5 机器学习
