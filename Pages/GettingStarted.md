@@ -20,7 +20,7 @@
 
 当然，其中齐次变换什么的是机器人学中非常基础和重要的内容。其中需要注意的地方有：
 
-- 熟悉坐标表示方式：坐标系 {B} 在坐标系 {A} 下的位姿为 ${^A_B}T$ 等
+- 熟悉坐标表示方式：坐标系 {B} 在坐标系 {A} 下的位姿为 $${^A_B}T$$ 等
 - 左乘与右乘的区别
 - 了解旋转矩阵每一列的含义，学会如何通过「目测」写出两个坐标系之间的旋转矩阵；
 - 姿态的表示方式：RPY 角、各种欧拉角、轴角（Angle-Axis）表示、旋转矩阵，除了书上的内容，可以顺便看看四元数（Quaternion）表示和欧拉角的 Gimbal lock （知道三参数表示的问题，才能更容易接受四元数这样的新事物）。
@@ -51,31 +51,29 @@
 
 1）建立坐标系：
 
-- $z_i$ 轴与第 $i$ 个关节重合，关节转动方向遵照右手定律；
+- $$z_i$$ 轴与第 $$i$$ 个关节重合，关节转动方向遵照右手定律；
 
-- $x_i$ 平行于 $z_i$ 和 $z_{i+1}$ 的公垂线：$x_i = z_i \times z_{i+1}$。如果两 $z$ 轴平行，则让 $x_i$ 从 $z_{i}$ 指向 $z_{i+1}$；
+- $$x_i$$ 平行于 $$z_i$$ 和 $$z_{i+1}$$ 的公垂线：$$x_i = z_i \times z_{i+1}$$。如果两 $$z$$ 轴平行，则让 $$x_i$$ 从 $$z_{i}$$ 指向 $$z_{i+1}$$；
 
-- 有了 $x$、 $z$ 轴后，就可以用右手定律定义 $y$ 轴方向。
+- 有了 $$x$$、 $$z$$ 轴后，就可以用右手定律定义 $$y$$ 轴方向。
 
 - 除了与每个关节固连的坐标系外，还有可能额外在机器人基座 {B} 与末端工具 {E} 上固连两个坐标系。
 
 2）计算 DH 参数:
 
-- $a_i$ 是沿着 $x_i$，从 $z_i$ 到 $z_{i+1}$ 的距离；
+- $$a_i$$ 是沿着 $$x_i$$，从 $$z_i$$ 到 $$z_{i+1}$$ 的距离；
 
-- $\alpha_i$ 是绕着 $x_i$，从 $z_i$ 到 $z_{i+1}$ 的角度；
+- $$\alpha_i$$ 是绕着 $$x_i$$，从 $$z_i$$ 到 $$z_{i+1}$$ 的角度；
 
-- $d_i$ 是沿着 $z_i$，从 $x_{i-1}$ 到 $x_i$ 的距离；
+- $$d_i$$ 是沿着 $$z_i$$，从 $$x_{i-1}$$ 到 $$x_i$$ 的距离；
 
-- $\theta_i$ 是绕着 $z_i$，从 $x_{i-1}$ 到 $x_i$ 的角度。
+- $$\theta_i$$ 是绕着 $$z_i$$，从 $$x_{i-1}$$ 到 $$x_i$$ 的角度。
 
 3）计算变换矩阵：
 
 $${^i_{i-1}}T = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)$$
 
-<p align="center">
-<img width="600" src="https://latex.codecogs.com/gif.latex?\inline&space;\LARGE&space;{^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}" title="DHMatrix"/>
-</p>
+$${^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}$$
 
 4）正解：
 
@@ -87,9 +85,9 @@ $${^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T$$
 
 ### 3.3 雅可比矩阵
 
-雅可比矩阵 $J$ 是机器人学中一个非常重要的东西。它表示机器人关节速度 $\dot{q}$ 到末端速度 $\dot{x}$ 之间的关系:
+雅可比矩阵 $$J$$ 是机器人学中一个非常重要的东西。它表示机器人关节速度 $$\dot{q}$$ 到末端速度 $$\dot{x}$$ 之间的关系:
 
-$\dot{x}=J\cdot \dot{q}$
+$$\dot{x}=J\cdot \dot{q}$$
 
 - 如果你前面没有弄清楚角速度，建议在这章仔细思考。例如，「为什么不能直接对欧拉角求导获得速度？」；
 
@@ -149,7 +147,7 @@ $\dot{x}=J\cdot \dot{q}$
 
 首先，我们要知道，日常生活中的世界还是受牛顿力学统治的。
 
-$F = m \cdot a$
+$$F = m \cdot a$$
 
 要让一个东西动起来，就要给它施力。
 
@@ -157,7 +155,7 @@ $F = m \cdot a$
   <img width="800" src="../Pics/Slider.jpg"/>
 </p>
 
-如果我们给定一个滑块的运动轨迹 $s(t)$，我们就可以计算出它整个轨迹的加速度 $\ddot{s}(t)$，进而计算出让滑块按照我们设想运动所需的力 $F(t) = m \cdot \ddot{s}(t)$。
+如果我们给定一个滑块的运动轨迹 $$s(t)$$，我们就可以计算出它整个轨迹的加速度 $$\ddot{s}(t)$$，进而计算出让滑块按照我们设想运动所需的力 $$F(t) = m \cdot \ddot{s}(t)$$。
 
 换句话说，我们可以通过动力学计算出让机器人运动所需的每个关节力矩。
 
