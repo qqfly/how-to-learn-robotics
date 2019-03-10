@@ -8,17 +8,17 @@
 
 但是，以我的观察，很多科技比赛大牛，在理论学习上往往比较弱。这主要是因为科技比赛强调的是系统能力，决定比赛结果的往往是一些小 tricks，而非理论知识；而且，比赛容易让人产生一种虚假的充实感，每天都很忙碌，但是可能只是在重复低级工作。这两个原因很容易让人陷入 local minima，无法在理论方面更进一步。
 
-所以，我有个不成熟的小建议。参加比赛和学生科技活动的话，有过两次完整的经历就够了。之后应该迅速将重点转向理论学习。
+所以，我有个不成熟的小建议：参加比赛和学生科技活动的话，有过两次完整的经历就够了。之后应该迅速将重点转向理论学习。
 
-如果身边有可以玩的机器人硬件，也可以尝试玩一玩，或者在 RobotStudio 里玩 ABB 的机器人。
+如果身边有可以玩的机器人硬件，也可以尝试玩一玩，或者在 RobotStudio/Vrep/Gazebo 里玩仿真的机器人。
 
 ### 4.2 Penn's Robotics Specialization
 
-之后，不妨抽出几个月时间，看看 Coursera 上宾夕法尼亚大学的 [Robotics](https://www.coursera.org/specializations/robotics) 专项课程。这个专项课程与机械臂或者工业机器人关系不大，但是由于机器人很多方面是相通的，所以非常建议看一看。
+在此之后，不妨抽出几个月时间，看看 Coursera 上宾夕法尼亚大学的 [Robotics](https://www.coursera.org/specializations/robotics) 专项课程。这个专项课程与机械臂或者工业机器人关系不大，但是由于机器人很多方面是相通的，所以非常建议看一看。
 
 - Aerial Robotics：这门课主要是介绍四旋翼无人机的控制问题，其中的轨迹规划、姿态描述、控制等对机械臂的学习非常有帮助。而且，这门课的作业质量也非常高，提供了基于 Matlab 的数值仿真模块，可以让初学者直观地看到自己代码的控制效果。
 
-- Computational Motion Planning：这门课的水平感觉不如前一个，但是通过这门课可以大概知道机器人里有 Motion Planning 这个方向，同时大作业也包括了手写 A*、PRM、Potential Fileds 等基本的 Motion Planning 算法，同时大概了解一下 Collision Checking 的基本方法。
+- Computational Motion Planning：这门课的水平感觉不如前一个，但是通过这门课可以大概知道机器人里有 Motion Planning 这个方向，同时大作业也包括了手写 A*、PRM、Potential Fileds 等基本的 Motion Planning 算法，同时可以大概了解一下 Collision Checking 的基本原理。
 
 - Mobility：这部分主要是介绍足式机器人的控制问题。通过这门课，一方面可以大致了解足式机器人控制的发展脉络，这样看起 Boston Dynamics 的视频也不会那么一脸懵逼了。同时，更重要的是，掌握机器人建模与控制的关系：一个简化的模型，也可能对控制起非常大帮助。
 
@@ -40,7 +40,7 @@
 
 很多人可能知道，有一个叫做机器人操作系统的开源项目 [(Robot Operating System, ROS)](https://wiki.ros.org/)。
 
-对于学习 ROS，网上可能有不少教程了。但是，我感觉，对于很多机电、自动化方向的学生并不适合直接开始看 ROS。因为他们缺乏基本的 Linux、C++ 知识。所以，我推荐按照如下步骤进行学习：
+对于学习 ROS，网上可能有不少教程了。但是，我感觉，很多机电、自动化方向的学生并不适合直接开始看 ROS。因为他们缺乏基本的 Linux、C++ 知识。所以，我推荐按照如下步骤进行学习：
 
 - **Linux**：如果完全没有 Linux 开发经验，我建议可以先安装 Ubuntu 系统，然后看 [UNIX Tutorial for Beginners](http://www.ee.surrey.ac.uk/Teaching/Unix/) ，熟悉基本的 Linux 使用方法。
 
@@ -58,4 +58,4 @@
 
 如果有条件，能够配合一些 ROS 支持比较好的平台进行研究的话，可以大大提高学习速度。例如 TurtleBot、Baxter、Universal Robot 之类的。（这就看每个人条件了。）
 
-理论上，在 ROS 环境下，你可以从事绝大多少与实时控制无关的研究，如 SLAM、Navigation、Motion Planning 等。如果你从事的是更加底层的工作，（如控制器设计），目前 ROS 还无法胜任。（如果不清楚为什么，回顾一下实时操作系统、机器人控制方面的知识）。
+理论上，在 ROS 环境下，你可以从事绝大多数与实时控制无关的研究，如 SLAM、Navigation、Motion Planning 等。如果你从事的是更加底层的工作，（如控制器设计），目前 ROS 还无法胜任。（如果不清楚为什么，回顾一下实时操作系统、机器人控制方面的知识）。

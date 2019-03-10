@@ -2,6 +2,8 @@
 
 [2] Siciliano, Bruno, and Oussama Khatib, eds. Springer handbook of robotics. Springer, 2016.
 
+[3] Steven C. Chapra. Numerical Methods for Engineers (7th edition)[M]. 2014.
+
 [3] Khalil, Wisama, and Etienne Dombre. Modeling, identification and control of robots. Butterworth-Heinemann, 2004.
 
 [4] Choset, Howie M., et al. Principles of robot motion: theory, algorithms, and implementation. MIT press, 2005.

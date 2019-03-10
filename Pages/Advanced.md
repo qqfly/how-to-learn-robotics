@@ -6,11 +6,11 @@
 
 这时候，你的数学基础基本不允许你更进一步了。所以，你需要补充数学知识。
 
-- **数值计算方法**：很多时候，我们都是通过计算机来实现算法功能的，所以，你必须了解基本的数值计算方法，如数值微分、数值积分等。我没有太好的公开课资源可以推荐。
+- **数值计算方法**：很多时候，我们都是通过计算机来实现算法功能的，所以，你必须了解基本的数值计算方法，如数值微分、数值积分等。这部分可以看《Numerical Methods for Engineers》<sup>[3]</sup>
 
-- **凸优化**：这个世界很多问题都不存在解析解，我们得用优化方法来计算。所以，你必须了解如何建立优化模型，并知道如何用代码进行求解。这里，我推荐 Stanford 的公开课[《Convex Optimization》](https://lagunita.stanford.edu/courses/Engineering/CVX101/Winter2014/about)
+- **凸优化**：这个世界很多问题都不容易找到解析解，我们得用优化方法来计算。所以，你必须了解如何建立优化模型，并知道如何用代码进行求解。这里，我推荐 Stanford 的公开课[《Convex Optimization》](https://lagunita.stanford.edu/courses/Engineering/CVX101/Winter2014/about)
 
-- **李群李代数**：优化方法经常要使用梯度信息，但是，你发现很多时候你不知道怎么定义梯度。李群李代数是一个非常经典的数学工具，可以非常方便描述 SO(3)、SE(3) 空间中的对象。到这里，你之前对于四元数、角速度之类的疑问将一扫而空。这部分的学习资料，我会在后面补充。
+- **李群李代数**：优化方法经常要使用梯度信息，但是，你发现很多时候你不知道怎么定义梯度。李群李代数是一个非常经典的数学工具，可以非常方便地描述 SO(3)、SE(3) 空间中的对象。到这里，你之前对于四元数、角速度之类的疑问将一扫而空。这部分的学习资料，我会在后面补充。
 
 ### 5.2 Modern Robotics
 
@@ -28,7 +28,7 @@
 
 ### 5.3 控制
 
-这时候，你可能已经尝试搭建过一些机器人平台，了解了一些基本的控制理论。但是，你发现实际的机器人并不理想，动力学模型可能非常不精确。于是，你需要做机器人的**参数辨识**。于是，你可以去看 Khalil 的教材《Modeling, identification and control of robots》<sup>[3]</sup>。其中，你需要了解各种滤波算法（计算加速度）、各种数值优化算法。而且，如果需要对机器人的运动学参数进行标定，你会发现李群李代数可以非常方便地定义各种相关的雅可比。
+这时候，你可能已经尝试搭建过一些机器人平台，了解了一些基本的控制理论。但是，你发现实际的机器人并不理想，动力学模型可能非常不精确。于是，你需要做机器人的**参数辨识**。于是，你可以去看 Khalil 的教材《Modeling, identification and control of robots》<sup>[4]</sup>。其中，你需要了解各种滤波算法（计算加速度）、各种数值优化算法。而且，如果需要对机器人的运动学参数进行标定，你会发现李群李代数可以非常方便地定义各种相关的雅可比。
 
 现在，你有了一个相对精确的动力学模型，但是你发现，在给机器人控制器做轨迹规划的时候，需要给出速度、加速度约束。你感觉这其中有什么不对。是的，机器人系统中实际上并不存在什么速度、加速度约束，我们所有的操作都是针对电机力矩的。也就是说，我们只有力矩约束。
 
@@ -46,7 +46,7 @@
 
 于是，你来到了运动规划的领域。
 
-当然，一个很自然的想法是，有没有可能直接构建一个目标函数，用优化的方法计算出需要的轨迹。但是，世界有时候并没有那么可爱。运动规划问题常常是一个非凸问题，无法直接求解。所以，对于机械臂，可以有各种 Sampling-based 算法；当然，也有人将其近似成多个凸问题进行优化求解，在比较简单的场景下效果还算不错。
+当然，一个很自然的想法是，有没有可能直接构建一个目标函数，用优化的方法计算出需要的轨迹。但是，世界有时候并没有那么可爱。运动规划问题常常是一个非凸问题，无法优化直接求解。所以，对于机械臂，可以有各种 Sampling-based 算法；当然，也有人将其近似成多个凸问题进行优化求解，在比较简单的场景下效果还算不错。
 
 运动规划的大致介绍可以看我以前写过的文章：[《运动规划 | 简介篇》](https://mp.weixin.qq.com/s/_fE760XxFlvrkzYEpslYvA)。
 
@@ -54,7 +54,7 @@
   <img width="500" src="../Pics/PlanningBooks.jpg"/>
 </p>
 
-当然，更详细的介绍最好看教材，如《Principles of Robot Motion》<sup>[4]</sup> 和《Planning Algorithms》<sup>[5]</sup> 都是不错的教材。
+更详细的介绍最好看教材，如《Principles of Robot Motion》<sup>[5]</sup> 和《Planning Algorithms》<sup>[6]</sup> 都是不错的教材。
 
 另外，这部分一定要配合着编程来做。[The Open Motion Planning Library](http://ompl.kavrakilab.org/) 是个不错的参考，相信你在学 ROS 的时候也或多或少了解过一些。
 
@@ -68,7 +68,7 @@
   <img width="300" src="../Pics/TaskConstrainedRRT.jpg"/>
 </p>
 
-但是，我们可以从另一个角度看问题。机器人的末端姿态就是一个 SE(3) 李群。保持末端水平，可以认为是一个 R3 空间与 SO(2) 空间的半直积，这也是一个李群。于是，我们可以直接在李群内或者 Tangent Space 上跑一个 RRT，例如 Tangent Bundle RRT<sup>[6]</sup> 与 AtlasRRT<sup>[7]</sup>
+但是，我们可以从另一个角度看问题。机器人的末端姿态就是一个 SE(3) 李群。保持末端水平，可以认为是一个 R3 空间与 SO(2) 空间的半直积，这也是一个李群。于是，我们可以直接在李群内或者 Tangent Space 上跑一个 RRT，例如 Tangent Bundle RRT<sup>[7]</sup> 与 AtlasRRT<sup>[8]</sup>
 
 <p align="center">
   <img width="500" src="../Pics/AtlasRRT.jpg"/>
@@ -102,11 +102,13 @@
 
 对此，我不做过多评论。我只大概介绍如何入门强化学习。
 
-首先，就是看书。Sutton 的《Introduction to reinforcement learning》<sup>[8]</sup>可以说是必读圣经了。
+首先，就是看书。Sutton 的《Introduction to reinforcement learning》<sup>[9]</sup> 可以说是必读圣经了。
+
+你可以在 Github 找到 Python 版本的算法实现 [Python Implementation](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
 
 阅读 Sutton 的书，你可以一步步了解如何从最初的 Bellman 方程推导出 Dynamic Programming、Monte Carlo、TD Learning 等方法。
 
-你知道了强化学习就是要通过不断尝试来学习得到一个从 State 到 Action 的查找表。
+你知道了强化学习就是要通过不断尝试来学习得到一个从 State 到 Action/Value 的查找表。
 
 于是，你就想，有没有可能简化这个查找表，于是，你知道了有 Function Approximation。如果这个近似函数是神经网络，那么就是现在很火的 Deep Reinforcement Learing 了。
 
