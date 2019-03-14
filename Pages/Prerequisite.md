@@ -4,9 +4,10 @@
   <img width="800" src="../Pics/Sharingan.jpg"/>
 </p>
 
-只会加减乘除，可以从事Robot Testing/Debugging Engineer~~机器人调试工程师~~；With the knowledge of Linear Algebra、Calculus, ~~就可以掌握~~ you are able to master the fundamental content like Kinematics、Dynamics modeling ~~建模等基础内容~~；学了计算方法、凸优化、微分几何就可以参与一些辨识、规划、学习方面的工作。
+With basic knowledge of robotics, you may be qualified for a position of Robot Commissioning Engineer；With the knowledge of Linear Algebra、Calculus, you are able to master the fundamental content like Kinematics、Dynamics modelling；And you can start to involve in some project work including recognition, motion planning and **_programming_**, after you completed studies in computing method, convex optimization and differential geometry. （学了计算方法、凸优化、微分几何就可以参与一些辨识、规划、**_学习方面的工作。_**）
+######不太确定这里的学习方面的工作具体指什么，暂且理解为机器人学习/编程 请指正。
 
-However，robotics is complex and multi-disciplinary,  由于机器人学涉及面广，不同方向所需要的基础知识也完全不同，如果一开始就陷入「先修知识」的泥潭中，可能就得不偿失了。
+However，robotics is a complex and multi-disciplinary subject,  由于机器人学涉及面广，不同方向所需要的基础知识也完全不同，如果一开始就陷入「先修知识」的泥潭中，可能就得不偿失了。
 
 所以，我认为，可以先列一些比较基础的先修知识，其他的在后续相应部分提及即可：
 
