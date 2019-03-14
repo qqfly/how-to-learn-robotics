@@ -4,8 +4,8 @@
   <img width="800" src="../Pics/Sharingan.jpg"/>
 </p>
 
-With basic knowledge of robotics, you may be qualified for a position of Robot Commissioning Engineer；With the knowledge of Linear Algebra、Calculus, you are able to master the fundamental content like Kinematics、Dynamics modelling；And you can start to involve in some project work including recognition, motion planning and **_programming_**, after you completed studies in computing method, convex optimization and differential geometry. （学了计算方法、凸优化、微分几何就可以参与一些辨识、规划、**_学习方面的工作。_**）
-######不太确定这里的学习方面的工作具体指什么，暂且理解为机器人学习/编程 请指正。
+With basic knowledge of robotics, you may be qualified for a position of Robot Commissioning Engineer；With the knowledge of Linear Algebra、Calculus, you are able to master the fundamental content like Kinematics、Dynamics modelling；And you can start to involve in some project work including recognition, motion planning and **_programming_**, after you completed studies in computing method, convex optimization and differential geometry. （**_学习方面的工作。_** Plz find details from the comments below...）
+<!-- 不太确定这里的学习方面的工作具体指什么，暂且理解为机器人学习/编程 请指正。  -->
 
 However，robotics is a complex and multi-disciplinary subject,  由于机器人学涉及面广，不同方向所需要的基础知识也完全不同，如果一开始就陷入「先修知识」的泥潭中，可能就得不偿失了。
 
