@@ -4,12 +4,11 @@
   <img width="800" src="../Pics/Sharingan.jpg"/>
 </p>
 
-With basic knowledge of robotics, you may be qualified for a position of Robot Commissioning Engineer；With the knowledge of Linear Algebra、Calculus, you are able to master the fundamental content like Kinematics、Dynamics modelling；And you can start to involve in some project work including recognition, motion planning and **_programming_**, after you completed studies in computing method, convex optimization and differential geometry. （**_学习方面的工作。_** *Plz find details from the comments below...*）
-<!-- 不太确定这里的学习方面的工作具体指什么，暂且理解为机器人学习/编程 请指正。  -->
+With basic knowledge of robotics, you may be qualified for a position of Robot Commissioning Engineer；With the knowledge of Linear Algebra、Calculus, you are able to master the fundamental content like Kinematics、Dynamics modelling；And you can start to involve in some project work including recognition, motion planning and robot programming/teaching, after you completed studies in computing method, convex optimization and differential geometry.
 
 However，robotics is a complex and multi-disciplinary subject,  由于机器人学涉及面广，不同方向所需要的基础知识也完全不同，如果一开始就陷入「先修知识」的泥潭中，可能就得不偿失了。
 
-所以，我认为，可以先列一些比较基础的先修知识，其他的在后续相应部分提及即可：
+So, here are some recommended basic prerequisite knowledges by myself, and all the rest knowledges will be mentioned in subsequent pages:
 
 1. **Linear Algebra**：所有的空间变换、机器人相关计算都依赖于线性代数，甚至需要有一些基本的「线性空间」思维。对于线性代数，我首推 Prof. Gilbert Strang 的《Linear Algebra》，在 [Youtube](https://www.youtube.com/watch?v=hNDFwVVKVk0&list=PL221E2BBF13BECF6C) 和[网易公开课](http://open.163.com/special/opencourse/daishu.html)上可以找到视频。这门课一开始就引导大家从空间的角度看待问题，而不只强调如何计算。而且，网易公开课上有中文字幕，对于初学者也还算友好。
 
@@ -34,4 +33,4 @@ However，robotics is a complex and multi-disciplinary subject,  由于机器人
 
 4. **Basic 3D Design**：在制作实验平台的时候，经常会遇到需要加工设计小零件的情况，这时候掌握一个3D设计软件可以大大提高开发速度，例如 SolidWorks 就是个不错的选择。配合上 3D 打印机之类的工具就可以实现快速原型设计了。（即使没有 3D 打印机，在网上也可以很容易找到 3D 打印服务，把你设计的 3D 文件发过去就可以了）。
 
-上面这些知识，基本是一个Automation专业或者Mechatronics专业大三学生应该达到的水平。如果对上述几部分有了基本了解，就可以开始看机器人学的知识了。
+The above contents are pretty much all  of the knowledges need to obtain for third-year university students major in Automation or Mechatronics engineering student. After that, you may begin the studies of robotics. 
