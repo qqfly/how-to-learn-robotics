@@ -110,6 +110,7 @@ $$\dot{x}=J\cdot \dot{q}$$
 <p align="center">
   <img width="500" src="../Pics/JacobianIK.jpg"/>
 </p>
+
 <!-- TODO: update this pic -->
 
 是的，这就是机器人运动学的数值计算方式，你可以利用这个方法写一个机器人运动学的通用求解算法。具体可以看我在知乎上的回答 [MATLAB机器人工具箱中机器人逆解是如何求出来的](https://www.zhihu.com/question/41673569/answer/129670927)。
@@ -133,7 +134,6 @@ $$\dot{x}=J\cdot \dot{q}$$
 <p align="center">
   <img width="500" src="../Pics/NewtonEulerDynamics.jpg"/>
 </p>
-<!-- TODO: update this pic -->
 
 对于多轴机器人的动力学，不论是采用牛顿欧拉还是拉格朗日法，都会**显得**异常复杂。再加上如果之前没学好理论力学，那么基本上是举步维艰了。
 
