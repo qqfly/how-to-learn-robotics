@@ -1,208 +1,186 @@
-对于入门部分，实际上就是了解如何让一个工业机器人动起来。这方面其实已经研究非常成熟了，大家看上个世纪的教材就行，个人推荐的是 John Craig 的教材 《Introduction to Robotics: Mechanics and Control》<sup>[1]</sup>，在 [Youtube](https://www.youtube.com/watch?v=0yD3uBshJB0&list=PL64324A3B147B5578) 和[网易公开课](http://open.163.com/special/opencourse/robotics.html)都可以找到斯坦福 Oussama Khatib 大神的视频，基本与 Craig 的教材内容相匹配。
+What does 'Get Started' in robotics means? It means to know how to make an industrial robot to move. Actually, the research in this area is very mature. You will be advised to read some textbooks from *the last century*. Here I would like to recommend *Introduction to Robotics: Mechanics and Control*<sup>[1]</sup> written by John Craig. You may find from [Youtube](https://www.youtube.com/watch?v=0yD3uBshJB0&list=PL64324A3B147B5578) the open course taught by Oussama Khatib from Standford University. Basically the content of the course does a good match with this textbook.
 
 <p align="center">
   <img width="300" src="../Pics/CraigBook.jpg"/>
 </p>
 
-建议从 Craig 的教材开始就看英文版本，Google 一下，很容易找到 PDF 版本。作为一本入门教材，Craig 的教材是相当深入浅出的，配合着 Khatib 的视频，可以快速掌握机器人学的基础。
+For non-English speakers, I would recommend you to read the English version in stead of  a translated version. As a 'get started', Craig' s book makes it possible to explain the profound things in a simple way. Combined with Khatib' s video, you would be quickly get the basic knowledge for robotics.
 
-我常对刚入学的师弟们说，「如果你把这本书的内容掌握了，就已经超过实验室绝大多数师兄师姐了。」
+I was always telling my junior fellow apprentices that "you will excel at robotics if you can understand the entire book." However, it is still a small number who can finally fulfil that task.
 
-然而，真正把教材啃下来的并不多。
+Therefore I would like to change my wording to "you will be very likely to get a good position in a robot company in China. "
 
-所以，我在这里要换个说法了，「如果你把这本书的内容掌握了，就可以胜任国内绝大多数机器人公司的开发工作了。」
+In the following sections you will find most of the basic knowledge mentioned above. Due to the limitness of the length of the article, not everything will be included.
 
-这里，我会大概把基础的知识列一下，时间有限，暂时不会过多展开。顺序可能不完全与 Craig 教材相同。
+### 3.1 Space Transformation
 
-### 3.1 空间变换
+Homogeneous transformation (and homogeneous transformation matrix) is a very fundamental and essential concept in robotics. Here I would like to list some to be especially noted:
 
-对于这部分内容，如果理论力学学得好的小伙伴，基本是没有太大问题的。问题是，有些小伙伴没有学好。
+- Understand the representation of coordinates, e.g. the representation of frame {B}  relative to frame {A} is $^A_B{T}​$
+- Understand the difference between left-multiplication and right-multiplication
+- Understand the physical meaning of the columns in a rotation matrix; learn how to do *oral calculation* to the rotation matrix between two frames.
+- Understand different represetation methods of pose: RPY, euler-angle, angle-axis, rotation matrix, quaternion, etc. 
+- Try to understand angular velocity in robotics, if possible.
 
-当然，其中齐次变换什么的是机器人学中非常基础和重要的内容。其中需要注意的地方有：
-
-- 熟悉坐标表示方式：坐标系 {B} 在坐标系 {A} 下的位姿为 $${^A_B}T$$ 等；
-  
-- 左乘与右乘矩阵的区别；
-
-- 了解旋转矩阵每一列的含义，学会如何通过「目测」写出两个坐标系之间的旋转矩阵；
-  
-- 姿态的表示方式：RPY 角、各种欧拉角、轴角（Angle-Axis）表示、旋转矩阵，除了书上的内容，可以顺便看看四元数（Quaternion）表示,了解欧拉角的 Gimbal lock （知道三参数表示的问题，才能更容易接受四元数这样的新事物）；
-  
-- 如果有可能，试着了解一下角速度。
-
-### 3.2 运动学
+### 3.2 Kinematics
 
 <p align="center">
   <img width="600" src="../Pics/RobotKinematics.jpg"/>
 </p>
 
-对于机器人来说，一个基本工作就是计算运动学：
+For robotics, a basic process is the calculation of the kinematics:
 
-- 正运动学：根据关节角度，计算机器人工具坐标系（末端）在机器人基座坐标系（底座）下的位姿；
-- 逆运动学：给定一个末端位姿，计算达到这个位姿的关节角度。
+- Forward kinematics (FK): Given joint values of the robot, calculate the pose of the end-effector respect to robot base frame (or world frame);
+- Inverse kinematics (IK): Give a pose of the end-effector, calculate the corresponding joint values.
 
-前面，你知道了可以用一个 4x4 矩阵来描述两个坐标系之间的关系。对于机器人正运动学，如果我们知道每个连杆两两之间的坐标变换，就可以通过矩阵乘法计算出最后的末端位姿了。
+According to [3.1]() you are aware that the relationship between two frames can be represented by a 4x4 matrix. For FK, if we know the tranformation between each two links, then we can get the end pose by multiplying all the transformation matrices together.
 
-为了方便计算两个连杆之间的相对位姿，你就需要学习一个叫做 DH 的建模方法，简而言之，就是按照一定规则建立每个关节坐标系，然后每个坐标系可以用四个参数（DH参数）来确定。
+In order to calcualte the relative pose of two links with ease, you have to learn a so-called "D-H" modelling method. In brief, it is a series of rules to establish link frames, each of which can be expressed with 4 parameters (DH parameters).
 
-当然，你网上一搜，就会发现 DH 也有好几种，什么 Standard DH， Modified DH 之类的。
-
-这不重要，你只要知道它是帮你确定两个连杆之间的相对关系就行。不妨掌握 Craig 书上的那种就行（Wikipedia上称为 Modified DH)：
+You may notice that there are variant DH methods, like Standard DH, Modified DH. Just keep in mind that the DH method is to help establish the relative relationship between neighboring links, or you could just follow Craig' s book to learn it (which in Wikipedia is called Modified DH):
 
 <p align="center">
   <img width="500" src="../Pics/ModifiedDH.jpg"/>
 </p>
+Step 1: Establish the frame
 
-1）建立坐标系：
+- Axis $$z_i​$$ coincides with joint  $$i​$$ ;
+- $$x_i​$$ is parallel to the common perpendicular of  $$z_i​$$ and  $$z_{i+1}​$$ , which means that $$x_i = z_i \times z_{i+1}​$$. If  $$z_i \parallel z_{i+1}​$$ , then  $$x_i​$$ is defined as the common perpendicular pointing from  $$z_i​$$ to $$z_{i+1}​$$ .
+- $$y_i$$ can then be determined by $$x_i$$ and  $$z_i$$ using right-hand law.
+- Except from the frames that are fixed to every joint, there will be possibly a base frame {B} and a end-effector frame {E} on the base and on the end effector of the robot, respectively.
 
-- $$z_i$$ 轴与第 $$i$$ 个关节重合，关节转动方向遵照右手定律；
+Step 2: Calculate the DH parameters
 
-- $$x_i$$ 平行于 $$z_i$$ 和 $$z_{i+1}$$ 的公垂线：$$x_i = z_i \times z_{i+1}$$。如果两 $$z$$ 轴平行，则让 $$x_i$$ 从 $$z_{i}$$ 指向 $$z_{i+1}$$；
+- $$a_i$$ is the distance from  $$z_i$$ to  $$z_{i+1}$$ along the direction of  $$x_i$$ ;
+- $${\alpha}_i​$$ is the angle from $$z_i​$$ to $$z_{i+1}​$$ around axis $$x_i​$$ ;
+- $$d_i​$$ is the distance from  $$x_{i-1}​$$ to  $$x_{i}​$$ along the direction of  $${z}_i​$$ ;
+- $${\theta}_i$$ is the angle from  $$x_{i-1}$$ to  $$x_{i}$$ around axis  $${z}_i$$ .
 
-- 有了 $$x$$、 $$z$$ 轴后，就可以用右手定律定义 $$y$$ 轴方向。
-
-- 除了与每个关节固连的坐标系外，还有可能额外在机器人基座 {B} 与末端工具 {E} 上固连两个坐标系。
-
-2）计算 DH 参数:
-
-- $$a_i$$ 是沿着 $$x_i$$，从 $$z_i$$ 到 $$z_{i+1}$$ 的距离；
-
-- $$\alpha_i$$ 是绕着 $$x_i$$，从 $$z_i$$ 到 $$z_{i+1}$$ 的角度；
-
-- $$d_i$$ 是沿着 $$z_i$$，从 $$x_{i-1}$$ 到 $$x_i$$ 的距离；
-
-- $$\theta_i$$ 是绕着 $$z_i$$，从 $$x_{i-1}$$ 到 $$x_i$$ 的角度。
-
-3）计算变换矩阵：
+Step 3: Calculate the transformation matrices
 
 $${^i_{i-1}}T = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)$$
 
 $${^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}$$
 
-4）正解：
+Step 4: Forward Kinematics
 
 $${^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T$$
 
-5）逆解：
+Step 5: Inverse Kinematics
 
-就是通过不断调整（左乘与右乘）上面几个矩阵的位置，尝试找到可以单独求解的未知数即可。虽然有些繁琐，但是各位初学者一定要亲手推一遍六轴机械臂的运动学逆解公式，并**编程实现**。
+Just by constantly adjusting (left multiply and right multiply) the positions of the above several matrices, try to find the unknowns that can be solved separately. Although cumbersome, but beginners are suggested to calculate the inverse kinematics solution of a six-axis robot arm by hand, and then **implement the algorithm by programming**.
 
-### 3.3 雅可比矩阵
+### 3.3 Jacobian
 
-雅可比矩阵 $$J$$ 是机器人学中一个非常重要的东西。它表示机器人关节速度 $$\dot{q}$$ 与末端速度 $$\dot{x}$$ 之间的关系:
+The Jacobian matrix (also called as Jabobian) is a very important and useful concept in robotics. It represents the relationship between the speed of joints  $$\dot{q}$$ and the speed of the end-effector  $$\dot{x}$$：
 
-$$\dot{x}=J\cdot \dot{q}$$
+$$\dot{x}=J\cdot \dot{q}​$$
 
-- 如果你前面没有弄清楚角速度，建议在这章仔细思考。例如，「为什么不能直接对欧拉角求导获得速度？」；
+- If you have not figured out angular velocity yet, I advise you to think about it now. Try to answer the question: why can' t you get the velocity by direct derivation of the Euler angles?
+- Understand the calculation process of Jacobian in the textbook. Try to answer the question: is it possible to get the Jacobian by calculating the partial derivatives of the FK transformation matrix?
+- Master the technique to calculate the Jacobian with codes.
+- If you are familiar with Matlab or Python, you are suggested to use their symbolic calcuation function to find answers to the quesitons above.
+- If you know virtual work, then you may also notice that the Jacobian can also represent the relationship between the the force of the end-effector $${F}$$ and the force of joints  $${\tau}$$.
 
-- 了解教材中的雅可比计算方式，并思考「是否可以直接对运动学正解的结果求偏导？」
-
-- 这边需要掌握的就是它的计算方法了，**一定要**编程计算机器人的雅可比矩阵；
-
-- 如果你用 Matlab 或 Python，你可以利用他们的符号运算工具来验证我上面几个问题。从而加深对角速度的理解。
-
-- （PS：姿态和角速度无法直观理解很正常，因为它们不是在笛卡尔空间内，等后面学到更多数学，你们才能真正理解它。）；
-  
-- 如果你了解虚功原理，那么你又会知道雅可比也可以表示末端力与关节力矩的关系（这在以后力控等方面很有用）。
-
-这时候，你有了雅可比矩阵，你就会发现，你知道怎么通过调节角度来控制末端运动了。这时候我们再回头看运动学逆解的问题。你会发现：「让机器人末端朝着目标位姿运动不就可以了？」。
+With Jacobian, you may find that now you know how to move the end-effector by adjusting the joint angles. If you review the Inverse Kinematics problems in last section, you will find it quite intuitive: All you need is move the end-effector of the robot towards the target pose.
 
 <p align="center">
   <img width="500" src="../Pics/JacobianIK.jpg"/>
 </p>
 <!-- TODO: update this pic -->
 
-是的，这就是机器人运动学的数值计算方式，你可以利用这个方法写一个机器人运动学的通用求解算法。具体可以看我在知乎上的回答 [MATLAB机器人工具箱中机器人逆解是如何求出来的](https://www.zhihu.com/question/41673569/answer/129670927)。
+Yes, that is the numerical method to do robotic kinematics calculations. You can use this method to implement a general solver for inverse kinematics. If you are interested in this topic you can read the post written by me (in Chinese) on '[How the inverse kinematics solution is calculated in Matlab robotics toolbox](https://www.zhihu.com/question/41673569/answer/129670927)'.
 
-各位初学者**务必**亲手实现一遍这种算法，还是有些坑需要踩的。
+It is strongly recommended that every beginner should implement the algorithm by yourself. You have to get your hand dirty if you want to dig deeper in this area.
 
-当然，这个方法很简洁，但是也有它本身的问题：
+The method is very brief. However, there are also serveral problems:
 
-- 计算速度慢，需要多次迭代；
-  
-- 一次只能返回一组解；
-  
-- 可能会遇到奇异点等，结果无法收敛。
+- The calculation is expensive. Multiple iterations are needed;
+- Only one solution for one time. You cannot extract all the possible solutions;
+- Sometimes you may come up with singularities and the result cannot converge.
 
-这时候，你可以顺便去了解一些奇异（Singularity）的问题，理解奇异性是机器人构形相关的属性，无法通过建模方式来消除。
+So in this stage you can get to know more about the singularity problem. Try understand that singularity is determined by the property of robot structure, which cannot be discriminated by different methods of modelling.
 
-### 3.4 动力学
+### 3.4 Dynamics
 
-我相信，80% 的小伙伴是在这一章放弃的。
+I believe that many guys quit learning robotics in this chapter:
 
-<p align="center">
-  <img width="500" src="../Pics/NewtonEulerDynamics.jpg"/>
-</p>
-<!-- TODO: update this pic -->
+Outward iterations: $i : 0 \to 5$
+$$
+\begin{aligned}
+{^{i+1}{w}_{i+1}} &= {_{i}^{i+1}{R}}\cdot{^{i}w_{i}} + {\dot{\theta}_{i+1}}\cdot{^{i+1}\hat{Z}_{i+1}}, \\
+{^{i+1}{\dot{w}}_{i+1}} &= {_{i}^{i+1}{R}}\cdot{^{i}{\dot{w}}_{i}} + {_{i}^{i+1}{R}}\cdot{^{i}{w}_{i}}\times{\dot{\theta}_{i+1}}\cdot{^{i+1}\hat{Z}_{i+1}} + {\ddot{\theta}}_{i+1}\cdot{^{i+1}\hat{Z}_{i+1}}, \\
+{^{i+1}{\dot{v}}_{i+1}} &= {_{i}^{i+1}{R}}({^{i}{\dot{w}}_{i}}\times{^{i}{P}_{i+1}} + {^{i}{w}_{i}}\times({^{i}{w}_{i}}\times{^{i}{P}_{i+1}}) + {^{i}{\dot{v}}_{i}}), \\
+{^{i+1}{\dot{v}}_{C_{i+1}}} &= {^{i+1}{\dot{w}}_{i+1}}\times{^{i+1}{P}_{C_{i+1}}} + {^{i+1}{w}_{i+1}}\times({^{i+1}{w}_{i+1}}\times{^{i+1}{P}_{C_{i+1}}}) + {^{i+1}{\dot{v}}_{i+1}}, \\
+{^{i+1}{F}_{i+1}} &= {{m}_{i+1}}\cdot{^{i+1}{\dot{v}}_{C_{i+1}}}, \\
+{^{i+1}{N}_{i+1}} &= ^{C_{i+1}}{I}_{i+1}\cdot{^{i+1}{\dot{w}}_{i+1}} + {^{i+1}{w}_{i+1}}\times{^{C_{i+1}}{I}_{i+1}}\cdot{^{i+1}{w}_{i+1}}
 
-对于多轴机器人的动力学，不论是采用牛顿欧拉还是拉格朗日法，都会**显得**异常复杂。再加上如果之前没学好理论力学，那么基本上是举步维艰了。
+\end{aligned}
+$$
+It *looks* extremely difficult for multiple-axes robotic kinematics no matter you start with Newton-Euler method or Lagrange method. If you have yet mastered classical mechanics, then you will feel very lagging on every move you make in the further study in robotics.
 
-所以，我个人认为，先对这个部分有个基本概念就行，暂时不需要直接去碰六轴机器人的动力学：
+Therefore, I personally think that you only need a basic concept for this part temporily, and it is not necessary to directly go into the dynamics of the six-axis robots. It is ok if you can do the following:
 
-- 会用拉格朗日法计算三轴机械臂的动力学模型（三轴的求解还是在可接受范围内的）；
+- Calculate the dynamic model of the three-axis manipulator using the Lagrangian method (the three-axis solution is still within acceptable limits);
+- Calculate the dynamics model of the three-axis manipulator using the Newton Euler method. It must be **programmed** to implement the algorithm. It is worth it since the Newton method is much easier to be implemented programmatically. If you want to do dynamics, it is more likely you use Newton method instead of Lagrange method;
+- Understand the physical meaning of the moment of inertia, (in the above programming process, there will definitely be corresponding problems, such as the reference coordinate system of angular velocity and moment of inertia);
+- Know what parts of the robot dynamics are involved (form form, linkage dynamics, joint dynamics, gravity effects, joint friction, motor dynamics, etc.).
 
-- 用牛顿欧拉法计算三轴机械臂的动力学模型，一定要**编程实现**（因为在高自由度情况下，牛顿法更容易通过编程实现，未来如果要做动力学，更可能是用牛顿欧拉、而非拉格朗日）；
+### 3.5 Control
 
-- 了解转动惯量之类的物理意义，（在上面编程实现过程中，肯定会有相应的问题发生，如角速度与转动惯量的参考坐标系问题）；
+At this time, we have a variety of tools to solve the kinematics of the robot. We know the joint angle values that the robot reachs any state. But how do we make these joints moving? 
 
-- 大概知道机器人动力学都包含哪些部分（公式的形式、连杆动力学、关节动力学、重力影响、关节摩擦力、电机动力学等）。
-
-### 3.5 控制
-
-这时候，我们有了各种工具来求解机器人的运动学问题了，我们知道要让机器人到达任意状态的关节角度值。但是，如何让这些关节动起来？
-
-首先，我们要知道，日常生活中的世界还是受牛顿力学统治的。
+First of all, we must know that the world in daily life is ruled by Newtonian mechanics.
 
 $$F = m \cdot a$$
 
-要让一个东西动起来，就要给它施力。
+To make things move, we must give it a force.
 
 <p align="center">
   <img width="800" src="../Pics/Slider.jpg"/>
 </p>
+If we specify a motion trajectory of an object $$s(t)$$, we can calculate the acceleration of its entire trajectory $$\ddot{s}(t)$$, and then calculate the force required to achieve the desired motion: 
 
-如果我们给定一个滑块的运动轨迹 $$s(t)$$，我们就可以计算出它整个轨迹的加速度 $$\ddot{s}(t)$$，进而计算出让滑块按照我们设想运动所需的力 $$F(t) = m \cdot \ddot{s}(t)$$。
+$$F(t) = m \cdot \ddot{s}(t)​$$
 
-换句话说，我们可以通过动力学计算出让机器人运动所需的每个关节力矩。
+In other words, we can calculate the joint torque required for the robot to move through the dynamics.
 
 <p align="center">
   <img width="500" src="../Pics/DCMotor.jpg"/>
 </p>
+The joint torque can be provided by the motor output. For DC motors, the output torque is proportional to the current. However, there are several issues:
 
-而关节力矩，可以通过电机提供，对于直流电机，输出力矩与电流成正比。
+- Dynamics are difficult to calculate;
+- The kinetic parameters are not accurate (the moment of inertia and the joint friction are difficult to calculate);
+- There may also be various external forces (objects to be grasped, changes in joint dynamics properties, etc.). 
 
-但是，有几个问题：
+Then that is the work of the control algorithms. we will meet the *PID control algorithm* which you may have heard long long time ago. 
 
-- 动力学好难算；
+Now, I would recommand that you do this small experiment if you have something like an Arduino or a Raspberry Pi: 
 
-- 动力学参数好不准（转动惯量不好测、关节摩擦力不好算）；
+*Try designing a motor servo control system which consists of the DC motor (you can simply control current, torque or PWM of the motor instead of using a step motor or servo motor), the encoder (to get feedback of the rotate angle of the motor), the drivers (to convert digital command to motor control signals) and the controller (to integrate the overall system).*
 
-- 还可能有各种外力（抓持的物体，关节动力学属性变化等）。
+You may also know a lot about communication, interruption, and runtime.
 
-这就是控制算法的工作了。于是，大家会接触到传说的 PID 控制。
 
-但是，又有问题：如果我们直接把关节目标位置发给 PID 控制器，那么每次都是一次阶跃响应。
+
+However, there is another problem: if we send the joint target position directly to the PID controller, then each time it is a step response.
 
 <p align="center">
   <img width="500" src="../Pics/StepAndTraj.jpg"/>
 </p>
-
-在这里，建议有条件的小伙伴用单片机弄一个单轴伺服控制系统，有伺服电机（你可以控制电流、力矩、或者 PWM 占空比；步进电机、舵机就算了）、有编码器（可以反馈电机的角度）、有驱动器（能将数字指令转换成电机控制信号）、有控制器（STM32等单片机，可以给驱动器提供控制指令）。顺便可以了解一些通讯、中断、实时性的内容。
-
-但是，感觉好像还是有什么不对，机器人运动好像是有加减速过程（右）的，而非一次阶跃（左）。
+But wait, are you missing something again? There seems to be accelerations and decelerations (right) , instead of a step (left).
 
 <p align="center">
   <img width="500" src="../Pics/TrajPlanning.jpg"/>
 </p>
+Now you know you also need *trajectory planning*: Given some points in a trajectory, you have to use some functions to fit this trajectory.
 
-这就是轨迹规划（Trajectory Planning），给定一些轨迹点，利用不同的函数来拟合这些轨迹。
-
-这时候你又想到，既然 PID 和动力学都可以计算让机器人运动所需的力，只是动力学稍微有一些不准，那么有没有可能把它们结合在一起，先用动力学算一个基本准确的力矩，然后用 PID 消除不准确性造成的微小误差？
+At this stage, you may find that both PID algorithm and dynamics can be used to calculate the force to drive the robotic arm. Then is it possible to combine them together, if we use dynamics first to calculate a torque, and use PID then to eliminate tiny errors of uncertainty?
 
 <p align="center">
   <img width="500" src="../Pics/FeedforwardPID.jpg"/>
 </p>
+Congratulations, you have found the basic idea of dynamics feed forward based PID control algorithm.
 
-是的，于是你发现了基于动力学前馈的 PID 控制算法。
-
-Craig 书上剩下的其他一些部分，可以大概浏览一下，因为有不少内容已经比较旧了。
+There are still something left uncovered in Craig's book in the corresponding chapters. You can selectively read them since much of the content is a bit out-of-date.
