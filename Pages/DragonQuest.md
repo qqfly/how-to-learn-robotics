@@ -38,7 +38,7 @@
 
 所以，你应该继续学习。去找更多的史莱姆练手，将之前学到的剑法应用在实际战场上。
 
-后来，你又遇到了新问题，你之前的宝剑并不具有「工业级强度」：ROS 经成崩、Orocos的没有处理 [Eigen Alignment](http://eigen.tuxfamily.org/dox/group__TopicStructHavingEigenMembers.html)、没有好用的 3D 传感器、工业机器人不开放底层接口等等。
+后来，你又遇到了新问题，你之前的宝剑并不具有「工业级强度」：ROS 经常崩、Orocos的没有处理 [Eigen Alignment](http://eigen.tuxfamily.org/dox/group__TopicStructHavingEigenMembers.html)、没有好用的 3D 传感器、工业机器人不开放底层接口等等。
 
 于是，你意识到，你需要重新打造自己真正的宝剑。
 
