@@ -1,47 +1,52 @@
 <p align="center">
   <img width="500" src="../Pics/TheBrave.jpg"/>
 </p>
+Now that you know how to get a robot moving, and you have gained some professional knowledge in robotics area. You may imagine yourself as a brave who just killed the first slime, holding a sword, who feels ready to pierce the sword into the chest of the boss dragon at any time.
 
-现在，你已经知道了如何让一个机器人动起来，并且深入掌握了机器人某一领域的知识。然后，你就像一个刚刚斩杀第一只史莱姆的勇者一般，举着宝剑，时刻准备着将宝剑刺入恶龙的胸口。
+However, at this moment, someone comes to you and cools you down with the following words:
 
-但是，这时候有人跑过来，往你头上浇了一盆水：
+*"Some recent so-called robot companies spend their money asking people to copy existing schemes, to buy motors and reducers, and to make things work on a universal controller. You waste your time learning all those dynamics, optimal control, and motion planning stuffs at all!*
 
-现在随便一个公司，花点钱请人画个机器人图纸，找工厂加工出来，买些电机、减速器之类的零部件，套上一个通用控制器就可以跑了。哪需要什么动力学、最优控制、运动规划呀！
+*"I heard that even in the four major robot companies, the basic knowledge of D-H for robot modeling is enough. At most, you need also to know kinematics calibration, dynamics identification. They put their main focus on application integration. You waste your time learning all those Lie algebra, convex optimization, and and reinforcement learning stuffs at all!"*
 
-就连四大家，机器人建模用 DH 就够了，最多做点运动学标定、动力学辨识，更多精力放在了应用集成上。哪需要什么李群李代数、凸优化、强化学习呀！
 
-**「这世上哪儿有什么恶龙啊！」**
 
-然而，我想说的是，就机器人这块，只要工农业这类体力劳动没有实现完全的自动化，恶龙就存在：
+They are trying to tell you that "there is not boss dragon in this world".
+
+
+
+But what I want to tell you is that, in the case of robots, as long as the manual labors in industry or agriculture are not fully automated, the boss dragon exists:
 
 <p align="center">
   <img width="500" src="../Pics/Teaching.gif"/>
 </p>
-
-当你看到绝大多数机器人还是通过上面这样的方式，一点点示教出来的，你会有强烈的感觉：「这就是恶龙！」
+When you see that most of nowadays' robot are "taught" to work in the way shown in the above figure, you will have this strong feeling: "This is indeed the boss dragon!"
 
 <p align="center">
   <img width="500" src="../Pics/TeachingDevice.jpg"/>
 </p>
-
-当你看到世界上那么多机器人公司，有着各自形形色色、互不兼容的编程语言、示教器的时候，你会有强烈的感觉：「这就是恶龙！」
+When you see that there are so many different robot companies with different types of robots, different programming languages, different teaching pedants, you will have this strong feeling: "This is indeed the boss dragon!"
 
 <p align="center">
   <img width="500" src="../Pics/ChineseFactory.jpg"/>
 </p>
+When you see that there are still many people of our age who are doing repetitive and boring work in the factory, you will have this strong feeling: "This is indeed the boss dragon!"
 
-当你看到还有非常多与你我同龄的人在工厂里做着重复、枯燥的工作的时候，你会有强烈的感觉：「这就是恶龙！」
 
-是的，在机器人领域，还有非常多恶龙。于是，你拿起剑，又兴冲冲地上路了。
 
-忽然，你发现，你之前学的都是如何杀死一个「**真空中的球形龙**」，你不知道应该如何杀死一个真正的龙。
+Yes, there are still many boss dragons in the robotics area. Don't slow down your step, it is time to take the sword toward the boss dragon!
 
-所以，你应该继续学习。去找更多的史莱姆练手，将之前学到的剑法应用在实际战场上。
 
-后来，你又遇到了新问题，你之前的宝剑并不具有「工业级强度」：ROS 经成崩、Orocos的没有处理 [Eigen Alignment](http://eigen.tuxfamily.org/dox/group__TopicStructHavingEigenMembers.html)、没有好用的 3D 传感器、工业机器人不开放底层接口等等。
 
-于是，你意识到，你需要重新打造自己真正的宝剑。
+You may have heard the joke of "spherical chickens in a vacuum". The fact is that what you have learned to kill a dragon works also only for "spherical dragon in a vacuum". Sorry, you do not know how to kill a real boss dragon in the battlefield.
 
-但是，这不是你一个人可以做到的，你需要一个团队，有人挖煤、有人炼钢、有人打铁、有人磨刀……
+Therefore, you need to learn more. Kill more slimes to increase your experience, upgrade your knowledge; use everything you have learned in the real applications.
 
-这时候，不妨来 [RVBUST](http://rvbust.com/) 看看。
+You may encounter countless new problems. For example, your sword is not tough enough for "industry application" - Robot Operating System is very fragile / Orocos does not proceed  [Eigen Alignment](http://eigen.tuxfamily.org/dox/group__TopicStructHavingEigenMembers.html) / No *perfect* depth sensors for industry / No low-level APIs for commercial robots.
+
+Then, you realize that you need to rebuild your true sword.
+
+However, this is not something you can do alone. You need a team, some people are digging coal, some are making steel, some are hitting iron, and some are sharpening the sword...
+
+At this time, welcome to [RVBUST](http://rvbust.com/). We are waiting for your participation!
+
