@@ -87,6 +87,7 @@ With Jacobian, you may find that now you know how to move the end-effector by ad
 <p align="center">
   <img width="500" src="../Pics/JacobianIK.jpg"/>
 </p>
+
 <!-- TODO: update this pic -->
 
 Yes, that is the numerical method to do robotic kinematics calculations. You can use this method to implement a general solver for inverse kinematics. If you are interested in this topic you can read the post written by me (in Chinese) on '[How the inverse kinematics solution is calculated in Matlab robotics toolbox](https://www.zhihu.com/question/41673569/answer/129670927)'.
@@ -102,6 +103,10 @@ The method is very brief. However, there are also serveral problems:
 So in this stage you can get to know more about the singularity problem. Try understand that singularity is determined by the property of robot structure, which cannot be discriminated by different methods of modelling.
 
 ### 3.4 Dynamics
+
+<p align="center">
+  <img width="500" src="../Pics/NewtonEulerDynamics.jpg"/>
+</p>
 
 I believe that many guys quit learning robotics in this chapter:
 
