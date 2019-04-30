@@ -1,29 +1,27 @@
-**[RVBUST INC.](http://www.rvbust.com)** 成立半年有余。面试过不少从事机器人研究的小伙伴后，我发现一个问题：**绝大多数大陆毕业的学生都不像是「科班出身」的**。
+It has been six months since our startup company **[RVBUST INC.](http://www.rvbust.com)** was founded. After a series of meetings with the interviewees who work in robotics, a conclusion came to me, that most of the graduates from mainland are *untutored*; they do not receive systematic training for working on robotics.
 
-当然，如果仅从工作教育经历上看 —— 大部分毕业于机电、计算机专业，甚至是研究机器人的实验室，有过机器人公司的工作经历 —— 这些人应该都算是「专业选手」。
+Truthfully, if you look only at their work/education experience, you may find that most of them graduated from mechatronics, computer science, and even from the robot laboratories; some of them worked for robot companies. In this sense, these people are supposed to be *tutored*.
 
-但是，从面试情况上看，绝大多数人都不具备机器人学的完整知识体系：画电路板的小伙伴不知道怎么进行机器人工作空间分析；设计机构的小伙伴不知道怎么把动力学用在控制上；做控制算法的小伙伴不知道什么的构型空间（Configuration Space）；做运动规划的小伙伴不知道什么是Q-learning；做深度强化学习的小伙伴不知道学习到的控制指令要怎么让实际机器人运动起来。
+However, what I observed from the interview is, that most of the interviewees do not possess a complete knowledge system about robots - the guy who works on circuit schematic and PCB does not know how to do analysis in robot task space; the guy who designs mechanisms has no idea on how to implement dynamics in robot control; the guy who programs the control algorithm fails to understand the concept of configuration space; the guy who studies motion planning has not looked at Q-learning; the guy who plays with deep learning has no clue how to make robot move with the learned commands from the network.
 
-从我这几年的学习经历上看，我是能理解这一现象的。博士刚入学的时候，我接下了师兄的 SmartPal 机器人。靠着师兄的「祖传代码」，也曾狐假虎威地在外宾面前做过一些演示：
+I can really understand such phenomenon by my PhD candidate learning experience.  When I started my PhD research, I took over the SmartPal robot platform from my senior fellow apprentice. Relying on the source codes he left me, I once did some demonstrations in front of the foreign guest:
 
 <p align="center">
   <img width="500" src="../Pics/SmartPalAndMe.jpg"/>
 </p>
 
-但是，当我后来真正开始看这些「祖传代码」的时候，我发现实际发给机器人的只有几个关节**位置**点而已。
+However, when I finally started to read these *ancestral* codes, what I found was shocking: the commands that I was sending to the robot were just some joint positions.
 
-**「PID 在哪里？？？」**
+Hey, wait, wait, where is the PID?
 
-这是我当时产生的最大疑问。这个代码逻辑跟我本科玩的四旋翼、智能车等都完全不一样！
+That was the biggest question I had at the time. The logic within this code was *completely* different from the UAV, smart car, blah blah ... that I had played in my undergraduate courses. 
 
-于是，拿着这个疑问，我在实验室问了一圈，没有得到答案。即使后来，我选修了好几门跟机器人相关的研究生课程。经过一年的学习，我还是没有得到答案。
+With this question, I asked in the whole lab and didn't get any answer. Even after a year of graduate study, during which I took several courses in robotics, I still didn't get the answer.
 
-是的，作为国内最早开展机器人研究的院校之一，这里的机器人研究生课程只教我们如何建立 DH 坐标系，动力学只是简单计算了一个平面三连杆。根本没有涉及控制、轨迹规划的内容，甚至连运动学逆解也没有要求大家计算。
+Indeed, even in place like my university, which is among the first three institute in China mainland to teach robotics, the graduates are only taught how to establish D-H coordinate and how to calculate dynamics for a 3-DoF manipulator. They would neither have any chance to calculate the inverse kinematics, nor be taught anything about control and motion planning during their graduate study.
 
-据我所知，很多其他研究机构也是如此。国内机器人学这块还没有形成完整的教学体系，所以，大陆毕业的学生基本上都没有接受过完整的机器人学系统教育，只有在做项目的时候通过自学掌握项目所需的内容。这也就造就了一大批没有算过机器人运动学逆解的机器人专业博硕士生。
+As far as I know, this is a common case in many other institute in China mainland. No complete teaching system of robotics has been formed in our country. Therefore, there are seldom Chinese students who have been trained systematically for robotics; they only possess part of the knowledge by self-learning during their project experience. This leads to the fact that there are a large quantity of graduates/PhD graduates who are  in robotics but are out of basic knowledge for inverse kinematics.
 
-当然，并不是说「运动学逆解」、「轨迹插补」之类的知识有多难。我想强调的是，在大陆，一个学生只通过上课，无法掌握、甚至是无法接触到这些机器人学中非常基础的知识。
+Here I am not emphasizing how hard it is to learn the inverse kinematics or trajectory interpolation. What I hope to express is the fact that, in China mainland, the student cannot master, or even get in touch with this fundamental knowledge of robotics.
 
-当然，这一情况在大陆比较普遍，而对于国外或者港台高校毕业的学生，基本上都没有这个问题。国外或者港台高校在机器人学这块的教学体系相对比较完整，基本上大作业都会覆盖主要的知识点，并且大都要求编程实现。
-
-虽然，大多数小伙伴都是「非科班出身」的，但是，根据我的经验，大陆的学生还是非常聪明的，基本只要得到一些简单的正确引导，就能很快通过自学掌握这些知识。所以，我们不妨来看看「非科班出身」如何学习机器人学吧。
+Although many of the readers are untutored, there would be no many barriers to master all the knowledge you need for studying robotics. Now let's get started to see how the 'untutored' should learn robotics. 
