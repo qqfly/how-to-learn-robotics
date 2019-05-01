@@ -10,19 +10,23 @@ However，robotics is a complex and multi-disciplinary subject,  as a result of 
 
 So, here are some recommended basic prerequisite knowledges by myself, and all the rest knowledges will be mentioned in subsequent pages:
 
-1. **Linear Algebra**：所有的空间变换、机器人相关计算都依赖于线性代数，甚至需要有一些基本的「线性空间」思维。对于线性代数，我首推 Prof. Gilbert Strang 的《Linear Algebra》，在 [Youtube](https://www.youtube.com/watch?v=hNDFwVVKVk0&list=PL221E2BBF13BECF6C) 和[网易公开课](http://open.163.com/special/opencourse/daishu.html)上可以找到视频。这门课一开始就引导大家从空间的角度看待问题，而不只强调如何计算。而且，网易公开课上有中文字幕，对于初学者也还算友好。
+1. **Linear Algebra**：所有的空间变换、机器人相关计算都依赖于线性代数，甚至需要有一些基本的「线性空间」思维。对于线性代数，我首推 Prof. Gilbert Strang 的《Linear Algebra》，在 [Youtube](https://www.youtube.com/watch?v=hNDFwVVKVk0&list=PL221E2BBF13BECF6C) 上可以找到视频。这门课一开始就引导大家从空间的角度看待问题，而不只强调如何计算。
 
-2. **Calculus**：机器人里，所有涉及到导数、积分、优化的地方，都需要用到微积分。所以，这门数学课也是一开始就绕不开的。我没有太好的视频推荐，不妨也看看 Gilbert Strange 的[《微积分重点》](http://open.163.com/special/opencourse/weijifen.html) ([Highlights of Calculus](https://ocw.mit.edu/resources/res-18-005-highlights-of-calculus-spring-2010/))？
+2. **Calculus**：机器人里，所有涉及到导数、积分、优化的地方，都需要用到微积分。所以，这门数学课也是一开始就绕不开的。我没有太好的视频推荐，不妨也看看 Gilbert Strange's <[Highlights of Calculus](https://ocw.mit.edu/resources/res-18-005-highlights-of-calculus-spring-2010/)> from MIT Open Courseware？
 
-3. **Theoretical Mechanics**：机器人学就是每天与力打交道。但是一般机器人教材里都不会仔细推导空间变换、虚功原理、拉格朗日等力学理论，而且这些东西又相对抽象，很多初学者的自学过程就是被截杀在动力学章节的。当然，这部分我也没有太好的推荐资料，学堂在线上有清华高云峰老师的[《理论力学》](https://www.xuetangx.com/courses/TsinghuaX/20330334X/_/about)公开课，也可以参考一下。（但至少我当年上他的课总是犯困）。
+3. **Mechanics & Robotics**：机器人学就是每天与力打交道。但是一般机器人教材里都不会仔细推导空间变换、虚功原理、拉格朗日等力学理论，而且这些东西又相对抽象，很多初学者的自学过程就是被截杀在动力学章节的。当然，这部分我也没有太好的推荐资料，学堂在线上有清华高云峰老师的[《理论力学》](https://www.xuetangx.com/courses/TsinghuaX/20330334X/_/about)公开课，也可以参考一下。（但至少我当年上他的课总是犯困）。Engineering Mechanics: Dynamics & Introduction to Robotics: Mechanics and Control
 <!-- TODO: Improve <<theoretical mechanics>>  -->
+
+<p align="center">
+  <img width="500" src="../Pics/Robotics and Mechanics.jpg"/>
+</p>
    
 4. **Matlab or Python**：Both of these two programming languages are quite easy to get started，且非常方便data visulization 的编程语言。大家在学习机器人学的过程中，能非常容易地通过这类脚本语言实现一些算法，从而用于验证自己的推导结果。当然，这两部分只要掌握基本的矩阵操作和可视化操作就可以了。其他更高级的用法可以之后再学习。Coursera 上很容易找到这两门语言的入门课程 [Matlab](https://www.coursera.org/learn/matlab)、[Python](https://www.coursera.org/specializations/python)。
 
 5. **Control Theory**：Control theory is a very important topic during studying robotics, but most of the robotics textbooks won't cover it. Currently most of the industrial robots are still using simple algrithoms, but as a researcher, it is necessary to obtain some fundamental control theories, including but not limited to PID, equation of state, objectivity, controllability, Lyapunov, optimum control and some knowledges of non-linear control and intelligent control. Here is a useful link from [Brian Douglas](www.youtube.com/channel/UCq0imsn84ShAe9PBOFnoIrg) on Youtube.
 
 <p align="center">
-  <img width="500" src="../Pics/IngenieriaElectrica.jpg"/>
+  <img width="500" src="../Pics/Electrical and Control.jpg"/>
 </p>
 
 6. **Analog & Digital Circuits**：机器人是一门实践科学，只有当你把你推导的公式写成代码、并最终让实际机器人按照你的想法动起来的时候，才说明你掌握了相关知识。数电模电的知识可以让你对逻辑电路有个基本了解，不至于后面连为什么电机前面要加一个驱动器都不知道；同时，在身边没有实际机器人的情况下，自己搭个小电路做一些控制实验也是非常方便的。这块知识可以随便找本教材看看，例如我当时用的是唐庆玉老师的教材。
