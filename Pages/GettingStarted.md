@@ -44,7 +44,7 @@ You may notice that there are variant DH methods, like Standard DH, Modified DH.
 </p>
 Step 1: Establish the frame
 
-- Axis $$z_i​$$ coincides with joint  $$i​$$ ;
+- Axis $z_i​$ coincides with joint  $$i​$$ ;
 - $$x_i​$$ is parallel to the common perpendicular of  $$z_i​$$ and  $$z_{i+1}​$$ , which means that $$x_i = z_i \times z_{i+1}​$$. If  $$z_i \parallel z_{i+1}​$$ , then  $$x_i​$$ is defined as the common perpendicular pointing from  $$z_i​$$ to $$z_{i+1}​$$ .
 - $$y_i$$ can then be determined by $$x_i$$ and  $$z_i$$ using right-hand law.
 - Except from the frames that are fixed to every joint, there will be possibly a base frame {B} and a end-effector frame {E} on the base and on the end effector of the robot, respectively.
