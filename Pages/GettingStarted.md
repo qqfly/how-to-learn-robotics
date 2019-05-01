@@ -60,11 +60,17 @@ Step 3: Calculate the transformation matrices
 
 $${^i_{i-1}}T = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)$$
 
+<img src="https://latex.codecogs.com/gif.latex?{^i_{i-1}}T&space;=&space;Rot(x_{i-1},&space;\alpha_{i-1})&space;\cdot&space;Trans(x_{i-1},a_i)&space;\cdot&space;Rot(z_i,&space;\theta_i)&space;\cdot&space;Trans(z_i,&space;d_i)" title="{^i_{i-1}}T = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)" />
+
 $${^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}$$
+
+<img src="https://latex.codecogs.com/gif.latex?{^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\0&0&0&1\end{bmatrix}" title="{^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\0&0&0&1\end{bmatrix}" />
 
 Step 4: Forward Kinematics
 
 $${^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T$$
+
+<img src="https://latex.codecogs.com/gif.latex?{^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T" title="{^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T" />
 
 Step 5: Inverse Kinematics
 
@@ -75,6 +81,8 @@ Just by constantly adjusting (left multiply and right multiply) the positions of
 The Jacobian matrix (also called as Jabobian) is a very important and useful concept in robotics. It represents the relationship between the speed of joints  $$\dot{q}$$ and the speed of the end-effector  $$\dot{x}$$：
 
 $$\dot{x}=J\cdot \dot{q}​$$
+
+<img src="https://latex.codecogs.com/gif.latex?\dot{x}=J\cdot&space;\dot{q}​" title="\dot{x}=J\cdot \dot{q}​" />
 
 - If you have not figured out angular velocity yet, I advise you to think about it now. Try to answer the question: why can' t you get the velocity by direct derivation of the Euler angles?
 - Understand the calculation process of Jacobian in the textbook. Try to answer the question: is it possible to get the Jacobian by calculating the partial derivatives of the FK transformation matrix?
@@ -122,6 +130,9 @@ $$
 
 \end{aligned}
 $$
+
+<img src="https://latex.codecogs.com/gif.latex?\\&space;{^{i&plus;1}{w}_{i&plus;1}}&space;&=&space;{_{i}^{i&plus;1}{R}}\cdot{^{i}w_{i}}&space;&plus;&space;{\dot{\theta}_{i&plus;1}}\cdot{^{i&plus;1}\hat{Z}_{i&plus;1}},&space;\\&space;{^{i&plus;1}{\dot{w}}_{i&plus;1}}&space;&=&space;{_{i}^{i&plus;1}{R}}\cdot{^{i}{\dot{w}}_{i}}&space;&plus;&space;{_{i}^{i&plus;1}{R}}\cdot{^{i}{w}_{i}}\times{\dot{\theta}_{i&plus;1}}\cdot{^{i&plus;1}\hat{Z}_{i&plus;1}}&space;&plus;&space;{\ddot{\theta}}_{i&plus;1}\cdot{^{i&plus;1}\hat{Z}_{i&plus;1}},&space;\\&space;{^{i&plus;1}{\dot{v}}_{i&plus;1}}&space;&=&space;{_{i}^{i&plus;1}{R}}({^{i}{\dot{w}}_{i}}\times{^{i}{P}_{i&plus;1}}&space;&plus;&space;{^{i}{w}_{i}}\times({^{i}{w}_{i}}\times{^{i}{P}_{i&plus;1}})&space;&plus;&space;{^{i}{\dot{v}}_{i}}),&space;\\&space;{^{i&plus;1}{\dot{v}}_{C_{i&plus;1}}}&space;&=&space;{^{i&plus;1}{\dot{w}}_{i&plus;1}}\times{^{i&plus;1}{P}_{C_{i&plus;1}}}&space;&plus;&space;{^{i&plus;1}{w}_{i&plus;1}}\times({^{i&plus;1}{w}_{i&plus;1}}\times{^{i&plus;1}{P}_{C_{i&plus;1}}})&space;&plus;&space;{^{i&plus;1}{\dot{v}}_{i&plus;1}},&space;\\&space;{^{i&plus;1}{F}_{i&plus;1}}&space;&=&space;{{m}_{i&plus;1}}\cdot{^{i&plus;1}{\dot{v}}_{C_{i&plus;1}}},&space;\\&space;{^{i&plus;1}{N}_{i&plus;1}}&space;&=&space;^{C_{i&plus;1}}{I}_{i&plus;1}\cdot{^{i&plus;1}{\dot{w}}_{i&plus;1}}&space;&plus;&space;{^{i&plus;1}{w}_{i&plus;1}}\times{^{C_{i&plus;1}}{I}_{i&plus;1}}\cdot{^{i&plus;1}{w}_{i&plus;1}}" title="\\ {^{i+1}{w}_{i+1}} &= {_{i}^{i+1}{R}}\cdot{^{i}w_{i}} + {\dot{\theta}_{i+1}}\cdot{^{i+1}\hat{Z}_{i+1}}, \\ {^{i+1}{\dot{w}}_{i+1}} &= {_{i}^{i+1}{R}}\cdot{^{i}{\dot{w}}_{i}} + {_{i}^{i+1}{R}}\cdot{^{i}{w}_{i}}\times{\dot{\theta}_{i+1}}\cdot{^{i+1}\hat{Z}_{i+1}} + {\ddot{\theta}}_{i+1}\cdot{^{i+1}\hat{Z}_{i+1}}, \\ {^{i+1}{\dot{v}}_{i+1}} &= {_{i}^{i+1}{R}}({^{i}{\dot{w}}_{i}}\times{^{i}{P}_{i+1}} + {^{i}{w}_{i}}\times({^{i}{w}_{i}}\times{^{i}{P}_{i+1}}) + {^{i}{\dot{v}}_{i}}), \\ {^{i+1}{\dot{v}}_{C_{i+1}}} &= {^{i+1}{\dot{w}}_{i+1}}\times{^{i+1}{P}_{C_{i+1}}} + {^{i+1}{w}_{i+1}}\times({^{i+1}{w}_{i+1}}\times{^{i+1}{P}_{C_{i+1}}}) + {^{i+1}{\dot{v}}_{i+1}}, \\ {^{i+1}{F}_{i+1}} &= {{m}_{i+1}}\cdot{^{i+1}{\dot{v}}_{C_{i+1}}}, \\ {^{i+1}{N}_{i+1}} &= ^{C_{i+1}}{I}_{i+1}\cdot{^{i+1}{\dot{w}}_{i+1}} + {^{i+1}{w}_{i+1}}\times{^{C_{i+1}}{I}_{i+1}}\cdot{^{i+1}{w}_{i+1}}" />
+
 It *looks* extremely difficult for multiple-axes robotic kinematics no matter you start with Newton-Euler method or Lagrange method. If you have yet mastered classical mechanics, then you will feel very lagging on every move you make in the further study in robotics.
 
 Therefore, I personally think that you only need a basic concept for this part temporily, and it is not necessary to directly go into the dynamics of the six-axis robots. It is ok if you can do the following:
@@ -139,6 +150,8 @@ First of all, we must know that the world in daily life is ruled by Newtonian me
 
 $$F = m \cdot a$$
 
+<img src="https://latex.codecogs.com/gif.latex?F&space;=&space;m\cdot{a}" title="F = m\cdot{a}" />
+
 To make things move, we must give it a force.
 
 <p align="center">
@@ -147,6 +160,8 @@ To make things move, we must give it a force.
 If we specify a motion trajectory of an object $$s(t)$$, we can calculate the acceleration of its entire trajectory $$\ddot{s}(t)$$, and then calculate the force required to achieve the desired motion: 
 
 $$F(t) = m \cdot \ddot{s}(t)​$$
+
+<img src="https://latex.codecogs.com/gif.latex?F(t)&space;=&space;m&space;\cdot&space;\ddot{s}(t)​" title="F(t) = m \cdot \ddot{s}(t)​" />
 
 In other words, we can calculate the joint torque required for the robot to move through the dynamics.
 
@@ -189,3 +204,4 @@ At this stage, you may find that both PID algorithm and dynamics can be used to 
 Congratulations, you have found the basic idea of dynamics feed forward based PID control algorithm.
 
 There are still something left uncovered in Craig's book in the corresponding chapters. You can selectively read them since much of the content is a bit out-of-date.
+
