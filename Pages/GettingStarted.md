@@ -44,7 +44,7 @@ You may notice that there are variant DH methods, like Standard DH, Modified DH.
 </p>
 Step 1: Establish the frame
 
-- Axis $$z_i​$$ coincides with joint  $$i​$$ ;
+- Axis '''$$z_i​$$''' coincides with joint  $$i​$$ ; 
 - $$x_i​$$ is parallel to the common perpendicular of  $$z_i​$$ and  $$z_{i+1}​$$ , which means that $$x_i = z_i \times z_{i+1}​$$. If  $$z_i \parallel z_{i+1}​$$ , then  $$x_i​$$ is defined as the common perpendicular pointing from  $$z_i​$$ to $$z_{i+1}​$$ .
 - $$y_i$$ can then be determined by $$x_i$$ and  $$z_i$$ using right-hand law.
 - Except from the frames that are fixed to every joint, there will be possibly a base frame {B} and a end-effector frame {E} on the base and on the end effector of the robot, respectively.
@@ -157,7 +157,7 @@ To make things move, we must give it a force.
 <p align="center">
   <img width="800" src="../Pics/Slider.jpg"/>
 </p>
-If we specify a motion trajectory of an object $$s(t)$$, we can calculate the acceleration of its entire trajectory $$\ddot{s}(t)$$, and then calculate the force required to achieve the desired motion: 
+If we specify a motion trajectory of an object ![](https://latex.codecogs.com/gif.latex?s(t)), we can calculate the acceleration of its entire trajectory ![](https://latex.codecogs.com/gif.latex?\ddot{s}(t))$$\ddot{s}(t)$$, and then calculate the force required to achieve the desired motion: 
 
 $$F(t) = m \cdot \ddot{s}(t)​$$
 
@@ -204,4 +204,3 @@ At this stage, you may find that both PID algorithm and dynamics can be used to 
 Congratulations, you have found the basic idea of dynamics feed forward based PID control algorithm.
 
 There are still something left uncovered in Craig's book in the corresponding chapters. You can selectively read them since much of the content is a bit out-of-date.
-
