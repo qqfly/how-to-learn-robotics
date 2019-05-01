@@ -157,7 +157,7 @@ To make things move, we must give it a force.
 <p align="center">
   <img width="800" src="../Pics/Slider.jpg"/>
 </p>
-If we specify a motion trajectory of an object ![](https://latex.codecogs.com/gif.latex?s(t)), we can calculate the acceleration of its entire trajectory ![](https://latex.codecogs.com/gif.latex?\ddot{s}(t))$$\ddot{s}(t)$$, and then calculate the force required to achieve the desired motion: 
+If we specify a motion trajectory of an object $$s(t)$$, we can calculate the acceleration of its entire trajectory $$\ddot{s}(t)$$, and then calculate the force required to achieve the desired motion: 
 
 $$F(t) = m \cdot \ddot{s}(t)​$$
 
