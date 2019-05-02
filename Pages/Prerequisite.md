@@ -1,4 +1,4 @@
-当然，先修知识会随着研究的深入而变化，尤其是数学，数学就像是写轮眼，看同一个石碑，不同层次的「写轮眼」所看到的内容也完全不同。
+Certainly, the prerequisite knowledge of robotics keeps updating with the deepening of your research, especially in mathematics. We can see math as "Sharingan", you will have different views on the same thing when you on different level of Sharingan. 
 
 <p align="center">
   <img width="800" src="../Pics/Sharingan.jpg"/>
@@ -6,13 +6,13 @@
 
 With basic knowledge of robotics, you may be qualified for a position of Robot Commissioning Engineer；With the knowledge of Linear Algebra、Calculus, you are able to master the fundamental content like Kinematics、Dynamics modelling；And you can start to involve in some project work including recognition, motion planning and robot programming/teaching, after you completed studies in computing method, convex optimization and differential geometry.
 
-However，robotics is a complex and multi-disciplinary subject,  as a result of that, the basic knowledge for different directions of robotics can be totally different. Here, we won't recommend people for some "specific prerequisite",  由于机器人学涉及面广，不同方向所需要的基础知识也完全不同，如果一开始就陷入「先修知识」的泥潭中，可能就得不偿失了。
+However, robotics is a complex and multi-disciplinary subject,  as a result of that, the basic knowledge for different directions of robotics can be totally different. Here, instead of some general prerequisites, we won't recommend people for some "specific prerequisite", and don't get yourself trapped at the beginning. We believe you will find your direction during the processing of learning. 
 
 So, here are some recommended basic prerequisite knowledges by myself, and all the rest knowledges will be mentioned in subsequent pages:
 
 1. **Linear Algebra**：所有的空间变换、机器人相关计算都依赖于线性代数，甚至需要有一些基本的「线性空间」思维。对于线性代数，我首推 Prof. Gilbert Strang 的《Linear Algebra》，在 [Youtube](https://www.youtube.com/watch?v=hNDFwVVKVk0&list=PL221E2BBF13BECF6C) 上可以找到视频。这门课一开始就引导大家从空间的角度看待问题，而不只强调如何计算。
 
-2. **Calculus**：机器人里，所有涉及到导数、积分、优化的地方，都需要用到微积分。所以，这门数学课也是一开始就绕不开的。我没有太好的视频推荐，不妨也看看 Gilbert Strange's <[Highlights of Calculus](https://ocw.mit.edu/resources/res-18-005-highlights-of-calculus-spring-2010/)> from MIT Open Courseware？
+2. **Calculus**：机器人里，所有涉及到导数、积分、优化的地方，都需要用到微积分。所以，这门数学课也是一开始就绕不开的。Here we recommend you the lectures from Gilbert Strange's <[Highlights of Calculus](https://ocw.mit.edu/resources/res-18-005-highlights-of-calculus-spring-2010/)> on MIT Open Courseware.
 
 3. **Mechanics & Robotics**：机器人学就是每天与力打交道。但是一般机器人教材里都不会仔细推导空间变换、虚功原理、拉格朗日等力学理论，而且这些东西又相对抽象，很多初学者的自学过程就是被截杀在动力学章节的。当然，这部分我也没有太好的推荐资料，学堂在线上有清华高云峰老师的[《理论力学》](https://www.xuetangx.com/courses/TsinghuaX/20330334X/_/about)公开课，也可以参考一下。（但至少我当年上他的课总是犯困）。Engineering Mechanics: Dynamics & Introduction to Robotics: Mechanics and Control
 <!-- TODO: Improve <<theoretical mechanics>>  -->
