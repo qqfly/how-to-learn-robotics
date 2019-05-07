@@ -6,7 +6,7 @@ What does 'Get Started' in robotics means? It means to know how to make an indus
 
 For non-English speakers, I would recommend you to read the English version in stead of  a translated version. As a 'get started', Craig' s book makes it possible to explain the profound things in a simple way. Combined with Khatib' s video, you would be quickly get the basic knowledge for robotics.
 
-I was always telling my junior fellow apprentices that "you will excel at robotics if you can understand the entire book." However, it is still a small number who can finally fulfil that task.
+I was always telling my junior fellow apprentices that "you will excel at robotics if you can master the entire book." However, it is still a small number who can finally fulfil that task.
 
 Therefore I would like to change my wording to "you will be very likely to get a good position in a robot company in China. "
 
@@ -58,17 +58,13 @@ Step 2: Calculate the DH parameters
 
 Step 3: Calculate the transformation matrices
 
-$${^i_{i-1}}T = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)$$
 
 <img src="https://latex.codecogs.com/gif.latex?{^i_{i-1}}T&space;=&space;Rot(x_{i-1},&space;\alpha_{i-1})&space;\cdot&space;Trans(x_{i-1},a_i)&space;\cdot&space;Rot(z_i,&space;\theta_i)&space;\cdot&space;Trans(z_i,&space;d_i)" title="{^i_{i-1}}T = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_i) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)" />
 
-$${^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}$$
 
 <img src="https://latex.codecogs.com/gif.latex?\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}" title="\begin{bmatrix}cos(\theta_i)&-sin(\theta_i)&0&a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&cos(\theta_i)cos(\alpha_{i-1})&-sin(\alpha_{i-1})&-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&cos(\theta_i)sin(\alpha_{i-1})&cos(\alpha_{i-1})&d_icos(\alpha_{i-1})\\0&0&0&1\end{bmatrix}" />
 
 Step 4: Forward Kinematics
-
-$${^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T$$
 
 <img src="https://latex.codecogs.com/gif.latex?{^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T" title="{^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T" />
 
@@ -80,7 +76,6 @@ Just by constantly adjusting (left multiply and right multiply) the positions of
 
 The Jacobian matrix (also called as Jabobian) is a very important and useful concept in robotics. It represents the relationship between the speed of joints  $$\dot{q}$$ and the speed of the end-effector  $$\dot{x}$$：
 
-$$\dot{x}=J\cdot \dot{q}​$$
 
 <img src="https://latex.codecogs.com/gif.latex?\dot{x}=J\cdot&space;\dot{q}​" title="\dot{x}=J\cdot \dot{q}​" />
 
@@ -119,17 +114,6 @@ So in this stage you can get to know more about the singularity problem. Try und
 I believe that many guys quit learning robotics in this chapter:
 
 Outward iterations: $i : 0 \to 5$
-$$
-\begin{aligned}
-{^{i+1}{w}_{i+1}} &= {_{i}^{i+1}{R}}\cdot{^{i}w_{i}} + {\dot{\theta}_{i+1}}\cdot{^{i+1}\hat{Z}_{i+1}}, \\
-{^{i+1}{\dot{w}}_{i+1}} &= {_{i}^{i+1}{R}}\cdot{^{i}{\dot{w}}_{i}} + {_{i}^{i+1}{R}}\cdot{^{i}{w}_{i}}\times{\dot{\theta}_{i+1}}\cdot{^{i+1}\hat{Z}_{i+1}} + {\ddot{\theta}}_{i+1}\cdot{^{i+1}\hat{Z}_{i+1}}, \\
-{^{i+1}{\dot{v}}_{i+1}} &= {_{i}^{i+1}{R}}({^{i}{\dot{w}}_{i}}\times{^{i}{P}_{i+1}} + {^{i}{w}_{i}}\times({^{i}{w}_{i}}\times{^{i}{P}_{i+1}}) + {^{i}{\dot{v}}_{i}}), \\
-{^{i+1}{\dot{v}}_{C_{i+1}}} &= {^{i+1}{\dot{w}}_{i+1}}\times{^{i+1}{P}_{C_{i+1}}} + {^{i+1}{w}_{i+1}}\times({^{i+1}{w}_{i+1}}\times{^{i+1}{P}_{C_{i+1}}}) + {^{i+1}{\dot{v}}_{i+1}}, \\
-{^{i+1}{F}_{i+1}} &= {{m}_{i+1}}\cdot{^{i+1}{\dot{v}}_{C_{i+1}}}, \\
-{^{i+1}{N}_{i+1}} &= ^{C_{i+1}}{I}_{i+1}\cdot{^{i+1}{\dot{w}}_{i+1}} + {^{i+1}{w}_{i+1}}\times{^{C_{i+1}}{I}_{i+1}}\cdot{^{i+1}{w}_{i+1}}
-
-\end{aligned}
-$$
 
 <img src="https://latex.codecogs.com/gif.latex?\\&space;{^{i&plus;1}{w}_{i&plus;1}}&space;&=&space;{_{i}^{i&plus;1}{R}}\cdot{^{i}w_{i}}&space;&plus;&space;{\dot{\theta}_{i&plus;1}}\cdot{^{i&plus;1}\hat{Z}_{i&plus;1}},&space;\\&space;{^{i&plus;1}{\dot{w}}_{i&plus;1}}&space;&=&space;{_{i}^{i&plus;1}{R}}\cdot{^{i}{\dot{w}}_{i}}&space;&plus;&space;{_{i}^{i&plus;1}{R}}\cdot{^{i}{w}_{i}}\times{\dot{\theta}_{i&plus;1}}\cdot{^{i&plus;1}\hat{Z}_{i&plus;1}}&space;&plus;&space;{\ddot{\theta}}_{i&plus;1}\cdot{^{i&plus;1}\hat{Z}_{i&plus;1}},&space;\\&space;{^{i&plus;1}{\dot{v}}_{i&plus;1}}&space;&=&space;{_{i}^{i&plus;1}{R}}({^{i}{\dot{w}}_{i}}\times{^{i}{P}_{i&plus;1}}&space;&plus;&space;{^{i}{w}_{i}}\times({^{i}{w}_{i}}\times{^{i}{P}_{i&plus;1}})&space;&plus;&space;{^{i}{\dot{v}}_{i}}),&space;\\&space;{^{i&plus;1}{\dot{v}}_{C_{i&plus;1}}}&space;&=&space;{^{i&plus;1}{\dot{w}}_{i&plus;1}}\times{^{i&plus;1}{P}_{C_{i&plus;1}}}&space;&plus;&space;{^{i&plus;1}{w}_{i&plus;1}}\times({^{i&plus;1}{w}_{i&plus;1}}\times{^{i&plus;1}{P}_{C_{i&plus;1}}})&space;&plus;&space;{^{i&plus;1}{\dot{v}}_{i&plus;1}},&space;\\&space;{^{i&plus;1}{F}_{i&plus;1}}&space;&=&space;{{m}_{i&plus;1}}\cdot{^{i&plus;1}{\dot{v}}_{C_{i&plus;1}}},&space;\\&space;{^{i&plus;1}{N}_{i&plus;1}}&space;&=&space;^{C_{i&plus;1}}{I}_{i&plus;1}\cdot{^{i&plus;1}{\dot{w}}_{i&plus;1}}&space;&plus;&space;{^{i&plus;1}{w}_{i&plus;1}}\times{^{C_{i&plus;1}}{I}_{i&plus;1}}\cdot{^{i&plus;1}{w}_{i&plus;1}}" title="\\ {^{i+1}{w}_{i+1}} &= {_{i}^{i+1}{R}}\cdot{^{i}w_{i}} + {\dot{\theta}_{i+1}}\cdot{^{i+1}\hat{Z}_{i+1}}, \\ {^{i+1}{\dot{w}}_{i+1}} &= {_{i}^{i+1}{R}}\cdot{^{i}{\dot{w}}_{i}} + {_{i}^{i+1}{R}}\cdot{^{i}{w}_{i}}\times{\dot{\theta}_{i+1}}\cdot{^{i+1}\hat{Z}_{i+1}} + {\ddot{\theta}}_{i+1}\cdot{^{i+1}\hat{Z}_{i+1}}, \\ {^{i+1}{\dot{v}}_{i+1}} &= {_{i}^{i+1}{R}}({^{i}{\dot{w}}_{i}}\times{^{i}{P}_{i+1}} + {^{i}{w}_{i}}\times({^{i}{w}_{i}}\times{^{i}{P}_{i+1}}) + {^{i}{\dot{v}}_{i}}), \\ {^{i+1}{\dot{v}}_{C_{i+1}}} &= {^{i+1}{\dot{w}}_{i+1}}\times{^{i+1}{P}_{C_{i+1}}} + {^{i+1}{w}_{i+1}}\times({^{i+1}{w}_{i+1}}\times{^{i+1}{P}_{C_{i+1}}}) + {^{i+1}{\dot{v}}_{i+1}}, \\ {^{i+1}{F}_{i+1}} &= {{m}_{i+1}}\cdot{^{i+1}{\dot{v}}_{C_{i+1}}}, \\ {^{i+1}{N}_{i+1}} &= ^{C_{i+1}}{I}_{i+1}\cdot{^{i+1}{\dot{w}}_{i+1}} + {^{i+1}{w}_{i+1}}\times{^{C_{i+1}}{I}_{i+1}}\cdot{^{i+1}{w}_{i+1}}" />
 
@@ -148,8 +132,6 @@ At this time, we have a variety of tools to solve the kinematics of the robot. W
 
 First of all, we must know that the world in daily life is ruled by Newtonian mechanics.
 
-$$F = m \cdot a$$
-
 <img src="https://latex.codecogs.com/gif.latex?F&space;=&space;m\cdot{a}" title="F = m\cdot{a}" />
 
 To make things move, we must give it a force.
@@ -158,8 +140,6 @@ To make things move, we must give it a force.
   <img width="800" src="../Pics/Slider.jpg"/>
 </p>
 If we specify a motion trajectory of an object $$s(t)$$, we can calculate the acceleration of its entire trajectory $$\ddot{s}(t)$$, and then calculate the force required to achieve the desired motion: 
-
-$$F(t) = m \cdot \ddot{s}(t)​$$
 
 <img src="https://latex.codecogs.com/gif.latex?F(t)&space;=&space;m&space;\cdot&space;\ddot{s}(t)​" title="F(t) = m \cdot \ddot{s}(t)​" />
 
