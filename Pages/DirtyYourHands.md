@@ -2,9 +2,9 @@
 
 **Get your hands dirty!**
 
-### 4.1 动手
+### 4.1 Hands-On
 
-如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、飞思卡尔智能车大赛、电子设计大赛等；也可以加入学校的一些科技组织，例如清华的天空工厂。主要是熟悉各种电子电路、培养动手能力。
+如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、飞思卡尔智能车大赛、电子设计大赛等；也可以加入学校的一些科技组织, like in MIT。主要是熟悉各种电子电路、培养动手能力。
 
 但是，以我的观察，很多科技比赛大牛，在理论学习上往往比较弱。这主要是因为科技比赛强调的是系统能力，决定比赛结果的往往是一些小 tricks，而非理论知识；而且，比赛容易让人产生一种虚假的充实感，每天都很忙碌，但是可能只是在重复低级工作。这两个原因很容易让人陷入 local minima，无法在理论方面更进一步。
 
@@ -34,7 +34,7 @@
   <img width="500" src="../Pics/Mapping.jpg"/>
 </p>
 
-### 4.3 ROS
+### 4.3 Robot Operating System (ROS)
 
 到现在为止，你对机器人的基础知识有了一个比较完整的脉络，而且，也用 Matlab 实现了一些有趣的算法。但是，你发现，机器人是一个非常大的系统，作为初学者，不太可能从头开始一步步搭建机器人所需的各个算法模块。这时候，你就应该开始拥抱伟大的开源世界了。
 
@@ -46,11 +46,11 @@
 
 - **Github**：ROS 的大多数项目都是托管在 [Github](https://github.com/) 上的。所以，非常有必要学会使用 Github，学会用 git 管理自己的代码。而且也可以为开源项目做些修改。例如可以像我一样只是[删除多余的分号](https://github.com/stack-of-tasks/pinocchio/pull/672)。
 
-- **C++ 基础**：如果你没有系统学习过 C++，建议先把这部分补齐，因为 ROS 的主要代码都是 C++ 实现的。这里，我推荐学堂在线上清华大学郑莉老师的课程[《C++语言程序设计基础》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+00740043X_2015_T2+sp/about)和[《C++语言程序设计进阶》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+00740043_2x_2015_T2+sp/about)。当然，学习 C++ 的时候就可以在 Ubuntu 下进行，安装一个 [Visual Studio Code](https://code.visualstudio.com/) 是个不错的选择。
+- **Fundamental of C++**：如果你没有系统学习过 C++，建议先把这部分补齐，因为 ROS 的主要代码都是 C++ 实现的。这里，我推荐学堂在线上清华大学郑莉老师的课程[《C++语言程序设计基础》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+00740043X_2015_T2+sp/about)和[《C++语言程序设计进阶》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+00740043_2x_2015_T2+sp/about)。当然，学习 C++ 的时候就可以在 Ubuntu 下进行，安装一个 [Visual Studio Code](https://code.visualstudio.com/) 是个不错的选择。
 
-- **数据结构**：其实，上面的基础已经足够你学习 ROS 了，但是，为了未来的学习，可以在适当时候学习一些数据结构的知识。数据结构的话，我推荐学堂在线上清华邓俊辉老师 [《数据结构(上)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184+sp/about)与[《数据结构(下)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184_2X+sp/about)。
+- **Data Structure**：其实，上面的基础已经足够你学习 ROS 了，但是，为了未来的学习，可以在适当时候学习一些数据结构的知识。数据结构的话，我推荐学堂在线上清华邓俊辉老师 [《数据结构(上)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184+sp/about)与[《数据结构(下)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184_2X+sp/about)。
 
-现在，你就可以大胆地去看 ROS 了。作为开源项目，我认为最好的教程就是官网的教程 [ROS Tutorials](https://wiki.ros.org/ROS/Tutorials)。
+现在，你就可以大胆地去看 ROS 了。As a open-source project, personally I suggest the best tutorial is from the offical website of ROS: [ROS Tutorials](https://wiki.ros.org/ROS/Tutorials).
 
 首先，通过 Beginner Level 和 Intermediate Level 了解 ROS 基本的通讯机制、学会使用 catkin、roslaunch、Rviz 等基本工具。
 
@@ -58,4 +58,4 @@
 
 如果有条件，能够配合一些 ROS 支持比较好的平台进行研究的话，可以大大提高学习速度。例如 TurtleBot、Baxter、Universal Robot 之类的。（这就看每个人条件了。）
 
-理论上，在 ROS 环境下，你可以从事绝大多数与实时控制无关的研究，如 SLAM、Navigation、Motion Planning 等。如果你从事的是更加底层的工作，（如控制器设计），目前 ROS 还无法胜任。（如果不清楚为什么，回顾一下实时操作系统、机器人控制方面的知识）。
+理论上，在 ROS 环境下，你可以从事绝大多数与实时控制无关的研究，如 SLAM、Navigation、Motion Planning 等。如果你从事的是更加底层的工作，（如控制器设计），目前 ROS 还无法胜任。（如果不清楚为什么，回顾一下Real-Time Operation System and Robotics Control实时操作系统、机器人控制方面的知识）。
