@@ -1,5 +1,7 @@
 看完 Craig 的书后，你应该对工业机器人的原理有了一个大概的概念，但是，你缺乏实际动手经验，不清楚如何将书上的东西应用到实际机器人上。机器人毕竟是一个实践性的学科，一直停留在理论，不仅无用、而且无趣。
 
+After finishing reading of Craig's textbook, I think you should have built a basic structure in your mind about industrial robots
+
 **Get your hands dirty!**
 
 ### 4.1 Hands-On
