@@ -1,22 +1,16 @@
-看完 Craig 的书后，你应该对工业机器人的原理有了一个大概的概念，但是，你缺乏实际动手经验，不清楚如何将书上的东西应用到实际机器人上。机器人毕竟是一个实践性的学科，一直停留在理论，不仅无用、而且无趣。
-
 After finishing reading of Craig's textbook, I think you should have built a basic structure of about industrial robots in your mind. However, you still may need more hands-on practise, and probably have few ideas on implement knowledge from textbooks to the real/physical robots. After all, robotics is a practical displine, it would be wasting of time and boring if you spent too much time on theory. 
 
 **Get your hands dirty!**
 
 ### 4.1 Hands-On
 
-如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、飞思卡尔智能车大赛、电子设计大赛等；也可以加入学校的一些科技组织, like in MIT。主要是熟悉各种电子电路、培养动手能力。
+If you were a undergraduate student, it would be very helpful for you to gain some hands-on experience by participating robotics competitions, such as RoboMaster and NXP Cup. You can also try to participate into hands-on STEM clubs in your school. The main purpose is getting familiar with various electronic circuit and developing operation ability.
 
-If you were a undergraduate student, it would be very helpful for you to gain some hands-on experience by participating robotics competions, such as RoboMaster and NXP Cup. You can also try to participate into hands-on STEM clubs in your school. The main purpose is getting familiar with various electronic circuit and developing operation ability.
+However, from my experience, I have seen many people who are good at those competitions normally have a lack on basic theoretical study. Because in competition systematic operation ablity is more emphasized than theories, the result usually looks up on some small tricks. Also, the competitions would create a false sense of fullness to people which make them feel they are busy on working everyday, but probably just some repeatable easy work. These reasons will make people trapped into their local minima, can hardly move forward in theoretical study.
 
-但是，以我的观察，很多科技比赛大牛，在理论学习上往往比较弱。这主要是因为科技比赛强调的是系统能力，决定比赛结果的往往是一些小 tricks，而非理论知识；而且，比赛容易让人产生一种虚假的充实感，每天都很忙碌，但是可能只是在重复低级工作。这两个原因很容易让人陷入 local minima，无法在理论方面更进一步。
+Therefore, I have a small suggestion to share: a few of robotics competition or other activities is enough, after that theoretic studies are much more important.
 
-However, 
-
-所以，我有个不成熟的小建议：参加比赛和学生科技活动的话，有过两次完整的经历就够了。之后应该迅速将重点转向理论学习。
-
-如果身边有可以玩的机器人硬件，也可以尝试玩一玩，或者在 RobotStudio/Vrep/Gazebo 里玩仿真的机器人。
+If you have a chance to play some hardware robotics, don't waste your resource, if not you can still play around with simulated robotics in RobotStudio/Vrep/Gazebo.
 
 ### 4.2 Penn's Robotics Specialization
 
