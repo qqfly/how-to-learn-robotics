@@ -1,12 +1,12 @@
 看完 Craig 的书后，你应该对工业机器人的原理有了一个大概的概念，但是，你缺乏实际动手经验，不清楚如何将书上的东西应用到实际机器人上。机器人毕竟是一个实践性的学科，一直停留在理论，不仅无用、而且无趣。
 
-After finishing reading of Craig's textbook, I think you should have built a basic structure in your mind about industrial robots
+After finishing reading of Craig's textbook, I think you should have built a basic structure of about industrial robots in your mind. However, you still may need more hands-on practise, and probably have few ideas on implement knowledge from textbooks to the real/physical robots. After all, robotics is a practical displine, it would be wasting of time and boring if you spent too much time on theory. 
 
 **Get your hands dirty!**
 
 ### 4.1 Hands-On
 
-如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、飞思卡尔智能车大赛、电子设计大赛等；也可以加入学校的一些科技组织, like in MIT。主要是熟悉各种电子电路、培养动手能力。
+如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、飞思卡尔智能车大赛、电子设计大赛等；也可以加入学校的一些科技组织, like in MIT。主要是熟悉各种电子电路、培养动手能力。If you were a undergraduate student, it would help you a lot on gaining hands-on experience by participate robotics competitions, such as RoboMaster and NXP Cup. You can also try to participate into hands-on STEM clubs in your school. The main purpose is for you to gain more hands-on experience on 
 
 但是，以我的观察，很多科技比赛大牛，在理论学习上往往比较弱。这主要是因为科技比赛强调的是系统能力，决定比赛结果的往往是一些小 tricks，而非理论知识；而且，比赛容易让人产生一种虚假的充实感，每天都很忙碌，但是可能只是在重复低级工作。这两个原因很容易让人陷入 local minima，无法在理论方面更进一步。
 
