@@ -6,9 +6,13 @@ After finishing reading of Craig's textbook, I think you should have built a bas
 
 ### 4.1 Hands-On
 
-如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、飞思卡尔智能车大赛、电子设计大赛等；也可以加入学校的一些科技组织, like in MIT。主要是熟悉各种电子电路、培养动手能力。If you were a undergraduate student, it would help you a lot on gaining hands-on experience by participate robotics competitions, such as RoboMaster and NXP Cup. You can also try to participate into hands-on STEM clubs in your school. The main purpose is for you to gain more hands-on experience on 
+如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、飞思卡尔智能车大赛、电子设计大赛等；也可以加入学校的一些科技组织, like in MIT。主要是熟悉各种电子电路、培养动手能力。
+
+If you were a undergraduate student, it would be very helpful for you to gain some hands-on experience by participating robotics competions, such as RoboMaster and NXP Cup. You can also try to participate into hands-on STEM clubs in your school. The main purpose is getting familiar with various electronic circuit and developing operation ability.
 
 但是，以我的观察，很多科技比赛大牛，在理论学习上往往比较弱。这主要是因为科技比赛强调的是系统能力，决定比赛结果的往往是一些小 tricks，而非理论知识；而且，比赛容易让人产生一种虚假的充实感，每天都很忙碌，但是可能只是在重复低级工作。这两个原因很容易让人陷入 local minima，无法在理论方面更进一步。
+
+However, 
 
 所以，我有个不成熟的小建议：参加比赛和学生科技活动的话，有过两次完整的经历就够了。之后应该迅速将重点转向理论学习。
 
