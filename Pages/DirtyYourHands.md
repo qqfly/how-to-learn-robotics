@@ -14,9 +14,11 @@ If you have a chance to play some hardware robotics, don't waste your resource, 
 
 ### 4.2 Penn's Robotics Specialization
 
-在此之后，不妨抽出几个月时间，看看 Coursera 上宾夕法尼亚大学的 [Robotics](https://www.coursera.org/specializations/robotics) 专项课程。这个专项课程与机械臂或者工业机器人关系不大，但是由于机器人很多方面是相通的，所以非常建议看一看。
+在此之后，不妨抽出几个月时间，看看 Coursera 上University of Pennsylvania的 [Robotics](https://www.coursera.org/specializations/robotics) 专项课程。这个专项课程与机械臂或者工业机器人关系不大，但是由于机器人很多方面是相通的，所以非常建议看一看。
 
-- Aerial Robotics：这门课主要是介绍四旋翼无人机的控制问题，其中的轨迹规划、姿态描述、控制等对机械臂的学习非常有帮助。而且，这门课的作业质量也非常高，提供了基于 Matlab 的数值仿真模块，可以让初学者直观地看到自己代码的控制效果。
+Next steps, we suggest you can spend few months on Coursera for the [Robotics](https://www.coursera.org/specializations/robotics) course from University of Pennsylvania. This course has less relatives with robot arms or industrail robots, but we still recommand it since many knowledges of robotics are connected.
+
+- Aerial Robotics：这门课主要是介绍四旋翼无人机的控制问题，其中的轨迹规划、姿态描述、控制等对机械臂的学习非常有帮助。而且，这门课的作业质量也非常高，提供了基于 Matlab 的数值仿真模块，可以让初学者直观地看到自己代码的控制效果。This topic 
 
 - Computational Motion Planning：这门课的水平感觉不如前一个，但是通过这门课可以大概知道机器人里有 Motion Planning 这个方向，同时大作业也包括了手写 A*、PRM、Potential Fileds 等基本的 Motion Planning 算法，同时可以大概了解一下 Collision Checking 的基本原理。
 
