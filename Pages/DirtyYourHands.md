@@ -58,8 +58,6 @@ For studying ROS, there are alreayd many tutorials online. However, I feel they 
 
 之后，就可以根据各自的研究兴趣去看不同模块了。
 
-如果有条件，能够配合一些 ROS 支持比较好的平台进行研究的话，可以大大提高学习速度。例如 TurtleBot、Baxter、Universal Robot 之类的。（这就看每个人条件了。）
 If would be better and more efficient for you to do some research and development with a robot platform such as TurtleBot, Baxter, Universal Robot etc. You can choose either purchasing a real robot or using a simulation environment, such as Gazebo.
 
-理论上，在 ROS 环境下，你可以从事绝大多数与实时控制无关的研究，如 SLAM、Navigation、Motion Planning 等。如果你从事的是更加底层的工作，（如控制器设计），目前 ROS 还无法胜任。（如果不清楚为什么，回顾一下Real-Time Operation System and Robotics Control实时操作系统、机器人控制方面的知识）。
 Theoretically, in ROS environment, you can work on a lot of researches irrelated with real time control, for example, SLAM, Naviagation, Motion Planning. However, if you worked with some lower-level design, (e.g controller design), ROS is still incompetent. (If you don't know why, you probably need to recall knowledges from Real-Time Operation System and Robotics Control)
