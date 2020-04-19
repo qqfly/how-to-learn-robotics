@@ -38,11 +38,11 @@ Next steps, we suggest you can spend few months on Coursera for the [Robotics](h
 
 ### 4.3 Robot Operating System (ROS)
 
-到现在为止，你对机器人的基础知识有了一个比较完整的脉络，而且，也用 Matlab 实现了一些有趣的算法。但是，你发现，机器人是一个非常大的系统，作为初学者，不太可能从头开始一步步搭建机器人所需的各个算法模块。这时候，你就应该开始拥抱伟大的开源世界了。
+So far, you should have established a systematic basic robotics knowledge, and implemented some interesting algorithms with Matlab. But you probably already found, robotics has a huge comprehensive system. As a beginner, it may be not easy to start from build robotics algorithms modules step by step. So, open sources can be a very helpful platform. 
 
-很多人可能知道，有一个叫做机器人操作系统的开源项目 [(Robot Operating System, ROS)](https://wiki.ros.org/)。
+Many of you probably already know that there is a open source project called robot operation system.  [(Robot Operating System, ROS)](https://wiki.ros.org/)。
 
-对于学习 ROS，网上可能有不少教程了。但是，我感觉，很多机电、自动化方向的学生并不适合直接开始看 ROS。因为他们缺乏基本的 Linux、C++ 知识。所以，我推荐按照如下步骤进行学习：
+For studying ROS, there are alreayd many tutorials online. However, I feel they are not appropriate/suitable for mechatronics or automation major students, because of the lack of knowledges in Linux and C++. I suggest those students follow these steps to learn ROS:
 
 - **Linux**：如果完全没有 Linux 开发经验，我建议可以先安装 Ubuntu 系统，然后看 [UNIX Tutorial for Beginners](http://www.ee.surrey.ac.uk/Teaching/Unix/) ，熟悉基本的 Linux 使用方法。
 
