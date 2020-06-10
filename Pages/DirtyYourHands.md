@@ -16,9 +16,9 @@ If you have a chance to play some hardware robotics, don't waste your resource, 
 
 Next steps, we suggest you can spend few months on Coursera for the [Robotics](https://www.coursera.org/specializations/robotics) course from University of Pennsylvania. This course has less relatives with robot arms or industrail robots, but we still recommand it since many knowledges of robotics are connected.
 
-- Aerial Robotics：这门课主要是介绍四旋翼无人机的控制问题，其中的轨迹规划、姿态描述、控制等对机械臂的学习非常有帮助。而且，这门课的作业质量也非常高，提供了基于 Matlab 的数值仿真模块，可以让初学者直观地看到自己代码的控制效果。This topic 
+- Aerial Robotics：This course focuses on the control topic of four-rotor drone, the motion planning, gesture description and controlling are very helpful for learning robot arm. And the quality providing from this course is great, including simulation models based on numerical values of Matlab which can help beginners to directly see the control effect from their own code.
 
-- Computational Motion Planning：这门课的水平感觉不如前一个，但是通过这门课可以大概知道机器人里有 Motion Planning 这个方向，同时大作业也包括了手写 A*、PRM、Potential Fileds 等基本的 Motion Planning 算法，同时可以大概了解一下 Collision Checking 的基本原理。
+- Computational Motion Planning：We should say this one's quality is average, not too much you can learn but you can still know some basic motion planning algrithoms such as A* , PRM, Potential Fields, plus principles of collision checking. 
 
 - Mobility：这部分主要是介绍足式机器人的控制问题。通过这门课，一方面可以大致了解足式机器人控制的发展脉络，这样看起 Boston Dynamics 的视频也不会那么一脸懵逼了。同时，更重要的是，掌握机器人建模与控制的关系：一个简化的模型，也可能对控制起非常大帮助。
 
