@@ -16,13 +16,13 @@ If you have a chance to play some hardware robotics, don't waste your resource, 
 
 Next steps, we suggest you can spend few months on Coursera for the [Robotics](https://www.coursera.org/specializations/robotics) course from University of Pennsylvania. This course has less relatives with robot arms or industrail robots, but we still recommand it since many knowledges of robotics are connected.
 
-- Aerial Robotics：This course focuses on the control topic of four-rotor drone, the motion planning, gesture description and controlling are very helpful for learning robot arm. And the quality providing from this course is great, including simulation models based on numerical values of Matlab which can help beginners to directly see the control effect from their own code.
+- Aerial Robotics: This course focuses on the control topic of four-rotor drone, the motion planning, gesture description and controlling are very helpful for learning robot arm. And the quality providing from this course is great, including simulation models based on numerical values of Matlab which can help beginners to directly see the control effect from their own code.
 
-- Computational Motion Planning：We should say this one's quality is average, not too much you can learn but you can still know some basic motion planning algrithoms such as A* , PRM, Potential Fields, plus principles of collision checking. 
+- Computational Motion Planning: We should say this one's quality is average, not too much you can learn but you can still know some basic motion planning algrithoms such as A* , PRM, Potential Fields, plus principles of collision checking. 
 
-- Mobility：这部分主要是介绍足式机器人的控制问题。通过这门课，一方面可以大致了解足式机器人控制的发展脉络，这样看起 Boston Dynamics 的视频也不会那么一脸懵逼了。同时，更重要的是，掌握机器人建模与控制的关系：一个简化的模型，也可能对控制起非常大帮助。
+- Mobility: 这部分主要是介绍足式机器人的控制问题。通过这门课，一方面可以大致了解足式机器人控制的发展脉络，这样看起 Boston Dynamics 的视频也不会那么一脸懵逼了。同时，更重要的是，掌握机器人建模与控制的关系：一个简化的模型，也可能对控制起非常大帮助。
 
-- Perception：这门课质量非常不错，基本是介绍相机模型、多视几何之类的内容。这方面内容可以对大家未来从事 SLAM、3D 视觉、标定等方面的研究非常有帮助。学完之后，大家就可以做出类似[《AR原理演示》](https://mp.weixin.qq.com/s?__biz=MzA5MDE2MjQ0OQ==&mid=2652786307&idx=1&sn=e71bbca67c7fa69081e863b62b9fd5b4#rd)文章中的效果了：
+- Perception: 这门课质量非常不错，基本是介绍相机模型、多视几何之类的内容。这方面内容可以对大家未来从事 SLAM、3D 视觉、标定等方面的研究非常有帮助。学完之后，大家就可以做出类似[《AR原理演示》](https://mp.weixin.qq.com/s?__biz=MzA5MDE2MjQ0OQ==&mid=2652786307&idx=1&sn=e71bbca67c7fa69081e863b62b9fd5b4#rd)文章中的效果了：
 
 <p align="center">
   <img width="400" src="../Pics/AR.gif"/>
