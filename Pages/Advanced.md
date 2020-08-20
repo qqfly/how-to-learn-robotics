@@ -26,7 +26,7 @@
 
 这时候，你已经触碰到了一点点李群李代数。之后就可以去看一些针对工科生的李群李代数教材，如[《Notes on Differential Geometry and Lie Groups, I & II》](http://www.cis.upenn.edu/~jean/gbooks/manif.html)
 
-### 5.3 控制Controlling
+### 5.3 Controlling
 
 这时候，你可能已经尝试搭建过一些机器人平台，了解了一些基本的控制理论。但是，你发现实际的机器人并不理想，动力学模型可能非常不精确。于是，你需要做机器人的**参数辨识**。于是，你可以去看 Khalil 的教材《Modeling, identification and control of robots》<sup>[4]</sup>。其中，你需要了解各种滤波算法（计算加速度）、各种数值优化算法。而且，如果需要对机器人的运动学参数进行标定，你会发现李群李代数可以非常方便地定义各种相关的雅可比。
 
@@ -40,7 +40,7 @@
   <img width="500" src="../Pics/CollisionDetection.gif"/>
 </p>
 
-### 5.4 运动规划Motion Planning
+### 5.4 Motion Planning
 
 现在，你能让机器人按照你的要求运动了。但是，你感觉机器人还是太难用了，必须人工指定经过的路径点，否则机器人可能就会与环境发生碰撞。你想，有没有可能让机器人自己找到这些路径点。
 
@@ -74,7 +74,7 @@
   <img width="500" src="../Pics/AtlasRRT.jpg"/>
 </p>
 
-### 5.5 机器学习 Machine Learning
+### 5.5 Machine Learning
 
 前面很多工作都是在做建模+辨识的工作。实际上还有一大类工作是基于数据的，也即，给一个通用模型，用数据进行学习拟合。也就是大家常说的机器学习了。
 
@@ -96,7 +96,7 @@
 
 - 强化学习：这个下章介绍。
 
-### 5.6 强化学习 Reinforcement Learning
+### 5.6 Reinforcement Learning
 
 如果研究过强化学习，肯定会被其极简的理论所折服：所有的理论衍生自一个 Bellman equation。而且，强化学习非常符合人的直觉。因此，很多人认为强化学习是机器人的未来方向。
 
@@ -114,7 +114,7 @@
 
 当然，这些不重要。重要的是理解 Markov Decision Processes。你会发现，它不仅可以用来解决运动规划问题（DP ≈ Dijkstra、Monte Carlo ≈ RRT），还可以用来解决任务规划问题。
 
-### 5.7 最新论文 Keep Tracking on Publications
+### 5.7 Keep Tracking on Publications
 
 至此，你已经能够阅读绝大多数最新的论文了。所以，你应该关注类似 RSS、ICRA、IROS 等相关会议，了解机器人领域的最新进展；通过 IJRR、TRO 等期刊学习最新的理论。
 
