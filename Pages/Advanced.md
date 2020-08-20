@@ -116,6 +116,6 @@ In addition, it is highly recommended to start with《Springer Handbook of Robot
 
 ### 5.7 Keep Tracking on Publications
 
-至此，你已经能够阅读绝大多数最新的论文了。所以，你应该关注类似 RSS、ICRA、IROS 等相关会议，了解机器人领域的最新进展；通过 IJRR、TRO 等期刊学习最新的理论。
+So far, you've been able to read most of the latest papers. Therefore, you should pay attention to relevant meetings such as RSS, ICRA, IROS, and learn about the latest developments in robotics, also catch the latest theories through journals such as IJRR, TRO, etc.
 
-当然，你也可以通过 Google Scholar 订阅相应的关键词，它会不定期将最新的论文推送到你的邮箱。
+Of course, you can also subscribe to the keywords through Google Scholar, which will occasionally push the latest relevant papers to your mailbox.
