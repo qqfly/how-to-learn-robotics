@@ -22,7 +22,6 @@ Next steps, we suggest you can spend few months on Coursera for the [Robotics](h
 
 - Mobility: This part is mainly about the control of foot robots. Through this course, on the one hand, you can get a general understanding of the development of foot robot control, so you will be not too hard to understand when you watch the videos from Boston Dynamics. One the other hands, which is also important, you can master the relationship between robot modeling and control, a simplified model can also be very helpful for control.
 
-- Perception: 这门课质量非常不错，基本是介绍相机模型、多视几何之类的内容。这方面内容可以对大家未来从事 SLAM、3D 视觉、标定等方面的研究非常有帮助。学完之后，大家就可以做出类似[《AR原理演示》](https://mp.weixin.qq.com/s?__biz=MzA5MDE2MjQ0OQ==&mid=2652786307&idx=1&sn=e71bbca67c7fa69081e863b62b9fd5b4#rd)文章中的效果了：
 - Perception: The quality of this course is very good, basically it introduces the camera model, multi-view geometry etc. This content can be helpful if you going to do research on SLAM, 3D vision and calibration. Once you are done, you can make some similar demo like below:
 
 <p align="center">
