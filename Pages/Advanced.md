@@ -1,6 +1,6 @@
-至此，你已经是一个不错的机器人工程师了。但是，如果你想从事研发工作，就需要学习更多专业知识。当然，这部分就跟大家的研究方向关系比较密切了，我没法一一细说。只大概介绍一些。
+So far, you are already a good robot engineer. However, if you want to work in research and development, you need to learn more expertise. Of course, this part will be closely related to the research direction of most of you, it would be hard to illustrate all in detail, I will introduce partially of it here.
 
-另外，非常建议入手一本《Springer Handbook of Robotics》<sup>[2]</sup>。接触一个新的领域时，在 Handbook 里找到相应的章节，通过它了解基本的大纲，并利用提供的参考文献快速补齐知识。
+In addition, it is highly recommended to start with《Springer Handbook of Robotics》<sup>[2]</sup>. When you approach a new field, I recommend you to find the appropriate chapter in handbook, learn the basic outline through it, and quickly complement the knowledge with the references provided.
 
 ### 5.1 Mathmatics
 
