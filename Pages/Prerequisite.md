@@ -23,7 +23,7 @@
    
 6. **Matlab or Python**：这两个都是非常容易上手，且非常方便数据可视化的编程语言。大家在学习机器人学的过程中，能非常容易地通过这类脚本语言实现一些算法，从而用于验证自己的推导结果。当然，这两部分只要掌握基本的矩阵操作和可视化操作就可以了。其他更高级的用法可以之后再学习。Coursera 上很容易找到这两门语言的入门课程 [Matlab](https://www.coursera.org/learn/matlab)、[Python](https://www.coursera.org/specializations/python)。
 
-7. **控制理论**：机器人学是离不开控制的，但是机器人学教材一般不会过多介绍这块。当然，目前大多数工业机器人都还是使用比较简单的算法。但是，作为研究者，有必要了解一些基本的控制理论，例如 PID、状态方程、可观性、可控性、李雅普诺夫、最优控制、一点点非线性控制与一点点智能控制等。这部分可以在 Youtube 上看看 [Brian Douglas](www.youtube.com/channel/UCq0imsn84ShAe9PBOFnoIrg) 的视频。
+7. **控制理论**：机器人学是离不开控制的，但是机器人学教材一般不会过多介绍这块。当然，目前大多数工业机器人都还是使用比较简单的算法。但是，作为研究者，有必要了解一些基本的控制理论，例如 PID、状态方程、可观性、可控性、李雅普诺夫、最优控制、一点点非线性控制与一点点智能控制等。这部分可以在 Youtube 上看看 [Brian Douglas](https://www.youtube.com/user/ControlLectures/featured) 的视频。
 
 <p align="center">
   <img width="500" src="../Pics/IngenieriaElectrica.jpg"/>
