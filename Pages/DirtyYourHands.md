@@ -34,6 +34,10 @@
   <img width="500" src="../Pics/Mapping.jpg"/>
 </p>
 
+**更新**：根据 [@Alex-WangHT](https://github.com/Alex-WangHT) 的 [反馈](https://github.com/qqfly/how-to-learn-robotics/issues/9)，上述课程在 Coursera 已经下架，无法访问。可以看看其他备选课程：
+- 关于机械臂的视觉控制可以看一下[Robotics:Vision and Control 3rd(Peter Corke)](https://petercorke.com/rvc3-landing/)。这本书有Python版和Matlab版。包括了之前coursera上面的关于perception的一些内容；
+- 与宾大机器人专项课程中Aerial Robotics有关的内容，可以看一下北航全权老师的[无人机系列课程](https://rflysim.com/doc/zh/)，有仿真器可以仿真
+
 ### 4.3 ROS
 
 到现在为止，你对机器人的基础知识有了一个比较完整的脉络，而且，也用 Matlab 实现了一些有趣的算法。但是，你发现，机器人是一个非常大的系统，作为初学者，不太可能从头开始一步步搭建机器人所需的各个算法模块。这时候，你就应该开始拥抱伟大的开源世界了。
