@@ -8,7 +8,7 @@
 
 - **数值计算方法**：很多时候，我们都是通过计算机来实现算法功能的，所以，你必须了解基本的数值计算方法，如数值微分、数值积分等。这部分可以看《Numerical Methods for Engineers》<sup>[3]</sup>
 
-- **凸优化**：这个世界很多问题都不容易找到解析解，我们得用优化方法来计算。所以，你必须了解如何建立优化模型，并知道如何用代码进行求解。这里，我推荐 Stanford 的公开课[《Convex Optimization》](https://lagunita.stanford.edu/courses/Engineering/CVX101/Winter2014/about)
+- **凸优化**：这个世界很多问题都不容易找到解析解，我们得用优化方法来计算。所以，你必须了解如何建立优化模型，并知道如何用代码进行求解。这里，我推荐 Stanford 的公开课[《Convex Optimization》](https://web.stanford.edu/class/ee364a/)
 
 - **李群李代数**：优化方法经常要使用梯度信息，但是，你发现很多时候你不知道怎么定义梯度。李群李代数是一个非常经典的数学工具，可以非常方便地描述 SO(3)、SE(3) 空间中的对象。到这里，你之前对于四元数、角速度之类的疑问将一扫而空。这部分的学习资料，我会在后面补充。
 
@@ -62,7 +62,7 @@
 
 （1）运动规划是在 Configuration Space 里进行的，而大多数常见机构的 Configuration Space 都是一个 Lie Group：多关节机器人的关节空间（Torus(n)），无人机（SE(3)），机器人末端操作物体的相关约束（SE(3)）。于是，我们只要定义各种 Lie Group 的基本性质，就可以用统一的规划算法来进行规划了。具体可以看 Ompl 里 State space 的使用。
 
-（2）当我们的规划涉及到一些约束，如让机器人末端保持水平（拿着一杯水）。一种方法是用传统的方法。如 OpenRave 里的一个实现：[ConstraintPlanning](http://openrave.org/docs/0.8.2/openravepy/examples.constraintplanning/)， 在关节空间随机采样一个点，然后投影到最近的任务空间上，之后用 Jacobian 迭代的方式将随机点连接到 RRT 树上。
+（2）当我们的规划涉及到一些约束，如让机器人末端保持水平（拿着一杯水）。一种方法是用传统的方法。如 OpenRave 里的一个实现：[ConstraintPlanning](https://github.com/rdiankov/openrave/blob/master/python/examples/constraintplanning.py)， 在关节空间随机采样一个点，然后投影到最近的任务空间上，之后用 Jacobian 迭代的方式将随机点连接到 RRT 树上。
 
 <p align="center">
   <img width="300" src="../Pics/TaskConstrainedRRT.jpg"/>
@@ -92,11 +92,11 @@
 
 - 建模：对于一些不好建模的地方，有时候不妨试试机器学习的方法，例如，用神经网络拟合摩擦力；
 
-- 视觉：机器人经成需要跟视觉结合在一起，而 DL 在视觉领域发展迅速，有时候借用这一工具，可以非常快地搭建实验原型；
+- 视觉：机器人经常需要跟视觉结合在一起，而 DL 在视觉领域发展迅速，有时候借用这一工具，可以非常快地搭建实验原型；
 
 - 强化学习：这个下节介绍。
 
-**更新**：近期，随着`具身智能`概念的发展，出现了一些非常不错的效果。虽然这些效果还处于“过拟合”的状态，但它也实现了很多传统规控方法很难实现的效果（如穿鞋带、叠衣服等），给机器人领域带来了很多新的东西。这部分内容我也还在学习中，后续可能再补偿完整。
+**更新**：近期，随着`具身智能`概念的发展，出现了一些非常不错的效果。虽然这些效果还处于“过拟合”的状态，但它也实现了很多传统规控方法很难实现的效果（如穿鞋带、叠衣服等），给机器人领域带来了很多新的东西。这部分内容我也还在学习中，后续可能再补充完整。
 
 ### 5.6 强化学习
 
@@ -112,7 +112,7 @@
 
 你知道了强化学习就是要通过不断尝试来学习得到一个从 State 到 Action/Value 的查找表。
 
-于是，你就想，有没有可能简化这个查找表，于是，你知道了有 Function Approximation。如果这个近似函数是神经网络，那么就是现在很火的 Deep Reinforcement Learing 了。
+于是，你就想，有没有可能简化这个查找表，于是，你知道了有 Function Approximation。如果这个近似函数是神经网络，那么就是现在很火的 Deep Reinforcement Learning 了。
 
 当然，这些不重要。重要的是理解 Markov Decision Processes。你会发现，它不仅可以用来解决运动规划问题（DP ≈ Dijkstra、Monte Carlo ≈ RRT），还可以用来解决任务规划问题。
 
