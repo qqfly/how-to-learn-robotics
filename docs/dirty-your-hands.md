@@ -1,3 +1,5 @@
+# 实践
+
 看完 Craig 的书后，你应该对工业机器人的原理有了一个大概的概念，但是，你缺乏实际动手经验，不清楚如何将书上的东西应用到实际机器人上。机器人毕竟是一个实践性的学科，一直停留在理论，不仅无用、而且无趣。
 
 **Get your hands dirty!**
@@ -34,15 +36,13 @@
   <img width="500" src="../Pics/Mapping.jpg"/>
 </p>
 
-**更新**：根据 [@Alex-WangHT](https://github.com/Alex-WangHT) 的 [反馈](https://github.com/qqfly/how-to-learn-robotics/issues/9)，上述课程在 Coursera 已经下架，无法访问。可以看看其他备选课程：
-- 关于机械臂的视觉控制可以看一下[Robotics:Vision and Control 3rd(Peter Corke)](https://petercorke.com/rvc3-landing/)。这本书有Python版和Matlab版。包括了之前coursera上面的关于perception的一些内容；
-- 与宾大机器人专项课程中Aerial Robotics有关的内容，可以看一下北航全权老师的[无人机系列课程](https://rflysim.com/doc/zh/)，有仿真器可以仿真
+除了这个专项课程，再补充两个不错的资料：机械臂的视觉控制可以看 [Robotics: Vision and Control 3rd (Peter Corke)](https://petercorke.com/rvc3-landing/)，有 Python 和 Matlab 版，也覆盖了 Perception 的部分内容；和 Aerial Robotics 相关的，可以看北航全权老师的[无人机系列课程](https://rflysim.com/doc/zh/)，带仿真器。
 
 ### 4.3 ROS
 
 到现在为止，你对机器人的基础知识有了一个比较完整的脉络，而且，也用 Matlab 实现了一些有趣的算法。但是，你发现，机器人是一个非常大的系统，作为初学者，不太可能从头开始一步步搭建机器人所需的各个算法模块。这时候，你就应该开始拥抱伟大的开源世界了。
 
-很多人可能知道，有一个叫做机器人操作系统的开源项目 [(Robot Operating System, ROS)](https://wiki.ros.org/)。
+很多人可能知道，有一个叫做机器人操作系统的开源项目 [(Robot Operating System, ROS)](https://www.ros.org/)。ROS 有 ROS 1 和 ROS 2 两代，ROS 1 的最后一个版本 Noetic 已经在 2025 年停止维护，社区的开发重心早已转向 ROS 2，所以直接学 ROS 2 就行。
 
 对于学习 ROS，网上可能有不少教程了。但是，我感觉，很多机电、自动化方向的学生并不适合直接开始看 ROS。因为他们缺乏基本的 Linux、C++ 知识。所以，我推荐按照如下步骤进行学习：
 
@@ -54,12 +54,12 @@
 
 - **数据结构**：其实，上面的基础已经足够你学习 ROS 了，但是，为了未来的学习，可以在适当时候学习一些数据结构的知识。数据结构的话，我推荐学堂在线上清华邓俊辉老师 [《数据结构(上)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184+sp/about)与[《数据结构(下)》](http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184_2X+sp/about)。
 
-现在，你就可以大胆地去看 ROS 了。作为开源项目，我认为最好的教程就是官网的教程 [ROS Tutorials](https://wiki.ros.org/ROS/Tutorials)。
+现在，你就可以大胆地去看 ROS 2 了。作为开源项目，我认为最好的教程就是官网的教程 [ROS 2 Tutorials](https://docs.ros.org/)。
 
-首先，通过 Beginner Level 和 Intermediate Level 了解 ROS 基本的通讯机制、学会使用 catkin、roslaunch、Rviz 等基本工具。
+首先，跟着官方的入门教程了解 ROS 2 基本的通讯机制、学会使用 colcon、ros2 launch、Rviz 等基本工具。
 
 之后，就可以根据各自的研究兴趣去看不同模块了。
 
-如果有条件，能够配合一些 ROS 支持比较好的平台进行研究的话，可以大大提高学习速度。例如 TurtleBot、Baxter、Universal Robot 之类的。（这就看每个人条件了。）
+如果有条件，能够配合一些 ROS 支持比较好的平台进行研究的话，可以大大提高学习速度。例如 TurtleBot、Franka Panda、Universal Robot 之类的。（这就看每个人条件了。）
 
-理论上，在 ROS 环境下，你可以从事绝大多数与实时控制无关的研究，如 SLAM、Navigation、Motion Planning 等。如果你从事的是更加底层的工作，（如控制器设计），目前 ROS 还无法胜任。（如果不清楚为什么，回顾一下实时操作系统、机器人控制方面的知识）。
+理论上，在 ROS 2 环境下，绝大多数跟硬实时无关的研究你都可以直接做，比如 SLAM、Navigation、Motion Planning 等。至于更底层的实时控制，ROS 2 和 ROS 1 已经不是一回事了：ROS 1 有中心化的 Master、自定义传输、又没法控制内存分配，架构上就跟实时无缘；ROS 2 改用了 DDS 的 QoS、去中心化的节点发现、还能自定义 allocator，也可以跑在 PREEMPT_RT 或 RTOS 上，实时控制这才变得可行——但不是开箱即用，默认的 rclcpp executor 既不实时也不确定，你得自己把实时内核、实时安全的 executor、静态内存分配、实时中间件都配齐。一个更实用的判断是：最底层的电流环、力矩环（几 kHz 以上），不管哪一代 ROS 都是跑在驱动器、EtherCAT 从站或单片机上的；而 100 Hz–1 kHz 的阻抗控制、WBC、MPC，用 ros2_control 或 micro-ROS 是可以胜任的。（如果不清楚这里为什么，回顾一下实时操作系统、机器人控制方面的知识。）

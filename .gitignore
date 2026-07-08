@@ -4,3 +4,21 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# MkDocs 构建输出
+/site/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# 本地预览配置
+.claude/
+
+# 临时 / 规划文档（本地保留，不提交）
+/tmp/

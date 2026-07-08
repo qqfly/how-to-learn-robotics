@@ -1,0 +1,73 @@
+# 开源机器人学学习指南 — MkDocs Material 配置
+# 本地预览： mkdocs serve      本地构建： mkdocs build
+site_name: 开源机器人学学习指南
+site_description: 面向「非科班出身」读者的中文机器人学自学指南
+site_author: qqfly
+site_url: https://learn-robotics.qqfly.net/
+repo_url: https://github.com/qqfly/how-to-learn-robotics
+repo_name: qqfly/how-to-learn-robotics
+edit_uri: edit/master/docs/
+copyright: 本作品采用 CC BY 4.0 许可协议进行许可
+
+# 构建时排除未被正文引用的大文件（图源 / 未使用图片）
+exclude_docs: |
+  Pics/Figures.pptx
+  Pics/IngenieriaElectrica.jpg
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.top        # 返回顶部按钮
+    - navigation.footer     # 页脚「上一页 / 下一页」
+    - navigation.tracking   # 地址栏跟随锚点
+    - toc.follow            # 右侧目录跟随
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切换到夜间模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到日间模式
+
+# 导航顺序沿用原 SUMMARY.md；Material 会据此自动生成「上一页 / 下一页」
+nav:
+  - 关于本书: index.md
+  - 一. 前言: preface.md
+  - 二. 先修知识: prerequisite.md
+  - 三. 入门: getting-started.md
+  - 四. 实践: dirty-your-hands.md
+  - 五. 进阶: advanced.md
+  - 六. 勇者斗恶龙: dragon-quest.md
+  - 七. 参考文献: references.md
+  - 许可证: license.md
+
+markdown_extensions:
+  - pymdownx.arithmatex:     # 数学公式（配合 MathJax）
+      generic: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - admonition
+  - attr_list
+  - md_in_html               # 允许正文中的居中 <p><img> 等 HTML
+  - toc:
+      permalink: true
+
+# 本地搜索（Material 内置，支持中文，无需外部服务）
+plugins:
+  - search
+
+# 本地打包的 MathJax（SVG 版，自包含、无需外部字体；避免 CDN 在国内不稳定）
+extra_javascript:
+  - javascripts/mathjax.js
+  - javascripts/mathjax/tex-svg.js
+
+extra_css:
+  - stylesheets/extra.css

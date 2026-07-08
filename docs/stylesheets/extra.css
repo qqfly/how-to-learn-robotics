@@ -1,0 +1,6 @@
+/* 正文图片自适应容器宽度，改善窄屏 / 移动端阅读体验。
+   正文仍用 <p align="center"> 居中，此处仅约束最大宽度，避免固定 width 在窄屏溢出。 */
+.md-typeset img {
+  max-width: 100%;
+  height: auto;
+}

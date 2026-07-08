@@ -1,0 +1,3 @@
+# 本地预览 / 构建本手册所需依赖
+# 安装： pip install -r requirements.txt
+mkdocs-material>=9.7,<10

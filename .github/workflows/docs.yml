@@ -1,0 +1,28 @@
+# 文档站构建校验（安全：仅验证 mkdocs build，不执行任何部署）
+# - 在 Pull Request / 手动触发时运行 `mkdocs build --strict`，及早发现坏链、断图、公式问题。
+# - 实际部署到 GitHub Pages / 腾讯云的步骤见 DEPLOY.md（本工作流不部署）。
+# - 注：GitHub 从默认分支读取工作流，故合并到 master 后此校验才会在 PR 上生效。
+name: docs-build-check
+
+on:
+  pull_request:
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "requirements.txt"
+      - ".github/workflows/docs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: mkdocs build --strict
