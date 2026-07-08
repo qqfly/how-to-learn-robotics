@@ -133,9 +133,26 @@ $$\dot{x}=J\cdot \dot{q}$$
 
 我相信，80% 的小伙伴是在这一章放弃的。
 
-<p align="center">
-  <img width="500" src="../Pics/NewtonEulerDynamics.jpg"/>
-</p>
+以牛顿-欧拉递推为例：
+
+$$
+\begin{aligned}
+{}^{i+1}\omega_{i+1} &= {}^{i+1}_{i}R\,{}^{i}\omega_i + \dot\theta_{i+1}\,{}^{i+1}\hat z_{i+1}\\
+{}^{i+1}\dot\omega_{i+1} &= {}^{i+1}_{i}R\,{}^{i}\dot\omega_i + {}^{i+1}_{i}R\,{}^{i}\omega_i\times\dot\theta_{i+1}\,{}^{i+1}\hat z_{i+1} + \ddot\theta_{i+1}\,{}^{i+1}\hat z_{i+1}\\
+{}^{i+1}\dot v_{i+1} &= {}^{i+1}_{i}R\big({}^{i}\dot\omega_i\times{}^{i}P_{i+1} + {}^{i}\omega_i\times({}^{i}\omega_i\times{}^{i}P_{i+1}) + {}^{i}\dot v_i\big)\\
+{}^{i+1}\dot v_{C_{i+1}} &= {}^{i+1}\dot\omega_{i+1}\times{}^{i+1}P_{C_{i+1}} + {}^{i+1}\omega_{i+1}\times({}^{i+1}\omega_{i+1}\times{}^{i+1}P_{C_{i+1}}) + {}^{i+1}\dot v_{i+1}\\
+{}^{i+1}F_{i+1} &= m_{i+1}\,{}^{i+1}\dot v_{C_{i+1}}\\
+{}^{i+1}N_{i+1} &= {}^{C_{i+1}}I_{i+1}\,{}^{i+1}\dot\omega_{i+1} + {}^{i+1}\omega_{i+1}\times{}^{C_{i+1}}I_{i+1}\,{}^{i+1}\omega_{i+1}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+{}^{i}f_i &= {}^{i}_{i+1}R\,{}^{i+1}f_{i+1} + {}^{i}F_i\\
+{}^{i}n_i &= {}^{i}N_i + {}^{i}_{i+1}R\,{}^{i+1}n_{i+1} + {}^{i}P_{C_i}\times{}^{i}F_i + {}^{i}P_{i+1}\times{}^{i}_{i+1}R\,{}^{i+1}f_{i+1}\\
+\tau_i &= {}^{i}n_i^{\top}\,{}^{i}\hat z_i
+\end{aligned}
+$$
 
 对于多轴机器人的动力学，不论是采用牛顿欧拉还是拉格朗日法，都会**显得**异常复杂。再加上如果之前没学好理论力学，那么基本上是举步维艰了。
 
@@ -202,7 +219,7 @@ $$F = m \cdot a$$
 这时候你又想到，既然 PID 和动力学都可以计算让机器人运动所需的力，只是动力学稍微有一些不准，那么有没有可能把它们结合在一起，先用动力学算一个基本准确的力矩，然后用 PID 消除不准确性造成的微小误差？
 
 <p align="center">
-  <img width="500" src="../Pics/FeedforwardPID.jpg"/>
+  <img width="700" src="../Pics/FeedforwardPID.svg"/>
 </p>
 
 是的，于是你发现了基于动力学前馈的 PID 控制算法。
