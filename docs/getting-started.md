@@ -52,7 +52,7 @@
 这不重要，你只要知道它是帮你确定两个连杆之间的相对关系就行。不妨掌握 Craig 书上的那种就行（Wikipedia上称为 Modified DH)：
 
 <p align="center">
-  <img width="500" src="../Pics/ModifiedDH.jpg"/>
+  <img width="500" src="../Pics/ModifiedDH.webp"/>
 </p>
 
 1）建立坐标系：
