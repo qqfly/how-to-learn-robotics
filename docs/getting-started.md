@@ -187,7 +187,7 @@ $$F = m \cdot a$$
 换句话说，我们可以通过动力学计算出让机器人运动所需的每个关节力矩。
 
 <p align="center">
-  <img width="500" src="../Pics/DCMotor.jpg"/>
+  <img width="500" src="../Pics/DCMotor.webp"/>
 </p>
 
 而关节力矩，可以通过电机提供，对于直流电机，输出力矩与电流成正比。
@@ -213,7 +213,7 @@ $$F = m \cdot a$$
 但是，感觉好像还是有什么不对，机器人运动好像是有加减速过程（右）的，而非一次阶跃（左）。
 
 <p align="center">
-  <img width="500" src="../Pics/TrajPlanning.jpg"/>
+  <img width="500" src="../Pics/TrajPlanning.webp"/>
 </p>
 
 这就是轨迹规划（Trajectory Planning），给定一些轨迹点，利用不同的函数来拟合这些轨迹。
