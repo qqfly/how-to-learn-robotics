@@ -113,6 +113,10 @@ $$\dot{x}=J\cdot \dot{q}$$
   <img width="500" src="../Pics/JacobianIK.webp"/>
 </p>
 
+其中，末端位姿误差为 $\Delta x = x - \hat{x}$；由雅可比反解出关节增量，再不断迭代：
+
+$$\Delta q = J^{\dagger}\Delta x,\qquad q_{k+1} = q_k + \Delta q$$
+
 是的，这就是机器人运动学的数值计算方式，你可以利用这个方法写一个机器人运动学的通用求解算法。具体可以看我在知乎上的回答 [MATLAB机器人工具箱中机器人逆解是如何求出来的](https://www.zhihu.com/question/41673569/answer/129670927)。
 
 各位初学者**务必**亲手实现一遍这种算法，还是有些坑需要踩的。
