@@ -86,7 +86,7 @@
 
 - Geoffrey Hinton 的[《Neural Networks for Machine Learning》](https://www.youtube.com/playlist?list=PLoRl3Ht4JOcdU872GhiYWf6jwrk_SNhz9)，之前是在 Coursera 上看的，现在似乎只能在 Youtube 上找到了。这门课基本可以把几种经典的神经网络过一遍。
 
-- 各种开源平台。有了前面的基础，也在 Matlab 中实现过几种经典机器学习算法，你就可以去尝试一些深度学习开源平台了，如 [TensorFlow](https://www.tensorflow.org/)。做机器学习的人太多了，所以资料也非常多，在网上非常容易自学。
+- 各种开源平台。有了前面的基础，也在 Matlab 中实现过几种经典机器学习算法，你就可以去尝试一些深度学习开源平台了，如 [PyTorch](https://pytorch.org/)。做机器学习的人太多了，所以资料也非常多，在网上非常容易自学。
 
 当然，我们要知道，我们学机器学习，并不是为了转到 DL 方向上，而是用它来为机器人研究提供工具的：
 
@@ -104,7 +104,7 @@
 
 如果研究过强化学习，肯定会被其极简的理论所折服：所有的理论衍生自一个 Bellman equation。而且，强化学习非常符合人的直觉。因此，很多人认为强化学习是机器人的未来方向。
 
-对此，我不做过多评论。我只大概介绍如何入门强化学习。
+这里，我先大概介绍如何入门强化学习，最后再谈谈我的看法。
 
 首先，就是看书。Sutton 的《Introduction to reinforcement learning》<sup>[9]</sup> 可以说是必读圣经了。
 
