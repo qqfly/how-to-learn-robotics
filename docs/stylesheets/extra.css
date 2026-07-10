@@ -76,3 +76,13 @@ body[data-md-color-scheme="slate"] {
 .md-typeset a.glightbox > img {
   border-radius: 8px;
 }
+
+/* ---------- glightbox 放大层：统一显示尺寸 ----------
+   三张动图源自旧 GIF、分辨率偏低（约 250–400px），glightbox 默认按原始尺寸显示会偏小。
+   这里统一按视口高度显示、宽度自适应（不失真）；低分辨率图会被放大，略糊属源分辨率所限。 */
+.glightbox-container .gslide-image img {
+  width: auto !important;
+  height: min(72vh, 680px) !important;
+  max-width: 92vw !important;
+  border-radius: 6px;
+}
