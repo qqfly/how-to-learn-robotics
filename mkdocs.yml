@@ -9,10 +9,9 @@ repo_name: qqfly/how-to-learn-robotics
 edit_uri: edit/master/docs/
 copyright: 本作品采用 CC BY 4.0 许可协议进行许可
 
-# 构建时排除未被正文引用的大文件（图源 / 未使用图片）
+# 构建时排除未被正文引用的图片
 exclude_docs: |
-  Pics/Figures.pptx
-  Pics/IngenieriaElectrica.jpg
+  Pics/IngenieriaElectrica.webp
 
 theme:
   name: material

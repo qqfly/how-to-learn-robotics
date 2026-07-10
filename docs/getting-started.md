@@ -3,7 +3,7 @@
 对于入门部分，实际上就是了解如何让一个工业机器人动起来。这方面其实已经研究非常成熟了，大家看上个世纪的教材就行，个人推荐的是 John Craig 的教材 《Introduction to Robotics: Mechanics and Control》<sup>[1]</sup>，在 [Youtube](https://www.youtube.com/watch?v=0yD3uBshJB0&list=PL64324A3B147B5578) 和[Bilibili](https://www.bilibili.com/video/BV15W411q78p/)都可以找到斯坦福 Oussama Khatib 大神的视频，基本与 Craig 的教材内容相匹配。
 
 <p align="center">
-  <img width="300" src="../Pics/CraigBook.jpg"/>
+  <img width="300" src="../Pics/CraigBook.webp"/>
 </p>
 
 建议从 Craig 的教材开始就看英文版本，Google 一下，很容易找到 PDF 版本。作为一本入门教材，Craig 的教材是相当深入浅出的，配合着 Khatib 的视频，可以快速掌握机器人学的基础。
@@ -35,7 +35,7 @@
 ### 3.2 运动学
 
 <p align="center">
-  <img width="600" src="../Pics/RobotKinematics.jpg"/>
+  <img width="600" src="../Pics/RobotKinematics.webp"/>
 </p>
 
 对于机器人来说，一个基本工作就是计算运动学：

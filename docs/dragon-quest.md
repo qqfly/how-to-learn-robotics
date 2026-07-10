@@ -23,7 +23,7 @@
 当你看到绝大多数机器人还是通过上面这样的方式，一点点示教出来的，你会有强烈的感觉：「这就是恶龙！」
 
 <p align="center">
-  <img width="500" src="../Pics/TeachingDevice.jpg"/>
+  <img width="500" src="../Pics/TeachingDevice.png"/>
 </p>
 
 当你看到世界上那么多机器人公司，有着各自形形色色、互不兼容的编程语言、示教器的时候，你会有强烈的感觉：「这就是恶龙！」

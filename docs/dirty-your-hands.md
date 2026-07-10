@@ -33,7 +33,7 @@
 - Estimation and Learning：这门课从高斯分布开始，介绍了 Kalman Filter、Particle Filter 等在机器人状态估计中非常有用的工具。而且，这门课的大作业会让你从零开始编写 2D 地图重建的程序，你可以知道如何利用激光传感器信息获得下面这样的 2D 地图。
 
 <p align="center">
-  <img width="500" src="../Pics/Mapping.jpg"/>
+  <img width="500" src="../Pics/Mapping.webp"/>
 </p>
 
 除了这个专项课程，再补充两个不错的资料：机械臂的视觉控制可以看 [Robotics: Vision and Control 3rd (Peter Corke)](https://petercorke.com/rvc3-landing/)，有 Python 和 Matlab 版，也覆盖了 Perception 的部分内容；和 Aerial Robotics 相关的，可以看北航全权老师的[无人机系列课程](https://rflysim.com/doc/zh/)，带仿真器。

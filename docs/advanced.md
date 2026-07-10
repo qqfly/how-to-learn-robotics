@@ -17,7 +17,7 @@
 ### 5.2 Modern Robotics
 
 <p align="center">
-  <img width="500" src="../Pics/ModernRobotics.jpg"/>
+  <img width="500" src="../Pics/ModernRobotics.webp"/>
 </p>
 
 李群李代数对于很多工科学生可能一时无法接受。这里，我推荐从 Modern Robotics 开始，这是一本面向本科生的教材，非常浅显。
@@ -53,7 +53,7 @@
 运动规划的大致介绍可以看我以前写过的文章：[《运动规划 | 简介篇》](https://mp.weixin.qq.com/s/_fE760XxFlvrkzYEpslYvA)。
 
 <p align="center">
-  <img width="500" src="../Pics/PlanningBooks.jpg"/>
+  <img width="500" src="../Pics/PlanningBooks.webp"/>
 </p>
 
 更详细的介绍最好看教材，如《Principles of Robot Motion》<sup>[5]</sup> 和《Planning Algorithms》<sup>[6]</sup> 都是不错的教材。
