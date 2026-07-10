@@ -1,6 +1,6 @@
 # 文档站构建校验（安全：仅验证 mkdocs build，不执行任何部署）
 # - 在 Pull Request / 手动触发时运行 `mkdocs build --strict`，及早发现坏链、断图、公式问题。
-# - 实际部署到 GitHub Pages / 腾讯云的步骤见 DEPLOY.md（本工作流不部署）。
+# - 本工作流只做构建校验，不部署；实际部署到 GitHub Pages / 腾讯云需另行手动执行。
 # - 注：GitHub 从默认分支读取工作流，故合并到 master 后此校验才会在 PR 上生效。
 name: docs-build-check
 

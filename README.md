@@ -23,8 +23,6 @@ pip install -r requirements.txt
 mkdocs serve      # 然后打开 http://127.0.0.1:8000
 ```
 
-本地构建与部署方式见 [DEPLOY.md](DEPLOY.md)。
-
 ## 如何贡献
 
 本项目写作时间很短，所以肯定有疏漏。因此放在这里作为一个开源项目，大家可以随时修改并提交 [Pull Request](https://github.com/qqfly/how-to-learn-robotics/pulls)；有问题也可以提 [Issues](https://github.com/qqfly/how-to-learn-robotics/issues)。
