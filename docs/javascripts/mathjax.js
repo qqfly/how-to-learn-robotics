@@ -13,9 +13,11 @@ window.MathJax = {
   }
 };
 
-// Re-typeset on page change (safe with or without instant navigation)
+// Re-typeset on page change — required for navigation.instant (AJAX 换页后无自动排版)。
+// 注意：SVG 版 MathJax 没有 output.clearCache（那是 CHTML 清字体缓存用的），
+// 调它会抛异常并中断整个回调，导致 typesetPromise 不执行、公式不渲染。故不要调用它。
 document$.subscribe(() => {
-  MathJax.startup.output.clearCache();
+  if (!window.MathJax?.typesetPromise) return;
   MathJax.typesetClear();
   MathJax.texReset();
   MathJax.typesetPromise();
