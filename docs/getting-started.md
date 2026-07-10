@@ -3,7 +3,7 @@
 对于入门部分，实际上就是了解如何让一个工业机器人动起来。这方面其实已经研究非常成熟了，大家看上个世纪的教材就行，个人推荐的是 John Craig 的教材 《Introduction to Robotics: Mechanics and Control》<sup>[1]</sup>，在 [Youtube](https://www.youtube.com/watch?v=0yD3uBshJB0&list=PL64324A3B147B5578) 和[Bilibili](https://www.bilibili.com/video/BV15W411q78p/)都可以找到斯坦福 Oussama Khatib 大神的视频，基本与 Craig 的教材内容相匹配。
 
 <p align="center">
-  <img width="300" src="../Pics/CraigBook.webp"/>
+  <img width="300" src="../images/craig-book.webp"/>
 </p>
 
 建议从 Craig 的教材开始就看英文版本，Google 一下，很容易找到 PDF 版本。作为一本入门教材，Craig 的教材是相当深入浅出的，配合着 Khatib 的视频，可以快速掌握机器人学的基础。
@@ -35,7 +35,7 @@
 ### 3.2 运动学
 
 <p align="center">
-  <img width="600" src="../Pics/RobotKinematics.webp"/>
+  <img width="600" src="../images/robot-kinematics.webp"/>
 </p>
 
 对于机器人来说，一个基本工作就是计算运动学：
@@ -52,7 +52,7 @@
 这不重要，你只要知道它是帮你确定两个连杆之间的相对关系就行。不妨掌握 Craig 书上的那种就行（Wikipedia上称为 Modified DH)：
 
 <p align="center">
-  <img width="500" src="../Pics/ModifiedDH.webp"/>
+  <img width="500" src="../images/modified-dh.webp"/>
 </p>
 
 1）建立坐标系：
@@ -110,7 +110,7 @@ $$\dot{x}=J\cdot \dot{q}$$
 这时候，你有了雅可比矩阵，你就会发现，你知道怎么通过调节角度来控制末端运动了。这时候我们再回头看运动学逆解的问题。你会发现：「让机器人末端朝着目标位姿运动不就可以了？」。
 
 <p align="center">
-  <img width="500" src="../Pics/JacobianIK.webp"/>
+  <img width="500" src="../images/jacobian-ik.webp"/>
 </p>
 
 其中，末端位姿误差为 $\Delta x = x - \hat{x}$；由雅可比反解出关节增量，再不断迭代：
@@ -181,7 +181,7 @@ $$F = m \cdot a$$
 要让一个东西动起来，就要给它施力。
 
 <p align="center">
-  <img width="640" src="../Pics/Slider.svg"/>
+  <img width="640" src="../images/slider.svg"/>
 </p>
 
 如果我们给定一个滑块的运动轨迹 $s(t)$，我们就可以计算出它整个轨迹的加速度 $\ddot{s}(t)$，进而计算出让滑块按照我们设想运动所需的力 $F(t) = m \cdot \ddot{s}(t)$。
@@ -189,7 +189,7 @@ $$F = m \cdot a$$
 换句话说，我们可以通过动力学计算出让机器人运动所需的每个关节力矩。
 
 <p align="center">
-  <img width="500" src="../Pics/DCMotor.webp"/>
+  <img width="500" src="../images/dc-motor.webp"/>
 </p>
 
 而关节力矩，可以通过电机提供，对于直流电机，输出力矩与电流成正比。
@@ -207,7 +207,7 @@ $$F = m \cdot a$$
 但是，又有问题：如果我们直接把关节目标位置发给 PID 控制器，那么每次都是一次阶跃响应。
 
 <p align="center">
-  <img width="680" src="../Pics/StepAndTraj.svg"/>
+  <img width="680" src="../images/step-and-traj.svg"/>
 </p>
 
 在这里，建议有条件的小伙伴用单片机弄一个单轴伺服控制系统，有伺服电机（你可以控制电流、力矩、或者 PWM 占空比；步进电机、舵机就算了）、有编码器（可以反馈电机的角度）、有驱动器（能将数字指令转换成电机控制信号）、有控制器（STM32等单片机，可以给驱动器提供控制指令）。顺便可以了解一些通讯、中断、实时性的内容。
@@ -215,7 +215,7 @@ $$F = m \cdot a$$
 但是，感觉好像还是有什么不对，机器人运动好像是有加减速过程（右）的，而非一次阶跃（左）。
 
 <p align="center">
-  <img width="500" src="../Pics/TrajPlanning.webp"/>
+  <img width="500" src="../images/traj-planning.webp"/>
 </p>
 
 这就是轨迹规划（Trajectory Planning），给定一些轨迹点，利用不同的函数来拟合这些轨迹。
@@ -223,7 +223,7 @@ $$F = m \cdot a$$
 这时候你又想到，既然 PID 和动力学都可以计算让机器人运动所需的力，只是动力学稍微有一些不准，那么有没有可能把它们结合在一起，先用动力学算一个基本准确的力矩，然后用 PID 消除不准确性造成的微小误差？
 
 <p align="center">
-  <img width="700" src="../Pics/FeedforwardPID.svg"/>
+  <img width="700" src="../images/feedforward-pid.svg"/>
 </p>
 
 是的，于是你发现了基于动力学前馈的 PID 控制算法。
