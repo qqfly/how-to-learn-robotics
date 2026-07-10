@@ -1,3 +1,5 @@
 # 本地预览 / 构建本手册所需依赖
 # 安装： pip install -r requirements.txt
 mkdocs-material>=9.7,<10
+mkdocs-glightbox>=0.4     # 图片点击放大（资源本地打包，无 CDN）
+jieba>=0.42               # 中文搜索分词

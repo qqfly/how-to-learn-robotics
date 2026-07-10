@@ -1,6 +1,78 @@
-/* 正文图片自适应容器宽度，改善窄屏 / 移动端阅读体验。
-   正文仍用 <p align="center"> 居中，此处仅约束最大宽度，避免固定 width 在窄屏溢出。 */
+/* ============================================================
+   开源机器人学学习指南 — 自定义样式
+   目标：书卷气的阅读体验（暖调 + 衬线正文）。全部系统字体，无外部 CDN。
+   注：配色 / 字体变量用 body[data-md-color-scheme] 选择器（特指度 0,1,1，高于 :root），
+       以压过 Material 主题及其内联注入的 :root 默认值。
+   ============================================================ */
+
+/* ---------- 字体 ----------
+   正文衬线：拉丁文在 macOS 取系统「New York」，中文取宋体系；
+   标题无衬线；代码系统等宽。均为系统字体，不加载外部字库。 */
+body[data-md-color-scheme] {
+  --md-text-font-family:
+    ui-serif, "New York", Charter, Georgia, Cambria,
+    "Songti SC", "STSong", "SimSun",
+    "Source Han Serif SC", "Noto Serif CJK SC", serif;
+  --md-code-font-family:
+    ui-monospace, "SF Mono", "SFMono-Regular", Menlo,
+    "Cascadia Code", "JetBrains Mono", Consolas, "Liberation Mono", monospace;
+}
+
+.md-typeset {
+  font-family: var(--md-text-font-family);
+  line-height: 1.75;          /* 衬线正文稍加行距，长文更耐读 */
+}
+
+/* 标题改用无衬线，与衬线正文形成对比（对应 Claude「界面无衬线 / 阅读区衬线」的分工） */
+.md-typeset h1, .md-typeset h2, .md-typeset h3,
+.md-typeset h4, .md-typeset h5, .md-typeset h6 {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- 品牌配色（暖调：炭墨 + 陶土）---------- */
+body[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #3e3a36;   /* 页眉：暖炭墨 */
+  --md-primary-fg-color--light: #55504a;
+  --md-primary-fg-color--dark:  #2b2825;
+  --md-primary-bg-color:        #ffffff;   /* 页眉上的文字 / 图标 */
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.72);
+  --md-accent-fg-color:         #c15f3c;   /* 交互强调：陶土 */
+  --md-typeset-a-color:         #b4552f;   /* 正文链接：稍深陶土，保证对比度 */
+}
+body[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #26221f;
+  --md-primary-fg-color--light: #3a3531;
+  --md-primary-fg-color--dark:  #1b1815;
+  --md-primary-bg-color:        #ffffff;
+  --md-accent-fg-color:         #e0805f;   /* 暗色下更亮的陶土 */
+  --md-typeset-a-color:         #e0805f;
+}
+
+/* ---------- 插图 ----------
+   替代旧的 <p align="center">：由 CSS 统一居中、自适应、圆角。
+   图片自身的 width 仍生效，窄屏由 max-width 收缩。 */
 .md-typeset img {
   max-width: 100%;
   height: auto;
+}
+.md-typeset p > img,
+.md-typeset figure > img,
+.md-typeset a.glightbox {
+  display: block;
+  margin-inline: auto;
+}
+.md-typeset a.glightbox {          /* glightbox 会把 <img> 包进 <a>，让链接本身也居中 */
+  width: fit-content;
+  max-width: 100%;
+  cursor: zoom-in;
+}
+.md-typeset p > img,
+.md-typeset figure > img,
+.md-typeset a.glightbox > img {
+  border-radius: 8px;
 }

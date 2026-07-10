@@ -16,7 +16,10 @@ use_directory_urls: false
 theme:
   name: material
   language: zh
+  font: false               # 关闭 Google Fonts CDN（国内可达性）；字体在 extra.css 用系统字体栈定义
   features:
+    - navigation.instant           # 无整页刷新翻页，长文阅读更连贯
+    - navigation.instant.progress  # 慢速加载时顶部显示进度条
     - navigation.top        # 返回顶部按钮
     - navigation.footer     # 页脚「上一页 / 下一页」
     - navigation.tracking   # 地址栏跟随锚点
@@ -27,26 +30,18 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: custom       # 配色在 extra.css 里定义（暖调：炭墨 + 陶土）
+      accent: custom
       toggle:
         icon: material/weather-night
         name: 切换到夜间模式
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
         name: 切换到日间模式
-
-# 导航顺序沿用原 SUMMARY.md；Material 会据此自动生成「上一页 / 下一页」
-nav:
-  - 关于本书: index.md
-  - 一. 前言: preface.md
-  - 二. 先修知识: prerequisite.md
-  - 三. 入门: getting-started.md
-  - 四. 实践: dirty-your-hands.md
-  - 五. 进阶: advanced.md
-  - 六. 勇者斗恶龙: dragon-quest.md
-  - 七. 参考文献: references.md
-  - 许可证: license.md
 
 markdown_extensions:
   - pymdownx.arithmatex:     # 数学公式（配合 MathJax）
@@ -55,13 +50,17 @@ markdown_extensions:
   - pymdownx.details
   - admonition
   - attr_list
-  - md_in_html               # 允许正文中的居中 <p><img> 等 HTML
+  - md_in_html               # 允许正文中的原始 <img> / <figure> 等 HTML
   - toc:
       permalink: true
 
-# 本地搜索（Material 内置，支持中文，无需外部服务）
+# 插件：本地搜索（支持中文，配合 jieba 分词）+ 图片点击放大（glightbox，资源本地打包）
 plugins:
   - search
+  - glightbox:
+      zoomable: true
+      draggable: true
+      touchNavigation: true
 
 # 本地打包的 MathJax（SVG 版，自包含、无需外部字体；避免 CDN 在国内不稳定）
 extra_javascript:
