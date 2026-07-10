@@ -67,13 +67,13 @@
 （2）当我们的规划涉及到一些约束，如让机器人末端保持水平（拿着一杯水）。一种方法是用传统的方法。如 OpenRave 里的一个实现：[ConstraintPlanning](https://github.com/rdiankov/openrave/blob/master/python/examples/constraintplanning.py)， 在关节空间随机采样一个点，然后投影到最近的任务空间上，之后用 Jacobian 迭代的方式将随机点连接到 RRT 树上。
 
 <p align="center">
-  <img width="300" src="../Pics/TaskConstrainedRRT.jpg"/>
+  <img width="300" src="../Pics/TaskConstrainedRRT.webp"/>
 </p>
 
 但是，我们可以从另一个角度看问题。机器人的末端姿态就是一个 SE(3) 李群。保持末端水平，可以认为是一个 R3 空间与 SO(2) 空间的半直积，这也是一个李群。于是，我们可以直接在李群内或者 Tangent Space 上跑一个 RRT，例如 Tangent Bundle RRT<sup>[7]</sup> 与 AtlasRRT<sup>[8]</sup>
 
 <p align="center">
-  <img width="500" src="../Pics/AtlasRRT.jpg"/>
+  <img width="500" src="../Pics/AtlasRRT.webp"/>
 </p>
 
 ### 5.5 机器学习

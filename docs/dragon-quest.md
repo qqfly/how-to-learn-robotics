@@ -1,7 +1,7 @@
 # 勇者斗恶龙
 
 <p align="center">
-  <img width="500" src="../Pics/TheBrave.jpg"/>
+  <img width="500" src="../Pics/TheBrave.webp"/>
 </p>
 
 现在，你已经知道了如何让一个机器人动起来，并且深入掌握了机器人某一领域的知识。然后，你就像一个刚刚斩杀第一只史莱姆的勇者一般，举着宝剑，时刻准备着将宝剑刺入恶龙的胸口。
@@ -29,7 +29,7 @@
 当你看到世界上那么多机器人公司，有着各自形形色色、互不兼容的编程语言、示教器的时候，你会有强烈的感觉：「这就是恶龙！」
 
 <p align="center">
-  <img width="500" src="../Pics/ChineseFactory.jpg"/>
+  <img width="500" src="../Pics/ChineseFactory.webp"/>
 </p>
 
 当你看到还有非常多与你我同龄的人在工厂里做着重复、枯燥的工作的时候，你会有强烈的感觉：「这就是恶龙！」

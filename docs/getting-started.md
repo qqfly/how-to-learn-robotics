@@ -110,10 +110,8 @@ $$\dot{x}=J\cdot \dot{q}$$
 这时候，你有了雅可比矩阵，你就会发现，你知道怎么通过调节角度来控制末端运动了。这时候我们再回头看运动学逆解的问题。你会发现：「让机器人末端朝着目标位姿运动不就可以了？」。
 
 <p align="center">
-  <img width="500" src="../Pics/JacobianIK.jpg"/>
+  <img width="500" src="../Pics/JacobianIK.webp"/>
 </p>
-
-<!-- TODO: update this pic -->
 
 是的，这就是机器人运动学的数值计算方式，你可以利用这个方法写一个机器人运动学的通用求解算法。具体可以看我在知乎上的回答 [MATLAB机器人工具箱中机器人逆解是如何求出来的](https://www.zhihu.com/question/41673569/answer/129670927)。
 
