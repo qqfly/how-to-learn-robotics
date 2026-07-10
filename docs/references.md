@@ -1,19 +1,19 @@
 # 参考文献
 
-[1] John J. Craig. Introduction to Robotics: Mechanics and Control[M]. 1986.
+[1] John J. Craig. [Introduction to Robotics: Mechanics and Control](https://www.pearson.com/en-us/subject-catalog/p/introduction-to-robotics-mechanics-and-control/P200000003304)[M]. 1986.
 
-[2] Siciliano, Bruno, and Oussama Khatib, eds. Springer handbook of robotics. Springer, 2016.
+[2] Siciliano, Bruno, and Oussama Khatib, eds. [Springer handbook of robotics](https://link.springer.com/book/10.1007/978-3-319-32552-1). Springer, 2016.
 
-[3] Steven C. Chapra. Numerical Methods for Engineers (7th edition)[M]. 2014.
+[3] Steven C. Chapra. [Numerical Methods for Engineers (7th edition)](https://www.mheducation.com/highered/product/Numerical-Methods-for-Engineers-Chapra.html)[M]. 2014.
 
-[4] Khalil, Wisama, and Etienne Dombre. Modeling, identification and control of robots. Butterworth-Heinemann, 2004.
+[4] Khalil, Wisama, and Etienne Dombre. [Modeling, identification and control of robots](https://shop.elsevier.com/books/modeling-identification-and-control-of-robots/khalil/978-1-903996-66-9). Butterworth-Heinemann, 2004.
 
-[5] Choset, Howie M., et al. Principles of robot motion: theory, algorithms, and implementation. MIT press, 2005.
+[5] Choset, Howie M., et al. [Principles of robot motion: theory, algorithms, and implementation](https://mitpress.mit.edu/9780262033275/principles-of-robot-motion/). MIT press, 2005.
 
-[6] LaValle, Steven M. Planning algorithms. Cambridge university press, 2006.
+[6] LaValle, Steven M. [Planning algorithms](https://lavalle.pl/planning/). Cambridge university press, 2006.
 
-[7] Kim, Beobkyoon, et al. "Tangent bundle RRT: A randomized algorithm for constrained motion planning." Robotica 34.1 (2016): 202-225.
+[7] Kim, Beobkyoon, et al. "[Tangent bundle RRT: A randomized algorithm for constrained motion planning](https://www.cambridge.org/core/journals/robotica/article/abs/tangent-bundle-rrt-a-randomized-algorithm-for-constrained-motion-planning/73C83E4CB58FA3C424FED7A3C5936403)." Robotica 34.1 (2016): 202-225.
 
-[8] Jaillet, Léonard, and Josep M. Porta. "Path planning with loop closure constraints using an atlas-based RRT." Robotics Research. Springer, Cham, 2017. 345-362.
+[8] Jaillet, Léonard, and Josep M. Porta. "[Path planning with loop closure constraints using an atlas-based RRT](https://doi.org/10.1007/978-3-319-29363-9_20)." Robotics Research. Springer, Cham, 2017. 345-362.
 
-[9] Sutton, Richard S., and Andrew G. Barto. Introduction to reinforcement learning. Vol. 135. Cambridge: MIT press, 1998.
+[9] Sutton, Richard S., and Andrew G. Barto. [Introduction to reinforcement learning](http://incompleteideas.net/book/the-book-2nd.html). Vol. 135. Cambridge: MIT press, 1998.
