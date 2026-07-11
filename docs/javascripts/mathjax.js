@@ -5,7 +5,10 @@ window.MathJax = {
     inlineMath: [["\\(", "\\)"]],
     displayMath: [["\\[", "\\]"]],
     processEscapes: true,
-    processEnvironments: true
+    processEnvironments: true,
+    // 本地 SVG 包不含 boldsymbol 扩展（autoload 会因无 CDN 失败），
+    // 兜底映射到 \mathbf，避免正文误用时渲染成红字。全书公式约定：不加粗，用普通斜体。
+    macros: { boldsymbol: ["\\mathbf{#1}", 1] }
   },
   options: {
     ignoreHtmlClass: ".*",

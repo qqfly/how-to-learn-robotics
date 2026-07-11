@@ -43,7 +43,7 @@ $$p(\lambda) = (1-\lambda)\, p_1 + \lambda\, p_2,\qquad 0 \le \lambda \le 1$$
 
 !!! note "雅可比的多副面孔"
 
-    入门部分问过：「是否可以直接对运动学正解的结果求偏导？」可以——如果末端位姿用 $[x, y, z]$ 加 RPY 角表示，直接对关节角求偏导，得到的叫**解析雅可比**（Analytical Jacobian）。但由于姿态的三个自由度相互耦合，RPY 角的微分并不是角速度，物理意义不直观。教材里常见的推导方式，是把每个关节运动产生的速度矢量叠加起来（$\boldsymbol{\omega} = \sum_i \dot{q}_i\,\mathbf{z}_i$），每一列都有明确的几何意义，叫**几何雅可比**（Geometric Jacobian）。而在 PoE 建模下，用 twist 描述速度，按参考坐标系的不同，又有 **Space Jacobian** 与 **Body Jacobian**。它们本质上只是速度/误差的表示方式不同，相互之间可以直接转换，适用场景各不相同。具体可以参考 [ETH 的 Robot Dynamics Lecture Notes](https://ethz.ch/content/dam/ethz/special-interest/mavt/robotics-n-intelligent-systems/rsl-dam/documents/RobotDynamics2016/RD2016script.pdf)。
+    入门部分问过：「是否可以直接对运动学正解的结果求偏导？」可以——如果末端位姿用 $[x, y, z]$ 加 RPY 角表示，直接对关节角求偏导，得到的叫**解析雅可比**（Analytical Jacobian）。但由于姿态的三个自由度相互耦合，RPY 角的微分并不是角速度，物理意义不直观。教材里常见的推导方式，是把每个关节运动产生的速度矢量叠加起来（$\omega = \sum_i \dot{q}_i\,z_i$），每一列都有明确的几何意义，叫**几何雅可比**（Geometric Jacobian）。而在 PoE 建模下，用 twist 描述速度，按参考坐标系的不同，又有 **Space Jacobian** 与 **Body Jacobian**。它们本质上只是速度/误差的表示方式不同，相互之间可以直接转换，适用场景各不相同。具体可以参考 [ETH 的 Robot Dynamics Lecture Notes](https://ethz.ch/content/dam/ethz/special-interest/mavt/robotics-n-intelligent-systems/rsl-dam/documents/RobotDynamics2016/RD2016script.pdf)。
 
 ### 群的语言：⊕ 与 ⊖
 
@@ -68,7 +68,7 @@ $$p(\lambda) = (1-\lambda)\, p_1 + \lambda\, p_2,\qquad 0 \le \lambda \le 1$$
 
 来看两个例子。串联机械臂的关节空间，用向量加法定义群运算：
 
-$$\mathbf{q}_1 \oplus \mathbf{q}_2 = \mathbf{q}_1 + \mathbf{q}_2,\qquad \ominus\mathbf{q} = -\mathbf{q},\qquad \alpha \odot \mathbf{q} = \alpha\,\mathbf{q}$$
+$$q_1 \oplus q_2 = q_1 + q_2,\qquad \ominus q = -q,\qquad \alpha \odot q = \alpha\,q$$
 
 空间刚体的姿态，用 3×3 旋转矩阵描述、用矩阵乘法定义群运算，也就是 SO(3) 群：
 
@@ -82,7 +82,7 @@ $$A(u) = A_1 \oplus u \odot \big((\ominus A_1) \oplus A_2\big),\qquad u \in [0, 
 
 代入关节空间，它就是我们熟悉的线性插值：
 
-$$\mathbf{q}(u) = \mathbf{q}_1 + u\,(\mathbf{q}_2 - \mathbf{q}_1)$$
+$$q(u) = q_1 + u\,(q_2 - q_1)$$
 
 代入姿态空间：
 

@@ -66,7 +66,7 @@
 
 ### 轨迹规划与时间参数化
 
-规划器给出的是几何路径，机器人真正执行的是带时间的轨迹。轨迹规划可以分为**路径插补**与**时间计算**两部分：先得到几何路径 $\mathbf{p}(u)$，再决定以怎样的速度走过它，即 $u(t)$。这部分推荐一本专门的教材：Biagiotti 与 Melchiorri 的《Trajectory Planning for Automatic Machines and Robots》<sup>[11]</sup>。
+规划器给出的是几何路径，机器人真正执行的是带时间的轨迹。轨迹规划可以分为**路径插补**与**时间计算**两部分：先得到几何路径 $p(u)$，再决定以怎样的速度走过它，即 $u(t)$。这部分推荐一本专门的教材：Biagiotti 与 Melchiorri 的《Trajectory Planning for Automatic Machines and Robots》<sup>[11]</sup>。
 
 关节空间的插补（梯形速度曲线、样条），入门部分已经见过；笛卡尔空间的姿态插补则有坑——Slerp 只保证一阶连续，高阶连续的过渡需要李群工具，上一章「姿态插值与轨迹过渡」已经讲透，这里不重复。
 
@@ -78,9 +78,9 @@
 
 现在来看真正的工业任务。弧焊要求焊枪端点沿焊缝运动、轴线保持指定方向——但绕轴线的旋转是自由的；装配、打磨类似；上一章的高速搬运，约束的是加速度与姿态，对位置点反而没有要求。看出共同点了吗：**大多数任务并没有把机器人的自由度约束死，系统是欠约束的**。这些多出来的自由度，就是规划的活动空间。
 
-最直接的工具是**零空间**（Null Space）。任务只需要 $m$ 个自由度、机器人有 $n$ 个（$m < n$）时，速度级逆解 $J\dot{\mathbf{q}} = \dot{\mathbf{x}}$ 是欠定的，通解为：
+最直接的工具是**零空间**（Null Space）。任务只需要 $m$ 个自由度、机器人有 $n$ 个（$m < n$）时，速度级逆解 $J\dot{q} = \dot{x}$ 是欠定的，通解为：
 
-$$\dot{\mathbf{q}} = J^{\dagger}\dot{\mathbf{x}} + (I - J^{\dagger}J)\,\mathbf{v}$$
+$$\dot{q} = J^{\dagger}\dot{x} + (I - J^{\dagger}J)\,v$$
 
 第二项就是零空间运动：机器人在动，末端任务却纹丝不动。注意「冗余」不特指七轴——六轴机械臂做弧焊（任务只约束五个自由度）时，它也是冗余机器人。七轴机械臂只是把这件事做到了构型层面：同一个末端位姿对应无穷多组连续分布的逆解（自运动），于是可以在保证末端轨迹的同时，避开奇异点、关节极限和障碍物——这正是各家纷纷推出七轴产品的原因，具体可以看[《七轴机械臂了解一下？》](https://mp.weixin.qq.com/s/lJdAstK7JM5J-HNm4DLqMg)。
 
@@ -111,6 +111,8 @@ $$\dot{\mathbf{q}} = J^{\dagger}\dot{\mathbf{x}} + (I - J^{\dagger}J)\,\mathbf{v
 另一个方向是把「规划」做成**策略**：环境在动，就不能等一条完整轨迹算完再动——根据当前状态实时返回一个满足约束的动作，即运动策略（motion policy）。把每个任务目标（够向目标、避障、避关节极限、顺应外力）建模成不同流形上的动态系统，再按状态相关的优先级组合起来，机器人就能一边追踪目标一边「优雅地」避障。这套东西可以看[《技术分享 | 实时运动规划》](https://mp.weixin.qq.com/s/FHiCoEN4dvgU4fNoJ0SnEQ)。
 
 <img src="images/realtime-planning-demo.webp" width="480" alt="实时运动规划：机械臂追踪目标位姿的同时避开障碍物与奇异点"/>
+
+顺便补一块拼图：沿着「每个周期实时求解」这条思路走到控制领域，就是**模型预测控制**（Model Predictive Control, MPC）——每个控制周期在线求解一小段带约束的轨迹优化，只执行第一步，下个周期滚动重来（receding horizon）。你看，规划与控制的边界，在这里已经模糊了。说实话，MPC 这块我自己的实践经验有限，就不班门弄斧了，想深入的可以看 Borrelli 等人的教材[《Predictive Control for Linear and Hybrid Systems》](https://www.mpc.berkeley.edu/mpc-course-material)；而它与强化学习在人形、足式机器人全身控制上的正面对比，留到具身智能篇再说。
 
 工具层面一句话：想快速上手，用 MoveIt（半小时能在仿真里跑通规划，我写过一篇[《运动规划 | MoveIt 篇》](https://mp.weixin.qq.com/s/2ObNhy4NbhKO7eBKyoRyKQ)；注意它的笛卡尔规划要用 jump_threshold 防止路径突变，不同版本参数名有变化）；碰撞检测基本都是 [FCL](https://github.com/flexible-collision-library/fcl)；用传感器点云做避障离不开 OctoMap。
 
