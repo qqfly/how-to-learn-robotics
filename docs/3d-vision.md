@@ -10,7 +10,7 @@
 - **位姿估计**（Pose Estimation）：它在相机坐标系下的位置和姿态——机器人要抓它，光知道「是什么」不够；
 - **相机标定**（Camera Calibration）：把相机坐标系下的信息换算到机器人坐标系——否则看得再准，机器人也够不着。
 
-三件事串起来，才是一条完整的「看见 → 定位 → 动手」链路。本章不打算综述视觉算法——那是 CV 教材的事；只回答一个问题：要打通这条链路，你需要补齐哪几块、去哪里补。系统性的相机模型与多视几何，还是看入门实践里提过的两份资料：Penn 的《Robotics: Perception》公开课，以及 Peter Corke 的教材[《Robotics: Vision and Control》](https://petercorke.com/rvc3-landing/)。
+三件事串起来，才是一条完整的「看见 → 定位 → 动手」链路。本章不打算综述视觉算法——那是 CV 教材的事；只回答一个问题：要打通这条链路，你需要补齐哪几块、去哪里补。系统性的相机模型与多视几何，还是看进阶实践里介绍的两份资料：Penn 的《Robotics: Perception》公开课，以及 Peter Corke 的教材[《Robotics: Vision and Control》](https://petercorke.com/rvc3-landing/)。
 
 ### 标定：先把坐标系钉住
 

@@ -1,6 +1,30 @@
 # 进阶实践
 
-老规矩：**Get your hands dirty!** 进阶三章的每一件兵器，都值得亲手打一遍。下面是清单——前两项纯软件，一台电脑就能开工。配套的可运行代码会随开源库一起放出；不过不必等：清单里的每一项，现在就能用现成的开源工具（NumPy/SciPy、OpenCV、PCL、MoveIt）独立完成。
+老规矩：**Get your hands dirty!** 进阶三章给的是路径；这一章给两样东西：一套成体系的公开课（补理论训练），和一份动手清单（长手感）。
+
+### 系统公开课
+
+不妨抽出几个月时间，看看 Coursera 上宾夕法尼亚大学的 [Robotics](https://www.coursera.org/specializations/robotics) 专项课程。这个专项课程与机械臂或者工业机器人关系不大，但是由于机器人很多方面是相通的，所以非常建议看一看——几门课正好对上这部分的几条主线：
+
+- Computational Motion Planning：这门课的水平感觉不如 Aerial Robotics，但是通过这门课可以大概知道机器人里有 Motion Planning 这个方向，同时大作业也包括了手写 A\*、PRM、Potential Fields 等基本的 Motion Planning 算法，同时可以大概了解一下 Collision Checking 的基本原理——对应「自主规划」；
+
+- Perception：这门课质量非常不错，基本是介绍相机模型、多视几何之类的内容。这方面内容可以对大家未来从事 SLAM、3D 视觉、标定等方面的研究非常有帮助——对应「3D 视觉」。学完之后，大家就可以做出类似[《AR原理演示》](https://mp.weixin.qq.com/s?__biz=MzA5MDE2MjQ0OQ==&mid=2652786307&idx=1&sn=e71bbca67c7fa69081e863b62b9fd5b4#rd)文章中的效果了：
+
+<img src="images/ar.webp" width="400" alt="AR 原理演示效果"/>
+
+- Estimation and Learning：这门课从高斯分布开始，介绍了 Kalman Filter、Particle Filter 等在机器人状态估计中非常有用的工具。而且，这门课的大作业会让你从零开始编写 2D 地图重建的程序，你可以知道如何利用激光传感器信息获得下面这样的 2D 地图。
+
+<img src="images/mapping.webp" width="500" alt="利用激光传感器构建的 2D 地图"/>
+
+- Aerial Robotics：这门课主要是介绍四旋翼无人机的控制问题，其中的轨迹规划、姿态描述、控制等对机械臂的学习非常有帮助。而且，这门课的作业质量也非常高，提供了基于 Matlab 的数值仿真模块，可以让初学者直观地看到自己代码的控制效果；
+
+- Mobility：这部分主要是介绍足式机器人的控制问题。通过这门课，一方面可以大致了解足式机器人控制的发展脉络，这样看起 Boston Dynamics 的视频也不会那么一脸懵逼了。同时，更重要的是，掌握机器人建模与控制的关系：一个简化的模型，也可能对控制起非常大帮助——顺带为具身智能部分的强化学习运动控制打个底。
+
+除了这个专项课程，再补充两个不错的资料：机械臂的视觉控制可以看 [Robotics: Vision and Control 3rd (Peter Corke)](https://petercorke.com/rvc3-landing/)，有 Python 和 Matlab 版，也覆盖了 Perception 的部分内容；和 Aerial Robotics 相关的，可以看北航全权老师的[无人机系列课程](https://rflysim.com/doc/zh/)，带仿真器。
+
+### 动手清单
+
+前两项纯软件，一台电脑就能开工。配套的可运行代码会随开源库一起放出；不过不必等：清单里的每一项，现在就能用现成的开源工具（NumPy/SciPy、OpenCV、PCL、MoveIt）独立完成。
 
 1. **姿态插值实验**（对应现代机器人学·应用一）：实现 Slerp 与李群 Bezier 过渡，让一个刚体依次经过三个姿态，画出角速度方向随时间的变化曲线——亲眼看到「直线插值在过渡点突变、Bezier 过渡连续」这件事。
 
