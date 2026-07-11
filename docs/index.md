@@ -7,7 +7,6 @@
 ## 在线阅读
 
 - 新版站点（MkDocs，迁移中，占位）：<https://learn-robotics.qqfly.net>
-- 历史版本（GitBook）：<https://qiu6401.gitbook.io/how-to-learn-robotics>
 
 ## 参与与反馈
 

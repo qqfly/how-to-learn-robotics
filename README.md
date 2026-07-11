@@ -5,7 +5,6 @@
 ## 在线阅读
 
 - 新版站点（MkDocs，迁移中，占位）：<https://learn-robotics.qqfly.net>
-- 历史版本（GitBook，暂时保留作为历史入口）：<https://qiu6401.gitbook.io/how-to-learn-robotics>
 - 也可直接在 GitHub 上阅读 [`docs/`](docs/)，或查看[第一版](https://github.com/qqfly/how-to-learn-robotics/tree/backup/all-in-one)。
 
 ## 适合谁
