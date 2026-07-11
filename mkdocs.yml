@@ -52,7 +52,7 @@ nav:
   - 四. 实践: dirty-your-hands.md
   - 五. 进阶:
       - 进阶导言: advanced.md
-      - "现代机器人学：李群与李代数": modern-robotics.md
+      - 现代机器人学: modern-robotics.md
       - 3D 视觉: 3d-vision.md
       - 自主规划: motion-planning.md
       - 进阶实践: advanced-practice.md
