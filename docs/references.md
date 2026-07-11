@@ -21,3 +21,7 @@
 [10] Lynch, Kevin M., and Frank C. Park. [Modern Robotics: Mechanics, Planning, and Control](http://hades.mech.northwestern.edu/index.php/Modern_Robotics). Cambridge University Press, 2017.
 
 [11] Biagiotti, Luigi, and Claudio Melchiorri. [Trajectory Planning for Automatic Machines and Robots](https://link.springer.com/book/10.1007/978-3-540-85629-0). Springer, 2008.
+
+[12] Zhang, Zhengyou. "[A flexible new technique for camera calibration](https://doi.org/10.1109/34.888718)." IEEE Transactions on Pattern Analysis and Machine Intelligence 22.11 (2000): 1330-1334.
+
+[13] Lowe, David G. "[Distinctive image features from scale-invariant keypoints](https://doi.org/10.1023/B:VISI.0000029664.99615.94)." International Journal of Computer Vision 60.2 (2004): 91-110.
