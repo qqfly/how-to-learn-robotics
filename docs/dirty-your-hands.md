@@ -1,10 +1,10 @@
-# 实践
+# 入门实践
 
 看完 Craig 的书后，你应该对工业机器人的原理有了一个大概的概念，但是，你缺乏实际动手经验，不清楚如何将书上的东西应用到实际机器人上。机器人毕竟是一个实践性的学科，一直停留在理论，不仅无用、而且无趣。
 
 **Get your hands dirty!**
 
-### 4.1 动手
+### 动手
 
 如果是本科生的话，非常建议参加一些比赛，如 RoboMaster、恩智浦杯智能车竞赛（原飞思卡尔智能车大赛）、电子设计大赛等；也可以加入学校的一些科技组织，例如清华的天空工厂。主要是熟悉各种电子电路、培养动手能力。
 
@@ -14,7 +14,7 @@
 
 如果身边有可以玩的机器人硬件，也可以尝试玩一玩，或者在 RobotStudio/Vrep/Gazebo 里玩仿真的机器人。
 
-### 4.2 Penn's Robotics Specialization
+### Penn's Robotics Specialization
 
 在此之后，不妨抽出几个月时间，看看 Coursera 上宾夕法尼亚大学的 [Robotics](https://www.coursera.org/specializations/robotics) 专项课程。这个专项课程与机械臂或者工业机器人关系不大，但是由于机器人很多方面是相通的，所以非常建议看一看。
 
@@ -34,7 +34,7 @@
 
 除了这个专项课程，再补充两个不错的资料：机械臂的视觉控制可以看 [Robotics: Vision and Control 3rd (Peter Corke)](https://petercorke.com/rvc3-landing/)，有 Python 和 Matlab 版，也覆盖了 Perception 的部分内容；和 Aerial Robotics 相关的，可以看北航全权老师的[无人机系列课程](https://rflysim.com/doc/zh/)，带仿真器。
 
-### 4.3 ROS
+### ROS
 
 到现在为止，你对机器人的基础知识有了一个比较完整的脉络，而且，也用 Matlab 实现了一些有趣的算法。但是，你发现，机器人是一个非常大的系统，作为初学者，不太可能从头开始一步步搭建机器人所需的各个算法模块。这时候，你就应该开始拥抱伟大的开源世界了。
 
