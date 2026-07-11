@@ -50,6 +50,8 @@
 
 规划算法多如牛毛，但从方法论角度分，大概三大类。这里只给地图不给细节——每个算法的原理，教材<sup>[5][6]</sup>和 [OMPL](http://ompl.kavrakilab.org/) 的文档都讲得很清楚；我早年也写过一篇更细的[《运动规划 | 简介篇》](https://mp.weixin.qq.com/s/_fE760XxFlvrkzYEpslYvA)，从红警的寻路讲到机械臂。
 
+<img src="images/planning-books.webp" width="500" alt="运动规划相关教材"/>
+
 **基于图搜索的方法**（严格说是三大类的公共底座）：把 C-Space 转成节点与边构成的图，然后用 Dijkstra、A\* 找最短路。构图方式有可视图法（二维下**完备且最优**）、网格离散化（**分辨率完备**——网格太粗可能堵死本来存在的通路）等。它们在低维空间里非常好使——即时战略游戏的寻路、移动机器人导航基本都是这个套路——但受维度诅咒所限，上不了六自由度机械臂。
 
 <img src="images/dijkstra-astar-demo.webp" width="500" alt="Dijkstra 与 A* 算法搜索过程对比演示"/>
