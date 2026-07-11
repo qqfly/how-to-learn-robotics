@@ -43,14 +43,20 @@ theme:
         icon: material/weather-sunny
         name: 切换到日间模式
 
-# 导航顺序沿用原 SUMMARY.md；Material 会据此自动生成「上一页 / 下一页」
+# 导航：前四章沿用原 SUMMARY.md 顺序；进阶部分为第二阶段重构结构（新章节暂不编号，全书统一编号待内容迁移阶段）
 nav:
   - 关于本书: index.md
   - 一. 前言: preface.md
   - 二. 先修知识: prerequisite.md
   - 三. 入门: getting-started.md
   - 四. 实践: dirty-your-hands.md
-  - 五. 进阶: advanced.md
+  - 五. 进阶:
+      - 进阶导言: advanced.md
+      - "现代机器人学：李群与李代数": modern-robotics.md
+      - 3D 视觉: 3d-vision.md
+      - 自主规划: motion-planning.md
+      - 进阶实践: advanced-practice.md
+  - 具身智能: embodied-ai.md
   - 六. 勇者斗恶龙: dragon-quest.md
   - 七. 参考文献: references.md
   - 许可证: license.md

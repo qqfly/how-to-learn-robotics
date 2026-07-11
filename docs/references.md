@@ -17,3 +17,5 @@
 [8] Jaillet, Léonard, and Josep M. Porta. "[Path planning with loop closure constraints using an atlas-based RRT](https://doi.org/10.1007/978-3-319-29363-9_20)." Robotics Research. Springer, Cham, 2017. 345-362.
 
 [9] Sutton, Richard S., and Andrew G. Barto. [Introduction to reinforcement learning](http://incompleteideas.net/book/the-book-2nd.html). Vol. 135. Cambridge: MIT press, 1998.
+
+[10] Lynch, Kevin M., and Frank C. Park. [Modern Robotics: Mechanics, Planning, and Control](http://hades.mech.northwestern.edu/index.php/Modern_Robotics). Cambridge University Press, 2017.
