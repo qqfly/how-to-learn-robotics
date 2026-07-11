@@ -19,3 +19,5 @@
 [9] Sutton, Richard S., and Andrew G. Barto. [Introduction to reinforcement learning](http://incompleteideas.net/book/the-book-2nd.html). Vol. 135. Cambridge: MIT press, 1998.
 
 [10] Lynch, Kevin M., and Frank C. Park. [Modern Robotics: Mechanics, Planning, and Control](http://hades.mech.northwestern.edu/index.php/Modern_Robotics). Cambridge University Press, 2017.
+
+[11] Biagiotti, Luigi, and Claudio Melchiorri. [Trajectory Planning for Automatic Machines and Robots](https://link.springer.com/book/10.1007/978-3-540-85629-0). Springer, 2008.
