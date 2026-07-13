@@ -8,7 +8,7 @@
 
 1. [前言](preface.md)
 2. [先修知识](prerequisite.md)
-3. 入门：[工业机器人基础](getting-started.md) · [入门实践](dirty-your-hands.md)
+3. 入门：[机器人学入门](getting-started.md) · [入门实践](dirty-your-hands.md)
 4. 进阶：[导言](advanced.md) · [现代机器人学](modern-robotics.md) · [3D 视觉](3d-vision.md) · [自主规划](motion-planning.md) · [进阶实践](advanced-practice.md)
 5. [具身智能](embodied-ai.md)（整理中）
 6. [勇者斗恶龙](dragon-quest.md)
