@@ -1,35 +1,60 @@
 /* ============================================================
    开源机器人学学习指南 — 自定义样式
-   目标：书卷气的阅读体验（暖调 + 衬线正文）。全部系统字体，无外部 CDN。
+   目标：现代、干净的中文阅读体验（暖调 + 系统黑体正文）。全部系统字体，无外部 CDN。
+   （曾试过宋体系衬线正文，屏显笔画偏细、暗色模式发虚，按作者反馈改回无衬线。）
    注：配色 / 字体变量用 body[data-md-color-scheme] 选择器（特指度 0,1,1，高于 :root），
        以压过 Material 主题及其内联注入的 :root 默认值。
    ============================================================ */
 
 /* ---------- 字体 ----------
-   正文衬线：拉丁文在 macOS 取系统「New York」，中文取宋体系；
-   标题无衬线；代码系统等宽。均为系统字体，不加载外部字库。 */
+   正文与标题统一系统无衬线（macOS 取 PingFang，Windows 取雅黑，Linux 取思源黑体），
+   代码系统等宽。均为系统字体，不加载外部字库。 */
 body[data-md-color-scheme] {
   --md-text-font-family:
-    ui-serif, "New York", Charter, Georgia, Cambria,
-    "Songti SC", "STSong", "SimSun",
-    "Source Han Serif SC", "Noto Serif CJK SC", serif;
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
   --md-code-font-family:
     ui-monospace, "SF Mono", "SFMono-Regular", Menlo,
     "Cascadia Code", "JetBrains Mono", Consolas, "Liberation Mono", monospace;
 }
 
-.md-typeset {
-  font-family: var(--md-text-font-family);
-  line-height: 1.75;          /* 衬线正文稍加行距，长文更耐读 */
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* 标题改用无衬线，与衬线正文形成对比（对应 Claude「界面无衬线 / 阅读区衬线」的分工） */
+.md-typeset {
+  font-family: var(--md-text-font-family);
+  line-height: 1.85;                 /* 中文正文加大行距 */
+}
+
+/* 段落与列表：两端对齐 + 更从容的段距，中文长文更整齐耐读 */
+.md-typeset p,
+.md-typeset li {
+  text-align: justify;
+}
+.md-typeset p {
+  margin-block: 0.9em;
+}
+.md-typeset li {
+  margin-block: 0.3em;
+}
+
+/* 正文加粗用中黑（600），避免大段黑体里 700 过于扎眼 */
+.md-typeset strong {
+  font-weight: 600;
+}
+
+/* 章内小节（本书用 H1 + H3 两级）：小节之间留足呼吸 */
+.md-typeset h3 {
+  margin-top: 1.8em;
+}
+
+/* 标题：同族无衬线加重，靠字重与留白区分层级 */
 .md-typeset h1, .md-typeset h2, .md-typeset h3,
 .md-typeset h4, .md-typeset h5, .md-typeset h6 {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-    "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+  font-family: var(--md-text-font-family);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
@@ -100,4 +125,41 @@ body[data-md-color-scheme="slate"] {
   text-align: center;
   margin: .35rem auto 0;
   max-width: 36em;
+}
+
+/* ---------- 框注（admonition）：统一陶土色系，去掉默认蓝绿 ---------- */
+.md-typeset .admonition,
+.md-typeset details,
+.md-typeset .admonition.note,    .md-typeset details.note,
+.md-typeset .admonition.info,    .md-typeset details.info,
+.md-typeset .admonition.example, .md-typeset details.example,
+.md-typeset .admonition.warning, .md-typeset details.warning,
+.md-typeset .admonition.tip,     .md-typeset details.tip {
+  border-color: rgba(193, 95, 60, 0.5);
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 0.72rem;            /* 默认 0.64rem 偏小，略调大 */
+}
+.md-typeset .admonition-title,
+.md-typeset .note    > .admonition-title,
+.md-typeset .info    > .admonition-title,
+.md-typeset .example > .admonition-title,
+.md-typeset .warning > .admonition-title,
+.md-typeset .tip     > .admonition-title {
+  background-color: rgba(193, 95, 60, 0.10);
+}
+.md-typeset .admonition-title::before,
+.md-typeset .note    > .admonition-title::before,
+.md-typeset .info    > .admonition-title::before,
+.md-typeset .example > .admonition-title::before,
+.md-typeset .warning > .admonition-title::before,
+.md-typeset .tip     > .admonition-title::before {
+  background-color: #c15f3c;
+}
+body[data-md-color-scheme="slate"] .md-typeset .admonition,
+body[data-md-color-scheme="slate"] .md-typeset details {
+  border-color: rgba(224, 128, 95, 0.45);
+}
+body[data-md-color-scheme="slate"] .md-typeset .admonition-title::before {
+  background-color: #e0805f;
 }
