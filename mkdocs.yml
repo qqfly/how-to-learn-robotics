@@ -7,7 +7,9 @@ site_url: https://learn-robotics.qqfly.net/
 repo_url: https://github.com/qqfly/how-to-learn-robotics
 repo_name: qqfly/how-to-learn-robotics
 edit_uri: edit/master/docs/
-copyright: 本作品采用 CC BY 4.0 许可协议进行许可
+copyright: >-
+  本作品采用 CC BY 4.0 许可协议进行许可 ·
+  <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备2026094704号</a>
 
 # 使用扁平的 xxx.html 路径，而非目录式 /xxx/。
 # 这样 docs/*.md 里图片的相对引用（images/...）在 MkDocs 站点与 GitHub 上都能解析，两边都能正常显示。
