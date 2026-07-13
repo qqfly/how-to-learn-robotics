@@ -26,7 +26,7 @@
 
 - 强化学习：这个下节介绍。
 
-近年来，随着`具身智能`概念的发展，出现了一些相当不错的效果——虽然还处于“过拟合”的状态，但它实现了很多传统规控方法很难做到的事（如穿鞋带、叠衣服等），给机器人领域带来了不少新东西。
+近年来，随着「具身智能」概念的发展，出现了一些相当不错的效果——虽然还处于「过拟合」的状态，但它实现了很多传统规控方法很难做到的事（如穿鞋带、叠衣服等），给机器人领域带来了不少新东西。
 
 ### 强化学习
 
@@ -34,7 +34,7 @@
 
 这里，我先大概介绍如何入门强化学习，最后再谈谈我的看法。
 
-首先，就是看书。Sutton 的《Introduction to reinforcement learning》<sup>[9]</sup> 可以说是必读圣经了。
+首先，就是看书。Sutton 的《Introduction to reinforcement learning》<sup>[13]</sup> 可以说是必读圣经了。
 
 你可以在 Github 找到 Python 版本的算法实现 [Python Implementation](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
 

@@ -8,12 +8,22 @@
 
 - Perception：这门课质量非常不错，基本是介绍相机模型、多视几何之类的内容。这方面内容可以对大家未来从事 SLAM、3D 视觉、标定等方面的研究非常有帮助——对应「3D 视觉」。学完之后，大家就可以做出类似[《AR原理演示》](https://mp.weixin.qq.com/s?__biz=MzA5MDE2MjQ0OQ==&mid=2652786307&idx=1&sn=e71bbca67c7fa69081e863b62b9fd5b4#rd)文章中的效果了：
 
-<img src="images/ar.webp" width="400" alt="AR 原理演示效果"/>
+<figure>
 
+  <img src="images/ar.webp" width="400" alt="AR 原理演示效果"/>
+
+  <figcaption>AR 原理演示效果</figcaption>
+
+</figure>
 - Estimation and Learning：这门课从高斯分布开始，介绍了 Kalman Filter、Particle Filter 等在机器人状态估计中非常有用的工具。而且，这门课的大作业会让你从零开始编写 2D 地图重建的程序，你可以知道如何利用激光传感器信息获得下面这样的 2D 地图。
 
-<img src="images/mapping.webp" width="500" alt="利用激光传感器构建的 2D 地图"/>
+<figure>
 
+  <img src="images/mapping.webp" width="500" alt="利用激光传感器构建的 2D 地图"/>
+
+  <figcaption>利用激光传感器构建的 2D 地图</figcaption>
+
+</figure>
 - Aerial Robotics：这门课主要是介绍四旋翼无人机的控制问题，其中的轨迹规划、姿态描述、控制等对机械臂的学习非常有帮助。而且，这门课的作业质量也非常高，提供了基于 Matlab 的数值仿真模块，可以让初学者直观地看到自己代码的控制效果；
 
 - Computational Motion Planning：这门课的水平感觉不如 Aerial Robotics，但是通过这门课可以大概知道机器人里有 Motion Planning 这个方向，同时大作业也包括了手写 A\*、PRM、Potential Fields 等基本的 Motion Planning 算法，同时可以大概了解一下 Collision Checking 的基本原理——对应「自主规划」；

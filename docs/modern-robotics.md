@@ -28,18 +28,23 @@ $$p(\lambda) = (1-\lambda)\, p_1 + \lambda\, p_2,\qquad 0 \le \lambda \le 1$$
 
     为了能更好的掌握后面内容，建议你再补充一些数学知识。
 
-    - **数值计算方法**：很多时候，我们都是通过计算机来实现算法功能的，所以，你必须了解基本的数值计算方法，如数值微分、数值积分等。这部分可以看《Numerical Methods for Engineers》<sup>[3]</sup>
+    - **数值计算方法**：很多时候，我们都是通过计算机来实现算法功能的，所以，你必须了解基本的数值计算方法，如数值微分、数值积分等。这部分可以看《Numerical Methods for Engineers》<sup>[4]</sup>
 
     - **凸优化**：这个世界很多问题都不容易找到解析解，我们得用优化方法来计算。所以，你必须了解如何建立优化模型，并知道如何用代码进行求解。这里，我推荐 Stanford 的公开课[《Convex Optimization》](https://web.stanford.edu/class/ee364a/)
 
-    - **李群李代数**：优化方法经常要使用梯度信息，但是，你发现很多时候你不知道怎么定义梯度。李群李代数是一个非常经典的数学工具，可以非常方便地描述 SO(3)、SE(3) 空间中的对象。到这里，你之前对于四元数、角速度之类的疑问将一扫而空。现在，这部分已经长成了独立的一章——[现代机器人学](modern-robotics.md)。
+    - **李群李代数**：优化方法经常要使用梯度信息，但是，你发现很多时候你不知道怎么定义梯度。李群李代数正是处理这件事的经典数学工具——也就是本章接下来的内容。
 
 ### 从旋量入门：Modern Robotics
 
-李群李代数对于很多工科学生可能一时难以接受（名字听着就怪怪的）。这里，我推荐从 Modern Robotics 开始，这是一本面向本科生的教材，写得非常清晰易懂。<sup>[10]</sup>
+李群李代数对于很多工科学生可能一时难以接受（名字听着就怪怪的）。这里，我推荐从 Modern Robotics 开始，这是一本面向本科生的教材，写得非常清晰易懂。<sup>[5]</sup>
 
-<img src="images/modern-robotics.webp" width="500" alt="《Modern Robotics》教材书封"/>
+<figure>
 
+  <img src="images/modern-robotics.webp" width="500" alt="《Modern Robotics》教材书封"/>
+
+  <figcaption>《Modern Robotics》教材书封</figcaption>
+
+</figure>
 你可以在[网上](http://hades.mech.northwestern.edu/index.php/Modern_Robotics)找到它的很多信息，Coursera 上也有对应的课程：[《Modern Robotics》](https://www.coursera.org/specializations/modernrobotics)。
 
 上完这门课，你能掌握旋量/指数积（Screw/PoE）这一全新的建模方式，同时，你会发现机器人运动学、动力学建模变得如此简单、干净。
@@ -108,8 +113,13 @@ $$R(u) = R_1 \big(R_1^{-1} R_2\big)^{u}$$
 
     这个问题目前没有解析解。几种容易想到的做法——欧拉角三个参数直接平均、四元数四个参数直接平均、把所有旋转 Log 到切空间求平均后再 Exp 回去——与数值优化的结果对比，都无法准确算出平均旋转；只有当这些旋转彼此比较接近时，四元数求平均可以得到近似正确的结果。
 
-    <img src="images/average-rotation-comparison.webp" width="500" alt="四种平均旋转算法结果对比：(a) 欧拉角平均；(b) 四元数平均；(c) 切空间平均；(d) 数值求解"/>
+    <figure>
 
+      <img src="images/average-rotation-comparison.webp" width="500" alt="四种平均旋转算法结果对比：(a) 欧拉角平均；(b) 四元数平均；(c) 切空间平均；(d) 数值求解"/>
+
+      <figcaption>四种平均旋转算法结果对比：(a) 欧拉角平均；(b) 四元数平均；(c) 切空间平均；(d) 数值求解</figcaption>
+
+    </figure>
     在李群上，连「求平均」这么基础的操作都值得重新思考。
 
     具体详细介绍和视频演示可以看我的知乎回答 [《获得多个旋转矩阵，如何获得平均旋转？》](https://www.zhihu.com/question/439497100/answer/1683258444)
@@ -122,20 +132,35 @@ $$R(u) = R_1 \big(R_1^{-1} R_2\big)^{u}$$
 
 受惯性的影响，**速度的大小与方向都不可以发生突变**。如果用最简单的直线插值连接路径点，那么在过渡点处，速度方向必然发生突变——实际执行时，要么轨迹偏离原路径，要么机器人在过渡点处减速到 0，影响控制的精度与速度。
 
-<img src="images/path-blend-velocity-jump.webp" width="500" alt="直线插值连接路径点，过渡点 B 处速度方向发生突变"/>
+<figure>
 
+  <img src="images/path-blend-velocity-jump.webp" width="500" alt="直线插值连接路径点，过渡点 B 处速度方向发生突变"/>
+
+  <figcaption>直线插值连接路径点，过渡点 B 处速度方向发生突变</figcaption>
+
+</figure>
 见多识广的读者肯定想到了：教材里介绍过，可以在过渡点用圆弧或者多项式曲线进行过渡，让路径的切向不发生突变。
 
 于是问题来了：位置可以这么干，姿态怎么过渡？或者说，**姿态空间的圆弧、多项式曲线是怎么定义的？**
 
 有人可能会说，四元数不是有 Slerp 插值嘛。但上一节我们已经知道，Slerp 实际上就是姿态空间的**直线**插值。让一个刚体依次经过三个姿态，用 Slerp 连接，过渡点处角速度方向照样突变：
 
-<img src="images/slerp-three-poses.webp" width="500" alt="三姿态 Slerp 插值：过渡点处角速度（绿色箭头）方向突变"/>
+<figure>
 
+  <img src="images/slerp-three-poses.webp" width="500" alt="三姿态 Slerp 插值：过渡点处角速度（绿色箭头）方向突变"/>
+
+  <figcaption>三姿态 Slerp 插值：过渡点处角速度（绿色箭头）方向突变</figcaption>
+
+</figure>
 而在群的语言下，答案水到渠成。回想一下 Bezier 曲线是怎么构造的：$n$ 阶 Bezier 曲线，就是用 $n$ 层线性插值嵌套出来的。我们已经有了任意李群空间的直线插值定义，自然也就得到了任意李群空间的 Bezier 曲线（多项式曲线）：
 
-<img src="images/slerp-vs-bezier.webp" width="500" alt="（左）Slerp 插值与（右）5 阶 Bezier 过渡插值对比，绿色箭头为角速度方向"/>
+<figure>
 
+  <img src="images/slerp-vs-bezier.webp" width="500" alt="（左）Slerp 插值与（右）5 阶 Bezier 过渡插值对比，绿色箭头为角速度方向"/>
+
+  <figcaption>（左）Slerp 插值与（右）5 阶 Bezier 过渡插值对比，绿色箭头为角速度方向</figcaption>
+
+</figure>
 如上图所示，利用李群空间表示法获得的 Bezier 过渡，可以保证姿态轨迹的切向不发生突变、角速度方向连续变化。学术界（包括近几年的 ICRA、IROS）不断有关于高阶连续姿态插值的成果发表；而掌握了群的语言，这一方法你自己就能推导出来。
 
 ### 应用二：动力学约束下的高速搬运
@@ -146,8 +171,13 @@ $$R(u) = R_1 \big(R_1^{-1} R_2\big)^{u}$$
 
 我们先从一维问题开始（这其实是我们的一道编程笔试题）：一个只能水平移动、外加一个旋转自由度的机构，要把一杯水从左边运送到右边，保证水不洒出来。
 
-<img src="images/water-cup-1dof.webp" width="340" alt="一维端水问题：机构只能水平移动加旋转，要求水不洒出"/>
+<figure>
 
+  <img src="images/water-cup-1dof.webp" width="340" alt="一维端水问题：机构只能水平移动加旋转，要求水不洒出"/>
+
+  <figcaption>一维端水问题：机构只能水平移动加旋转，要求水不洒出</figcaption>
+
+</figure>
 要满足的约束很容易找到，就是中学物理：水平运动的加速度与重力的合成加速度，方向要垂直于支撑面。
 
 然后是建模求解。一种方法是建立几组约束，将其作为一个优化问题求解。但这里提供另一种思路：直觉上，这个问题的自由度只有 1，而不是 2（位置与角度）——水平加速度 $a$ 与倾角 $\theta$ 是一一对应的。于是，我们可以定义一个空间 $R(1) \oplus SO(2)$：
@@ -158,10 +188,20 @@ $$R(u) = R_1 \big(R_1^{-1} R_2\big)^{u}$$
 
 在这个空间中**任意**选择一个点，都自动满足约束。再考虑到加速度不能突变，我们可以直接在这个空间的切空间（加加速度，jerk）上随机采样，然后沿着积分链走：jerk → 加速度 → 速度 → 位置；同时，加速度 → 倾角。相当于不论给什么样的加加速度输入，机构的运动始终满足前面所述的动力学约束：
 
-<img src="images/r1so2-sampling.webp" width="476" alt="在 R(1)⊕SO(2) 的切空间随机采样，任意输入都满足端水约束"/>
+<figure>
 
+  <img src="images/r1so2-sampling.webp" width="476" alt="在 R(1)⊕SO(2) 的切空间随机采样，任意输入都满足端水约束"/>
+
+  <figcaption>在 R(1)⊕SO(2) 的切空间随机采样，任意输入都满足端水约束</figcaption>
+
+</figure>
 回到最开始的问题，同样可以找到这么一个始终满足动力学约束的空间：$R(3) \oplus SO(3)$。一个原本看起来很复杂的问题（六自由度、带动力学约束），就变成了一个简单的三自由度问题——当然，所有的积分等运算都是在 SE(3) 空间内进行的。
 
-<img src="images/dynamic-transport.webp" width="620" alt="机械臂高速动态搬运液体演示，全程满足动力学约束"/>
+<figure>
 
+  <img src="images/dynamic-transport.webp" width="620" alt="机械臂高速动态搬运液体演示，全程满足动力学约束"/>
+
+  <figcaption>机械臂高速动态搬运液体演示，全程满足动力学约束</figcaption>
+
+</figure>
 这个思路，跟后面自主规划一章里「带约束的规划」是一脉相承的：与其在全空间里采样、再把样本投影回约束面，不如直接把约束流形构造出来，在里面自由地采样。

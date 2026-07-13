@@ -14,7 +14,7 @@
 | 1 | 关于本书 | [docs/index.md](docs/index.md) |
 | 2 | 前言 | [docs/preface.md](docs/preface.md) |
 | 3 | 先修知识 | [docs/prerequisite.md](docs/prerequisite.md) |
-| 4 | 入门 · 工业机器人基础 | [docs/getting-started.md](docs/getting-started.md) |
+| 4 | 入门 · 机器人学入门 | [docs/getting-started.md](docs/getting-started.md) |
 | 5 | 入门 · 入门实践 | [docs/dirty-your-hands.md](docs/dirty-your-hands.md) |
 | 6 | 进阶 · 导言 | [docs/advanced.md](docs/advanced.md) |
 | 7 | 进阶 · 现代机器人学 | [docs/modern-robotics.md](docs/modern-robotics.md) |

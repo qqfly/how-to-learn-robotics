@@ -2,8 +2,13 @@
 
 对于入门部分，实际上就是了解如何让一个机械臂动起来。这方面其实已经研究非常成熟了，大家看上个世纪的教材就行，个人推荐的是 John Craig 的教材 《Introduction to Robotics: Mechanics and Control》<sup>[1]</sup>，在 [Youtube](https://www.youtube.com/watch?v=0yD3uBshJB0&list=PL64324A3B147B5578) 和 [Bilibili](https://www.bilibili.com/video/BV15W411q78p/) 都可以找到斯坦福 Oussama Khatib 大神的视频，基本与 Craig 的教材内容相匹配。
 
-<img src="images/craig-book.webp" width="300" alt="John Craig《Introduction to Robotics: Mechanics and Control》书封"/>
+<figure>
 
+  <img src="images/craig-book.webp" width="300" alt="John Craig《Introduction to Robotics: Mechanics and Control》书封"/>
+
+  <figcaption>John Craig《Introduction to Robotics: Mechanics and Control》书封</figcaption>
+
+</figure>
 建议从 Craig 的教材开始就看英文版本，Google 一下，很容易找到 PDF 版本。作为一本入门教材，Craig 的教材是相当深入浅出的，配合着 Khatib 的视频，可以快速掌握机器人学的基础。
 
 我还在学校读博的时候，常对刚入学的师弟们说，「如果你把这本书的内容掌握了，就已经超过实验室绝大多数师兄师姐了。」
@@ -32,8 +37,13 @@
 
 ### 运动学
 
-<img src="images/robot-kinematics.webp" width="600" alt="机器人正运动学与逆运动学示意"/>
+<figure>
 
+  <img src="images/robot-kinematics.webp" width="600" alt="机器人正运动学与逆运动学示意"/>
+
+  <figcaption>机器人正运动学与逆运动学示意</figcaption>
+
+</figure>
 对于机器人来说，一个基本工作就是计算运动学：
 
 - 正运动学：根据关节角度，计算机器人工具坐标系（末端）在机器人基座坐标系（底座）下的位姿；
@@ -47,8 +57,13 @@
 
 这不重要，你只要知道它是帮你确定两个连杆之间的相对关系就行。不妨掌握 Craig 书上的那种就行（Wikipedia上称为 Modified DH)：
 
-<img src="images/modified-dh.webp" width="500" alt="Modified DH 参数与坐标系建立"/>
+<figure>
 
+  <img src="images/modified-dh.webp" width="500" alt="Modified DH 参数与坐标系建立"/>
+
+  <figcaption>Modified DH 参数与坐标系建立</figcaption>
+
+</figure>
 1）建立坐标系：
 
 - $z_i$ 轴与第 $i$ 个关节重合，关节转动方向遵照右手定律；
@@ -91,7 +106,7 @@ $$\dot{x}=J\cdot \dot{q}$$
 
 - 如果你前面没有弄清楚角速度，建议在这章仔细思考。例如，「为什么不能直接对欧拉角求导获得速度？」；
 
-- 了解教材中的雅可比计算方式，并思考「是否可以直接对运动学正解的结果求偏导？」（可以参考我的一个知乎回答 [《机器人微分运动学中的姿态向量是什么？》](https://www.zhihu.com/question/531815112/answer/2476607222)
+- 了解教材中的雅可比计算方式，并思考「是否可以直接对运动学正解的结果求偏导？」（可以参考我的一个知乎回答 [《机器人微分运动学中的姿态向量是什么？》](https://www.zhihu.com/question/531815112/answer/2476607222)）
 
 - 这边需要掌握的就是它的计算方法了，**一定要**编程计算机器人的雅可比矩阵；
 
@@ -103,8 +118,13 @@ $$\dot{x}=J\cdot \dot{q}$$
 
 这时候，你有了雅可比矩阵，你就会发现，你知道怎么通过调节角度来控制末端运动了。这时候我们再回头看运动学逆解的问题。你会发现：「让机器人末端朝着目标位姿运动不就可以了？」。
 
-<img src="images/jacobian-ik.webp" width="500" alt="基于雅可比迭代的数值逆解示意"/>
+<figure>
 
+  <img src="images/jacobian-ik.webp" width="500" alt="基于雅可比迭代的数值逆解示意"/>
+
+  <figcaption>基于雅可比迭代的数值逆解示意</figcaption>
+
+</figure>
 其中，末端位姿误差为 $\Delta x = x - \hat{x}$；由雅可比反解出关节增量，再不断迭代：
 
 $$\Delta q = J^{\dagger}\Delta x,\qquad q_{k+1} = q_k + \Delta q$$
@@ -171,16 +191,26 @@ $$F = m \cdot a$$
 
 要让一个东西动起来，就要给它施力。
 
-<img src="images/slider.svg" width="640" alt="滑块受力与运动示意"/>
+<figure>
 
+  <img src="images/slider.svg" width="640" alt="滑块受力与运动示意"/>
+
+  <figcaption>滑块受力与运动示意</figcaption>
+
+</figure>
 如果我们给定一个滑块的运动轨迹 $s(t)$，我们就可以计算出它整个轨迹的加速度 $\ddot{s}(t)$，进而计算出让滑块按照我们设想运动所需的力 $F(t) = m \cdot \ddot{s}(t)$。
 
 换句话说，我们可以通过动力学计算出让机器人运动所需的每个关节力矩。
 
 而关节力矩，可以通过电机提供，对于直流电机，输出力矩与电流成正比。
 
-<img src="images/dc-motor.webp" width="500" alt="直流电机"/>
+<figure>
 
+  <img src="images/dc-motor.webp" width="500" alt="直流电机"/>
+
+  <figcaption>直流电机</figcaption>
+
+</figure>
 但是，有几个问题：
 
 - 动力学好难算；
@@ -189,29 +219,44 @@ $$F = m \cdot a$$
 
 - 还可能有各种外力（抓持的物体质量，关节动力学属性变化等）。
 
-这就是控制算法的工作了。于是，大家会接触到传说的 PID 控制。通过对目标位置与当前实际位置对误差进行处理得到控制量。直观上可以这么理解：位置高了，我就往降低方向给指令；速度快了，我就给它减速对指令；有误差，我就持续往减少误差方向加控制量。不依赖精准的模型，简单有效，一度成为工业控制的通解。
+这就是控制算法的工作了。于是，大家会接触到传说的 PID 控制。通过对目标位置与当前实际位置的误差进行处理得到控制量。直观上可以这么理解：位置高了，我就往降低方向给指令；速度快了，我就给它减速的指令；有误差，我就持续往减少误差方向加控制量。不依赖精准的模型，简单有效，一度成为工业控制的通解。
 
 但是，又有问题：如果我们直接把关节目标位置发给 PID 控制器，那么每次都是一次突变（阶跃响应），真实物理世界里的硬件都有惯性，那么这种突变就容易引起超调、振荡等问题。
 
-<img src="images/step-and-traj.svg" width="680" alt="阶跃响应与轨迹跟踪对比"/>
+<figure>
 
+  <img src="images/step-and-traj.svg" width="680" alt="阶跃响应与轨迹跟踪对比"/>
+
+  <figcaption>阶跃响应与轨迹跟踪对比</figcaption>
+
+</figure>
 但是，感觉好像还是有什么不对，机器人运动好像是有加减速过程（右）的，而非一次阶跃（左）。
 
 于是，这里就需要引入所谓的「轨迹规划」概念了，根据电机性能、设计一段相对平顺的加减速轨迹去到达目标位置，减少每个控制周期的阶跃量。这就有了所谓的「T形曲线」（速度连续）、「S形曲线」（加速度连续）等轨迹类型（Trajectory Profile）。
 
-<img src="images/traj-planning.webp" width="500" alt="带加减速过程的轨迹规划示意"/>
+<figure>
 
+  <img src="images/traj-planning.webp" width="500" alt="带加减速过程的轨迹规划示意"/>
+
+  <figcaption>带加减速过程的轨迹规划示意</figcaption>
+
+</figure>
 这时候你又想到，既然 PID 和动力学都可以计算让机器人运动所需的力/控制指令，但是动力学模型不太准、而 PID 依赖误差、始终滞后，那么有没有可能把它们结合在一起，先用动力学算一个基本准确的力矩，然后用 PID 消除不准确性造成的微小误差，而不是去计算整个偏差？
 
-<img src="images/feedforward-pid.svg" width="700" alt="基于动力学前馈的 PID 控制框图"/>
+<figure>
 
+  <img src="images/feedforward-pid.svg" width="700" alt="基于动力学前馈的 PID 控制框图"/>
+
+  <figcaption>基于动力学前馈的 PID 控制框图</figcaption>
+
+</figure>
 是的，于是你发明了基于动力学前馈的 PID 控制算法。
 
 至此，Craig 书上重要的内容基本过了一遍了。剩下的其他一些部分，可以大概浏览一下，因为有不少内容已经比较旧了。
 
 ### 标定与辨识
 
-虽然，这部分不属于 Craig 书籍内容，但却是是工业机械臂高精度、高速度运转的一个关键要点，并且也相对成熟，所以补充进来。
+虽然，这部分不属于 Craig 书籍内容，但却是工业机械臂高精度、高速度运转的一个关键要点，并且也相对成熟，所以补充进来。
 
 前面，我们「发明了」基于动力学前馈的 PID 控制算法，很容易发现，前馈的效果，很大因素取决于你的动力学模型准不准——运动学参数、转动惯量、质心位置……这些数字从哪里来？
 
@@ -232,24 +277,45 @@ $$\tau = A(q, \dot{q}, \ddot{q})\,\Theta$$
 实施时有几个细节：
 - 激励轨迹不能随便选，例如一个平面旋转关节的机械臂，如果辨识用的轨迹使得 $q_1=q_2$，那么就无法辨识出有效值（对应矩阵不满秩）；
 - 角速度、角加速度没法直接测量，需要通过滤波算法或者观测器计算得到；
-- 摩擦力如果采用线性模型，可以放进上式一起辨识。系统的介绍可以看 Khalil 的教材《Modeling, identification and control of robots》<sup>[4]</sup>。
+- 摩擦力如果采用线性模型，可以放进上式一起辨识。系统的介绍可以看 Khalil 的教材《Modeling, identification and control of robots》<sup>[2]</sup>。
 
 这套东西我在一个单轴直驱平台上完整做过一遍：动力学参数直接从 SolidWorks 里读出来，计算力矩与实测力矩的误差有 50%；做完参数辨识，误差立马降到了 8% 以内。
 
-<img src="images/single-joint-ident-fit.webp" width="500" alt="单轴平台参数辨识后，计算力矩与实测力矩基本重合"/>
+<figure>
 
+  <img src="images/single-joint-ident-fit.webp" width="500" alt="单轴平台参数辨识后，计算力矩与实测力矩基本重合"/>
+
+  <figcaption>单轴平台参数辨识后，计算力矩与实测力矩基本重合</figcaption>
+
+</figure>
 有了准确的动力学模型，好玩的事情就来了：不加任何传感器，就能直接用驱动器反馈的**电流**估计外力矩。灵敏到什么程度呢：一张纸碰上去，机械臂就能停下来。检测到碰撞后，再切换成「重力补偿 + 小增益 PD」，就是协作机器人的拖动示教（Hand Guiding）。后来，我又在 Baxter 上把整臂的版本做了一遍。完整的实验过程可以看[《听说现在协作机器人很火，所以我也做了 1/7 个》](https://mp.weixin.qq.com/s/hkZjZItqyfwG6k0cwRm9kA)与[《我把剩下的 6/7 协作机器人给做完了》](https://mp.weixin.qq.com/s/1qyXJ01n0mcMyRX6ZB6jOQ)。
 
-<img src="images/collision-detection.webp" width="500" alt="基于动力学模型与电流反馈的碰撞检测"/>
+<figure>
 
+  <img src="images/collision-detection.webp" width="500" alt="基于动力学模型与电流反馈的碰撞检测"/>
+
+  <figcaption>基于动力学模型与电流反馈的碰撞检测</figcaption>
+
+</figure>
 不过，在你兴冲冲地准备在自己的机器人上复现之前，我得提醒一句：**摩擦力，入坑需谨慎**。上面的实验是直驱平台，可以不考虑摩擦力。换一个极端例子：100kg 负载、86 减速比的行星齿轮传动，不考虑摩擦力时，动力学模型完全无法拟合力矩曲线；而即使想把摩擦力辨识出来，尝试几种摩擦力经验公式，也没办法完全消除误差——到目前为止，我们还没有一个通用、权威的摩擦力模型。
 
-<img src="images/friction-fit-fail.webp" width="500" alt="大减速比传动下，不考虑摩擦力的模型完全无法拟合实测力矩"/>
+<figure>
 
+  <img src="images/friction-fit-fail.webp" width="500" alt="大减速比传动下，不考虑摩擦力的模型完全无法拟合实测力矩"/>
+
+  <figcaption>大减速比传动下，不考虑摩擦力的模型完全无法拟合实测力矩</figcaption>
+
+</figure>
 这就是为什么不少协作机器人（如 KUKA iiwa、Franka）选择在关节里加**力矩传感器**：直接在减速器输出端测量力矩，跳过传动系统，绕开摩擦力。具体方案各有取舍：应变片式（如 Kinova）、双编码器式（利用减速器两端编码器的转角差估计力矩）、串联弹性驱动器 SEA（如 Baxter）；也有厂商（如 UR）坚持电流估计 + 精细辨识的无传感器路线。
 
-最后：如果你按照「控制」一节的建议搭过单轴伺服平台，那么本节的所有实验——辨识、碰撞检测、拖动示教——都可以在它上面复现一遍，强烈建议试试。而机器人一旦与环境发生持续接触（打磨、装配），只靠碰撞检测就不够了，你需要去了解**力控**、**阻抗控制**这些关键词，同样推荐 Khalil 的教材<sup>[4]</sup>。
+最后：如果你按照「控制」一节的建议搭过单轴伺服平台，那么本节的所有实验——辨识、碰撞检测、拖动示教——都可以在它上面复现一遍，强烈建议试试。而机器人一旦与环境发生持续接触（打磨、装配），只靠碰撞检测就不够了，你需要去了解**力控**、**阻抗控制**这些关键词，同样推荐 Khalil 的教材<sup>[2]</sup>。
 
 如果暂时无法亲手实验，那么，强力推荐 Dragan Kostic 的一篇论文，以一个三自由度机械臂为例，详细地演示了如何构建和辨识获得高精度机器人模型。论文为：[Modeling and identification for high-performance robot control: An RRR-robotic arm case study](https://www.researchgate.net/profile/Dragan-Kostic/publication/3332598_Modeling_and_Identification_for_High-Performance_Robot_Control_An_RRR-Robotic_Arm_Case_Study/links/0c960528a618d975cc000000/Modeling-and-Identification-for-High-Performance-Robot-Control-An-RRR-Robotic-Arm-Case-Study.pdf)。
 
-<img src="images/paper_D.Kostic.webp" width="500" alt="Dragan Kostic 论文截图"/>
+<figure>
+
+  <img src="images/kostic-rrr-paper.webp" width="500" alt="Kostić 等人的 RRR 机械臂建模与辨识论文（IEEE TCST 2004）"/>
+
+  <figcaption>Kostić 等人的 RRR 机械臂建模与辨识论文（IEEE TCST 2004）</figcaption>
+
+</figure>
