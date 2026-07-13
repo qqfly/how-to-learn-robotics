@@ -2,11 +2,22 @@
 
 本手册面向「非科班出身」的读者，梳理机器人学的自学路径与资料，包含先修知识、入门、进阶、具身智能等部分，每个部分都配有对应的实践。
 
-请从 [前言](preface.md) 开始阅读，或使用左侧目录导航。
+请从 [前言](preface.md) 开始，按下面的顺序阅读；也可以使用左侧导航。
+
+## 目录
+
+1. [前言](preface.md)
+2. [先修知识](prerequisite.md)
+3. 入门：[工业机器人基础](getting-started.md) · [入门实践](dirty-your-hands.md)
+4. 进阶：[导言](advanced.md) · [现代机器人学](modern-robotics.md) · [3D 视觉](3d-vision.md) · [自主规划](motion-planning.md) · [进阶实践](advanced-practice.md)
+5. [具身智能](embodied-ai.md)（整理中）
+6. [勇者斗恶龙](dragon-quest.md)
+7. [参考文献](references.md) · [许可证](license.md)
+
 
 ## 在线阅读
 
-- 新版站点（MkDocs，迁移中，占位）：<https://learn-robotics.qqfly.net>
+- 新版站点：<https://learn-robotics.qqfly.net>
 
 ## 参与与反馈
 
