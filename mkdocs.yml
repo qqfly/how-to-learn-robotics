@@ -11,6 +11,10 @@ copyright: >-
   本作品采用 CC BY 4.0 许可协议进行许可 ·
   <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备2026094704号</a>
 
+# 隐藏页脚 "Made with Material for MkDocs" 生成器标识
+extra:
+  generator: false
+
 # 使用扁平的 xxx.html 路径，而非目录式 /xxx/。
 # 这样 docs/*.md 里图片的相对引用（images/...）在 MkDocs 站点与 GitHub 上都能解析，两边都能正常显示。
 use_directory_urls: false
@@ -51,7 +55,7 @@ nav:
   - 前言: preface.md
   - 先修知识: prerequisite.md
   - 入门:
-      - 工业机器人基础: getting-started.md
+      - 机器人学入门: getting-started.md
       - 入门实践: dirty-your-hands.md
   - 进阶:
       - 进阶导言: advanced.md

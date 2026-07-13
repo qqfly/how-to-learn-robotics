@@ -1,0 +1,46 @@
+# 自动部署：push 到 master → mkdocs build --strict → rsync 到腾讯云轻量服务器
+#
+# 需要在仓库 Settings → Secrets and variables → Actions 配置以下 Secrets：
+#   DEPLOY_SSH_KEY      部署专用 SSH 私钥（建议单独 ssh-keygen 一把，公钥加到服务器 authorized_keys）
+#   DEPLOY_HOST         服务器地址（IP 或域名）
+#   DEPLOY_USER         SSH 用户名
+#   DEPLOY_PATH         站点目录（nginx root，如 /var/www/learn-robotics/，注意结尾带 /）
+#   DEPLOY_KNOWN_HOSTS  执行 `ssh-keyscan <服务器地址>` 得到的输出（防中间人）
+#
+# Secrets 未配置前，本工作流会在 SSH 步骤失败——配好即绿。也可在 Actions 页手动触发（workflow_dispatch）。
+name: deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build site (strict)
+        run: mkdocs build --strict
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+
+      - name: Rsync site to server
+        run: |
+          rsync -avz --delete site/ "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}"

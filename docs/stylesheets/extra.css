@@ -86,3 +86,18 @@ body[data-md-color-scheme="slate"] {
   max-width: 92vw !important;
   border-radius: 6px;
 }
+
+/* 图注：<figure> + <figcaption>，灰色小字居中显示（正文与 GitHub 双端可见） */
+.md-typeset figure {
+  margin: 1em auto;
+  width: fit-content;
+  max-width: 100%;
+}
+.md-typeset figcaption {
+  color: var(--md-default-fg-color--light);
+  font-size: .72rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: .35rem auto 0;
+  max-width: 36em;
+}
