@@ -1,0 +1,96 @@
+# 开源机器人学学习指南 — MkDocs Material 配置
+# 本地预览： mkdocs serve      本地构建： mkdocs build
+site_name: 开源机器人学学习指南
+site_description: 面向「非科班出身」读者的中文机器人学自学指南
+site_author: qqfly
+site_url: https://learn-robotics.qqfly.net/
+repo_url: https://github.com/qqfly/how-to-learn-robotics
+repo_name: qqfly/how-to-learn-robotics
+edit_uri: edit/master/docs/
+copyright: >-
+  本作品采用 CC BY 4.0 许可协议进行许可 ·
+  <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备2026094704号</a>
+
+# 隐藏页脚 "Made with Material for MkDocs" 生成器标识
+extra:
+  generator: false
+
+# 使用扁平的 xxx.html 路径，而非目录式 /xxx/。
+# 这样 docs/*.md 里图片的相对引用（images/...）在 MkDocs 站点与 GitHub 上都能解析，两边都能正常显示。
+use_directory_urls: false
+
+theme:
+  name: material
+  language: zh
+  font: false               # 关闭 Google Fonts CDN（国内可达性）；字体在 extra.css 用系统字体栈定义
+  features:
+    - navigation.instant           # 无整页刷新翻页，长文阅读更连贯
+    - navigation.instant.progress  # 慢速加载时顶部显示进度条
+    - navigation.top        # 返回顶部按钮
+    - navigation.footer     # 页脚「上一页 / 下一页」
+    - navigation.tracking   # 地址栏跟随锚点
+    - toc.follow            # 右侧目录跟随
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom       # 配色在 extra.css 里定义（暖调：炭墨 + 陶土）
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切换到夜间模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到日间模式
+
+# 导航：全书不用数字编号（结构靠「部」分组表达，便于持续演进）；入门/进阶两部对称，各以实践收尾
+nav:
+  - 关于本书: index.md
+  - 前言: preface.md
+  - 先修知识: prerequisite.md
+  - 入门:
+      - 机器人学入门: getting-started.md
+      - 入门实践: dirty-your-hands.md
+  - 进阶:
+      - 进阶导言: advanced.md
+      - 现代机器人学: modern-robotics.md
+      - 3D 视觉: 3d-vision.md
+      - 自主规划: motion-planning.md
+      - 进阶实践: advanced-practice.md
+  - 具身智能: embodied-ai.md
+  - 勇者斗恶龙: dragon-quest.md
+  - 参考文献: references.md
+  - 许可证: license.md
+
+markdown_extensions:
+  - pymdownx.arithmatex:     # 数学公式（配合 MathJax）
+      generic: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - admonition
+  - attr_list
+  - md_in_html               # 允许正文中的原始 <img> / <figure> 等 HTML
+  - toc:
+      permalink: true
+
+# 插件：本地搜索（支持中文，配合 jieba 分词）+ 图片点击放大（glightbox，资源本地打包）
+plugins:
+  - search
+  - glightbox:
+      zoomable: true
+      draggable: true
+      touchNavigation: true
+
+# 本地打包的 MathJax（SVG 版，自包含、无需外部字体；避免 CDN 在国内不稳定）
+extra_javascript:
+  - javascripts/mathjax.js
+  - javascripts/mathjax/tex-svg.js
+
+extra_css:
+  - stylesheets/extra.css
