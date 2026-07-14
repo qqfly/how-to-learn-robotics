@@ -15,7 +15,8 @@ repo_url: https://github.com/qqfly/how-to-learn-robotics
 repo_name: qqfly/how-to-learn-robotics
 edit_uri: edit/english-version/docs-en/
 copyright: >-
-  Licensed under CC BY 4.0 ·
+  English edition · AI-assisted translation, reviewed by the author ·
+  Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> ·
   <a href="https://learn-robotics.qqfly.net/" target="_blank" rel="noopener">中文原版</a>
 
 docs_dir: docs-en
@@ -69,10 +70,25 @@ theme:
         name: Switch to light mode
 
 # Nav mirrors the Chinese site's structure (no numeric chapter numbers; two symmetric
-# parts each closing with a practice chapter). Pages are added here as they are translated,
-# so `--strict` stays green at every step.
+# parts each closing with a practice chapter). Chapters not yet translated are honest
+# placeholders that link to the Chinese original, so `--strict` stays green throughout.
 nav:
   - About: index.md
+  - Preface: preface.md
+  - Prerequisites: prerequisite.md
+  - Getting Started:
+      - Introduction to Robotics: getting-started.md
+      - Get Your Hands Dirty: dirty-your-hands.md
+  - Advanced:
+      - Overview: advanced.md
+      - Modern Robotics: modern-robotics.md
+      - 3D Vision: 3d-vision.md
+      - Autonomous Planning: motion-planning.md
+      - Advanced Practice: advanced-practice.md
+  - Embodied AI: embodied-ai.md
+  - Dragon Quest: dragon-quest.md
+  - References: references.md
+  - License: license.md
 
 markdown_extensions:
   - pymdownx.arithmatex:
