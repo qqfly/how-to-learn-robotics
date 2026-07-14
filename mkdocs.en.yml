@@ -101,6 +101,12 @@ markdown_extensions:
   - toc:
       permalink: true
 
+# Footer version stamp (git provenance): appends the build commit's date + short SHA to the
+# copyright line. Shared with the Chinese config; the English sha lags whenever the Chinese
+# source moved but this site wasn't rebuilt — that gap is the translation-staleness signal.
+hooks:
+  - hooks/version_stamp.py
+
 # Local search only — English uses Material's built-in lunr English stemmer.
 # NOTE: jieba (Chinese segmentation) is intentionally NOT needed here.
 plugins:
