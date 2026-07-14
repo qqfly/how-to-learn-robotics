@@ -7,6 +7,8 @@
 
 # MkDocs 构建输出
 /site/
+# 英文站构建输出（english-version 分支）
+/site-en/
 
 # Python
 __pycache__/

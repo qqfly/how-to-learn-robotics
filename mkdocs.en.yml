@@ -1,0 +1,125 @@
+# English edition — MkDocs Material config (isolated from the Chinese site).
+#
+# This file is NEVER read by the Chinese deploy pipeline (deploy.yml runs
+# `mkdocs build`, which reads mkdocs.yml). The English site is built with an
+# explicit `-f mkdocs.en.yml`, so the Chinese site is provably unaffected.
+#
+# Local preview:  make en-serve        Local build:  make en-build
+# (Both first sync images/stylesheets/javascripts from docs/ into docs-en/.)
+
+site_name: How to Learn Robotics
+site_description: A self-study guide to robotics for readers without a formal background
+site_author: qqfly
+site_url: https://en.learn-robotics.qqfly.net/
+repo_url: https://github.com/qqfly/how-to-learn-robotics
+repo_name: qqfly/how-to-learn-robotics
+edit_uri: edit/english-version/docs-en/
+copyright: >-
+  English edition · AI-assisted translation, reviewed by the author ·
+  Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> ·
+  <a href="https://learn-robotics.qqfly.net/" target="_blank" rel="noopener">中文原版</a>
+
+docs_dir: docs-en
+site_dir: site-en          # separate from the Chinese site's site/ so local previews never clobber each other
+
+# Hide the "Made with Material for MkDocs" footer line + expose the language switcher.
+extra:
+  generator: false
+  # Header language selector: cross-links the two independent sites (see the Chinese
+  # site's mirror block, to be added on master once this site is live).
+  alternate:
+    - name: 简体中文
+      link: https://learn-robotics.qqfly.net/
+      lang: zh
+    - name: English
+      link: https://en.learn-robotics.qqfly.net/
+      lang: en
+
+# Flat xxx.html paths (not directory-style /xxx/), matching the Chinese site so the
+# shared `images/...` references in the figures resolve identically.
+use_directory_urls: false
+
+theme:
+  name: material
+  language: en
+  font: false               # No Google Fonts CDN; system font stack defined in extra.css (shared with the Chinese site)
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.top
+    - navigation.footer
+    - navigation.tracking
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+# Nav mirrors the Chinese site's structure (no numeric chapter numbers; two symmetric
+# parts each closing with a practice chapter). Chapters not yet translated are honest
+# placeholders that link to the Chinese original, so `--strict` stays green throughout.
+nav:
+  - About: index.md
+  - Preface: preface.md
+  - Prerequisites: prerequisite.md
+  - Getting Started:
+      - Introduction to Robotics: getting-started.md
+      - Get Your Hands Dirty: dirty-your-hands.md
+  - Advanced:
+      - Overview: advanced.md
+      - Modern Robotics: modern-robotics.md
+      - 3D Vision: 3d-vision.md
+      - Autonomous Planning: motion-planning.md
+      - Advanced Practice: advanced-practice.md
+  - Embodied AI: embodied-ai.md
+  - Dragon Quest: dragon-quest.md
+  - References: references.md
+  - License: license.md
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+# Footer version stamp (git provenance): appends the build commit's date + short SHA to the
+# copyright line. Shared with the Chinese config; the English sha lags whenever the Chinese
+# source moved but this site wasn't rebuilt — that gap is the translation-staleness signal.
+hooks:
+  - hooks/version_stamp.py
+
+# Local search only — English uses Material's built-in lunr English stemmer.
+# NOTE: jieba (Chinese segmentation) is intentionally NOT needed here.
+plugins:
+  - search
+  - glightbox:
+      zoomable: true
+      draggable: true
+      touchNavigation: true
+
+# Locally bundled MathJax (SVG, self-contained). Synced from docs/javascripts/ into docs-en/.
+extra_javascript:
+  - javascripts/mathjax.js
+  - javascripts/mathjax/tex-svg.js
+
+extra_css:
+  - stylesheets/extra.css

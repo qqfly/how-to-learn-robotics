@@ -79,6 +79,11 @@ markdown_extensions:
   - toc:
       permalink: true
 
+# 页脚版本戳（git 溯源）：在版权行后追加「构建自的 commit 日期 + 短 sha」。与英文站共用同一
+# hook；英文站 sha 落后中文站时，即代表英文翻译尚未追平——两站页脚一比即知落后多少。
+hooks:
+  - hooks/version_stamp.py
+
 # 插件：本地搜索（支持中文，配合 jieba 分词）+ 图片点击放大（glightbox，资源本地打包）
 plugins:
   - search
