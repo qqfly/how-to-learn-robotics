@@ -1,13 +1,14 @@
-# 自动部署：push 到 master → mkdocs build --strict → rsync 到腾讯云轻量服务器
+# 自动部署：push 到 master → mkdocs build --strict → rsync 到腾讯云轻量服务器。
 #
-# 需要在仓库 Settings → Secrets and variables → Actions 配置以下 Secrets：
-#   DEPLOY_SSH_KEY      部署专用 SSH 私钥（建议单独 ssh-keygen 一把，公钥加到服务器 authorized_keys）
-#   DEPLOY_HOST         服务器地址（IP 或域名）
-#   DEPLOY_USER         SSH 用户名
-#   DEPLOY_PATH         站点目录（nginx root，如 /var/www/learn-robotics/，注意结尾带 /）
-#   DEPLOY_KNOWN_HOSTS  执行 `ssh-keyscan <服务器地址>` 得到的输出（防中间人）
+# Secrets 与 qqfly/homepage 仓库同名同义（同一台服务器可直接复用同样的值）：
+#   DEPLOY_HOST   服务器地址（IP）
+#   DEPLOY_USER   SSH 用户名
+#   DEPLOY_KEY    SSH 私钥全文（对应公钥须在服务器 authorized_keys 中）
+#   DEPLOY_PORT   SSH 端口（可选，默认 22）
 #
-# Secrets 未配置前，本工作流会在 SSH 步骤失败——配好即绿。也可在 Actions 页手动触发（workflow_dispatch）。
+# 一行命令配置（在本机）：
+#   gh secret set DEPLOY_USER -R qqfly/how-to-learn-robotics --body "<用户名>"
+#   gh secret set DEPLOY_KEY  -R qqfly/how-to-learn-robotics < <私钥文件路径>
 name: deploy
 
 on:
@@ -15,32 +16,52 @@ on:
     branches: [master]
   workflow_dispatch:
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+# 同一时间只跑一个部署；新 push 到来时取消进行中的旧部署
+concurrency:
+  group: deploy
+  cancel-in-progress: true
 
-      - uses: actions/setup-python@v5
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required secrets
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          : "${DEPLOY_HOST:?missing secret DEPLOY_HOST}"
+          : "${DEPLOY_USER:?missing secret DEPLOY_USER}"
+          : "${DEPLOY_KEY:?missing secret DEPLOY_KEY}"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
       - name: Build site (strict)
-        run: mkdocs build --strict
+        run: |
+          pip install -r requirements.txt
+          mkdocs build --strict
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
-
-      - name: Add server to known_hosts
+      - name: Configure SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H -p "${DEPLOY_PORT:-22}" "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Rsync site to server
+      - name: Deploy with rsync
         run: |
-          rsync -avz --delete site/ "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}"
+          # Web 根目录须与服务器 Caddy 站点块的 root 一致：/var/www/learn-robotics
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${DEPLOY_PORT:-22} -o StrictHostKeyChecking=yes" \
+            site/ "${DEPLOY_USER}@${DEPLOY_HOST}:/var/www/learn-robotics/"
