@@ -102,10 +102,10 @@ While we're at it, let me answer a couple of frequently asked questions:
 
 ### The language of groups: ⊕ and ⊖
 
-At this point, some folks might say: "These screw and PoE methods seem to be just a matter of
+At this point, some readers might say: "These screw and PoE methods seem to be just a matter of
 representation; they don't have much of an advantage."
 
-This view is **wrong, and dangerous.** It's like when we first learn linear algebra and see
+**This is the wrong instinct, and a dangerous one.** It's like when we first learn linear algebra and see
 matrix multiplication and say, "Isn't this just another way of writing a system of linear
 equations?" — if you reject the new way of thinking from the outset, you'll struggle later when
 the truly useful tools show up (linear combinations, null space, mappings), and you might even,
@@ -170,7 +170,7 @@ another; the Lie algebra (screws) describes joint-induced motion easily, and the
 conveniently converts the Lie algebra between different reference frames; then there's random
 sampling in motion planning, Jacobian computation in optimization, defining a Riemannian metric
 on a Lie group to represent kinetic energy... Problems that were a huge hassle with classical
-methods are all grand-unified in one stroke — **the world is so perfect.**
+methods all come together at once, and everything just falls into place.
 
 !!! example "A fun little example: computing the average rotation"
 

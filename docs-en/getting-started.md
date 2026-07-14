@@ -14,17 +14,17 @@ Stanford's legendary Oussama Khatib, which line up closely with Craig's book.
   <figcaption>The cover of John Craig's <em>Introduction to Robotics: Mechanics and Control</em>.</figcaption>
 
 </figure>
-A quick web search turns up a PDF easily. As an introductory text, Craig's book is remarkably
-approachable, and paired with Khatib's videos you can get a fast grip on the fundamentals of
-robotics.
+It's a widely used introductory text, easy to find through a library or the usual booksellers.
+As an introduction it's remarkably approachable, and paired with Khatib's videos you can get a
+fast grip on the fundamentals of robotics.
 
 Back when I was doing my PhD, I used to tell the incoming junior students, "If you master
 what's in this book, you're already ahead of most of the senior students in the lab."
 
 Not many actually got through it, though.
 
-So let me put it a different way: "If you master what's in this book, you can hold down a
-development job at the vast majority of industrial-robot companies in China."
+So let me put it a different way: "If you master what's in this book, you'll be well equipped
+for development work at most industrial-robot companies in China."
 
 Here I'll roughly lay out the basics; time is limited, so I won't expand on them too much for
 now. The order may not exactly match Craig's book.
@@ -194,7 +194,7 @@ is a property tied to the robot's configuration — you can't get rid of it thro
 
 ### Dynamics
 
-I'm convinced 80% of folks give up at this chapter.
+I'm convinced 80% of readers give up at this chapter.
 
 Take Newton-Euler recursion as an example. The **forward iteration** (i: 0 → n−1) works outward
 link by link, computing each link's velocity, acceleration, and inertial force/torque:
@@ -286,7 +286,7 @@ But there are a few problems:
 - And there may be all kinds of external forces (the mass of a grasped object, changing
   joint-dynamics properties, and so on).
 
-That's the job of the control algorithm. And so you meet the legendary PID control. It works on
+That's the job of the control algorithm. And so you meet the famous PID controller. It works on
 the error between the target position and the current actual position to produce a control
 output. Intuitively: if the position is too high, I command it downward; if the speed is too
 high, I command it to slow down; if there's an error, I keep adding control output in the
@@ -323,8 +323,8 @@ profiles.
 Now it occurs to you: since both PID and dynamics can compute the force/control commands needed
 to move the robot — but the dynamics model isn't very accurate, while PID relies on error and
 always lags — could we combine the two? First use dynamics to compute a roughly accurate
-torque, then use PID to mop up the small errors from the inaccuracy, instead of computing the
-whole deviation?
+torque, then use PID to clean up the small residual error, instead of computing the whole
+deviation?
 
 <figure>
 

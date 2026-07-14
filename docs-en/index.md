@@ -4,13 +4,13 @@
     This is the English edition of a handbook originally written in Chinese. It was
     translated with the help of an AI assistant (Claude) and reviewed by the author.
     Where a passage reads oddly, the [Chinese original](https://learn-robotics.qqfly.net/)
-    is the source of truth — and corrections via
+    is the source of truth, and corrections via
     [pull request](https://github.com/qqfly/how-to-learn-robotics/pulls) are very welcome.
 
-This handbook is for people who are **not classically trained** in robotics. It maps out a
-path for teaching yourself the field — from the prerequisites, through the fundamentals and
-the more advanced material, all the way to embodied AI — with a round of hands-on practice at
-every stage.
+This handbook is for people who never had a formal grounding in robotics. It maps out a path
+for teaching yourself the field, from the prerequisites through the fundamentals and the more
+advanced material, all the way to embodied AI, with a round of hands-on practice at every
+stage.
 
 By [qqfly](https://qqfly.net).
 

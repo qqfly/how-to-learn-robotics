@@ -111,7 +111,7 @@ What about deep learning? It has of course reshaped machine vision — but **une
 our lab studied the Amazon Picking Challenge (APC), this was what struck me most: the top-ranked
 teams had shifted object recognition almost entirely to deep networks, while pose estimation was
 still generally the traditional "segment the object's point cloud + ICP registration" routine.
-Recognition is deep learning's home turf; pose is a regression problem, and a network's
+Recognition is where deep learning is strongest; pose is a regression problem, and a network's
 direct-regression accuracy isn't enough to support grasping, so the last step still needs a
 geometric method to back it up. Networks that directly regress pose have kept improving since,
 but the division of labor — "learn a coarse pose, refine it geometrically" — is still common in

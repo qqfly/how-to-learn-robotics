@@ -16,9 +16,9 @@ multiple robots doing the identical task, installation errors mean each one has 
 again; and it can only handle relatively fixed tasks.
 
 For an automotive line, one car model often stays in production for several years and the
-per-unit profit is substantial, so spending time on teaching is fine. But switch to 3C products
-like phones — several new models a year, thin per-unit margins — and traditional teaching can't
-keep up. Recall the definition of an industrial robot: "an automatically controlled,
+per-unit profit is substantial, so spending time on teaching is fine. But switch to consumer electronics
+like phones, with several new models a year and thin per-unit margins, and traditional teaching
+can't keep up. Recall the definition of an industrial robot: "an automatically controlled,
 reprogrammable, **multipurpose** manipulator." Unfortunately, we've taken a robot designed to be
 "multipurpose" and used it as a "special-purpose machine."
 
@@ -352,8 +352,8 @@ in simulation in half an hour).
 Finally, let's look at planning through a different lens. Motion planning is a textbook Markov
 decision process (MDP): the state is the configuration, the action is the motion, and the reward is
 "reach the goal without collision." If you deeply understand the algorithms that solve
-reinforcement learning, you'll find that dynamic programming's (DP) iterative process is cut from
-the same cloth as Dijkstra — one computes from the goal backward, the other from the start forward;
+reinforcement learning, you'll find that dynamic programming's (DP) iterative process works in
+essentially the same way as Dijkstra — one computes from the goal backward, the other from the start forward;
 and RRT\* can be seen as one realization of the Monte Carlo idea. Reinforcement learning just
 stores the policy and value in a "table," as its understanding of the environment, to speed up
 planning.
@@ -361,8 +361,8 @@ planning.
 Naturally, someone thinks: fit that table with a deep network, have the network output actions
 directly, and planning time becomes a single forward pass — that's the motivation for doing planning
 with deep reinforcement learning. I've tried it myself on bin picking: for visual-servoing-style
-tasks it worked surprisingly well, but think about it carefully and **the fancy DRL was just fitting
-a Jacobian matrix**; whereas for tasks that genuinely need to weave around obstacles in C-Space, all
+tasks it worked surprisingly well, but think about it carefully and **that impressive-looking DRL was
+really just fitting a Jacobian matrix**; whereas for tasks that genuinely need to weave around obstacles in C-Space, all
 it had left was "the trend is right, occasionally correct." So when judging this kind of work, it's
 worth applying one criterion: **how would a traditional method do this?** If a traditional method
 could do it in two lines of formula, then the learning hasn't created any added value yet.

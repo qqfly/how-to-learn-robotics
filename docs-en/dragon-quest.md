@@ -17,7 +17,7 @@ These days, any company can spend a little money to have someone draw up a robot
 machined at a factory, buy a few motors and reducers and other parts, drop in a general-purpose
 controller, and off it runs. Who needs dynamics, optimal control, or motion planning?
 
-Even the big four robot makers get by with DH for modeling — at most a bit of kinematic calibration
+Even the big four robot makers (ABB, FANUC, KUKA, and Yaskawa) get by with DH for modeling — at most a bit of kinematic calibration
 and dynamics identification — and put most of their energy into application integration. Who needs
 Lie groups, convex optimization, or reinforcement learning?
 
