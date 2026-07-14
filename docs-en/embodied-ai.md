@@ -39,7 +39,7 @@ use it as a tool for robotics research:
   networks like the cerebellar model (CMAC) in control;
 
 - Modeling: for places that are hard to model, it's sometimes worth trying a machine-learning
-  approach — for instance, fitting friction with a neural network;
+  approach; for instance, fitting friction with a neural network;
 
 - Vision: robots often need to be combined with vision, and DL has developed rapidly in the vision
   field; borrowing this tool can sometimes let you stand up an experimental prototype very quickly;
@@ -47,9 +47,9 @@ use it as a tool for robotics research:
 - Reinforcement learning: covered in the next section.
 
 In recent years, as the concept of "embodied AI" has developed, some quite impressive results have
-appeared — and although they're still in an "overfitting" state, they've achieved many things that
+appeared. Although they're still in an "overfitting" state, they've achieved many things that
 traditional plan-and-control methods struggle with (like lacing shoes and folding clothes), bringing
-a lot of new things to robotics.
+a lot of new capability to robotics.
 
 ### Reinforcement learning
 
@@ -62,7 +62,7 @@ Here I'll first sketch how to get started with reinforcement learning, and share
 end.
 
 First, read the book. Sutton's *Introduction to Reinforcement Learning*<sup>[13]</sup> is the
-must-read bible.
+essential text, the one almost everyone starts with.
 
 You can find a Python implementation of the algorithms on GitHub:
 [Python Implementation](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction).

@@ -1,6 +1,6 @@
 # Modern Robotics
 
-Remember the pits we left open in the introductory part?
+Remember the questions we left unresolved in the introductory part?
 
 - Why can't you just differentiate the Euler angles to get velocity?
 - Can you just take partial derivatives of the forward-kinematics result?
@@ -11,7 +11,7 @@ Back then I said: "It's perfectly normal not to have an intuitive grasp of orien
 angular velocity, because they don't live in Cartesian space — you'll only truly understand
 once you learn more math later."
 
-Now it's time to fill those pits in.
+Now it's time to return to them.
 
 ### Why we need a new mathematical language
 
@@ -111,7 +111,7 @@ equations?" — if you reject the new way of thinking from the outset, you'll st
 the truly useful tools show up (linear combinations, null space, mappings), and you might even,
 by rejecting it so early, never get the chance to touch the more advanced tools at all.
 
-So in this section, let's raise our vantage point one more level and see what the concept of a
+So in this section, let's step back and look at the bigger structure, and see what the concept of a
 "group" actually unifies.
 
 We can describe the state of any object in space with a vector (a point in a high-dimensional

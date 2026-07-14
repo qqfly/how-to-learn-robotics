@@ -32,7 +32,7 @@ now. The order may not exactly match Craig's book.
 ### Spatial transformations
 
 If you did well in theoretical mechanics, this part won't give you much trouble. The problem
-is, some folks didn't.
+is, some didn't.
 
 Homogeneous transformations and the like are very basic and very important in robotics. Some
 things to watch for:
@@ -179,8 +179,8 @@ general-purpose solver. For details, see my Zhihu answer,
 [How does the MATLAB Robotics Toolbox compute inverse kinematics?](https://www.zhihu.com/question/41673569/answer/129670927)
 (in Chinese).
 
-Every beginner **must** implement this algorithm by hand — there are a few pitfalls worth
-stepping in.
+Every beginner should implement this algorithm by hand; there are a few subtle failure modes you
+only run into once you've built it yourself.
 
 The method is elegant, but it has its own problems:
 
@@ -351,7 +351,7 @@ From the design drawings? Plenty of robot companies do exactly that, and most of
 works better than PID without feedforward. But unfortunately, because machining and assembly
 always carry some deviation, the actual parameters don't match the drawings. Bringing the model
 close to the real machine is what **calibration** and **identification** are for. Textbooks
-tend to wave these two through in a sentence, but in real engineering you can hardly avoid them,
+tend to gloss over these two, but in real engineering you can hardly avoid them,
 so let me say a bit about them on their own. The good news: their playbook is highly consistent
 — **build an error equation, then solve it with something like least squares**.
 
