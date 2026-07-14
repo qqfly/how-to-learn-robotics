@@ -14,6 +14,15 @@ name: deploy
 on:
   push:
     branches: [master]
+    # Only redeploy the Chinese site when its own build inputs change; English-only
+    # commits (docs-en/, mkdocs.en.yml) don't touch this site. Covers everything
+    # `mkdocs build` reads: docs/ (content + shared assets), config, hook, deps.
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "hooks/**"
+      - "requirements.txt"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 # 同一时间只跑一个部署；新 push 到来时取消进行中的旧部署

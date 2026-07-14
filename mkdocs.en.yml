@@ -120,6 +120,7 @@ plugins:
 extra_javascript:
   - javascripts/mathjax.js
   - javascripts/mathjax/tex-svg.js
+  - javascripts/lang-switch.js   # keep the current page path when switching languages
 
 extra_css:
   - stylesheets/extra.css

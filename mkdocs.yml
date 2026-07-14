@@ -104,6 +104,7 @@ plugins:
 extra_javascript:
   - javascripts/mathjax.js
   - javascripts/mathjax/tex-svg.js
+  - javascripts/lang-switch.js   # 语言切换保持当前页路径（两站文件名一致）
 
 extra_css:
   - stylesheets/extra.css

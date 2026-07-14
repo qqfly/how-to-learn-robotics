@@ -6,25 +6,31 @@
 #     server (Tencent, via deploy.yml + rsync) and shares nothing with Pages.
 #   - This workflow file does not exist on master, so master pushes never see it.
 #
-# Trigger is manual (workflow_dispatch) for now so half-translated content is never
-# published by accident. When you are ready for auto-deploy on every push, uncomment
-# the `push` block below.
+# Auto-deploys the English site on pushes to master that touch English build inputs
+# (docs-en/, mkdocs.en.yml, the shared version hook, or the shared assets under docs/).
+# Chinese-only content changes do NOT trigger it — that keeps the footer version stamp
+# honest: the English sha only advances when the English site is actually rebuilt, so a
+# lag between the two sites' shas signals a translation that hasn't caught up yet.
+# workflow_dispatch stays available for manual redeploys.
 #
-# One-time setup (done by the repo owner when going live):
-#   1. Push this branch: git push -u origin english-version
-#   2. Run this workflow once (Actions tab -> deploy-en -> Run workflow) to create gh-pages.
-#   3. Settings -> Pages -> Source: "Deploy from a branch" -> Branch: gh-pages / (root).
-#   4. Settings -> Pages -> Custom domain: en.learn-robotics.qqfly.net (CNAME file is
-#      already in docs-en/, so gh-deploy --force preserves it on every deploy).
-#   5. DNS: add a CNAME record  en.learn-robotics  ->  qqfly.github.io
-#      (leaves the existing learn-robotics A record -> Tencent untouched).
+# Live since 2026-07-14: Settings -> Pages -> gh-pages branch, custom domain
+# en.learn-robotics.qqfly.net (CNAME in docs-en/, Let's Encrypt cert, Enforce HTTPS on).
 
 name: deploy-en
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [english-version]
+  push:
+    branches: [master]
+    paths:
+      - "docs-en/**"
+      - "mkdocs.en.yml"
+      - "hooks/**"
+      - "requirements-en.txt"
+      - "docs/images/**"
+      - "docs/stylesheets/**"
+      - "docs/javascripts/**"
+      - ".github/workflows/deploy-en.yml"
 
 # Only one English deploy at a time; a newer run cancels an in-progress one.
 concurrency:
