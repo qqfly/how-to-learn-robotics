@@ -39,12 +39,12 @@
 
 <figure>
 
-  <img src="images/robot-kinematics.webp" width="600" alt="机器人正运动学与逆运动学示意"/>
+  <img src="images/robot-kinematics.webp" width="600" alt="ABB工业机械臂构型示意"/>
 
-  <figcaption>机器人正运动学与逆运动学示意</figcaption>
+  <figcaption>ABB工业机械臂构型示意</figcaption>
 
 </figure>
-对于机器人来说，一个基本工作就是计算运动学：
+对于机器人来说，一个基础工作就是计算运动学：
 
 - 正运动学：根据关节角度，计算机器人工具坐标系（末端）在机器人基座坐标系（底座）下的位姿；
 - 逆运动学：给定一个末端位姿，计算达到这个位姿的关节角度。
@@ -206,9 +206,9 @@ $$F = m \cdot a$$
 
 <figure>
 
-  <img src="images/dc-motor.webp" width="500" alt="直流电机"/>
+  <img src="images/dc-motor.webp" width="500" alt="直流电机原理图"/>
 
-  <figcaption>直流电机</figcaption>
+  <figcaption>直流电机原理图</figcaption>
 
 </figure>
 但是，有几个问题：

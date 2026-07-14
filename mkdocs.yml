@@ -66,7 +66,7 @@ nav:
   - 具身智能: embodied-ai.md
   - 勇者斗恶龙: dragon-quest.md
   - 参考文献: references.md
-  - 许可证: license.md
+  - 版权说明: license.md
 
 markdown_extensions:
   - pymdownx.arithmatex:     # 数学公式（配合 MathJax）

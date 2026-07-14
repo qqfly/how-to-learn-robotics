@@ -10,9 +10,9 @@
 
 <figure>
 
-  <img src="images/smart-pal-and-me.webp" width="500" alt="作者与 SmartPal 机器人"/>
+  <img src="images/smart-pal-and-me.webp" width="500" alt="我与 SmartPal 机器人"/>
 
-  <figcaption>作者与 SmartPal 机器人</figcaption>
+  <figcaption>我与 SmartPal 机器人</figcaption>
 
 </figure>
 但是，当我后来真正开始看这些「祖传代码」的时候，我发现实际发给机器人的只有几个关节**位置**点而已。

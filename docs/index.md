@@ -12,7 +12,7 @@
 4. 进阶：[导言](advanced.md) · [现代机器人学](modern-robotics.md) · [3D 视觉](3d-vision.md) · [自主规划](motion-planning.md) · [进阶实践](advanced-practice.md)
 5. [具身智能](embodied-ai.md)（整理中）
 6. [勇者斗恶龙](dragon-quest.md)
-7. [参考文献](references.md) · [许可证](license.md)
+7. [参考文献](references.md) · [版权说明](license.md)
 
 
 ## 在线阅读
@@ -27,4 +27,4 @@
 
 ## 许可
 
-本作品采用 [知识共享署名 4.0 国际许可协议 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) 进行许可，详见[许可证](license.md)。
+本作品采用 [知识共享署名 4.0 国际许可协议 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) 进行许可，详见[版权说明](license.md)。

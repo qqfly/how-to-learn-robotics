@@ -2,9 +2,9 @@
 
 <figure>
 
-  <img src="images/the-brave.webp" width="500" alt="勇者斗恶龙（章节题图）"/>
+  <img src="images/the-brave.webp" width="500" alt="勇者斗恶龙"/>
 
-  <figcaption>勇者斗恶龙（章节题图）</figcaption>
+  <figcaption>勇者斗恶龙</figcaption>
 
 </figure>
 现在，你已经知道了如何让一个机器人动起来，并且深入掌握了机器人某一领域的知识。然后，你就像一个刚刚斩杀第一只史莱姆的勇者一般，举着宝剑，时刻准备着将宝剑刺入恶龙的胸口。
