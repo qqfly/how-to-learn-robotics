@@ -19,13 +19,14 @@
 
 ## 在线阅读
 
-- 新版站点：<https://learn-robotics.qqfly.net>
+- 中文站点：<https://learn-robotics.qqfly.net>
+- English edition：<https://en.learn-robotics.qqfly.net>（AI 辅助翻译）
 
 ## 参与与反馈
 
 本项目写作时间很短，所以肯定有疏漏。因此放在这里作为一个开源项目，大家可以随时修改并提交 [Pull Request](https://github.com/qqfly/how-to-learn-robotics/pulls)；有问题也可以提 [Issues](https://github.com/qqfly/how-to-learn-robotics/issues)。
 
-目前本项目只有中文版本。如有志愿者愿意参与英文翻译，欢迎随时与我联系：[qrobotics [at] yeah [dot] net](mailto:qrobotics@yeah.net)。
+本书现已提供 [English edition](https://en.learn-robotics.qqfly.net)（AI 辅助翻译、作者校订）。翻译若有疏漏，欢迎指正：[qrobotics [at] yeah [dot] net](mailto:qrobotics@yeah.net)。
 
 ## 许可
 

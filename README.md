@@ -2,9 +2,12 @@
 
 一本中文机器人学自学手册。作者结合自身学习与工作经历，梳理如何一步步自学机器人学，并在各阶段给出推荐的教材、课程与资料。
 
+> **English readers** — this handbook has an [English edition](https://en.learn-robotics.qqfly.net) (AI-assisted translation, reviewed by the author).
+
 ## 在线阅读
 
-- 新版站点：<https://learn-robotics.qqfly.net>
+- 中文站点：<https://learn-robotics.qqfly.net>
+- English edition：<https://en.learn-robotics.qqfly.net>（AI-assisted translation）
 - 也可直接在 GitHub 上阅读 [`docs/`](docs/)。
 
 ## 阅读顺序
@@ -43,7 +46,7 @@ mkdocs serve      # 然后打开 http://127.0.0.1:8000
 
 本项目写作时间很短，所以肯定有疏漏。因此放在这里作为一个开源项目，大家可以随时修改并提交 [Pull Request](https://github.com/qqfly/how-to-learn-robotics/pulls)；有问题也可以提 [Issues](https://github.com/qqfly/how-to-learn-robotics/issues)。
 
-目前本项目只有中文版本，但似乎有一些非中文读者希望能翻译成英文版本（[Issue 2](https://github.com/qqfly/how-to-learn-robotics/issues/2)）。如有志愿者愿意参与英文翻译，欢迎随时与我联系 [qrobotics [at] yeah [dot] net](mailto:qrobotics@yeah.net)。
+本书现已提供 [English edition](https://en.learn-robotics.qqfly.net)（AI 辅助翻译、作者校订，回应了 [Issue 2](https://github.com/qqfly/how-to-learn-robotics/issues/2)）。翻译若有疏漏，欢迎指正或提 PR：[qrobotics [at] yeah [dot] net](mailto:qrobotics@yeah.net)。
 
 ## 版权说明
 

@@ -14,6 +14,14 @@ copyright: >-
 # 隐藏页脚 "Made with Material for MkDocs" 生成器标识
 extra:
   generator: false
+  # 页眉语言切换：与英文站 mkdocs.en.yml 的 alternate 对称，两站互挂入口
+  alternate:
+    - name: 简体中文
+      link: https://learn-robotics.qqfly.net/
+      lang: zh
+    - name: English
+      link: https://en.learn-robotics.qqfly.net/
+      lang: en
 
 # 使用扁平的 xxx.html 路径，而非目录式 /xxx/。
 # 这样 docs/*.md 里图片的相对引用（images/...）在 MkDocs 站点与 GitHub 上都能解析，两边都能正常显示。
