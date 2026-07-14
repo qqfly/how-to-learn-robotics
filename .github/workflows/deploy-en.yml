@@ -1,0 +1,61 @@
+# Deploy the ENGLISH edition to GitHub Pages (gh-pages branch).
+#
+# Isolation guarantees (the Chinese site must be unaffected):
+#   - Builds with `-f mkdocs.en.yml`; never touches mkdocs.yml or the Chinese build.
+#   - Publishes to the `gh-pages` branch only; the Chinese site is on a separate
+#     server (Tencent, via deploy.yml + rsync) and shares nothing with Pages.
+#   - This workflow file does not exist on master, so master pushes never see it.
+#
+# Trigger is manual (workflow_dispatch) for now so half-translated content is never
+# published by accident. When you are ready for auto-deploy on every push, uncomment
+# the `push` block below.
+#
+# One-time setup (done by the repo owner when going live):
+#   1. Push this branch: git push -u origin english-version
+#   2. Run this workflow once (Actions tab -> deploy-en -> Run workflow) to create gh-pages.
+#   3. Settings -> Pages -> Source: "Deploy from a branch" -> Branch: gh-pages / (root).
+#   4. Settings -> Pages -> Custom domain: en.learn-robotics.qqfly.net (CNAME file is
+#      already in docs-en/, so gh-deploy --force preserves it on every deploy).
+#   5. DNS: add a CNAME record  en.learn-robotics  ->  qqfly.github.io
+#      (leaves the existing learn-robotics A record -> Tencent untouched).
+
+name: deploy-en
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [english-version]
+
+# Only one English deploy at a time; a newer run cancels an in-progress one.
+concurrency:
+  group: deploy-en
+  cancel-in-progress: true
+
+permissions:
+  contents: write   # gh-deploy pushes the built site to the gh-pages branch
+
+jobs:
+  deploy-en:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements-en.txt
+
+      - name: Sync shared assets (images / stylesheets / mathjax) into docs-en/
+        run: rsync -a docs/images docs/stylesheets docs/javascripts docs-en/
+
+      - name: Configure git identity for gh-deploy
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Build (strict) and deploy to gh-pages
+        run: mkdocs gh-deploy --config-file mkdocs.en.yml --strict --force

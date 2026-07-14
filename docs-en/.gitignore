@@ -1,0 +1,5 @@
+# Synced from docs/ at build time (single-sourced there; never committed here).
+# See the Makefile `en-sync` target and .github/workflows/deploy-en.yml.
+/images/
+/stylesheets/
+/javascripts/

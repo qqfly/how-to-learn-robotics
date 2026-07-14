@@ -1,0 +1,6 @@
+# English-edition build dependencies.
+# Install:  pip install -r requirements-en.txt
+# NOTE: jieba is intentionally omitted — English search uses Material's built-in
+# lunr English stemmer, so no Chinese segmentation is needed here.
+mkdocs-material>=9.7,<10
+mkdocs-glightbox>=0.4     # click-to-zoom images (assets bundled locally, no CDN)
