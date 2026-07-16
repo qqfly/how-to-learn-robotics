@@ -44,6 +44,8 @@ theme:
   language: en
   font: false               # No Google Fonts CDN; system font stack defined in extra.css (shared with the Chinese site)
   features:
+    - header.autohide       # Kept in sync with mkdocs.yml: the header slides away while reading.
+                            # Both sites share extra.css, so their chrome must behave alike.
     - navigation.instant
     - navigation.instant.progress
     - navigation.top

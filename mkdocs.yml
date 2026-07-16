@@ -32,6 +32,9 @@ theme:
   language: zh
   font: false               # 关闭 Google Fonts CDN（国内可达性）；字体在 extra.css 用系统字体栈定义
   features:
+    - header.autohide       # 向下滚动时收起顶栏：happy-llm / autolabor 这类读感舒服的中文长文站
+                            # 顶部都没有实心色条压着；Material 的 header 删不掉（搜索/导航在里面），
+                            # 但读正文时让它让开，观感接近，且回滚即出现、不牺牲可达性。
     - navigation.instant           # 无整页刷新翻页，长文阅读更连贯
     - navigation.instant.progress  # 慢速加载时顶部显示进度条
     - navigation.top        # 返回顶部按钮
