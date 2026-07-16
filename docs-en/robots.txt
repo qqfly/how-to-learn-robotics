@@ -1,0 +1,10 @@
+# Allow full crawling; the point of this file is the Sitemap: line below — the standard
+# way to tell crawlers where the sitemap lives without logging into any console.
+# sitemap.xml is generated automatically by MkDocs at build time.
+# Non-.md files are copied verbatim into the site root, so this ends up at /robots.txt.
+# Separate from the Chinese site's docs/robots.txt: this site is a different host, and
+# deploy-en.yml only syncs docs/images, docs/stylesheets and docs/javascripts into docs-en/.
+User-agent: *
+Allow: /
+
+Sitemap: https://en.learn-robotics.qqfly.net/sitemap.xml

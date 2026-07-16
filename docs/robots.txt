@@ -1,0 +1,8 @@
+# 允许全部抓取；本文件的实际用途是声明 sitemap 位置——这是不登录任何后台
+# 就能告诉百度 / Google「sitemap 在哪」的标准途径。
+# sitemap.xml 由 MkDocs 构建时自动生成，无需手写。
+# 非 .md 文件会被 MkDocs 原样复制到站点根目录，故本文件最终位于 /robots.txt。
+User-agent: *
+Allow: /
+
+Sitemap: https://learn-robotics.qqfly.net/sitemap.xml
