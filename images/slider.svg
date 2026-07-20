@@ -1,0 +1,33 @@
+<svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg"
+     font-family="-apple-system, 'Helvetica Neue', Arial, 'PingFang SC', sans-serif"
+     fill="none" stroke="#2b3440" stroke-width="1.6">
+  <defs>
+    <marker id="af" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2b3440" stroke="none"/>
+    </marker>
+    <marker id="ad" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a94a2" stroke="none"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="720" height="240" fill="#ffffff"/>
+
+  <!-- ground / rail -->
+  <rect x="40" y="176" width="640" height="9" rx="2" fill="#dfe4ea" stroke="#9aa5b1"/>
+
+  <!-- displacement s(t) dimension line -->
+  <line x1="150" y1="92" x2="520" y2="92" stroke="#8a94a2" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#ad)"/>
+  <text x="335" y="84" font-size="15" font-style="italic" fill="#2b3440" stroke="none" text-anchor="middle">s(t)</text>
+  <line x1="150" y1="118" x2="150" y2="176" stroke="#c7cdd6" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="520" y1="118" x2="520" y2="176" stroke="#c7cdd6" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <!-- initial block (solid) -->
+  <rect x="105" y="118" width="90" height="58" rx="3" fill="#d6e8fb" stroke="#2b6cb0"/>
+  <text x="150" y="152" font-size="16" font-style="italic" fill="#2b3440" stroke="none" text-anchor="middle">m</text>
+
+  <!-- force F -->
+  <line x1="34" y1="147" x2="103" y2="147" stroke="#d64550" stroke-width="2.6" marker-end="url(#af)"/>
+  <text x="60" y="136" font-size="16" font-weight="bold" fill="#d64550" stroke="none">F</text>
+
+  <!-- displaced block (dashed) -->
+  <rect x="475" y="118" width="90" height="58" rx="3" fill="none" stroke="#8a94a2" stroke-dasharray="5 3"/>
+</svg>

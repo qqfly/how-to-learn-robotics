@@ -1,0 +1,1490 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A self-study guide to robotics for readers without a formal background">
+      
+      
+        <meta name="author" content="qqfly">
+      
+      
+        <link rel="canonical" href="https://en.learn-robotics.qqfly.net/motion-planning.html">
+      
+      
+        <link rel="prev" href="3d-vision.html">
+      
+      
+        <link rel="next" href="advanced-practice.html">
+      
+      
+        
+          <link rel="alternate" href="https://learn-robotics.qqfly.net/" hreflang="zh">
+        
+          <link rel="alternate" href="https://en.learn-robotics.qqfly.net/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Autonomous Planning - How to Learn Robotics</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#autonomous-planning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="How to Learn Robotics" class="md-header__button md-logo" aria-label="How to Learn Robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            How to Learn Robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Autonomous Planning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="https://learn-robotics.qqfly.net/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="https://en.learn-robotics.qqfly.net/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/qqfly/how-to-learn-robotics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    qqfly/how-to-learn-robotics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="How to Learn Robotics" class="md-nav__button md-logo" aria-label="How to Learn Robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    How to Learn Robotics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/qqfly/how-to-learn-robotics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    qqfly/how-to-learn-robotics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="preface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prerequisite.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Robotics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dirty-your-hands.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Your Hands Dirty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modern-robotics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modern Robotics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3d-vision.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autonomous Planning
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="motion-planning.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autonomous Planning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#from-teaching-to-autonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From teaching to autonomy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-planning-problem-and-two-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The planning problem, and two metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-space-the-theoretical-foundation-of-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C-Space: the theoretical foundation of planning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-map-of-algorithms-sampling-optimization-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The map of algorithms: sampling, optimization, learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trajectory-planning-and-time-parameterization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trajectory planning and time parameterization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planning-under-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Planning under constraints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-planning-onto-the-production-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting planning onto the production line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-mdp-and-learning-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        An MDP and learning perspective
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced-practice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Practice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="embodied-ai.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embodied AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dragon-quest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dragon Quest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="references.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="license.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#from-teaching-to-autonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From teaching to autonomy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-planning-problem-and-two-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The planning problem, and two metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-space-the-theoretical-foundation-of-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C-Space: the theoretical foundation of planning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-map-of-algorithms-sampling-optimization-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The map of algorithms: sampling, optimization, learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trajectory-planning-and-time-parameterization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trajectory planning and time parameterization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planning-under-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Planning under constraints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-planning-onto-the-production-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting planning onto the production line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-mdp-and-learning-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        An MDP and learning perspective
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="autonomous-planning">Autonomous Planning<a class="headerlink" href="#autonomous-planning" title="Permanent link">¶</a></h1>
+<p>By now you can make a robot move the way you want. But it still feels far too hard to use — you
+have to hand-specify every waypoint it passes through, or it might crash into its surroundings.
+You wonder: could the robot find these waypoints on its own?</p>
+<p>And so you've arrived in the land of motion planning.</p>
+<h3 id="from-teaching-to-autonomy">From teaching to autonomy<a class="headerlink" href="#from-teaching-to-autonomy" title="Permanent link">¶</a></h3>
+<p>Let's first look at why this matters. Today, industrial robots are still used mostly by
+"teach-and-playback": a technician uses the teach pendant to jog the robot to every waypoint it
+needs to pass through, and then has it repeat the sequence over and over. This approach has a
+few problems you can't get around: deploying a robot is slow and labor-intensive; even for
+multiple robots doing the identical task, installation errors mean each one has to be taught
+again; and it can only handle relatively fixed tasks.</p>
+<p>For an automotive line, one car model often stays in production for several years and the
+per-unit profit is substantial, so spending time on teaching is fine. But switch to consumer electronics
+like phones, with several new models a year and thin per-unit margins, and traditional teaching
+can't keep up. Recall the definition of an industrial robot: "an automatically controlled,
+reprogrammable, <strong>multipurpose</strong> manipulator." Unfortunately, we've taken a robot designed to be
+"multipurpose" and used it as a "special-purpose machine."</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/planning-industry-gap.webp" data-desc-position="bottom"><img src="images/planning-industry-gap.webp" width="500" alt="How industrial applications and academic research sit differently on the robot-flexibility spectrum"></a>
+
+  <figcaption>How industrial applications and academic research sit differently on the spectrum of robot flexibility.</figcaption>
+
+</figure>
+<p>What motion planning sets out to do is turn "motion-level programming" (teaching point after
+point) into "task-level programming" (just say "grab A and put it at B," and the robot works out
+the trajectory itself). If this technology were mature enough, users wouldn't need to know the
+details of operating a robot — they'd just enter a task command; combined with visual
+perception, it could even adapt to changes in the environment and the workpiece.</p>
+<h3 id="the-planning-problem-and-two-metrics">The planning problem, and two metrics<a class="headerlink" href="#the-planning-problem-and-two-metrics" title="Permanent link">¶</a></h3>
+<p>Let's state the problem clearly. <strong>Motion planning</strong>: given two points A and B in the robot's
+configuration space, find a path between A and B that satisfies the constraints.</p>
+<p>While we're here, let's clear up a naming confusion beginners often run into — what's the
+difference between path planning, trajectory planning, and motion planning?</p>
+<ul>
+<li><strong>Path planning</strong> plans a spatial route <span class="arithmatex">\(\theta(s)\)</span> (<span class="arithmatex">\(0 \le s \le 1\)</span>), with no time
+  information; it addresses <strong>reachability</strong>;</li>
+<li><strong>Trajectory planning</strong> plans <span class="arithmatex">\(\theta(t)\)</span>, with timestamps; it addresses <strong>differential
+  constraints</strong> related to time, velocity, and so on;</li>
+<li><strong>Motion planning</strong> is the broader concept: its output can be discrete waypoints, a continuous
+  path, a time-stamped trajectory, or even a control policy.</li>
+</ul>
+<p>The definitions themselves don't matter much; what matters is being clear about who does what in
+the system. For the simplest task (get from A to B avoiding obstacles), the planner outputs a
+geometric path and the robot's controller handles the trajectory interpolation and closed-loop
+control on its own — that's enough; for tasks with trajectory requirements (a fixed cycle time,
+constant end-effector speed), path planning and trajectory planning have to work together; and
+if the trajectory itself must satisfy dynamic constraints, the planner often has to compute the
+trajectory directly, rather than splitting it into two steps.</p>
+<p>To judge a planning algorithm, you usually look at two metrics — and for each new algorithm you
+meet from here on, I'd suggest asking these two questions first:</p>
+<ol>
+<li><strong>Completeness</strong>: as long as the problem has a solution, the algorithm is guaranteed to find
+   one in finite time;</li>
+<li><strong>Optimality</strong>: the path found is optimal under a given metric (shortest, most
+   energy-efficient, etc.).</li>
+</ol>
+<h3 id="c-space-the-theoretical-foundation-of-planning">C-Space: the theoretical foundation of planning<a class="headerlink" href="#c-space-the-theoretical-foundation-of-planning" title="Permanent link">¶</a></h3>
+<p>In the introductory part we discussed everything in the workspace, but the first step in motion
+planning is to think in a different space.</p>
+<p>The vector of a robot's joint angles is called the robot's <strong>generalized coordinates</strong>; the
+space those generalized coordinates live in is the robot's <strong>configuration space</strong> (C-Space). In
+C-Space, no matter what the robot looks like, it's just <strong>a single point</strong> — and that's exactly
+the premise that lets various general planning algorithms be reused (A*, RRT, and the like are
+all designed for point-like agents).</p>
+<ul>
+<li>Planar mobile robot: inflate the obstacles by the robot's size (a Minkowski sum), and the
+  robot becomes a point on the <span class="arithmatex">\((x, y)\)</span> plane; its C-Space looks a lot like the workspace;</li>
+<li>Serial arm: the C-Space is the joint space. Note that its topology is completely different from
+  the workspace — because a revolute joint's <span class="arithmatex">\(0 = 2\pi\)</span> wraps around end to end, the C-Space of a
+  two-DOF arm is actually a <strong>torus</strong>; the C-Space of a general serial arm is a manifold.</li>
+</ul>
+<p>Why insist on planning in C-Space? Because the mapping from C-Space to the workspace (forward
+kinematics) is surjective, so a planning result is always executable; the reverse (inverse
+kinematics) has issues like multiple solutions and singularities, so a result planned in the
+workspace might not be executable at all. So, <strong>for a robot arm, in principle all the work can be
+done entirely in C-Space.</strong></p>
+<p>But the price is dimensionality. Add one rotational DOF to a mobile robot and A*'s search
+difficulty multiplies; by the time you reach a six-DOF arm, discretizing the C-Space at a 6°
+resolution produces <span class="arithmatex">\(60^6 \approx 4.7 \times 10^{10}\)</span> cells — even if each collision check took
+only 0.1 ms, one full sweep would take 1296 hours. Motion planning is NP-hard, its complexity
+growing exponentially with dimension; this is the "curse of dimensionality," and it's the source
+of every difficulty in this field.</p>
+<p>Two footnotes. First, the notion of C-Space is the theoretical bedrock of this field; I've always
+recommended <em>Principles of Robot Motion</em><sup>[8]</sup> for getting started — for no other reason
+than that it puts C-Space in a suitably important place, rather than launching straight into RRT.
+Second, the C-Spaces of common mechanisms are all Lie groups — a multi-joint robot is a Torus(n),
+a drone is SE(3) — and the last chapter's unified sampling and interpolation definitions let the
+same planning algorithms run on all of these spaces (which is precisely how the State Space is
+designed in OMPL).</p>
+<h3 id="the-map-of-algorithms-sampling-optimization-learning">The map of algorithms: sampling, optimization, learning<a class="headerlink" href="#the-map-of-algorithms-sampling-optimization-learning" title="Permanent link">¶</a></h3>
+<p>There are countless planning algorithms, but from a methodological angle they fall into roughly
+three big classes. I'll give you the map, not the details — the principle of each algorithm is
+laid out clearly in the textbooks<sup>[8][9]</sup> and the <a href="http://ompl.kavrakilab.org/">OMPL</a>
+docs; years ago I also wrote a more detailed piece,
+<a href="https://mp.weixin.qq.com/s/_fE760XxFlvrkzYEpslYvA">Motion Planning: An Introduction</a> (in
+Chinese), going from pathfinding in Red Alert to robot arms.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/planning-books.webp" data-desc-position="bottom"><img src="images/planning-books.webp" width="500" alt="Some motion-planning textbooks"></a>
+
+  <figcaption>Some motion-planning textbooks.</figcaption>
+
+</figure>
+<p><strong>Graph-search-based methods</strong> (strictly speaking, the shared foundation of all three classes):
+turn the C-Space into a graph of nodes and edges, then use Dijkstra or A* to find the shortest
+path. Ways to build the graph include the visibility graph (<strong>complete and optimal</strong> in 2D), grid
+discretization (<strong>resolution complete</strong> — too coarse a grid can wall off a passage that actually
+exists), and so on. They work very well in low-dimensional spaces — pathfinding in real-time
+strategy games and mobile-robot navigation are basically this routine — but, limited by the curse
+of dimensionality, they don't scale to a six-DOF arm.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/dijkstra-astar-demo.webp" data-desc-position="bottom"><img src="images/dijkstra-astar-demo.webp" width="500" alt="Dijkstra versus A* search, side by side"></a>
+
+  <figcaption>Dijkstra vs. A* search, side by side.</figcaption>
+
+</figure>
+<p><strong>Optimization-based methods</strong>: treat the trajectory as the variable, write an objective function,
+and optimize it directly. The forefather is Khatib's artificial potential field — its cleverness
+is that it doesn't care about C-Space topology at all, computing virtual forces in the workspace
+and converting them into joint torques, which makes it fast enough to go inside a real-time
+control loop; for a high-DOF arm, you can place several control points along the arm and apply
+forces to each (the figure below is from my own paper). The later CHOMP (precomputed
+obstacle-distance field + gradient descent), STOMP (random perturbations, gradient-free), and
+TrajOpt (SQP + continuous collision detection via convex decomposition) all belong to this
+category. Their shared problem is <strong>local minima</strong>: the planning problem is inherently non-convex,
+and optimization can only give you "the best answer nearby."</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/potential-field-control-points.webp" data-desc-position="bottom"><img src="images/potential-field-control-points.webp" width="500" alt="Artificial potential field with control points: workspace virtual forces converted into joint torques via the Jacobian"></a>
+
+  <figcaption>Control-point-based artificial potential field: workspace virtual forces are converted into joint torques through the Jacobian.</figcaption>
+
+</figure>
+<p><strong>Sampling-based methods</strong>: since C-Space is hard to describe explicitly, don't describe it — just
+run collision checks on random sample points. PRM first scatters random points to build a graph,
+then queries it; RRT grows a random tree from the start point, skipping the learning phase and
+adapting better to dynamic environments; the follow-ups — RRT-Connect (bidirectional growth,
+still one of the most efficient solvers to this day), RRT*/PRM* (asymptotically optimal), and
+the Lazy family (deferred collision checking) — are all improvements on these two frameworks.
+This class of methods is <strong>probabilistically complete, not optimal</strong>, plans fast, and is
+currently the mainstream choice for arms with six or more DOF.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/rrt-arm-demo.webp" data-desc-position="bottom"><img src="images/rrt-arm-demo.webp" width="450" alt="An arm avoiding obstacles, planned by a sampling-based algorithm"></a>
+
+  <figcaption>An arm avoiding obstacles, planned by a sampling-based algorithm.</figcaption>
+
+</figure>
+<p><strong>Learning-based methods</strong>: a more precise name would be "data-driven methods" — the essence is
+"distilling" experience, rules, and evaluation criteria from data so as to react quickly in new
+scenarios. From the earliest learning from demonstration (LfD/DMP, fitting human-taught
+trajectories with a Gaussian mixture model) and imitation learning, to today's red-hot
+reinforcement learning, VLA, and other "embodied AI" techniques — all belong to this category. As
+research has advanced, this has become the field of the moment, and a hotly contested one. We'll
+save the specifics for later.</p>
+<h3 id="trajectory-planning-and-time-parameterization">Trajectory planning and time parameterization<a class="headerlink" href="#trajectory-planning-and-time-parameterization" title="Permanent link">¶</a></h3>
+<p>The planner gives a geometric path; what the robot actually executes is a time-stamped trajectory.
+Trajectory planning can be split into two parts — <strong>path interpolation</strong> and <strong>time computation</strong>:
+first obtain the geometric path <span class="arithmatex">\(p(u)\)</span>, then decide the speed at which to traverse it, i.e.
+<span class="arithmatex">\(u(t)\)</span>. For this part I recommend a dedicated textbook: Biagiotti and Melchiorri's <em>Trajectory
+Planning for Automatic Machines and Robots</em><sup>[10]</sup>.</p>
+<p>Joint-space interpolation (trapezoidal velocity profiles, splines) you've already seen in the
+introductory part; Cartesian-space orientation interpolation, on the other hand, has a pitfall —
+Slerp guarantees only first-order continuity, and higher-order-continuous blends need Lie-group
+tools, which the last chapter's "orientation interpolation and trajectory blending" already
+covered, so I won't repeat it.</p>
+<p>There's a fact on the time-computation side worth thinking hard about: when we do trajectory
+planning for a robot controller, we're used to giving velocity and acceleration constraints — but
+there's actually no such thing as a velocity or acceleration constraint in a robot system. Every
+operation we perform acts on motor torque; <strong>all we have is a torque constraint</strong>. So, under a
+torque constraint, how do you make the robot traverse a given path as fast as possible? That's
+time-optimal trajectory planning (keyword: time-optimal path parameterization), and it's another
+place where numerical optimization shines.</p>
+<p>One more thing from engineering: the path a sampling planner computes is often redundant and full
+of kinks, and executing it directly looks ugly. The standard approach is a three-step
+post-processing — path shortcutting (removing unnecessary detours), trajectory optimization
+(optimization-based algorithms), and trajectory planning (time parameterization) — converting it
+into a trajectory the controller can execute.</p>
+<p>But there are actually plenty of details left: do the later processing steps change the shape of
+the trajectory, and if so, how do you keep it collision-free? When there are many points, sticking
+as strictly as possible to the planned path may mean you can't hit the optimal cycle time; to push
+the cycle time further, you have to adjust the trajectory shape more aggressively.</p>
+<p>So, going a step further, you can put the position and velocity of the whole trajectory into one
+global optimization problem and tune them together: from the same geometric path, you can optimize
+out trajectories that are optimal under different constraints — time-optimal, collision-free,
+constant end-effector speed, and so on.</p>
+<h3 id="planning-under-constraints">Planning under constraints<a class="headerlink" href="#planning-under-constraints" title="Permanent link">¶</a></h3>
+<p>Now let's look at a real industrial task. Arc welding requires the torch tip to move along the
+weld seam with its axis held in a specified direction — but rotation about that axis is free;
+assembly and grinding are similar; the last chapter's high-speed transport constrains acceleration
+and orientation, but places no requirement on position. In other words: <strong>most tasks don't pin
+down all of the robot's degrees of freedom; the system is under-constrained.</strong> These extra degrees
+of freedom are the room the planner has to move in.</p>
+<p>The most direct tool is the <strong>null space</strong>. When the task needs only <span class="arithmatex">\(m\)</span> degrees of freedom and
+the robot has <span class="arithmatex">\(n\)</span> (<span class="arithmatex">\(m &lt; n\)</span>), the velocity-level inverse kinematics <span class="arithmatex">\(J\dot{q} = \dot{x}\)</span> is
+underdetermined, and the general solution is:</p>
+<div class="arithmatex">\[\dot{q} = J^{\dagger}\dot{x} + (I - J^{\dagger}J)\,v\]</div>
+<p>The second term is null-space motion: the robot moves, yet the end-effector doesn't budge an inch.
+Note that "redundant" doesn't specifically mean seven axes — a six-axis arm doing arc welding (a
+task that constrains only five DOF) is a redundant robot too. A seven-axis arm just takes this to
+the configuration level: the same end-effector pose corresponds to infinitely many
+continuously-distributed inverse solutions (self-motion), so you can hold the end-effector
+trajectory while dodging singularities, joint limits, and obstacles — which is exactly why every
+vendor has rolled out a seven-axis product. For more, see
+<a href="https://mp.weixin.qq.com/s/lJdAstK7JM5J-HNm4DLqMg">Curious about seven-axis arms?</a> (in Chinese).</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/arm-angle-avoid-obstacle.webp" data-desc-position="bottom"><img src="images/arm-angle-avoid-obstacle.webp" width="500" alt="A 7-axis arm using null-space self-motion to dodge an obstacle while holding the end-effector pose fixed"></a>
+
+  <figcaption>A seven-axis arm uses null-space self-motion to dodge an obstacle while keeping the end-effector pose fixed.</figcaption>
+
+</figure>
+<p>Project the gradient of an optimization objective (stay farther from joint limits, farther from
+obstacles, higher manipulability) into the null space, and you get the classic gradient-projection
+method — simple enough to embed in a real-time control loop. But it's essentially local gradient
+descent, so it gets stuck in local minima. To do global constrained planning, there are roughly
+three routes:</p>
+<ol>
+<li>
+<p><strong>Sample + project</strong>: sample randomly in C-Space, project the samples onto the constraint-
+   satisfying manifold, then connect adjacent states with Jacobian iteration (the work of Stilman,
+   Berenson, and others; implemented in OpenRAVE);</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/task-constrained-rrt.webp" data-desc-position="bottom"><img src="images/task-constrained-rrt.webp" width="300" alt="Sample-and-project RRT planning under a task constraint"></a></p>
+<p></p><figcaption>Sample-and-project RRT planning under a task constraint.</figcaption><p></p>
+<p></p></figure>
+2. <strong>Grow directly on the manifold</strong>: e.g. Tangent Bundle RRT<sup>[11]</sup> and
+   AtlasRRT<sup>[12]</sup>, building local coordinate charts for the constraint manifold as you
+   plan;<p></p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/atlas-rrt.webp" data-desc-position="bottom"><img src="images/atlas-rrt.webp" width="500" alt="AtlasRRT: building an atlas on the constraint manifold while planning"></a></p>
+<p></p><figcaption>AtlasRRT: building an atlas on the constraint manifold while planning.</figcaption><p></p>
+<p></p></figure>
+3. <strong>Explicit dimension reduction</strong>: look at it another way — an equality constraint reduces the
+   dimension of the space, so if you can explicitly construct the "low-dimensional space that
+   always satisfies the constraint," then anything you do inside it is legal, and the problem
+   actually gets simpler — you can even invite back old friends like A* and RRT. The last
+   chapter's high-speed transport did exactly this: a six-DOF problem with dynamic constraints
+   was reduced to a three-DOF problem in <span class="arithmatex">\(R(3) \oplus SO(3)\)</span>.<p></p>
+</li>
+</ol>
+<h3 id="getting-planning-onto-the-production-line">Getting planning onto the production line<a class="headerlink" href="#getting-planning-onto-the-production-line" title="Permanent link">¶</a></h3>
+<p>So far it's all been algorithms. But if you've been to a factory, you'll notice an awkward truth:
+almost no robots on real production lines use real-time motion planning. At the Amazon Picking
+Challenge (APC), faced with the narrow opening of a shelf, mainstream planners either couldn't
+find a solution or were too slow to use, and the top-ranked teams almost all fell back to
+"predefined keypoints + Cartesian interpolation"; plenty of commercial "smart" sorting systems
+have no motion-planning module at all. It took MUJIN five years to build academic planning
+technology into an industrial controller.</p>
+<p>Where's the problem? Beyond the curse of dimensionality, there's <strong>randomness</strong>: algorithms like
+RRT give a different solution for the same problem every time, and the planned motion often comes
+with unnecessary wiggling — while industry is obsessed with stability and predictability.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/rrt-random-results.webp" data-desc-position="bottom"><img src="images/rrt-random-results.webp" width="500" alt="A sampling planner solving the same task several times, giving completely different results each time"></a>
+
+  <figcaption>A sampling planner solving the same task several times gives completely different results.</figcaption>
+
+</figure>
+<p>My entry point during my PhD was noticing that industrial environments are <strong>semi-structured</strong>:
+most of the scene around the robot is fixed, and only the pick and place positions vary within a
+small range. Given that, planning from scratch every single time is unwise — a past successful
+trajectory very likely lies in an obstacle-free, and fairly good, region. Fit the historical
+trajectories with a Gaussian mixture model (GMM) to get the feasible region in C-Space, then use
+it to guide the random planner's sampling — that's the "experience roadmap" method. A number to
+put on it: for an automotive spot-welding task, spend 48 hours offline computing 10 fairly good
+trajectories with RRT* as experience; afterward, planning a full trajectory through 10 weld
+points takes three minutes on average, at a 90% success rate — on the same problem, RRT-Connect
+has only a 60% success rate and takes more than four times as long. <strong>Prior knowledge + a random
+planner</strong> is the key step to getting planning technology onto the production line.</p>
+<p>Another direction is to make "planning" a <strong>policy</strong>: when the environment is moving, you can't
+wait for a full trajectory to finish computing before you move — you return, in real time, an
+action that satisfies the constraints given the current state, i.e. a motion policy. Model each
+task objective (reach toward the target, avoid obstacles, avoid joint limits, comply with
+external forces) as a dynamical system on a different manifold, then combine them by
+state-dependent priorities, and the robot can track its target while "gracefully" dodging
+obstacles. For this, see <a href="https://mp.weixin.qq.com/s/FHiCoEN4dvgU4fNoJ0SnEQ">Tech talk: real-time motion planning</a>
+(in Chinese).</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/realtime-planning-demo.webp" data-desc-position="bottom"><img src="images/realtime-planning-demo.webp" width="480" alt="Real-time motion planning: the arm tracks a target pose while dodging obstacles and singularities"></a>
+
+  <figcaption>Real-time motion planning: the arm tracks a target pose while dodging obstacles and singularities.</figcaption>
+
+</figure>
+<p>Of course, today's VLA and similar techniques are, at bottom, a kind of "motion policy" too — only
+learned, and hoping to combine vision and language to learn a more general, more transferable
+policy.</p>
+<p>By the way: follow this "solve in real time every cycle" idea into the control field and you arrive
+at <strong>Model Predictive Control</strong> (MPC) — each control cycle, solve a short constrained trajectory
+optimization online, execute only the first step, and roll forward again next cycle (receding
+horizon). See — the boundary between planning and control has already blurred here. Honestly, my
+own hands-on experience with MPC is limited, so I won't pretend to be an authority; if you want to
+go deeper, see Borrelli et al.'s textbook
+<a href="https://www.mpc.berkeley.edu/mpc-course-material"><em>Predictive Control for Linear and Hybrid Systems</em></a>;
+and its head-to-head comparison with reinforcement learning for whole-body control of humanoid and
+legged robots, I'll leave for the Embodied AI part.</p>
+<p>A one-liner on tools: if you want to get going fast, just use MoveIt (you can get planning running
+in simulation in half an hour).</p>
+<h3 id="an-mdp-and-learning-perspective">An MDP and learning perspective<a class="headerlink" href="#an-mdp-and-learning-perspective" title="Permanent link">¶</a></h3>
+<p>Finally, let's look at planning through a different lens. Motion planning is a textbook Markov
+decision process (MDP): the state is the configuration, the action is the motion, and the reward is
+"reach the goal without collision." If you deeply understand the algorithms that solve
+reinforcement learning, you'll find that dynamic programming's (DP) iterative process works in
+essentially the same way as Dijkstra — one computes from the goal backward, the other from the start forward;
+and RRT* can be seen as one realization of the Monte Carlo idea. Reinforcement learning just
+stores the policy and value in a "table," as its understanding of the environment, to speed up
+planning.</p>
+<p>Naturally, someone thinks: fit that table with a deep network, have the network output actions
+directly, and planning time becomes a single forward pass — that's the motivation for doing planning
+with deep reinforcement learning. I've tried it myself on bin picking: for visual-servoing-style
+tasks it worked surprisingly well, but think about it carefully and <strong>that impressive-looking DRL was
+really just fitting a Jacobian matrix</strong>; whereas for tasks that genuinely need to weave around obstacles in C-Space, all
+it had left was "the trend is right, occasionally correct." So when judging this kind of work, it's
+worth applying one criterion: <strong>how would a traditional method do this?</strong> If a traditional method
+could do it in two lines of formula, then the learning hasn't created any added value yet.</p>
+<p>Of course, that's just a glimpse from the planning angle. Data-driven methods have stirred up a far
+bigger wave in robotics in recent years — their potential and their pitfalls, I'll save for the
+Embodied AI part.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="3d-vision.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3D Vision">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3D Vision
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="advanced-practice.html" class="md-footer__link md-footer__link--next" aria-label="Next: Advanced Practice">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Advanced Practice
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      English edition · AI-assisted translation, reviewed by the author · Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · <a href="https://learn-robotics.qqfly.net/" target="_blank" rel="noopener">中文原版</a> · updated 2026-07-20 · <a href="https://github.com/qqfly/how-to-learn-robotics/commit/229bdeb">229bdeb</a>
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.instant", "navigation.instant.progress", "navigation.top", "navigation.footer", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="javascripts/mathjax/tex-svg.js"></script>
+      
+        <script src="javascripts/lang-switch.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

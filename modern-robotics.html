@@ -1,0 +1,1376 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A self-study guide to robotics for readers without a formal background">
+      
+      
+        <meta name="author" content="qqfly">
+      
+      
+        <link rel="canonical" href="https://en.learn-robotics.qqfly.net/modern-robotics.html">
+      
+      
+        <link rel="prev" href="advanced.html">
+      
+      
+        <link rel="next" href="3d-vision.html">
+      
+      
+        
+          <link rel="alternate" href="https://learn-robotics.qqfly.net/" hreflang="zh">
+        
+          <link rel="alternate" href="https://en.learn-robotics.qqfly.net/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Modern Robotics - How to Learn Robotics</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modern-robotics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="How to Learn Robotics" class="md-header__button md-logo" aria-label="How to Learn Robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            How to Learn Robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Modern Robotics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="https://learn-robotics.qqfly.net/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="https://en.learn-robotics.qqfly.net/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/qqfly/how-to-learn-robotics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    qqfly/how-to-learn-robotics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="How to Learn Robotics" class="md-nav__button md-logo" aria-label="How to Learn Robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    How to Learn Robotics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/qqfly/how-to-learn-robotics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    qqfly/how-to-learn-robotics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="preface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prerequisite.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Robotics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dirty-your-hands.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Your Hands Dirty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modern Robotics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="modern-robotics.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modern Robotics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#why-we-need-a-new-mathematical-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why we need a new mathematical language
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-from-screws-modern-robotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting from screws: Modern Robotics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-language-of-groups-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The language of groups: ⊕ and ⊖
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-1-orientation-interpolation-and-trajectory-blending" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application 1: orientation interpolation and trajectory blending
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-2-high-speed-transport-under-dynamic-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application 2: high-speed transport under dynamic constraints
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3d-vision.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="motion-planning.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autonomous Planning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced-practice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Practice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="embodied-ai.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embodied AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dragon-quest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dragon Quest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="references.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="license.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#why-we-need-a-new-mathematical-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why we need a new mathematical language
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-from-screws-modern-robotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting from screws: Modern Robotics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-language-of-groups-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The language of groups: ⊕ and ⊖
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-1-orientation-interpolation-and-trajectory-blending" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application 1: orientation interpolation and trajectory blending
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-2-high-speed-transport-under-dynamic-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application 2: high-speed transport under dynamic constraints
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="modern-robotics">Modern Robotics<a class="headerlink" href="#modern-robotics" title="Permanent link">¶</a></h1>
+<p>Remember the questions we left unresolved in the introductory part?</p>
+<ul>
+<li>Why can't you just differentiate the Euler angles to get velocity?</li>
+<li>Can you just take partial derivatives of the forward-kinematics result?</li>
+<li>Why does a three-parameter representation like Euler angles suffer from gimbal lock, forcing
+  us to accept quaternions?</li>
+</ul>
+<p>Back then I said: "It's perfectly normal not to have an intuitive grasp of orientation and
+angular velocity, because they don't live in Cartesian space — you'll only truly understand
+once you learn more math later."</p>
+<p>Now it's time to return to them.</p>
+<h3 id="why-we-need-a-new-mathematical-language">Why we need a new mathematical language<a class="headerlink" href="#why-we-need-a-new-mathematical-language" title="Permanent link">¶</a></h3>
+<p>The root of the problem: <strong>position lives in Euclidean space, but orientation does not.</strong></p>
+<p>For two positions <span class="arithmatex">\(p_1\)</span> and <span class="arithmatex">\(p_2\)</span>, the shortest path from <span class="arithmatex">\(p_1\)</span> to <span class="arithmatex">\(p_2\)</span> is a straight line,
+and we can happily add, subtract, scale, and interpolate them:</p>
+<div class="arithmatex">\[p(\lambda) = (1-\lambda)\, p_1 + \lambda\, p_2,\qquad 0 \le \lambda \le 1\]</div>
+<p>But for orientation — whether you describe it with a rotation matrix, Euler angles, or a
+quaternion — you <strong>cannot</strong> use simple vector addition and subtraction to find the shortest
+path between two orientations. Just like the shortest flight route between two cities on Earth:
+it isn't the straight line joining them on the map, but a curve — a geodesic.</p>
+<p>One step deeper: advanced work uses optimization everywhere, and optimization often needs
+gradient information. But you find that on these "curved" spaces, much of the time you simply
+don't know how the gradient should even be defined.</p>
+<p>Mathematicians prepared the tools for spaces like these long ago: Lie groups and Lie algebras,
+which describe objects in the SO(3) and SE(3) spaces very conveniently. This chapter goes in
+two steps: first we re-learn robot modeling using screws and the product of exponentials (PoE);
+then we take a step further and use the language of groups to unify everyday operations like
+interpolation, transition, and constraints. By the end of the chapter, your earlier questions
+about quaternions, angular velocity, and the like will be swept away.</p>
+<div class="admonition info">
+<p class="admonition-title">Some extra math</p>
+<p>To get a better handle on what follows, I'd suggest topping up some math first.</p>
+<ul>
+<li>
+<p><strong>Numerical methods</strong>: much of the time we implement algorithms on a computer, so you
+  have to know the basic numerical methods — numerical differentiation, numerical
+  integration, and so on. For this, see <em>Numerical Methods for Engineers</em><sup>[4]</sup>.</p>
+</li>
+<li>
+<p><strong>Convex optimization</strong>: many problems in this world don't have an easy analytic
+  solution, and we have to compute them with optimization methods. So you have to know how
+  to set up an optimization model and how to solve it in code. Here I recommend Stanford's
+  open course <a href="https://web.stanford.edu/class/ee364a/">Convex Optimization</a>.</p>
+</li>
+<li>
+<p><strong>Lie groups and Lie algebras</strong>: optimization methods often need gradient information,
+  but you find that much of the time you don't know how to define the gradient. Lie groups
+  and Lie algebras are exactly the classic mathematical tool for this — which is what the
+  rest of this chapter is about.</p>
+</li>
+</ul>
+</div>
+<h3 id="starting-from-screws-modern-robotics">Starting from screws: Modern Robotics<a class="headerlink" href="#starting-from-screws-modern-robotics" title="Permanent link">¶</a></h3>
+<p>Lie groups and Lie algebras can be hard for a lot of engineering students to swallow at first
+(even the name sounds odd). Here I recommend starting with <em>Modern Robotics</em>, an
+undergraduate-facing textbook that's written very clearly.<sup>[5]</sup></p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/modern-robotics.webp" data-desc-position="bottom"><img src="images/modern-robotics.webp" width="500" alt="Cover of the Modern Robotics textbook"></a>
+
+  <figcaption>The cover of the <em>Modern Robotics</em> textbook.</figcaption>
+
+</figure>
+<p>You can find plenty of information about it
+<a href="http://hades.mech.northwestern.edu/index.php/Modern_Robotics">online</a>, and there's a matching
+course on Coursera: <a href="https://www.coursera.org/specializations/modernrobotics">Modern Robotics</a>.</p>
+<p>After this course, you'll have mastered the screw/PoE modeling approach, and you'll find that
+robot kinematics and dynamics modeling become remarkably simple and clean.</p>
+<p>By this point you've touched a little bit of Lie groups and Lie algebras. From here you can go
+read a Lie-group textbook aimed at engineers, such as
+<a href="http://www.cis.upenn.edu/~jean/gbooks/manif.html">Notes on Differential Geometry and Lie Groups, I &amp; II</a>;
+then, depending on your own research direction, combine it with the problems in front of you —
+anything involving optimization or spatial transformations can be paired with Lie groups and
+Lie algebras.</p>
+<p>While we're at it, let me answer a couple of frequently asked questions:</p>
+<ul>
+<li><strong>Which is better, screws or DH?</strong> Both matter; neither is "better." DH is intuitive and easy
+  to master, and it's already enough in many situations; screws are closer to the physical
+  essence of rigid-body motion, which helps a lot in analyzing certain problems. It's like
+  asking which is better, "Newton's laws" or "relativity" — just use the right method at the
+  right time. I'd still suggest fully mastering traditional DH and spatial transformations
+  first, then learning screws; the two don't conflict.</li>
+<li><strong>I've heard DH modeling has singularities, while PoE doesn't?</strong> To be precise, that's DH's
+  <strong>parameterization singularity</strong>: when two adjacent joint axes are nearly parallel, the
+  direction of the <span class="arithmatex">\(x\)</span> axis in the DH frame is ill-defined, and a tiny assembly error causes
+  wild changes in the DH parameters (in the kinematic-calibration literature, Hayati added an
+  auxiliary parameter <span class="arithmatex">\(\beta\)</span> specifically for this, back in 1985). What PoE avoids is this
+  <strong>mathematical-expression</strong> singularity. The robot's own kinematic singularity, on the other
+  hand, is a configuration-dependent property — as the introductory part explained, it doesn't
+  disappear just because you switch modeling methods.</li>
+</ul>
+<h3 id="the-language-of-groups-and">The language of groups: ⊕ and ⊖<a class="headerlink" href="#the-language-of-groups-and" title="Permanent link">¶</a></h3>
+<p>At this point, some readers might say: "These screw and PoE methods seem to be just a matter of
+representation; they don't have much of an advantage."</p>
+<p><strong>This is the wrong instinct, and a dangerous one.</strong> It's like when we first learn linear algebra and see
+matrix multiplication and say, "Isn't this just another way of writing a system of linear
+equations?" — if you reject the new way of thinking from the outset, you'll struggle later when
+the truly useful tools show up (linear combinations, null space, mappings), and you might even,
+by rejecting it so early, never get the chance to touch the more advanced tools at all.</p>
+<p>So in this section, let's step back and look at the bigger structure, and see what the concept of a
+"group" actually unifies.</p>
+<p>We can describe the state of any object in space with a vector (a point in a high-dimensional
+space), for example:</p>
+<ul>
+<li>Rigid-body position: <span class="arithmatex">\([x, y, z]\)</span>;</li>
+<li>Rigid-body pose: <span class="arithmatex">\([x, y, z, o_x, o_y, o_z, o_w]\)</span>;</li>
+<li>Arm configuration: <span class="arithmatex">\([q_1, q_2, \dots, q_6]\)</span>.</li>
+</ul>
+<p>Take <strong>all</strong> of an object's states as a set, then define <strong>closed</strong> basic operations on that
+set, and you have a group:</p>
+<ul>
+<li>Group addition <span class="arithmatex">\(\oplus\)</span>: <span class="arithmatex">\(A, B \in G,\ A \oplus B \in G\)</span>;</li>
+<li>Identity element <span class="arithmatex">\(E\)</span>: <span class="arithmatex">\(A \oplus E = E \oplus A = A\)</span>;</li>
+<li>Inverse <span class="arithmatex">\(\ominus\)</span>: <span class="arithmatex">\(A \oplus (\ominus A) = (\ominus A) \oplus A = E\)</span>;</li>
+<li>Scalar product <span class="arithmatex">\(\odot\)</span>: <span class="arithmatex">\(\alpha \odot A = A \oplus A \oplus \cdots \oplus A\)</span> ("adding" <span class="arithmatex">\(\alpha\)</span>
+  copies of <span class="arithmatex">\(A\)</span>, then extending <span class="arithmatex">\(\alpha\)</span> from the naturals to the reals).</li>
+</ul>
+<p>Let's look at two examples. For the joint space of a serial arm, define the group operations
+with vector addition:</p>
+<div class="arithmatex">\[q_1 \oplus q_2 = q_1 + q_2,\qquad \ominus q = -q,\qquad \alpha \odot q = \alpha\,q\]</div>
+<p>For the orientation of a spatial rigid body, described with a 3×3 rotation matrix and with group
+operations defined by matrix multiplication — that is, the SO(3) group:</p>
+<div class="arithmatex">\[R_1 \oplus R_2 = R_1 R_2,\qquad \ominus R = R^{-1},\qquad \alpha \odot R = R^{\alpha}\]</div>
+<p>(To compute the <span class="arithmatex">\(\alpha\)</span>-th power of a matrix, you need the matrix exponential and matrix
+logarithm, both derived from the group addition — and that's exactly the "exponential" in
+"product of exponentials.")</p>
+<p>This way, different spaces are unified under the same <span class="arithmatex">\(\oplus\)</span> and <span class="arithmatex">\(\ominus\)</span> operations, and
+you'll find a lot of fun things. For instance, the <strong>straight-line interpolation</strong> between two
+states can be written uniformly as:</p>
+<div class="arithmatex">\[A(u) = A_1 \oplus u \odot \big((\ominus A_1) \oplus A_2\big),\qquad u \in [0, 1]\]</div>
+<p>Substitute the joint space, and it's the linear interpolation we know:</p>
+<div class="arithmatex">\[q(u) = q_1 + u\,(q_2 - q_1)\]</div>
+<p>Substitute the orientation space:</p>
+<div class="arithmatex">\[R(u) = R_1 \big(R_1^{-1} R_2\big)^{u}\]</div>
+<p>Plug in the numbers and you'll find it gives the same result as quaternion Slerp and angle-axis
+interpolation.</p>
+<p>This unified interpolation is really just connecting two points along the <strong>shortest path</strong> on
+a manifold: in Cartesian space that trajectory is called a straight line; in a Lie group, its
+name is a <strong>geodesic</strong>.</p>
+<p>Further on you'll see: robot kinematics is just stacking one SE(3) rigid-body pose on top of
+another; the Lie algebra (screws) describes joint-induced motion easily, and the Adjoint map
+conveniently converts the Lie algebra between different reference frames; then there's random
+sampling in motion planning, Jacobian computation in optimization, defining a Riemannian metric
+on a Lie group to represent kinetic energy... Problems that were a huge hassle with classical
+methods all come together at once, and everything just falls into place.</p>
+<div class="admonition example">
+<p class="admonition-title">A fun little example: computing the average rotation</p>
+<p>You measure the same orientation <span class="arithmatex">\(n\)</span> times, getting <span class="arithmatex">\(n\)</span> rotation matrices, and want the
+"average rotation." The average is the point in the space whose sum of distances to those
+<span class="arithmatex">\(n\)</span> elements is smallest:</p>
+<div class="arithmatex">\[\bar{R} = \mathop{\arg\min}_{R \in SO(3)}\ \sum_{i=1}^{n} d(R, R_i)^2,\qquad d(R_i, R_j) = \tfrac{1}{\sqrt{2}}\big\|\mathrm{Log}(R_i^{\top} R_j)\big\|\]</div>
+<p>This problem has no analytic solution at present. Several obvious approaches — averaging the
+three Euler-angle parameters directly, averaging the four quaternion parameters directly, or
+Log-ing all the rotations into the tangent space, averaging, then Exp-ing back — all fail to
+compute the average rotation accurately when compared against numerical optimization; only
+when the rotations are fairly close to one another does averaging the quaternions give an
+approximately correct result.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/average-rotation-comparison.webp" data-desc-position="bottom"><img src="images/average-rotation-comparison.webp" width="500" alt="Comparison of four average-rotation methods: (a) Euler-angle average; (b) quaternion average; (c) tangent-space average; (d) numerical solution"></a></p>
+<p></p><figcaption>Comparison of four average-rotation methods: (a) Euler-angle average; (b) quaternion average; (c) tangent-space average; (d) numerical solution.</figcaption><p></p>
+<p></p></figure>
+On a Lie group, even an operation as basic as "taking an average" is worth rethinking.<p></p>
+<p>For a detailed write-up and a video demo, see my Zhihu answer,
+<a href="https://www.zhihu.com/question/439497100/answer/1683258444">Given several rotation matrices, how do you get the average rotation?</a>
+(in Chinese).</p>
+</div>
+<h3 id="application-1-orientation-interpolation-and-trajectory-blending">Application 1: orientation interpolation and trajectory blending<a class="headerlink" href="#application-1-orientation-interpolation-and-trajectory-blending" title="Permanent link">¶</a></h3>
+<p>Now for the main event of this chapter: two real problems that show what this language can
+actually do. They share a trait — with traditional methods they're either impossible or very
+awkward, whereas in the language of groups the solution is almost "obvious."</p>
+<p>The first problem comes from trajectory planning. Suppose that, through manual teaching, we've
+obtained a few waypoints the robot has to pass through. Because of the constraints of the
+physical world, the robot can't teleport between these waypoints; we have to find a continuous
+path connecting them.</p>
+<p>Because of inertia, <strong>neither the magnitude nor the direction of the velocity may change
+abruptly.</strong> If we connect the waypoints with the simplest straight-line interpolation, then at
+the transition points the velocity direction inevitably jumps — and in execution, either the
+trajectory deviates from the intended path, or the robot decelerates to 0 at the transition
+points, hurting both control accuracy and speed.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/path-blend-velocity-jump.webp" data-desc-position="bottom"><img src="images/path-blend-velocity-jump.webp" width="500" alt="Connecting path points with straight-line interpolation; at transition point B the velocity direction jumps"></a>
+
+  <figcaption>Connecting waypoints with straight-line interpolation: at transition point B, the velocity direction jumps.</figcaption>
+
+</figure>
+<p>The well-read reader will surely have thought of it: the textbooks describe blending at the
+transition points with an arc or a polynomial curve, so the path's tangent doesn't jump.</p>
+<p>So here's the question: we can do this for position, but how do we blend orientation? Or put
+another way, <strong>how are arcs and polynomial curves defined in orientation space?</strong></p>
+<p>Someone might say, doesn't the quaternion have Slerp? But we already know from the last section
+that Slerp is really just <strong>straight-line</strong> interpolation in orientation space. Have a rigid
+body pass through three orientations in turn, connected by Slerp, and the angular-velocity
+direction jumps at the transition point all the same:</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slerp-three-poses.webp" data-desc-position="bottom"><img src="images/slerp-three-poses.webp" width="500" alt="Slerp across three orientations: the angular velocity, shown as a green arrow, jumps in direction at the transition point"></a>
+
+  <figcaption>Slerp across three orientations: at the transition point, the angular-velocity direction (green arrow) jumps.</figcaption>
+
+</figure>
+<p>But in the language of groups, the answer falls right into place. Recall how a Bezier curve is
+built: an <span class="arithmatex">\(n\)</span>-th-order Bezier curve is nested from <span class="arithmatex">\(n\)</span> layers of linear interpolation. We
+already have a definition of straight-line interpolation in any Lie-group space, so we naturally
+get Bezier curves (polynomial curves) in any Lie-group space too:</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slerp-vs-bezier.webp" data-desc-position="bottom"><img src="images/slerp-vs-bezier.webp" width="500" alt="Comparison of Slerp on the left and a 5th-order Bezier blend on the right; green arrows show the angular-velocity direction"></a>
+
+  <figcaption>(Left) Slerp vs. (right) a 5th-order Bezier blend; the green arrows show the angular-velocity direction.</figcaption>
+
+</figure>
+<p>As the figure shows, the Bezier blend obtained using the Lie-group representation keeps the
+orientation trajectory's tangent from jumping and makes the angular-velocity direction vary
+continuously. The academic community (including ICRA and IROS in recent years) keeps publishing
+results on high-order continuous orientation interpolation; but once you've mastered the
+language of groups, you can derive this method yourself.</p>
+<h3 id="application-2-high-speed-transport-under-dynamic-constraints">Application 2: high-speed transport under dynamic constraints<a class="headerlink" href="#application-2-high-speed-transport-under-dynamic-constraints" title="Permanent link">¶</a></h3>
+<p>The second problem is a bit more interesting. One of the main uses of a robot arm is transport.
+For applications like carrying liquids, we have requirements on the entire transport trajectory,
+not just on getting the arm from start to finish — for instance, keeping the end-effector level
+the whole way. And if we raise the bar, wanting the robot to carry it <strong>faster</strong>, then the
+trajectory needs to satisfy certain dynamic constraints.</p>
+<p>There are two key points here: <strong>first, figure out the dynamic constraint that must be
+satisfied; second, use an appropriate method to build the model.</strong></p>
+<p>Let's start with a one-dimensional problem (this is actually one of our coding-test questions):
+a mechanism that can only move horizontally, plus one rotational degree of freedom, has to carry
+a cup of water from left to right without spilling it.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/water-cup-1dof.webp" data-desc-position="bottom"><img src="images/water-cup-1dof.webp" width="340" alt="The 1-D water-carrying problem: the mechanism can only translate horizontally and rotate, and the water must not spill"></a>
+
+  <figcaption>The 1-D water-carrying problem: the mechanism can only translate horizontally and rotate, with the water required not to spill.</figcaption>
+
+</figure>
+<p>The constraint to satisfy is easy to find — it's middle-school physics: the resultant of the
+horizontal-motion acceleration and gravity must point perpendicular to the supporting surface.</p>
+<p>Then comes the modeling and solving. One method is to set up several constraints and solve it as
+an optimization problem. But here's another angle: intuitively, this problem has only 1 degree
+of freedom, not 2 (position and angle) — the horizontal acceleration <span class="arithmatex">\(a\)</span> and the tilt angle
+<span class="arithmatex">\(\theta\)</span> are in one-to-one correspondence. So we can define a space <span class="arithmatex">\(R(1) \oplus SO(2)\)</span>:</p>
+<ul>
+<li><span class="arithmatex">\(R(1)\)</span>: the space of the horizontal-motion acceleration <span class="arithmatex">\(a\)</span>;</li>
+<li><span class="arithmatex">\(SO(2)\)</span>: the space of the tilt angle <span class="arithmatex">\(\theta\)</span>;</li>
+<li><span class="arithmatex">\(\oplus\)</span>: defines the relationship between the two subspaces, <span class="arithmatex">\(\theta = -\operatorname{arctan2}(a,\ g)\)</span>.</li>
+</ul>
+<p>Pick <strong>any</strong> point in this space and the constraint is automatically satisfied. Taking into
+account that acceleration can't jump, we can sample directly in this space's tangent space
+(jerk), then walk along the integration chain: jerk → acceleration → velocity → position; and at
+the same time, acceleration → tilt angle. In effect, no matter what jerk input you give, the
+mechanism's motion always satisfies the dynamic constraint described above:</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/r1so2-sampling.webp" data-desc-position="bottom"><img src="images/r1so2-sampling.webp" width="476" alt="Random sampling in the tangent space of R(1) plus SO(2); any input satisfies the water-carrying constraint"></a>
+
+  <figcaption>Random sampling in the tangent space of R(1)⊕SO(2): any input satisfies the water-carrying constraint.</figcaption>
+
+</figure>
+<p>Back to the original problem, we can likewise find a space that always satisfies the dynamic
+constraint: <span class="arithmatex">\(R(3) \oplus SO(3)\)</span>. A problem that looked complicated at first (six degrees of
+freedom, with dynamic constraints) becomes a simple three-degree-of-freedom problem — where, of
+course, all the integration and other operations are carried out in SE(3) space.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/dynamic-transport.webp" data-desc-position="bottom"><img src="images/dynamic-transport.webp" width="620" alt="A robot arm dynamically transporting liquid at high speed, satisfying the dynamic constraint throughout"></a>
+
+  <figcaption>A robot arm carrying liquid at high speed, satisfying the dynamic constraint the whole way.</figcaption>
+
+</figure>
+<p>This idea is of a piece with "planning under constraints" in the later Autonomous Planning
+chapter: rather than sampling in the full space and then projecting the samples back onto the
+constraint surface, it's better to construct the constraint manifold directly and sample freely
+within it.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="advanced.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="3d-vision.html" class="md-footer__link md-footer__link--next" aria-label="Next: 3D Vision">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3D Vision
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      English edition · AI-assisted translation, reviewed by the author · Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · <a href="https://learn-robotics.qqfly.net/" target="_blank" rel="noopener">中文原版</a> · updated 2026-07-20 · <a href="https://github.com/qqfly/how-to-learn-robotics/commit/229bdeb">229bdeb</a>
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.instant", "navigation.instant.progress", "navigation.top", "navigation.footer", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="javascripts/mathjax/tex-svg.js"></script>
+      
+        <script src="javascripts/lang-switch.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,0 +1,1548 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A self-study guide to robotics for readers without a formal background">
+      
+      
+        <meta name="author" content="qqfly">
+      
+      
+        <link rel="canonical" href="https://en.learn-robotics.qqfly.net/getting-started.html">
+      
+      
+        <link rel="prev" href="prerequisite.html">
+      
+      
+        <link rel="next" href="dirty-your-hands.html">
+      
+      
+        
+          <link rel="alternate" href="https://learn-robotics.qqfly.net/" hreflang="zh">
+        
+          <link rel="alternate" href="https://en.learn-robotics.qqfly.net/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Introduction to Robotics - How to Learn Robotics</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-robotics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="How to Learn Robotics" class="md-header__button md-logo" aria-label="How to Learn Robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            How to Learn Robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction to Robotics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="https://learn-robotics.qqfly.net/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="https://en.learn-robotics.qqfly.net/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/qqfly/how-to-learn-robotics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    qqfly/how-to-learn-robotics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="How to Learn Robotics" class="md-nav__button md-logo" aria-label="How to Learn Robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    How to Learn Robotics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/qqfly/how-to-learn-robotics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    qqfly/how-to-learn-robotics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="preface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prerequisite.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Robotics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="getting-started.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Robotics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#spatial-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spatial transformations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kinematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kinematics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-jacobian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Jacobian
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynamics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibration-and-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration and identification
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dirty-your-hands.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Your Hands Dirty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modern-robotics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modern Robotics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3d-vision.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="motion-planning.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autonomous Planning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced-practice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Practice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="embodied-ai.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embodied AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dragon-quest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dragon Quest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="references.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="license.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#spatial-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spatial transformations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kinematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kinematics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-jacobian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Jacobian
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynamics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibration-and-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration and identification
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-to-robotics">Introduction to Robotics<a class="headerlink" href="#introduction-to-robotics" title="Permanent link">¶</a></h1>
+<p>The introductory part really comes down to understanding how to make a robot arm move. This
+area is already very mature — a textbook from last century will do. My personal pick is John
+Craig's <em>Introduction to Robotics: Mechanics and Control</em><sup>[1]</sup>. On
+<a href="https://www.youtube.com/watch?v=0yD3uBshJB0&amp;list=PL64324A3B147B5578">YouTube</a> and
+<a href="https://www.bilibili.com/video/BV15W411q78p/">Bilibili</a> (in Chinese) you can find videos by
+Stanford's legendary Oussama Khatib, which line up closely with Craig's book.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/craig-book.webp" data-desc-position="bottom"><img src="images/craig-book.webp" width="300" alt="Cover of John Craig's Introduction to Robotics: Mechanics and Control"></a>
+
+  <figcaption>The cover of John Craig's <em>Introduction to Robotics: Mechanics and Control</em>.</figcaption>
+
+</figure>
+<p>It's a widely used introductory text, easy to find through a library or the usual booksellers.
+As an introduction it's remarkably approachable, and paired with Khatib's videos you can get a
+fast grip on the fundamentals of robotics.</p>
+<p>Back when I was doing my PhD, I used to tell the incoming junior students, "If you master
+what's in this book, you're already ahead of most of the senior students in the lab."</p>
+<p>Not many actually got through it, though.</p>
+<p>So let me put it a different way: "If you master what's in this book, you'll be well equipped
+for development work at most industrial-robot companies in China."</p>
+<p>Here I'll roughly lay out the basics; time is limited, so I won't expand on them too much for
+now. The order may not exactly match Craig's book.</p>
+<h3 id="spatial-transformations">Spatial transformations<a class="headerlink" href="#spatial-transformations" title="Permanent link">¶</a></h3>
+<p>If you did well in theoretical mechanics, this part won't give you much trouble. The problem
+is, some didn't.</p>
+<p>Homogeneous transformations and the like are very basic and very important in robotics. Some
+things to watch for:</p>
+<ul>
+<li>
+<p>Get comfortable with the notation: the pose of frame {B} expressed in frame {A} is
+  <span class="arithmatex">\({^A_B}T\)</span> (there are other conventions too; just get fluent in one);</p>
+</li>
+<li>
+<p>The difference between left-multiplying and right-multiplying a matrix;</p>
+</li>
+<li>
+<p>Understand what each column of a rotation matrix means, and learn to write down the rotation
+  matrix between two frames "by eye";</p>
+</li>
+<li>
+<p>Ways to represent orientation: RPY angles, the various Euler angles, angle-axis, and
+  rotation matrices. Beyond what's in the book, take a look at quaternions while you're at it,
+  and understand gimbal lock for Euler angles (only once you know the trouble with a
+  three-parameter orientation will you readily accept something new like quaternions);</p>
+</li>
+<li>
+<p>If you can, try to understand how angular velocity is defined and computed.</p>
+</li>
+</ul>
+<h3 id="kinematics">Kinematics<a class="headerlink" href="#kinematics" title="Permanent link">¶</a></h3>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/robot-kinematics.webp" data-desc-position="bottom"><img src="images/robot-kinematics.webp" width="600" alt="Configuration of an ABB industrial robot arm"></a>
+
+  <figcaption>The configuration of an ABB industrial arm.</figcaption>
+
+</figure>
+<p>For a robot, one basic task is computing kinematics:</p>
+<ul>
+<li>Forward kinematics: given the joint angles, compute the pose of the robot's tool frame (the
+  end-effector) in the robot's base frame.</li>
+<li>Inverse kinematics: given a target end-effector pose, compute the joint angles that achieve
+  it.</li>
+</ul>
+<p>Earlier, you learned that a 4×4 matrix can describe the relationship between two frames. For
+forward kinematics, if we know the coordinate transform between each pair of adjacent links,
+we can compute the final end-effector pose by matrix multiplication.</p>
+<p>To make the relative pose between two links easier to compute, you'll need to learn a modeling
+method called DH. In short: you set up a coordinate frame at each joint by a fixed set of
+rules, and each frame is then pinned down by four numbers (the DH parameters).</p>
+<p>Of course, a quick search will show you there are several flavors of DH — Standard DH, Modified
+DH, and so on.</p>
+<p>That doesn't matter. All you need to know is that it helps you pin down the relative
+relationship between two links. You may as well just learn the one in Craig's book (Wikipedia
+calls it Modified DH):</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/modified-dh.webp" data-desc-position="bottom"><img src="images/modified-dh.webp" width="500" alt="Setting up the frames and Modified DH parameters"></a>
+
+  <figcaption>Setting up the frames and computing the Modified DH parameters.</figcaption>
+
+</figure>
+<p>1) Set up the frames:</p>
+<ul>
+<li>
+<p>The <span class="arithmatex">\(z_i\)</span> axis coincides with joint <span class="arithmatex">\(i\)</span>, with the positive direction of rotation following
+  the right-hand rule;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(x_i\)</span> lies along the common perpendicular of <span class="arithmatex">\(z_i\)</span> and <span class="arithmatex">\(z_{i+1}\)</span>: <span class="arithmatex">\(x_i = z_i \times z_{i+1}\)</span>.
+  If the two <span class="arithmatex">\(z\)</span> axes are parallel, point <span class="arithmatex">\(x_i\)</span> from <span class="arithmatex">\(z_i\)</span> toward <span class="arithmatex">\(z_{i+1}\)</span>;</p>
+</li>
+<li>
+<p>With the <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(z\)</span> axes fixed, the right-hand rule gives the <span class="arithmatex">\(y\)</span>-axis direction.</p>
+</li>
+<li>
+<p>Besides the frame rigidly attached to each joint, you may also attach two extra frames — one
+  to the robot base {B} and one to the end tool {E}.</p>
+</li>
+</ul>
+<p>2) Compute the DH parameters:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(a_i\)</span> is the distance along <span class="arithmatex">\(x_i\)</span> from <span class="arithmatex">\(z_i\)</span> to <span class="arithmatex">\(z_{i+1}\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\alpha_i\)</span> is the angle about <span class="arithmatex">\(x_i\)</span> from <span class="arithmatex">\(z_i\)</span> to <span class="arithmatex">\(z_{i+1}\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(d_i\)</span> is the distance along <span class="arithmatex">\(z_i\)</span> from <span class="arithmatex">\(x_{i-1}\)</span> to <span class="arithmatex">\(x_i\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\theta_i\)</span> is the angle about <span class="arithmatex">\(z_i\)</span> from <span class="arithmatex">\(x_{i-1}\)</span> to <span class="arithmatex">\(x_i\)</span>.</p>
+</li>
+</ul>
+<p>3) Compute the transformation matrix:</p>
+<div class="arithmatex">\[{^i_{i-1}}T = Rot(x_{i-1}, \alpha_{i-1}) \cdot Trans(x_{i-1},a_{i-1}) \cdot Rot(z_i, \theta_i) \cdot Trans(z_i, d_i)\]</div>
+<div class="arithmatex">\[{^i_{i-1}}T=\begin{bmatrix}cos(\theta_i)&amp;-sin(\theta_i)&amp;0&amp;a_{i-1}\\sin(\theta_i)cos(\alpha_{i-1})&amp;cos(\theta_i)cos(\alpha_{i-1})&amp;-sin(\alpha_{i-1})&amp;-d_isin(\alpha_{i-1})\\sin(\theta_i)sin(\alpha_{i-1})&amp;cos(\theta_i)sin(\alpha_{i-1})&amp;cos(\alpha_{i-1})&amp;d_icos(\alpha_{i-1})\\0&amp;0&amp;0&amp;1\end{bmatrix}\]</div>
+<p>4) Forward solution:</p>
+<div class="arithmatex">\[{^b_e}{T}={^b_1}T\cdot{^1_2}T\cdot{...}\cdot{^n_e}T\]</div>
+<p>5) Inverse solution:</p>
+<p>It comes down to repeatedly shuffling the positions of the matrices above (left- and
+right-multiplying) to find an unknown you can solve for on its own. It's a bit tedious, but
+every beginner must derive the inverse-kinematics formulas for a classic six-axis arm by hand,
+and <strong>implement it in code</strong>.</p>
+<h3 id="the-jacobian">The Jacobian<a class="headerlink" href="#the-jacobian" title="Permanent link">¶</a></h3>
+<p>The Jacobian matrix <span class="arithmatex">\(J\)</span> is a very important thing in robotics. It relates the robot's joint
+velocities <span class="arithmatex">\(\dot{q}\)</span> to the end-effector velocity <span class="arithmatex">\(\dot{x}\)</span>:</p>
+<div class="arithmatex">\[\dot{x}=J\cdot \dot{q}\]</div>
+<ul>
+<li>
+<p>If you didn't get angular velocity straight earlier, think it through carefully here. For
+  instance: "Why can't you just differentiate the Euler angles to get velocity?";</p>
+</li>
+<li>
+<p>Understand the book's way of computing the Jacobian, and think about "Can you just take
+  partial derivatives of the forward-kinematics result?" (see my Zhihu answer,
+  <a href="https://www.zhihu.com/question/531815112/answer/2476607222">What is the orientation vector in robot differential kinematics?</a>,
+  in Chinese)</p>
+</li>
+<li>
+<p>What you need to master here is how to compute it — you <strong>must</strong> compute the robot's Jacobian
+  in code;</p>
+</li>
+<li>
+<p>If you use Matlab or Python, you can use their symbolic-computation tools to check the
+  questions above, and deepen your understanding of angular velocity;</p>
+</li>
+<li>
+<p>(PS: it's perfectly normal not to have an intuitive grasp of orientation and angular
+  velocity, because they don't live in Cartesian space — you'll only truly understand once you
+  learn more math later.);</p>
+</li>
+<li>
+<p>If you know the principle of virtual work, you'll also realize the Jacobian relates
+  end-effector forces to joint torques (very useful later for things like force control).</p>
+</li>
+</ul>
+<p>Now that you have the Jacobian, you'll notice you know how to control the end-effector's motion
+by adjusting the angles. Let's look again at the inverse-kinematics problem. You'll realize:
+"Can't I just move the robot's end-effector toward the target pose?"</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/jacobian-ik.webp" data-desc-position="bottom"><img src="images/jacobian-ik.webp" width="500" alt="Numerical inverse kinematics via Jacobian iteration"></a>
+
+  <figcaption>Numerical inverse kinematics via Jacobian iteration.</figcaption>
+
+</figure>
+<p>Here the end-effector pose error is <span class="arithmatex">\(\Delta x = x - \hat{x}\)</span>; invert the Jacobian to get joint
+increments, then keep iterating:</p>
+<div class="arithmatex">\[\Delta q = J^{\dagger}\Delta x,\qquad q_{k+1} = q_k + \Delta q\]</div>
+<p>Yes — this is the numerical approach to robot kinematics, and you can use it to write a
+general-purpose solver. For details, see my Zhihu answer,
+<a href="https://www.zhihu.com/question/41673569/answer/129670927">How does the MATLAB Robotics Toolbox compute inverse kinematics?</a>
+(in Chinese).</p>
+<p>Every beginner should implement this algorithm by hand; there are a few subtle failure modes you
+only run into once you've built it yourself.</p>
+<p>The method is elegant, but it has its own problems:</p>
+<ul>
+<li>It's slow — it needs many iterations;</li>
+<li>It returns only one solution at a time;</li>
+<li>The result and speed depend heavily on the choice of initial value;</li>
+<li>It may hit singularities and fail to converge.</li>
+</ul>
+<p>While you're at it, take a look at the singularity problem, and understand that a singularity
+is a property tied to the robot's configuration — you can't get rid of it through modeling.</p>
+<h3 id="dynamics">Dynamics<a class="headerlink" href="#dynamics" title="Permanent link">¶</a></h3>
+<p>I'm convinced 80% of readers give up at this chapter.</p>
+<p>Take Newton-Euler recursion as an example. The <strong>forward iteration</strong> (i: 0 → n−1) works outward
+link by link, computing each link's velocity, acceleration, and inertial force/torque:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+{}^{i+1}\omega_{i+1} &amp;= {}^{i+1}_{i}R\,{}^{i}\omega_i + \dot\theta_{i+1}\,{}^{i+1}\hat z_{i+1}\\
+{}^{i+1}\dot\omega_{i+1} &amp;= {}^{i+1}_{i}R\,{}^{i}\dot\omega_i + {}^{i+1}_{i}R\,{}^{i}\omega_i\times\dot\theta_{i+1}\,{}^{i+1}\hat z_{i+1} + \ddot\theta_{i+1}\,{}^{i+1}\hat z_{i+1}\\
+{}^{i+1}\dot v_{i+1} &amp;= {}^{i+1}_{i}R\big({}^{i}\dot\omega_i\times{}^{i}P_{i+1} + {}^{i}\omega_i\times({}^{i}\omega_i\times{}^{i}P_{i+1}) + {}^{i}\dot v_i\big)\\
+{}^{i+1}\dot v_{C_{i+1}} &amp;= {}^{i+1}\dot\omega_{i+1}\times{}^{i+1}P_{C_{i+1}} + {}^{i+1}\omega_{i+1}\times({}^{i+1}\omega_{i+1}\times{}^{i+1}P_{C_{i+1}}) + {}^{i+1}\dot v_{i+1}\\
+{}^{i+1}F_{i+1} &amp;= m_{i+1}\,{}^{i+1}\dot v_{C_{i+1}}\\
+{}^{i+1}N_{i+1} &amp;= {}^{C_{i+1}}I_{i+1}\,{}^{i+1}\dot\omega_{i+1} + {}^{i+1}\omega_{i+1}\times{}^{C_{i+1}}I_{i+1}\,{}^{i+1}\omega_{i+1}
+\end{aligned}
+\]</div>
+<p>The <strong>backward iteration</strong> (i: n → 1) passes forces/torques back inward link by link, and pulls
+out each joint torque:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+{}^{i}f_i &amp;= {}^{i}_{i+1}R\,{}^{i+1}f_{i+1} + {}^{i}F_i\\
+{}^{i}n_i &amp;= {}^{i}N_i + {}^{i}_{i+1}R\,{}^{i+1}n_{i+1} + {}^{i}P_{C_i}\times{}^{i}F_i + {}^{i}P_{i+1}\times{}^{i}_{i+1}R\,{}^{i+1}f_{i+1}\\
+\tau_i &amp;= {}^{i}n_i^{\top}\,{}^{i}\hat z_i
+\end{aligned}
+\]</div>
+<p>The dynamics of a multi-axis robot <strong>look</strong> extraordinarily complicated, whether you use
+Newton-Euler or Lagrange. And if you didn't learn theoretical mechanics well beforehand, you'll
+basically be crawling.</p>
+<p>So personally, I think it's enough to get a basic concept of this part for now; you don't need
+to grab six-axis dynamics by the horns just yet:</p>
+<ul>
+<li>
+<p>Be able to compute a three-axis arm's dynamics model using the Lagrange method (three axes is
+  within acceptable reach);</p>
+</li>
+<li>
+<p>Compute a three-axis arm's dynamics model using Newton-Euler, and be sure to <strong>implement it
+  in code</strong> (because at high degrees of freedom, Newton-Euler is easier to implement in code;
+  if you do dynamics work in the future, you'll more likely use Newton-Euler than Lagrange);</p>
+</li>
+<li>
+<p>Understand the physical meaning of things like moment of inertia (during that coding,
+  questions will surely come up — e.g., the reference-frame issue for angular velocity and
+  moment of inertia);</p>
+</li>
+<li>
+<p>Get a rough sense of what robot dynamics is made of (the form of the equations, link
+  dynamics, joint dynamics, gravity, joint friction, motor dynamics, and so on).</p>
+</li>
+</ul>
+<h3 id="control">Control<a class="headerlink" href="#control" title="Permanent link">¶</a></h3>
+<p>By now we have all sorts of tools for solving the robot's kinematics; we know the joint angles
+that bring the robot to any given state. But how do we actually get those joints to move?</p>
+<p>First, remember that everyday life is still governed by Newtonian mechanics.</p>
+<div class="arithmatex">\[F = m \cdot a\]</div>
+<p>To make something move, you have to apply a force to it.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slider.svg" data-desc-position="bottom"><img src="images/slider.svg" width="640" alt="Forces and motion of a sliding block"></a>
+
+  <figcaption>Forces and motion of a sliding block.</figcaption>
+
+</figure>
+<p>If we specify a motion trajectory <span class="arithmatex">\(s(t)\)</span> for a sliding block, we can compute the acceleration
+<span class="arithmatex">\(\ddot{s}(t)\)</span> over the whole trajectory, and from there the force <span class="arithmatex">\(F(t) = m \cdot \ddot{s}(t)\)</span>
+needed to make the block move as we intend.</p>
+<p>In other words, we can use dynamics to compute the joint torque needed to move the robot.</p>
+<p>And joint torque can be provided by a motor — for a DC motor, output torque is proportional to
+current.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/dc-motor.webp" data-desc-position="bottom"><img src="images/dc-motor.webp" width="500" alt="Schematic of a DC motor"></a>
+
+  <figcaption>Schematic of a DC motor.</figcaption>
+
+</figure>
+<p>But there are a few problems:</p>
+<ul>
+<li>
+<p>Dynamics is really hard to compute;</p>
+</li>
+<li>
+<p>The dynamics parameters are really imprecise (how am I supposed to know each link's mass?
+  moment of inertia is hard to measure, joint friction is hard to compute);</p>
+</li>
+<li>
+<p>And there may be all kinds of external forces (the mass of a grasped object, changing
+  joint-dynamics properties, and so on).</p>
+</li>
+</ul>
+<p>That's the job of the control algorithm. And so you meet the famous PID controller. It works on
+the error between the target position and the current actual position to produce a control
+output. Intuitively: if the position is too high, I command it downward; if the speed is too
+high, I command it to slow down; if there's an error, I keep adding control output in the
+direction that shrinks the error. It doesn't rely on a precise model — simple and effective,
+and for a while it was the universal answer in industrial control.</p>
+<p>But another problem: if we send the joint's target position straight to the PID controller,
+every command is a sudden jump (a step response). Real-world hardware has inertia, so that kind
+of jump easily causes overshoot, oscillation, and the like.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/step-and-traj.svg" data-desc-position="bottom"><img src="images/step-and-traj.svg" width="680" alt="Step response versus trajectory tracking"></a>
+
+  <figcaption>Step response vs. trajectory tracking. Left (the diagram's <em>阶跃</em>, "step"): trying to get there all at once overshoots and oscillates. Right (<em>轨迹</em>, "trajectory"): a smooth acceleration/deceleration ramp to the target.</figcaption>
+
+</figure>
+<p>But something still feels off — a robot's motion seems to have an acceleration/deceleration
+process (right) rather than a single step (left).</p>
+<p>So here we need to bring in the idea of "trajectory planning": based on the motor's
+performance, design a relatively smooth accel/decel trajectory to reach the target position,
+cutting down the step size in each control cycle. This gives us the so-called "trapezoidal
+profile" (continuous velocity), "S-curve" (continuous acceleration), and other trajectory
+profiles.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/traj-planning.webp" data-desc-position="bottom"><img src="images/traj-planning.webp" width="500" alt="Trajectory planning with an acceleration and deceleration profile"></a>
+
+  <figcaption>Trajectory planning with an acceleration/deceleration profile.</figcaption>
+
+</figure>
+<p>Now it occurs to you: since both PID and dynamics can compute the force/control commands needed
+to move the robot — but the dynamics model isn't very accurate, while PID relies on error and
+always lags — could we combine the two? First use dynamics to compute a roughly accurate
+torque, then use PID to clean up the small residual error, instead of computing the whole
+deviation?</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/feedforward-pid.svg" data-desc-position="bottom"><img src="images/feedforward-pid.svg" width="700" alt="Block diagram of dynamics-feedforward PID control"></a>
+
+  <figcaption>Block diagram of dynamics-feedforward PID control. The dynamics model produces a feedforward torque (<em>前馈力矩</em>) from the desired trajectory; the PID loop only has to clean up the small residual error (<em>误差</em>) between the setpoint (<em>设定值</em>) and the plant (<em>被控对象</em>) output (<em>输出</em>).</figcaption>
+
+</figure>
+<p>Yes — and so you've invented dynamics-feedforward PID control.</p>
+<p>At this point, we've basically gone through the important content in Craig's book. You can skim
+the remaining parts, since a fair amount is already somewhat dated.</p>
+<h3 id="calibration-and-identification">Calibration and identification<a class="headerlink" href="#calibration-and-identification" title="Permanent link">¶</a></h3>
+<p>This part isn't in Craig's book, but it's a key point for running industrial arms at high
+precision and high speed, and it's relatively mature, so I'm adding it in.</p>
+<p>Earlier, we "invented" dynamics-feedforward PID control. It's easy to see that how well the
+feedforward works depends largely on whether your dynamics model is accurate — kinematic
+parameters, moments of inertia, center-of-mass positions... where do these numbers come from?</p>
+<p>From the design drawings? Plenty of robot companies do exactly that, and most of the time it
+works better than PID without feedforward. But unfortunately, because machining and assembly
+always carry some deviation, the actual parameters don't match the drawings. Bringing the model
+close to the real machine is what <strong>calibration</strong> and <strong>identification</strong> are for. Textbooks
+tend to gloss over these two, but in real engineering you can hardly avoid them,
+so let me say a bit about them on their own. The good news: their playbook is highly consistent
+— <strong>build an error equation, then solve it with something like least squares</strong>.</p>
+<p><strong>Kinematic calibration.</strong> Take the classic "multi-point touch calibration" as an example: have
+the arm's end-effector touch the same fixed point over and over from different orientations.
+Taking that fixed point as the origin, set up a frame <span class="arithmatex">\(\{P\}\)</span>; then the end-effector position
+satisfies <span class="arithmatex">\({}^{P}p = f(q, \phi)\)</span>, where <span class="arithmatex">\(\phi\)</span> is the full set of DH parameters. Since the
+end-effector is always in contact with the fixed point, we get an error equation:</p>
+<div class="arithmatex">\[\Delta p = 0 - {}^{P}p = J\,\Delta\phi\]</div>
+<p>where <span class="arithmatex">\(J\)</span> is the Jacobian of <span class="arithmatex">\(f\)</span> with respect to the parameters <span class="arithmatex">\(\phi\)</span>. Measure a few sets of
+data, solve iteratively with something like Gauss-Newton, and you have the robot's current
+kinematic parameters. Keywords like "robot kinematics calibration" turn up a mountain of
+literature.</p>
+<p><strong>Dynamics identification.</strong> A multi-axis robot's dynamics equations are complex, but they can
+be rearranged into a form that's <strong>linear</strong> in the parameters:</p>
+<div class="arithmatex">\[\tau = A(q, \dot{q}, \ddot{q})\,\Theta\]</div>
+<p>where <span class="arithmatex">\(\Theta\)</span> is a set of parameter combinations to be identified (the base parameter set).
+See — this is the familiar <span class="arithmatex">\(Ax=b\)</span>, and least squares will solve it.</p>
+<p>A few details in practice:</p>
+<ul>
+<li>The excitation trajectory can't be chosen carelessly; for example, for a planar arm with
+  rotary joints, if the identification trajectory makes <span class="arithmatex">\(q_1=q_2\)</span>, you can't identify a valid
+  value (the corresponding matrix isn't full rank);</li>
+<li>Angular velocity and angular acceleration can't be measured directly; you need a filtering
+  algorithm or an observer to compute them;</li>
+<li>If you use a linear model for friction, you can fold it into the equation above and identify
+  it too. For a systematic introduction, see Khalil's textbook <em>Modeling, Identification and
+  Control of Robots</em><sup>[2]</sup>.</li>
+</ul>
+<p>I've done this whole thing end-to-end on a single-axis direct-drive platform: reading the
+dynamics parameters straight out of SolidWorks, the computed torque was off from the measured
+torque by 50%; after parameter identification, the error immediately dropped to within 8%.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/single-joint-ident-fit.webp" data-desc-position="bottom"><img src="images/single-joint-ident-fit.webp" width="500" alt="After identification on the single-axis platform, computed torque and measured torque nearly coincide"></a>
+
+  <figcaption>After identification on the single-axis platform, the computed torque and the measured torque line up almost exactly.</figcaption>
+
+</figure>
+<p>With an accurate dynamics model, the fun begins: without adding any sensor, you can estimate the
+external torque directly from the <strong>current</strong> fed back by the drive. How sensitive? Touch it
+with a sheet of paper and the arm stops. Once a collision is detected, switch to "gravity
+compensation + low-gain PD," and you have a collaborative robot's hand-guiding (teach by
+dragging). Later I did a whole-arm version on a Baxter. For the full experiment write-up, see
+<a href="https://mp.weixin.qq.com/s/hkZjZItqyfwG6k0cwRm9kA">I heard collaborative robots are hot these days, so I built 1/7 of one</a>
+and
+<a href="https://mp.weixin.qq.com/s/1qyXJ01n0mcMyRX6ZB6jOQ">I finished building the remaining 6/7 of the collaborative robot</a>
+(both in Chinese).</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/collision-detection.webp" data-desc-position="bottom"><img src="images/collision-detection.webp" width="500" alt="Collision detection from the dynamics model plus current feedback"></a>
+
+  <figcaption>Collision detection from the dynamics model plus current feedback.</figcaption>
+
+</figure>
+<p>But before you eagerly go reproduce this on your own robot, a word of warning: <strong>friction —
+enter this rabbit hole at your own risk.</strong> The experiment above was a direct-drive platform,
+where friction can be ignored. Take the opposite extreme: a 100 kg load with an 86:1
+planetary-gear reduction. Ignore friction and the dynamics model can't fit the torque curve at
+all; and even if you try to identify the friction, testing several empirical friction formulas,
+you still can't fully eliminate the error — to this day, we don't have a general, authoritative
+friction model.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/friction-fit-fail.webp" data-desc-position="bottom"><img src="images/friction-fit-fail.webp" width="500" alt="Under a high reduction ratio, a model that ignores friction fails completely to fit the measured torque"></a>
+
+  <figcaption>Under a high reduction ratio, a model that ignores friction can't fit the measured torque at all.</figcaption>
+
+</figure>
+<p>This is why quite a few collaborative robots (like the KUKA iiwa and Franka) choose to add
+<strong>torque sensors</strong> in the joints: measuring torque directly at the reducer's output, skipping
+the transmission and sidestepping friction. The specific schemes each have their trade-offs:
+strain-gauge type (like Kinova), dual-encoder type (estimating torque from the difference in
+rotation angle between the two ends of the reducer), and series elastic actuators (SEA, like
+Baxter); some makers (like UR) stick with the sensorless route of current estimation plus
+careful identification.</p>
+<p>Finally: if you built a single-axis servo platform following the suggestion in the "Control"
+section, then all the experiments in this section — identification, collision detection,
+hand-guiding — can be reproduced on it, and I strongly recommend giving it a try. And once a
+robot is in continuous contact with its environment (grinding, assembly), collision detection
+alone isn't enough; you'll want to look into keywords like <strong>force control</strong> and <strong>impedance
+control</strong> — again, I recommend Khalil's textbook<sup>[2]</sup>.</p>
+<p>If hands-on experiments aren't an option for now, I strongly recommend a paper by Dragan
+Kostić that, using a three-DOF arm as its example, walks through in detail how to build and
+identify a high-precision robot model. The paper:
+<a href="https://www.researchgate.net/profile/Dragan-Kostic/publication/3332598_Modeling_and_Identification_for_High-Performance_Robot_Control_An_RRR-Robotic_Arm_Case_Study/links/0c960528a618d975cc000000/Modeling-and-Identification-for-High-Performance-Robot-Control-An-RRR-Robotic-Arm-Case-Study.pdf">Modeling and identification for high-performance robot control: An RRR-robotic arm case study</a>.</p>
+<figure>
+
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/kostic-rrr-paper.webp" data-desc-position="bottom"><img src="images/kostic-rrr-paper.webp" width="500" alt="Kostić et al.'s paper on modeling and identifying an RRR arm, IEEE TCST 2004"></a>
+
+  <figcaption>Kostić et al.'s paper on modeling and identifying an RRR arm (IEEE TCST, 2004).</figcaption>
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="prerequisite.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Prerequisites">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Prerequisites
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="dirty-your-hands.html" class="md-footer__link md-footer__link--next" aria-label="Next: Get Your Hands Dirty">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Get Your Hands Dirty
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      English edition · AI-assisted translation, reviewed by the author · Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · <a href="https://learn-robotics.qqfly.net/" target="_blank" rel="noopener">中文原版</a> · updated 2026-07-20 · <a href="https://github.com/qqfly/how-to-learn-robotics/commit/229bdeb">229bdeb</a>
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.instant", "navigation.instant.progress", "navigation.top", "navigation.footer", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="javascripts/mathjax/tex-svg.js"></script>
+      
+        <script src="javascripts/lang-switch.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

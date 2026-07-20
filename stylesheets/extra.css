@@ -1,0 +1,225 @@
+/* ============================================================
+   开源机器人学学习指南 — 自定义样式
+   目标：现代、干净的中文阅读体验（暖调 + 系统黑体正文）。全部系统字体，无外部 CDN。
+   （曾试过宋体系衬线正文，屏显笔画偏细、暗色模式发虚，按作者反馈改回无衬线。）
+   注：配色 / 字体变量用 body[data-md-color-scheme] 选择器（特指度 0,1,1，高于 :root），
+       以压过 Material 主题及其内联注入的 :root 默认值。
+   ============================================================ */
+
+/* ---------- 字体 ----------
+   正文与标题统一系统无衬线（macOS 取 PingFang，Windows 取雅黑，Linux 取思源黑体），
+   代码系统等宽。均为系统字体，不加载外部字库。 */
+body[data-md-color-scheme] {
+  --md-text-font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+  --md-code-font-family:
+    ui-monospace, "SF Mono", "SFMono-Regular", Menlo,
+    "Cascadia Code", "JetBrains Mono", Consolas, "Liberation Mono", monospace;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.md-typeset {
+  font-family: var(--md-text-font-family);
+  /* 行距 1.7：此前 1.85 读着「松松垮垮」。两个读感舒服的中文长文站都在 1.7 一线
+     （happy-llm 1.71 / autolabor 1.70），中文并不需要更松。
+     注意真正的松散来自「节奏」而非单一行距：此前行距 1.85 却只配 0.9em 段距（≈ 半行），
+     行与段糊在一起、读不出段落。正确的配法是「行收紧、段分明」——段距见下方 .md-typeset p。 */
+  line-height: 1.7;
+}
+
+/* 段落与列表：两端对齐 + 更从容的段距，中文长文更整齐耐读 */
+.md-typeset p,
+.md-typeset li {
+  text-align: justify;
+}
+.md-typeset p {
+  /* 段距 1.15em ≈ 0.68 行（happy-llm 为 0.70）。相邻段落的上下 margin 会合并，
+     故实际段间距就是 1.15em。段落断得干净，正文才有节奏。 */
+  margin-block: 1.15em;
+}
+.md-typeset li {
+  margin-block: 0.3em;
+}
+
+/* 链接悬停：Material 默认把 a:hover 交给 --md-accent-fg-color（陶土），
+   蓝链接一悬停变橙会像故障。这里给悬停配同族的另一档蓝：亮色加深、暗色提亮。 */
+.md-typeset a:hover,
+.md-typeset a:focus {
+  color: #0d4794;
+}
+body[data-md-color-scheme="slate"] .md-typeset a:hover,
+body[data-md-color-scheme="slate"] .md-typeset a:focus {
+  color: #a8c5ff;
+}
+
+/* 阅读宽度：Material 的 .md-grid 默认上限 61rem(1220px)，1440 屏上正文只剩 688px ≈ 43 字/行。
+   放宽到 67rem(1340px)，正文约 808px ≈ 50 字/行，与 happy-llm 的 50 字一致。
+   注：.md-grid 同时也管页眉，页眉会跟着一起变宽——两者对齐，属预期。 */
+.md-grid {
+  max-width: 67rem;
+}
+
+/* 正文加粗用中黑（600），避免大段黑体里 700 过于扎眼 */
+.md-typeset strong {
+  font-weight: 600;
+}
+
+/* 章内小节（本书用 H1 + H3 两级）：小节之间留足呼吸 */
+.md-typeset h3 {
+  margin-top: 1.8em;
+}
+
+/* 标题：同族无衬线加重，靠字重与留白区分层级。
+   （曾照 happy-llm(H1 300)/autolabor(H1 200) 试过「轻字重 + 收小字号」的标题，
+     站主反馈还是加粗更好看 —— 保持 700，勿再改回轻量。） */
+.md-typeset h1, .md-typeset h2, .md-typeset h3,
+.md-typeset h4, .md-typeset h5, .md-typeset h6 {
+  font-family: var(--md-text-font-family);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- 品牌配色（暖调：炭墨 + 陶土）---------- */
+body[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #3e3a36;   /* 页眉：暖炭墨 */
+  --md-primary-fg-color--light: #55504a;
+  --md-primary-fg-color--dark:  #2b2825;
+  --md-primary-bg-color:        #ffffff;   /* 页眉上的文字 / 图标 */
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.72);
+  --md-accent-fg-color:         #c15f3c;   /* 交互强调：陶土（导航当前项、框注等品牌/状态标记） */
+  --md-typeset-a-color:         #1a5fb4;   /* 正文链接：通用蓝——「可点」需要的是全世界都认得的信号，
+                                              陶土链接虽然更「品牌」，但读者不会第一眼当成链接。
+                                              取较深一档以保证在暖白底上的对比度（实测约 6:1，过 AA）。 */
+  /* 正文底：暖白替代 Material 的纯白——降眩光，并把「炭墨 + 陶土」的暖调带进阅读区
+     （此前暖调只出现在页眉与链接，正文区仍是纯白，识别断在了最该读的地方）。 */
+  --md-default-bg-color:        #faf8f4;
+  --md-code-bg-color:           #f3efe9;   /* 代码底：同族暖灰（默认 #f5f5f5 偏冷） */
+  /* 正文字色：用品牌炭墨本色，替代 Material 的近黑 rgba(0,0,0,.87)。
+     参照 happy-llm(#34495e) / autolabor(#333)——耐读的中文长文站正文都不用纯黑，柔一档；
+     这里直接取炭墨，既柔和又把暖调贯到字上（对 #faf8f4 底约 11:1，远超 WCAG AA 的 4.5:1）。 */
+  --md-default-fg-color:          #3e3a36;
+  --md-default-fg-color--light:   #6f665d;   /* 次要文字 / 图注 */
+  --md-default-fg-color--lighter: #9c9289;   /* 更次要 */
+  --md-default-fg-color--lightest: #ddd6cd;  /* 分隔线 / 边框 */
+}
+body[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #26221f;
+  --md-primary-fg-color--light: #3a3531;
+  --md-primary-fg-color--dark:  #1b1815;
+  --md-primary-bg-color:        #ffffff;
+  --md-accent-fg-color:         #e0805f;   /* 暗色下更亮的陶土（同样只留给品牌/状态标记） */
+  --md-typeset-a-color:         #7ba7ff;   /* 正文链接：暗底上要更亮一档的蓝，才够对比度 */
+  /* Material 的 slate 整套暗色（底色 / 正文色 / 代码底 / 边框）都由 --md-hue 驱动，
+     默认 225 = 冷蓝灰，与炭墨 + 陶土的暖调直接相冲（冷底配暖强调，就是那股说不出的「不搭」）。
+     改成 30（暖）即可一处把整套暗色统一到炭墨系，无需逐个覆盖各变量。 */
+  --md-hue: 30;
+}
+
+/* ---------- 公安备案警徽(仅中文站页脚用)----------
+   公安联网备案要求编号与警徽图标一并展示并链接查询页。图标自托管在 docs/images/,
+   不引任何外部资源。按行高缩放、不变形。
+   本文件中英两站共享:英文站页脚只有 CC BY 4.0、不挂备案号,故那边不会出现此元素(规则空转,无害)。
+
+   ⚠️ 特异性坑(2026-07-20 实测):Material 的页脚容器 div.md-footer-meta 自带 .md-typeset 类,
+   于是本文件下方给插图写的 .md-typeset img{height:auto}(0,1,1)会压过单类 .beian-badge(0,1,0),
+   把警徽还原成 36×40 原始尺寸(现象很怪:同一条规则里 margin/vertical-align 生效、唯独 height 被抢)。
+   故这里用 .md-typeset .beian-badge(0,2,0)取胜;保留裸类以覆盖 .md-typeset 之外的场合。 */
+.md-typeset .beian-badge,
+.beian-badge {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.15em;
+  margin-right: 0.25em;
+}
+
+/* ---------- 插图 ----------
+   替代旧的 <p align="center">：由 CSS 统一居中、自适应、圆角。
+   图片自身的 width 仍生效，窄屏由 max-width 收缩。 */
+.md-typeset img {
+  max-width: 100%;
+  height: auto;
+}
+.md-typeset p > img,
+.md-typeset figure > img,
+.md-typeset a.glightbox {
+  display: block;
+  margin-inline: auto;
+}
+.md-typeset a.glightbox {          /* glightbox 会把 <img> 包进 <a>，让链接本身也居中 */
+  width: fit-content;
+  max-width: 100%;
+  cursor: zoom-in;
+}
+.md-typeset p > img,
+.md-typeset figure > img,
+.md-typeset a.glightbox > img {
+  border-radius: 8px;
+}
+
+/* ---------- glightbox 放大层：统一显示尺寸 ----------
+   三张动图源自旧 GIF、分辨率偏低（约 250–400px），glightbox 默认按原始尺寸显示会偏小。
+   这里统一按视口高度显示、宽度自适应（不失真）；低分辨率图会被放大，略糊属源分辨率所限。 */
+.glightbox-container .gslide-image img {
+  width: auto !important;
+  height: min(72vh, 680px) !important;
+  max-width: 92vw !important;
+  border-radius: 6px;
+}
+
+/* 图注：<figure> + <figcaption>，灰色小字居中显示（正文与 GitHub 双端可见） */
+.md-typeset figure {
+  margin: 1em auto;
+  width: fit-content;
+  max-width: 100%;
+}
+.md-typeset figcaption {
+  color: var(--md-default-fg-color--light);
+  font-size: .72rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: .35rem auto 0;
+  max-width: 36em;
+}
+
+/* ---------- 框注（admonition）：统一陶土色系，去掉默认蓝绿 ---------- */
+.md-typeset .admonition,
+.md-typeset details,
+.md-typeset .admonition.note,    .md-typeset details.note,
+.md-typeset .admonition.info,    .md-typeset details.info,
+.md-typeset .admonition.example, .md-typeset details.example,
+.md-typeset .admonition.warning, .md-typeset details.warning,
+.md-typeset .admonition.tip,     .md-typeset details.tip {
+  border-color: rgba(193, 95, 60, 0.5);
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 0.72rem;            /* 默认 0.64rem 偏小，略调大 */
+}
+.md-typeset .admonition-title,
+.md-typeset .note    > .admonition-title,
+.md-typeset .info    > .admonition-title,
+.md-typeset .example > .admonition-title,
+.md-typeset .warning > .admonition-title,
+.md-typeset .tip     > .admonition-title {
+  background-color: rgba(193, 95, 60, 0.10);
+}
+.md-typeset .admonition-title::before,
+.md-typeset .note    > .admonition-title::before,
+.md-typeset .info    > .admonition-title::before,
+.md-typeset .example > .admonition-title::before,
+.md-typeset .warning > .admonition-title::before,
+.md-typeset .tip     > .admonition-title::before {
+  background-color: #c15f3c;
+}
+body[data-md-color-scheme="slate"] .md-typeset .admonition,
+body[data-md-color-scheme="slate"] .md-typeset details {
+  border-color: rgba(224, 128, 95, 0.45);
+}
+body[data-md-color-scheme="slate"] .md-typeset .admonition-title::before {
+  background-color: #e0805f;
+}
