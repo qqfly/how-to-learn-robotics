@@ -9,7 +9,9 @@ repo_name: qqfly/how-to-learn-robotics
 edit_uri: edit/master/docs/
 copyright: >-
   本作品采用 CC BY 4.0 许可协议进行许可 ·
-  <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备2026094704号</a>
+  <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备2026094704号-1</a> ·
+  <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002014762" target="_blank" rel="noopener"><img
+  src="/images/beian-police.png" alt="" class="beian-badge">粤公网安备44030002014762号</a>
 
 # 隐藏页脚 "Made with Material for MkDocs" 生成器标识
 extra:
