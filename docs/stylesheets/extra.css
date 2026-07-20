@@ -124,7 +124,13 @@ body[data-md-color-scheme="slate"] {
 /* ---------- 公安备案警徽(仅中文站页脚用)----------
    公安联网备案要求编号与警徽图标一并展示并链接查询页。图标自托管在 docs/images/,
    不引任何外部资源。按行高缩放、不变形。
-   本文件中英两站共享:英文站页脚只有 CC BY 4.0、不挂备案号,故那边不会出现此元素(规则空转,无害)。 */
+   本文件中英两站共享:英文站页脚只有 CC BY 4.0、不挂备案号,故那边不会出现此元素(规则空转,无害)。
+
+   ⚠️ 特异性坑(2026-07-20 实测):Material 的页脚容器 div.md-footer-meta 自带 .md-typeset 类,
+   于是本文件下方给插图写的 .md-typeset img{height:auto}(0,1,1)会压过单类 .beian-badge(0,1,0),
+   把警徽还原成 36×40 原始尺寸(现象很怪:同一条规则里 margin/vertical-align 生效、唯独 height 被抢)。
+   故这里用 .md-typeset .beian-badge(0,2,0)取胜;保留裸类以覆盖 .md-typeset 之外的场合。 */
+.md-typeset .beian-badge,
 .beian-badge {
   height: 1em;
   width: auto;
